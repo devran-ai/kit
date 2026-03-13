@@ -169,7 +169,7 @@ After all agents complete, synthesize findings:
 
 - [ ] Verify session state is current
 - [ ] Check for active blockers
-- [ ] Load relevant Meta-Directives
+- [ ] Load relevant governance rules
 - [ ] Confirm scope with user if complex
 
 ### Post-Orchestration Protocol

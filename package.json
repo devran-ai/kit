@@ -44,5 +44,8 @@
     ".agent/",
     "README.md",
     "LICENSE"
-  ]
+  ],
+  "devDependencies": {
+    "vitest": "^4.1.0"
+  }
 }
