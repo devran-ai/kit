@@ -1,7 +1,7 @@
 {
   "name": "antigravity-ai-kit",
   "version": "2.1.0",
-  "description": "🚀 Trust-Grade AI development framework — 19 Agents, 28 Skills, 31 Commands, 11 Workflows. Transform your IDE into an autonomous engineering team.",
+  "description": "🚀 Trust-Grade AI development framework — 19 Agents, 31 Skills, 31 Commands, 14 Workflows. Transform your IDE into an autonomous engineering team.",
   "main": "bin/ag-kit.js",
   "bin": {
     "ag-kit": "./bin/ag-kit.js"

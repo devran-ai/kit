@@ -33,7 +33,7 @@
       "directory": "commands/"
     },
     "skills": {
-      "count": 28,
+      "count": 31,
       "items": [
         { "name": "api-patterns", "directory": "skills/api-patterns/" },
         { "name": "app-builder", "directory": "skills/app-builder/" },
@@ -51,6 +51,7 @@
         { "name": "frontend-patterns", "directory": "skills/frontend-patterns/" },
         { "name": "git-workflow", "directory": "skills/git-workflow/" },
         { "name": "intelligent-routing", "directory": "skills/intelligent-routing/" },
+        { "name": "i18n-localization", "directory": "skills/i18n-localization/" },
         { "name": "mcp-integration", "directory": "skills/mcp-integration/" },
         { "name": "mobile-design", "directory": "skills/mobile-design/" },
         { "name": "nodejs-patterns", "directory": "skills/nodejs-patterns/" },
@@ -61,12 +62,14 @@
         { "name": "strategic-compact", "directory": "skills/strategic-compact/" },
         { "name": "testing-patterns", "directory": "skills/testing-patterns/" },
         { "name": "typescript-expert", "directory": "skills/typescript-expert/" },
+        { "name": "ui-ux-pro-max", "directory": "skills/ui-ux-pro-max/" },
         { "name": "verification-loop", "directory": "skills/verification-loop/" },
-        { "name": "webapp-testing", "directory": "skills/webapp-testing/" }
+        { "name": "webapp-testing", "directory": "skills/webapp-testing/" },
+        { "name": "shell-conventions", "directory": "skills/shell-conventions/" }
       ]
     },
     "workflows": {
-      "count": 11,
+      "count": 14,
       "items": [
         { "name": "brainstorm", "file": "workflows/brainstorm.md" },
         { "name": "create", "file": "workflows/create.md" },
@@ -76,6 +79,9 @@
         { "name": "orchestrate", "file": "workflows/orchestrate.md" },
         { "name": "plan", "file": "workflows/plan.md" },
         { "name": "preview", "file": "workflows/preview.md" },
+        { "name": "quality-gate", "file": "workflows/quality-gate.md" },
+        { "name": "retrospective", "file": "workflows/retrospective.md" },
+        { "name": "review", "file": "workflows/review.md" },
         { "name": "status", "file": "workflows/status.md" },
         { "name": "test", "file": "workflows/test.md" },
         { "name": "ui-ux-pro-max", "file": "workflows/ui-ux-pro-max.md" }

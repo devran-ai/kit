@@ -3,9 +3,9 @@
 ![version](https://img.shields.io/badge/version-2.1.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![AI Agents](https://img.shields.io/badge/AI%20Agents-19-purple)
-![Skills](https://img.shields.io/badge/Skills-28-orange)
+![Skills](https://img.shields.io/badge/Skills-31-orange)
 ![Commands](https://img.shields.io/badge/Commands-31-red)
-![Workflows](https://img.shields.io/badge/Workflows-11-teal)
+![Workflows](https://img.shields.io/badge/Workflows-14-teal)
 ![Checklists](https://img.shields.io/badge/Checklists-3-yellow)
 
 <p align="center">
