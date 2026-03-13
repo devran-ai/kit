@@ -60,7 +60,7 @@ Standardized entry points for developer intent across 8 categories.
 
 See `commands/README.md` for full documentation.
 
-### Skills (27 Core)
+### Skills (28 Core)
 
 | Skill                                                            | Purpose                       |
 | ---------------------------------------------------------------- | ----------------------------- |
@@ -90,6 +90,7 @@ See `commands/README.md` for full documentation.
 | [security-practices](./skills/security-practices/SKILL.md)       | OWASP, vulnerability prevention |
 | [docker-patterns](./skills/docker-patterns/SKILL.md)             | Containerization              |
 | [git-workflow](./skills/git-workflow/SKILL.md)                   | Branching, commits            |
+| [mcp-integration](./skills/mcp-integration/SKILL.md)             | MCP server integration        |
 
 ### Skill Loading Protocol
 

@@ -33,7 +33,7 @@
       "directory": "commands/"
     },
     "skills": {
-      "count": 27,
+      "count": 28,
       "items": [
         { "name": "api-patterns", "directory": "skills/api-patterns/" },
         { "name": "app-builder", "directory": "skills/app-builder/" },
@@ -51,6 +51,7 @@
         { "name": "frontend-patterns", "directory": "skills/frontend-patterns/" },
         { "name": "git-workflow", "directory": "skills/git-workflow/" },
         { "name": "intelligent-routing", "directory": "skills/intelligent-routing/" },
+        { "name": "mcp-integration", "directory": "skills/mcp-integration/" },
         { "name": "mobile-design", "directory": "skills/mobile-design/" },
         { "name": "nodejs-patterns", "directory": "skills/nodejs-patterns/" },
         { "name": "parallel-agents", "directory": "skills/parallel-agents/" },

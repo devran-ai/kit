@@ -49,7 +49,7 @@ ${colors.reset}
 ${colors.green}🚀 Antigravity AI Kit v${VERSION}${colors.reset}
 ${colors.yellow}   Transform Your IDE into an Autonomous Engineering Team${colors.reset}
 
-   • 19 AI Agents    • 27 Skills
+   • 19 AI Agents    • 28 Skills
    • 31 Commands     • 11 Workflows
 `);
 }
