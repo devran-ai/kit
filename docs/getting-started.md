@@ -9,10 +9,12 @@ Get up and running with Antigravity AI Kit in **30 seconds**.
 ### Option 1: NPX (Recommended)
 
 ```bash
-npx @emredursun/antigravity-ai-kit init
+npx antigravity-ai-kit init
 ```
 
 This automatically copies the `.agent/` folder to your project. Done!
+
+> **Tip:** Use `npx antigravity-ai-kit init --force` to overwrite an existing `.agent/` folder.
 
 ---
 
@@ -41,7 +43,7 @@ cp -r antigravity-ai-kit/.agent/ your-project/.agent/
 
 ## First Session
 
-1. Open your project in Antigravity IDE
+1. Open your project in your AI-powered IDE (VS Code, Cursor, Windsurf, etc.)
 2. Run the status command:
 
 ```
@@ -91,9 +93,9 @@ Runs all quality gates: build, lint, test, coverage.
 
 ## Next Steps
 
-- **[Agents](agents/index.md)** — 17 specialized AI agents
+- **[Agents](agents/index.md)** — 19 specialized AI agents
 - **[Commands](commands/index.md)** — 31 slash commands
-- **[Skills](skills/index.md)** — 26 domain expertise modules
-- **[Workflows](workflows/index.md)** — 11 development workflows
+- **[Skills](skills/index.md)** — 31 domain expertise modules
+- **[Workflows](workflows/index.md)** — 14 development workflows
 - **[Session Management](session-management.md)** — Never lose context
 - **[Governance](governance/index.md)** — Operating constraints

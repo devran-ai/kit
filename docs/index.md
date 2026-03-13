@@ -10,10 +10,10 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 
 | Feature           | Count | Description                                                            |
 | :---------------- | :---- | :--------------------------------------------------------------------- |
-| 🤖 **AI Agents**  | 17    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
-| 🛠️ **Skills**     | 26    | Domain knowledge modules (API, Testing, Architecture, Docker...)       |
+| 🤖 **AI Agents**  | 19    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
+| 🛠️ **Skills**     | 31    | Domain knowledge modules (API, Testing, Architecture, Docker...)       |
 | ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 11    | Process templates (/create, /debug, /deploy, /test...)                 |
+| 🔄 **Workflows**  | 14    | Process templates (/create, /debug, /deploy, /test...)                 |
 | ✅ **Checklists** | 3     | Quality gates (session-start, session-end, pre-commit)                 |
 | 🔗 **Hooks**      | 4     | Event-driven automation                                                |
 | ⚖️ **Rules**      | 5     | Immutable governance constraints                                       |
@@ -30,7 +30,7 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :robot: **[Agents](agents/index.md)**
 
-  17 specialized agents for delegation
+  19 specialized agents for delegation
 
 - :keyboard: **[Commands](commands/index.md)**
 
@@ -38,11 +38,11 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :gear: **[Skills](skills/index.md)**
 
-  26 domain expertise modules
+  31 domain expertise modules
 
 - :arrows_counterclockwise: **[Workflows](workflows/index.md)**
 
-  11 full development workflows
+  14 full development workflows
 
 - :repeat: **[Session Management](session-management.md)**
 
@@ -67,7 +67,7 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 ## Key Features
 
 - **🔒 Trust-Grade Governance** — `/explore → /plan → /work → /review` — Each iteration builds context
-- **🤖 Multi-Agent System** — 17 specialized agents that collaborate (Mobile Developer, DevOps, Database Architect...)
+- **🤖 Multi-Agent System** — 19 specialized agents that collaborate (Mobile Developer, DevOps, Database Architect...)
 - **📦 Context as Artifact** — Persistent markdown files for plans, specs, and decisions
 - **🔄 Continuous Learning** — PAAL cycle extracts patterns from every session
 - **🛡️ Security First** — Built-in secret detection, vulnerability scanning, and compliance checks

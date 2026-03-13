@@ -1,6 +1,6 @@
 # Skills
 
-Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns.
+Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **31 skills** across 7 categories.
 
 ---
 
@@ -16,6 +16,7 @@ Core runtime capabilities for AI agent operation.
 | **continuous-learning** | Pattern extraction from sessions (PAAL cycle) |
 | **strategic-compact**   | Context window management                     |
 | **eval-harness**        | Performance evaluation metrics                |
+| **context-budget**      | Context window budget management              |
 
 ---
 
@@ -64,12 +65,13 @@ Testing, debugging, and security.
 
 DevOps, deployment, and performance.
 
-| Skill                     | Purpose                         |
-| :------------------------ | :------------------------------ |
-| **docker-patterns**       | Containerization best practices |
-| **git-workflow**          | Branching, commits, PRs         |
-| **deployment-procedures** | CI/CD and rollback strategies   |
-| **performance-profiling** | Core Web Vitals optimization    |
+| Skill                     | Purpose                                     |
+| :------------------------ | :------------------------------------------ |
+| **docker-patterns**       | Containerization best practices             |
+| **git-workflow**          | Branching, commits, PRs                     |
+| **deployment-procedures** | CI/CD and rollback strategies               |
+| **performance-profiling** | Core Web Vitals optimization                |
+| **shell-conventions**     | Windows PowerShell conventions (avoid bash) |
 
 ---
 
@@ -77,12 +79,24 @@ DevOps, deployment, and performance.
 
 Architecture, design, and planning.
 
-| Skill             | Purpose                                            |
-| :---------------- | :------------------------------------------------- |
-| **architecture**  | System design patterns (SOLID, Clean Architecture) |
-| **mobile-design** | Mobile UI/UX patterns for iOS/Android              |
-| **brainstorming** | Socratic discovery protocol                        |
-| **plan-writing**  | Structured task breakdown                          |
+| Skill              | Purpose                                            |
+| :----------------- | :------------------------------------------------- |
+| **architecture**   | System design patterns (SOLID, Clean Architecture) |
+| **mobile-design**  | Mobile UI/UX patterns for iOS/Android              |
+| **brainstorming**  | Socratic discovery protocol                        |
+| **plan-writing**   | Structured task breakdown                          |
+| **ui-ux-pro-max**  | Design intelligence with searchable style database |
+
+---
+
+### 🌐 Domain Skills
+
+Specialized domain expertise modules.
+
+| Skill                  | Purpose                                           |
+| :--------------------- | :------------------------------------------------ |
+| **i18n-localization**  | Internationalization and localization patterns     |
+| **mcp-integration**    | Model Context Protocol integration patterns       |
 
 ---
 

@@ -1,24 +1,27 @@
 # Workflows
 
-Workflows are complete development lifecycles that guide you through multi-step processes. **11 workflows** for every development scenario.
+Workflows are complete development lifecycles that guide you through multi-step processes. **14 workflows** for every development scenario.
 
 ---
 
 ## Available Workflows
 
-| Workflow            | Purpose                   | Use Case                                   |
-| :------------------ | :------------------------ | :----------------------------------------- |
-| 🧠 `/brainstorm`    | Structured ideation       | Before committing to implementation        |
-| ✨ `/create`        | Scaffold new components   | Creating new features, modules, components |
-| 🐛 `/debug`         | Systematic debugging      | Investigating complex bugs                 |
-| 🚀 `/deploy`        | Production deployment     | Deploying with pre-flight checks           |
-| 🔧 `/enhance`       | Iterative development     | Adding/updating features                   |
-| 🎭 `/orchestrate`   | Multi-agent orchestration | Complex tasks requiring specialists        |
-| 📋 `/plan`          | Implementation planning   | Creating structured task breakdowns        |
-| 👁️ `/preview`       | Dev server management     | Starting/stopping local servers            |
-| 📊 `/status`        | Project status overview   | Checking current state and progress        |
-| 🧪 `/test`          | Systematic test writing   | Writing comprehensive tests                |
-| 🎨 `/ui-ux-pro-max` | Premium UI/UX design      | Creating stunning interfaces               |
+| Workflow            | Purpose                        | Use Case                                     |
+| :------------------ | :----------------------------- | :------------------------------------------- |
+| 🧠 `/brainstorm`    | Structured ideation            | Before committing to implementation          |
+| ✨ `/create`        | Scaffold new components        | Creating new features, modules, components   |
+| 🐛 `/debug`         | Systematic debugging           | Investigating complex bugs                   |
+| 🚀 `/deploy`        | Production deployment          | Deploying with pre-flight checks             |
+| 🔧 `/enhance`       | Iterative development          | Adding/updating features                     |
+| 🎭 `/orchestrate`   | Multi-agent orchestration      | Complex tasks requiring specialists          |
+| 📋 `/plan`          | Implementation planning        | Creating structured task breakdowns          |
+| 👁️ `/preview`       | Dev server management          | Starting/stopping local servers              |
+| 🔬 `/quality-gate`  | Pre-task research & validation | Market research and ethics review            |
+| 📊 `/retrospective` | Sprint-end quality audit       | Tier-1 compliance review after milestones    |
+| 🔍 `/review`        | Code review pipeline           | Sequential lint/test/security/build gates    |
+| 📈 `/status`        | Project status overview        | Checking current state and progress          |
+| 🧪 `/test`          | Systematic test writing        | Writing comprehensive tests                  |
+| 🎨 `/ui-ux-pro-max` | Premium UI/UX design           | Creating stunning interfaces                 |
 
 ---
 
@@ -51,6 +54,9 @@ Invoke a workflow with its slash command:
 
 # Debug an issue
 /debug API returns 500 error
+
+# Run quality review pipeline
+/review
 
 # Deploy to production
 /deploy

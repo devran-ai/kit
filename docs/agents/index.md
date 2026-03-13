@@ -1,6 +1,6 @@
 # Agents
 
-Agents are specialized sub-agents that handle delegated tasks with focused expertise. **17 agents** across 3 categories.
+Agents are specialized sub-agents that handle delegated tasks with focused expertise. **19 agents** across 3 categories.
 
 ---
 
@@ -29,16 +29,18 @@ Agents are specialized sub-agents that handle delegated tasks with focused exper
 
 ---
 
-## Support
+## Support & Operations
 
-| Agent                       | Role                       | Triggers              |
-| :-------------------------- | :------------------------- | :-------------------- |
-| 📚 **Documentation Writer** | Docs, READMEs, guides      | documentation, readme |
-| 🐛 **Debugger**             | Systematic debugging       | debug, error, fix     |
-| 🧹 **Refactorer**           | Code cleanup, optimization | refactor, cleanup     |
-| 🔭 **Explorer Agent**       | Codebase discovery         | explore, scout        |
-| 🎭 **E2E Runner**           | End-to-end testing         | e2e, integration      |
-| 🧠 **Knowledge Agent**      | RAG retrieval              | knowledge, context    |
+| Agent                          | Role                             | Triggers                     |
+| :----------------------------- | :------------------------------- | :--------------------------- |
+| 📚 **Documentation Writer**   | Docs, READMEs, guides            | documentation, readme        |
+| 🐛 **Build Error Resolver**   | Rapid build/error fixes          | build, error, fix            |
+| 🧹 **Refactorer**             | Code cleanup, optimization       | refactor, cleanup            |
+| 🔭 **Explorer Agent**         | Codebase discovery               | explore, scout               |
+| 🎭 **E2E Runner**             | End-to-end testing               | e2e, integration             |
+| 🧠 **Knowledge Agent**        | RAG retrieval                    | knowledge, context           |
+| 🛡️ **Reliability Engineer**   | SRE, production readiness        | reliability, sre, production |
+| 🎯 **Sprint Orchestrator**    | Sprint planning, velocity        | sprint, orchestrate          |
 
 ---
 
