@@ -1,61 +1,136 @@
 # Contributing to Antigravity AI Kit
 
-Thank you for your interest in contributing! This guide will help you get started.
+Thank you for your interest in contributing to **Antigravity AI Kit**! 🚀
 
----
-
-## 🚀 Quick Start
+## Getting Started
 
 1. **Fork** the repository
-2. **Clone** your fork
-3. **Create** a feature branch: `git checkout -b feature/my-feature`
-4. **Make** your changes
-5. **Test** your changes
-6. **Commit** with conventional format: `feat: add new command`
-7. **Push** to your fork
-8. **Open** a Pull Request
+2. **Clone** your fork:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/antigravity-ai-kit.git
+   cd antigravity-ai-kit
+   ```
+3. **Install** dependencies:
+   ```bash
+   npm install
+   ```
+4. **Run tests** to verify everything works:
+   ```bash
+   npm test
+   ```
+
+## Development Workflow
+
+### Branch Naming
+
+Use conventional branch names:
+
+```
+feat/add-python-agent
+fix/cli-init-error
+docs/update-readme
+```
+
+### Commit Messages
+
+We follow **Conventional Commits**:
+
+```
+feat(agents): add python-specialist agent
+fix(cli): handle missing .agent directory gracefully
+docs(readme): update skills count to 28
+test(security): add injection scan for new patterns
+chore(deps): update vitest to 3.x
+```
+
+### Running Tests
+
+```bash
+npm test                    # Run all 43 tests
+npx vitest run --reporter=verbose  # Verbose output
+npx vitest watch            # Watch mode
+```
+
+Test suites:
+- **Unit tests** (`tests/unit/`) — CLI command tests
+- **Structural tests** (`tests/structural/`) — Inventory + schema validation
+- **Security tests** (`tests/security/`) — Injection scan + leakage detection
+
+### Quality Checks
+
+Before submitting a PR, ensure:
+- [ ] All tests pass (`npm test`)
+- [ ] No hardcoded secrets
+- [ ] No BeSync-specific language
+- [ ] Counts are synchronized (manifest, README, rules.md, CLI)
+- [ ] New agents/skills include YAML frontmatter
+
+## Adding New Components
+
+### Adding an Agent
+
+1. Create `.agent/agents/your-agent.md` with frontmatter:
+   ```markdown
+   ---
+   name: your-agent
+   description: What this agent does
+   triggers: [keyword1, keyword2]
+   ---
+   # Your Agent
+   Instructions...
+   ```
+2. Add entry to `.agent/manifest.json`
+3. Update count in `README.md`, `.agent/rules.md`, `bin/ag-kit.js`
+4. Run `npm test` to verify structural integrity
+
+### Adding a Skill
+
+1. Create `.agent/skills/your-skill/SKILL.md` with frontmatter:
+   ```markdown
+   ---
+   name: your-skill
+   description: What this skill does
+   triggers: [keyword1, keyword2]
+   ---
+   # Your Skill
+   ## Overview
+   ...
+   ```
+2. Add entry to `.agent/manifest.json`
+3. Update counts everywhere (see Adding an Agent, step 3)
+4. Run `npm test`
+
+### Adding a Workflow
+
+1. Create `.agent/workflows/your-workflow.md` with frontmatter:
+   ```markdown
+   ---
+   description: What this workflow does
+   ---
+   # Steps...
+   ```
+2. Add entry to `.agent/manifest.json`
+3. Update counts
+4. Run `npm test`
+
+## Code Standards
+
+- **Zero dependencies** — the core kit uses only Node.js built-ins
+- **Strict type safety** — use JSDoc annotations for all functions
+- **Descriptive names** — no abbreviations
+- **Max file length** — 800 lines per file, 50 lines per function
+
+## Pull Request Process
+
+1. Create a PR against `main`
+2. Describe what changed and why
+3. Ensure all CI checks pass
+4. Request review
+
+## Questions?
+
+Open an [issue](https://github.com/besync-labs/antigravity-ai-kit/issues) or start a [discussion](https://github.com/besync-labs/antigravity-ai-kit/discussions).
 
 ---
 
-## 📋 Contribution Types
-
-### Adding Agents
-
-1. Create `agents/my-agent.md`
-2. Follow the agent specification format
-3. Add to `agents/README.md`
-
-### Adding Commands
-
-1. Create `commands/my-command.md`
-2. Follow the command specification format
-3. Add to `commands/README.md`
-
-### Adding Skills
-
-1. Create `skills/my-skill/SKILL.md`
-2. Optionally add `scripts/` and `examples/`
-3. Add to `skills/README.md`
-
----
-
-## ✅ Guidelines
-
-- **Follow existing patterns** — Consistency is key
-- **Document thoroughly** — Every file needs purpose statement
-- **Test your changes** — Verify commands/agents work
-- **Keep it universal** — Avoid project-specific content
-
----
-
-## 🔒 Code of Conduct
-
-- Be respectful and inclusive
-- Provide constructive feedback
-- Help others learn
-
----
-
-## 📄 License
-
-By contributing, you agree that your contributions will be licensed under the MIT License.
+**Thank you for helping make Antigravity AI Kit better!** 💜

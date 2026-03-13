@@ -1,95 +1,71 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to Antigravity AI Kit will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0] - 2026-02-06
+## [2.1.0] — 2026-03-13
 
 ### Added
 
-#### NPX Installer
+#### Agents (19 total)
+- `frontend-specialist` — React, Next.js, UI architecture specialist
+- `backend-specialist` — Node.js, NestJS, API design specialist
+- `sprint-orchestrator` — Autonomous sprint planning and velocity tracking
+- `reliability-engineer` — SRE, production readiness, SLA monitoring
 
-- Added `npx @emredursun/antigravity-ai-kit init` command
-- Added CLI tool `ag-kit` with init, status, update commands
-- Added professional ASCII banner and colorful output
+#### Skills (28 total)
+- `context-budget` — Active token budget management for context window optimization
+- `mcp-integration` — Model Context Protocol server integration patterns
 
-#### Skills (12 New)
+#### Autonomy Engine
+- `engine/workflow-state.json` — 6-phase lifecycle state machine (EXPLORE → DEPLOY)
+- `engine/loading-rules.json` — 13-domain selective agent/skill loading with context budgets
+- `manifest.json` — Machine-readable capability registry (SSOT for integrity verification)
 
-- `api-patterns` - RESTful API design principles
-- `architecture` - System design patterns (SOLID, Clean Architecture)
-- `clean-code` - Code quality principles
-- `database-design` - Schema design and optimization
-- `testing-patterns` - TDD, unit, integration testing
-- `typescript-expert` - Advanced TypeScript patterns
-- `frontend-patterns` - React, component patterns
-- `nodejs-patterns` - Backend/NestJS patterns
-- `debugging-strategies` - Systematic debugging
-- `security-practices` - OWASP, vulnerability prevention
-- `docker-patterns` - Containerization best practices
-- `git-workflow` - Branching, commits, PRs
+#### Test Infrastructure
+- Vitest configuration with 43 comprehensive tests across 4 suites:
+  - CLI tests (5) — version, help, status, init, exists
+  - Structural integrity (10) — filesystem ↔ manifest consistency
+  - Schema validation (13) — JSON structure + YAML frontmatter validation
+  - Security scan (15) — injection detection, secret scan, leakage detection
 
-#### Workflows (3 New)
+#### Tooling
+- `create-antigravity-app` scaffolder (3 templates: minimal, node-api, nextjs)
+- `.github/workflows/ci.yml` — 4-job CI pipeline (lint, test, build, security)
+- `.githooks/pre-commit` — Secret detection hook
+- `hooks.json` — 6 event hooks with enforcement types
+- ADR-001: Trust-Grade Governance architecture decision
+- Templates: ADR, feature-request, bug-report
 
-- `/create` - Scaffold new features, components, modules
-- `/test` - Systematic test writing workflow
-- `/ui-ux-pro-max` - Premium UI/UX design workflow
-
-#### Commands (25 New)
-
-- `/build` - Build new features
-- `/fix` - Fix linting, type, build errors
-- `/scout` - Explore codebase
-- `/research` - Research technologies
-- `/doc` - Generate documentation
-- `/git` - Git operations
-- `/pr` - Pull request management
-- `/db` - Database operations
-- `/integrate` - Third-party integrations
-- `/security-scan` - Security audit
-- `/perf` - Performance analysis
-- `/refactor` - Code refactoring
-- `/learn` - Pattern extraction
-- `/checkpoint` - Save progress
-- `/compact` - Context compression
-- `/eval` - Metrics evaluation
-- `/implement` - Plan execution
-- `/adr` - Architecture decisions
-- `/changelog` - Changelog generation
-- `/design` - UI/UX design specs
-- `/debug` - Systematic debugging
-- `/cook` - Full scratch-to-done workflow
-- `/setup` - Project configuration
-- `/help` - Help command
-- `/ask` - Code questions
-- `/deploy` - Deployment
+#### Documentation
+- Mermaid architecture diagram in README
+- "How It Works" section with 6-phase lifecycle explanation
+- CONTRIBUTING.md with contributor guide
+- Full-stack example (auth system walkthrough)
+- Minimal example
 
 ### Changed
+- Package name: `@emredursun/antigravity-ai-kit` → `antigravity-ai-kit` (unscoped for discoverability)
+- Repository URLs: `emredursun/` → `besync-labs/` (canonical org)
+- README completely rewritten with accurate counts, Mermaid diagram, and create-antigravity-app Quick Start
+- BeSync-specific language sanitized across 3 skill files
+- `.npmignore` added for lean npm distribution
 
-- README.md completely redesigned with world-class documentation
-- Skills README updated with new categorization
-- Workflows README updated with new count
-- Commands README updated with new categorization
+### Fixed
+- Stale counts synchronized: 19 agents, 28 skills, 31 commands, 11 workflows across 6 sources
+- Duplicate agent entries removed from README
+- CLI banner count accuracy
+- Frontmatter detection handling CRLF line endings
 
-### Summary
-
-- **Skills**: 14 → 26 (+86%)
-- **Workflows**: 8 → 11 (+38%)
-- **Commands**: 6 → 31 (+417%)
-- All components are generic and project-agnostic
-
----
-
-## [1.0.0] - 2026-01-15
+## [2.0.0] — 2026-02-05
 
 ### Added
+- Initial v2.0.0 release with Trust-Grade governance framework
+- 17 agents, 27 skills, 31 commands, 11 workflows
+- Session management architecture
+- PAAL continuous learning cycle
 
-- Initial release
-- 14 Skills (4 Operational + 10 Domain)
-- 8 Workflows
-- 6 Commands
-- 15 AI Agents
-- Trust-Grade governance framework
-- Hooks system
-- Rules and constraints
+[2.1.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v2.0.0...v2.1.0
+[2.0.0]: https://github.com/besync-labs/antigravity-ai-kit/releases/tag/v2.0.0

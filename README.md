@@ -13,13 +13,13 @@
 </p>
 
 <p align="center">
-  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> that brings <b>19 specialized agents</b>, <b>31 commands</b>, <b>27 skills</b>, and <b>11 workflows</b> to help you code 10x faster with governance-first principles.
+  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> that brings <b>19 specialized agents</b>, <b>31 commands</b>, <b>28 skills</b>, and <b>11 workflows</b> to help you code 10x faster with governance-first principles.
 </p>
 
 <p align="center">
   🚀 <a href="#-quick-start">Quick Start</a> •
-  🤖 <a href="#-agents-17">Agents</a> •
-  🛠️ <a href="#%EF%B8%8F-skills-26">Skills</a> •
+  🤖 <a href="#-agents-19">Agents</a> •
+  🛠️ <a href="#%EF%B8%8F-skills-28">Skills</a> •
   ⌨️ <a href="#%EF%B8%8F-commands-31">Commands</a> •
   🔄 <a href="#-session-management">Sessions</a> •
   ⚖️ <a href="#%EF%B8%8F-operating-constraints">Governance</a>
@@ -33,9 +33,9 @@
 - [Key Features](#-key-features)
 - [Quick Start](#-quick-start)
 - [Architecture](#%EF%B8%8F-architecture-overview)
-- [Agents](#-agents-17)
+- [Agents](#-agents-19)
 - [Commands](#%EF%B8%8F-commands-31)
-- [Skills](#%EF%B8%8F-skills-26)
+- [Skills](#%EF%B8%8F-skills-28)
 - [Workflows](#-workflows-11)
 - [Operating Constraints](#%EF%B8%8F-operating-constraints)
 - [Session Management](#-session-management)
@@ -51,19 +51,19 @@
 | Feature           | Count | Description                                                            |
 | :---------------- | :---- | :--------------------------------------------------------------------- |
 | 🤖 **AI Agents**  | 19    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
-| 🛠️ **Skills**     | 27    | Domain knowledge modules (API, Testing, Architecture, Docker...)       |
+| 🛠️ **Skills**     | 28    | Domain knowledge modules (API, Testing, MCP, Architecture, Docker...) |
 | ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
 | 🔄 **Workflows**  | 11    | Process templates (/create, /debug, /deploy, /test...)                 |
 | ✅ **Checklists** | 3     | Quality gates (session-start, session-end, pre-commit)                 |
 | ⚖️ **Rules**      | 5     | Immutable governance constraints                                       |
-| 🔗 **Hooks**      | 4     | Event-driven automation                                                |
+| 🔗 **Hooks**      | 6     | Event-driven automation (runtime + git-hook enforcement)               |
 
 ---
 
 ## ✨ Key Features
 
 - **🔒 Trust-Grade Governance**: `/explore → /plan → /work → /review` — Each iteration builds context
-- **🤖 Multi-Agent System**: 17 specialized agents that collaborate (Mobile Developer, DevOps, Database Architect...)
+- **🤖 Multi-Agent System**: 19 specialized agents that collaborate (Mobile Developer, DevOps, Database Architect, Sprint Orchestrator...)
 - **📦 Context as Artifact**: Persistent markdown files for plans, specs, and decisions
 - **🔄 Continuous Learning**: PAAL cycle extracts patterns from every session
 - **🛡️ Security First**: Built-in secret detection, vulnerability scanning, and compliance checks
@@ -76,7 +76,17 @@
 
 ## ⚡ Quick Start
 
-### Option 1: NPX (Recommended)
+### Option 1: Create New Project (Recommended)
+
+```bash
+npx create-antigravity-app my-project
+npx create-antigravity-app my-api --template node-api
+npx create-antigravity-app my-app --template nextjs
+```
+
+Creates a new project with `.agent/` pre-configured. Templates: `minimal`, `node-api`, `nextjs`.
+
+### Option 2: Add to Existing Project
 
 ```bash
 npx antigravity-ai-kit init
@@ -84,7 +94,7 @@ npx antigravity-ai-kit init
 
 This automatically copies the `.agent/` folder to your project.
 
-### Option 2: Manual Installation
+### Option 3: Manual Installation
 
 ```bash
 # 1. Clone the repository
@@ -97,56 +107,77 @@ cp -r antigravity-ai-kit/.agent/ your-project/.agent/
 /status
 ```
 
-### Option 3: Direct Download
-
-1. Download the `.agent/` folder from this repository
-2. Place it in your project root
-3. Run `/status` in your AI-powered IDE
-
 That's it! The kit is now active and ready to accelerate your development.
 
 ---
 
 ## 🏗️ Architecture Overview
 
+```mermaid
+graph TB
+    subgraph "User Interface Layer"
+        CMD["Slash Commands<br/>31 commands"]
+        WF["Workflows<br/>11 templates"]
+    end
+
+    subgraph "Intelligence Layer"
+        IR[Intelligent Router]
+        WS[Workflow State Machine]
+        CB[Context Budget Engine]
+        LR[Loading Rules]
+    end
+
+    subgraph "Agent Layer"
+        CORE["Core Agents<br/>Planner, Architect, Reviewer"]
+        DOMAIN["Domain Agents<br/>Mobile, Frontend, Backend, DB, DevOps"]
+        SUPPORT["Support Agents<br/>Security, Perf, Docs, Explorer"]
+        AUTO["Autonomy Agents<br/>Sprint Orchestrator, Reliability Engineer"]
+    end
+
+    subgraph "Skill Layer"
+        ORCH["Orchestration Skills<br/>Routing, Parallel, Modes"]
+        OPER["Operational Skills<br/>Verification, Learning, Budget"]
+        DOM["Domain Skills<br/>API, Arch, Testing, Security, MCP"]
+    end
+
+    subgraph "Governance Layer"
+        RULES["rules.md<br/>Immutable Constraints"]
+        HOOKS["hooks.json<br/>6 Event Hooks"]
+        MANIFEST["manifest.json<br/>Integrity Verification"]
+    end
+
+    CMD --> IR
+    WF --> WS
+    IR --> CORE & DOMAIN & SUPPORT & AUTO
+    WS --> IR
+    CB --> LR
+    LR --> IR
+    CORE & DOMAIN & SUPPORT & AUTO --> ORCH & OPER & DOM
+    ORCH & OPER & DOM --> RULES & HOOKS & MANIFEST
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                      ANTIGRAVITY AI KIT v2.0.0                       │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
-│  │   17 AGENTS     │  │   31 COMMANDS   │  │   26 SKILLS     │      │
-│  │                 │  │                 │  │                 │      │
-│  │ • Architect     │  │ • /plan         │  │ • api-patterns  │      │
-│  │ • Mobile Dev    │  │ • /implement    │  │ • architecture  │      │
-│  │ • DevOps        │  │ • /verify       │  │ • clean-code    │      │
-│  │ • DB Architect  │  │ • /deploy       │  │ • testing       │      │
-│  │ • Security      │  │ • /debug        │  │ • docker        │      │
-│  │ • + 12 more     │  │ • + 26 more     │  │ • + 21 more     │      │
-│  └─────────────────┘  └─────────────────┘  └─────────────────┘      │
-│                              │                                       │
-│           ┌──────────────────┴──────────────────┐                   │
-│           ▼                                      ▼                   │
-│  ┌─────────────────────────────────────────────────────────┐        │
-│  │                    11 WORKFLOWS                          │        │
-│  │  /brainstorm • /create • /debug • /deploy • /enhance    │        │
-│  │  /orchestrate • /plan • /preview • /test • /status      │        │
-│  │  /ui-ux-pro-max                                          │        │
-│  └─────────────────────────────────────────────────────────┘        │
-│                              │                                       │
-│           ┌──────────────────┴──────────────────┐                   │
-│           ▼                                      ▼                   │
-│  ┌─────────────────┐                   ┌─────────────────┐          │
-│  │     RULES       │                   │     HOOKS       │          │
-│  │  (Governance)   │                   │  (Automation)   │          │
-│  └─────────────────┘                   └─────────────────┘          │
-│                                                                      │
-└─────────────────────────────────────────────────────────────────────┘
+
+### How It Works: The Autonomy Engine
+
+Antigravity AI Kit uses a **6-phase workflow state machine** that guides development:
+
 ```
+EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY
+```
+
+| Phase | What Happens | Transition Guard |
+|:------|:-------------|:-----------------|
+| **EXPLORE** | Codebase discovery, research | Exploration artifact exists |
+| **PLAN** | Implementation plan with user approval | Plan approved by user |
+| **IMPLEMENT** | Code generation with agent routing | Auto on commit |
+| **VERIFY** | Quality gates, tests, lint | All gates pass |
+| **REVIEW** | Code review (human or Copilot) | Review approved |
+| **DEPLOY** | Production deployment | Deployment checklist complete |
+
+**Intelligent Routing**: The kit analyzes your request keywords and automatically loads the right agents and skills (max 4 agents + 6 skills per session to stay within context budgets).
 
 ---
 
-## 🤖 Agents (17)
+## 🤖 Agents (19)
 
 ### Core Development
 
@@ -168,17 +199,23 @@ That's it! The kit is now active and ready to accelerate your development.
 | **Security Auditor**     | Vulnerabilities, compliance   | security, auth, audit        |
 | **Performance Engineer** | Optimization, profiling       | performance, speed, metrics  |
 
-### Support
+### Support & Intelligence
 
 | Agent                    | Role                       | Triggers              |
 | :----------------------- | :------------------------- | :-------------------- |
 | **Documentation Writer** | Docs, READMEs, guides      | documentation, readme |
-| **Debugger**             | Systematic debugging       | debug, error, fix     |
+| **Build Error Resolver** | Rapid build fixes          | build, error, compile |
 | **Refactorer**           | Code cleanup, optimization | refactor, cleanup     |
-| **Frontend Specialist**  | React, Next.js, UI architecture | frontend, component, CSS |
-| **Backend Specialist**   | Node.js, NestJS, API design | backend, API, server  |
-| **Sprint Orchestrator**  | Sprint planning, velocity tracking | sprint, roadmap, velocity |
-| **Reliability Engineer** | SRE, production readiness | reliability, SLA, monitoring |
+| **Explorer Agent**       | Codebase discovery         | explore, scout, discover |
+| **Knowledge Agent**      | RAG retrieval              | knowledge, search, context |
+
+### Autonomy Agents
+
+| Agent                    | Role                              | Triggers                      |
+| :----------------------- | :-------------------------------- | :---------------------------- |
+| **Planner**              | Task breakdown, Socratic analysis | plan, breakdown, requirements |
+| **Sprint Orchestrator**  | Sprint planning, velocity         | sprint, roadmap, velocity     |
+| **Reliability Engineer** | SRE, production readiness         | reliability, SLA, monitoring  |
 
 ---
 
@@ -252,9 +289,9 @@ That's it! The kit is now active and ready to accelerate your development.
 
 ---
 
-## 🛠️ Skills (27)
+## 🛠️ Skills (28)
 
-### Operational Skills (4)
+### Operational Skills (5)
 
 | Skill                 | Purpose                   |
 | :-------------------- | :------------------------ |
@@ -262,14 +299,16 @@ That's it! The kit is now active and ready to accelerate your development.
 | `continuous-learning` | Pattern extraction (PAAL) |
 | `strategic-compact`   | Context window management |
 | `eval-harness`        | Performance evaluation    |
+| `context-budget`      | Active token budget management |
 
-### Orchestration Skills (3)
+### Orchestration Skills (4)
 
 | Skill                 | Purpose                   |
 | :-------------------- | :------------------------ |
 | `intelligent-routing` | Auto agent selection      |
 | `parallel-agents`     | Multi-agent orchestration |
 | `behavioral-modes`    | Adaptive AI operation     |
+| `mcp-integration`     | MCP server integration    |
 
 ### Domain Skills (12)
 
@@ -507,18 +546,26 @@ Usage and instructions...
 ```
 antigravity-ai-kit/
 ├── .agent/                    # Core AI Kit
-│   ├── agents/               # 17 specialized agents
+│   ├── agents/               # 19 specialized agents
 │   ├── commands/             # 31 slash commands
-│   ├── skills/               # 26 capability modules
+│   ├── skills/               # 28 capability modules
 │   ├── workflows/            # 11 process templates
-│   ├── hooks/                # Event automation
-│   ├── rules/                # Governance rules
-│   ├── checklists/           # Verification checklists
-│   ├── templates/            # Feature templates
-│   └── decisions/            # ADR system
-├── docs/                      # Documentation
-├── examples/                  # Usage examples
-├── scripts/                   # Utility scripts
+│   ├── engine/               # Autonomy Engine (state machine, loading rules)
+│   ├── hooks/                # 6 event hooks (runtime + git-hook)
+│   ├── rules.md              # Governance rules
+│   ├── checklists/           # Verification checklists (3)
+│   ├── templates/            # ADR, feature-request, bug-report templates
+│   ├── decisions/            # Architecture Decision Records
+│   └── manifest.json         # Machine-readable capability registry
+├── bin/                       # CLI (ag-kit)
+├── create-antigravity-app/    # Project scaffolder (separate npm package)
+├── tests/                     # Test suites (43 tests)
+│   ├── unit/                 # CLI tests
+│   ├── structural/           # Inventory + schema validation
+│   └── security/             # Injection scan + leakage detection
+├── examples/                  # Usage examples (minimal, full-stack)
+├── .github/workflows/         # CI pipeline
+├── .githooks/                 # Secret detection pre-commit hook
 ├── README.md                  # This file
 ├── LICENSE                    # MIT License
 └── CHANGELOG.md               # Version history
