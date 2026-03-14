@@ -57,6 +57,10 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 
   21 modules powering the runtime
 
+- :book: **[Contributor Guide](contributor-guide.md)**
+
+  End-to-end project lifecycle
+
 </div>
 
 ---

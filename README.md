@@ -24,7 +24,8 @@
   🛠️ <a href="#%EF%B8%8F-skills-31">Skills</a> •
   ⌨️ <a href="#%EF%B8%8F-commands-31">Commands</a> •
   🔄 <a href="#-session-management">Sessions</a> •
-  ⚖️ <a href="#%EF%B8%8F-operating-constraints">Governance</a>
+  ⚖️ <a href="#%EF%B8%8F-operating-constraints">Governance</a> •
+  📖 <a href="#-contributor-guide">Contributor Guide</a>
 </p>
 
 ---
@@ -43,7 +44,8 @@
 - [Operating Constraints](#%EF%B8%8F-operating-constraints)
 - [Session Management](#-session-management)
 - [How to Extend](#-how-to-extend)
-- [Contributing](#-contributing)
+- [Contributor Guide](#-contributor-guide)
+- [Acknowledgments](#-acknowledgments)
 
 ---
 
@@ -672,6 +674,24 @@ MIT License — See [LICENSE](LICENSE) for details.
 - **Repository**: [github.com/besync-labs/antigravity-ai-kit](https://github.com/besync-labs/antigravity-ai-kit)
 - **Documentation**: [besync-labs.github.io/antigravity-ai-kit](https://besync-labs.github.io/antigravity-ai-kit)
 - **Origin**: Derived from BeSync Trust-Grade AI Governance
+
+---
+
+## 📖 Contributor Guide
+
+Want to use Antigravity AI Kit in your project? The **[Contributor Guide](https://besync-labs.github.io/antigravity-ai-kit/contributor-guide/)** covers the full end-to-end lifecycle:
+
+| Phase | What You’ll Learn |
+|:---|:---|
+| **Onboard** | Install with `ag-kit init`, verify with `ag-kit status` |
+| **Identity** | Set up developer identity with role-based access |
+| **Sprint Planning** | Create sprints, define tasks, auto-assign agents |
+| **Task Management** | Lifecycle: `pending → in_progress → review → completed` |
+| **Development** | Trust-Grade workflow: `/explore → /plan → /work → /review` |
+| **Quality Gates** | 5-gate pipeline: lint, types, tests, security, build |
+| **Completion** | Sprint retrospective, tracking updates, next sprint |
+
+👉 **[Read the full guide →](https://besync-labs.github.io/antigravity-ai-kit/contributor-guide/)**
 
 ---
 
