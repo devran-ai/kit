@@ -14,7 +14,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const VERSION = '2.2.0';
+const VERSION = '3.0.0';
 const AGENT_FOLDER = '.agent';
 
 // ANSI colors
