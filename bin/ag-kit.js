@@ -87,6 +87,10 @@ ${colors.bright}Examples:${colors.reset}
   ag-kit init --force
   ag-kit scan
   ag-kit plugin list
+
+${colors.bright}IDE Reference:${colors.reset}
+  Type ${colors.cyan}/help${colors.reset} in your AI-powered IDE for the full reference:
+  commands, workflows, agents, skills, rules, and checklists.
 `);
 }
 
