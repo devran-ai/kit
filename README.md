@@ -132,7 +132,7 @@ ag-kit scan       # Security scan
 graph TB
     subgraph "User Interface Layer"
         CMD["Slash Commands<br/>31 commands"]
-        WF["Workflows<br/>11 templates"]
+        WF["Workflows<br/>14 templates"]
     end
 
     subgraph "Intelligence Layer"
@@ -300,7 +300,7 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY
 | `/compact`    | Compress context  |
 | `/eval`       | Evaluate metrics  |
 | `/setup`      | Configure project |
-| `/help`       | Show help         |
+| `/help`       | **Comprehensive reference** — commands, workflows, agents, skills, rules, checklists |
 
 ---
 

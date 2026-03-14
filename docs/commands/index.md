@@ -83,7 +83,7 @@ Slash commands provide quick execution of common operations. **31 commands** acr
 
 | Command  | Purpose                |
 | :------- | :--------------------- |
-| `/help`  | Help command           |
+| `/help`  | **Comprehensive reference** — `/help commands`, `/help agents`, `/help workflows`, `/help skills`, `/help rules`, `/help checklists` |
 | `/debug` | Systematic debugging   |
 | `/doc`   | Generate documentation |
 
