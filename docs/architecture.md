@@ -1,6 +1,6 @@
 # Architecture
 
-Antigravity AI Kit is an engineered framework with multiple interconnected components.
+Antigravity AI Kit v3.0.0 is an engineered framework with a **21-module runtime engine**, 19 agents, 31 skills, 31 commands, and 14 workflows.
 
 ---
 
@@ -8,26 +8,27 @@ Antigravity AI Kit is an engineered framework with multiple interconnected compo
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      ANTIGRAVITY AI KIT v2.0.0                       │
+│                      ANTIGRAVITY AI KIT v3.0.0                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
-│  │   17 AGENTS     │  │   31 COMMANDS   │  │   26 SKILLS     │      │
+│  │   19 AGENTS     │  │   31 COMMANDS   │  │   31 SKILLS     │      │
 │  │                 │  │                 │  │                 │      │
 │  │ • Architect     │  │ • /plan         │  │ • api-patterns  │      │
 │  │ • Mobile Dev    │  │ • /implement    │  │ • architecture  │      │
 │  │ • DevOps        │  │ • /verify       │  │ • clean-code    │      │
 │  │ • DB Architect  │  │ • /deploy       │  │ • testing       │      │
 │  │ • Security      │  │ • /debug        │  │ • docker        │      │
-│  │ • + 12 more     │  │ • + 26 more     │  │ • + 21 more     │      │
+│  │ • + 14 more     │  │ • + 26 more     │  │ • + 26 more     │      │
 │  └─────────────────┘  └─────────────────┘  └─────────────────┘      │
 │                              │                                       │
 │           ┌──────────────────┴──────────────────┐                   │
 │           ▼                                      ▼                   │
 │  ┌─────────────────────────────────────────────────────────┐        │
-│  │                    11 WORKFLOWS                          │        │
+│  │                    14 WORKFLOWS                          │        │
 │  │  /brainstorm • /create • /debug • /deploy • /enhance    │        │
-│  │  /orchestrate • /plan • /preview • /test • /status      │        │
+│  │  /orchestrate • /plan • /preview • /quality-gate         │        │
+│  │  /retrospective • /review • /status • /test              │        │
 │  │  /ui-ux-pro-max                                          │        │
 │  └─────────────────────────────────────────────────────────┘        │
 │                              │                                       │
@@ -35,8 +36,15 @@ Antigravity AI Kit is an engineered framework with multiple interconnected compo
 │           ▼                                      ▼                   │
 │  ┌─────────────────┐                   ┌─────────────────┐          │
 │  │     RULES       │                   │     HOOKS       │          │
-│  │  (Governance)   │                   │  (Automation)   │          │
+│  │  (Governance)   │                   │  (6 Lifecycle)  │          │
 │  └─────────────────┘                   └─────────────────┘          │
+│                                                                      │
+│  ┌─────────────────────────────────────────────────────────┐        │
+│  │              RUNTIME ENGINE (21 modules)                 │        │
+│  │  workflow-engine • session-manager • task-governance      │        │
+│  │  agent-reputation • self-healing • marketplace            │        │
+│  │  plugin-system • identity • conflict-detector • + 12      │        │
+│  └─────────────────────────────────────────────────────────┘        │
 │                                                                      │
 └─────────────────────────────────────────────────────────────────────┘
 ```
@@ -45,13 +53,14 @@ Antigravity AI Kit is an engineered framework with multiple interconnected compo
 
 ## Component Breakdown
 
-### Agents (17)
+### Agents (19)
 
 Specialized sub-agents that handle delegated tasks with focused expertise.
 
 - **Core**: Architect, Planner, Code Reviewer, TDD Specialist
 - **Domain**: Mobile, Frontend, Backend, Database, DevOps, Security, Performance
-- **Support**: Documentation, Debugger, Refactorer, Explorer, E2E, Knowledge
+- **Support**: Documentation, Build Error Resolver, Refactorer, Explorer, Knowledge
+- **Autonomy**: Sprint Orchestrator, Reliability Engineer
 
 ### Commands (31)
 
@@ -61,25 +70,37 @@ Slash commands for quick execution of common operations.
 - **Development**: /build, /fix, /debug, /refactor, /cook
 - **Quality**: /verify, /code-review, /security-scan, /perf
 
-### Skills (26)
+### Skills (31)
 
 Domain expertise modules that extend AI capabilities.
 
-- **Operational**: verification-loop, continuous-learning, strategic-compact
-- **Orchestration**: intelligent-routing, parallel-agents, behavioral-modes
-- **Domain**: api-patterns, architecture, clean-code, database-design
+- **Operational**: verification-loop, continuous-learning, strategic-compact, eval-harness, context-budget
+- **Orchestration**: intelligent-routing, parallel-agents, behavioral-modes, mcp-integration
+- **Domain**: api-patterns, architecture, clean-code, database-design, testing-patterns, and 17 more
 
-### Workflows (11)
+### Workflows (14)
 
 Complete development lifecycles for multi-step processes.
 
 - /brainstorm, /create, /debug, /deploy, /enhance, /orchestrate
-- /plan, /preview, /status, /test, /ui-ux-pro-max
+- /plan, /preview, /quality-gate, /retrospective, /review
+- /status, /test, /ui-ux-pro-max
+
+### Runtime Engine (21 Modules)
+
+Node.js runtime modules that enforce governance, manage state, and provide platform features.
+
+| Phase | Modules |
+|:---|:---|
+| **Phase 1 — Foundation** | `workflow-engine`, `session-manager`, `verify`, `updater`, `error-budget` |
+| **Phase 2 — Runtime** | `workflow-persistence`, `agent-registry`, `loading-engine`, `hook-system`, `task-model` |
+| **Phase 3 — Collaboration** | `identity`, `task-governance`, `skill-sandbox`, `conflict-detector`, `security-scanner`, `plugin-system` |
+| **Phase 4 — Platform** | `agent-reputation`, `engineering-manager`, `self-healing`, `marketplace`, `cli-commands` |
 
 ### Rules & Hooks
 
 - **Rules** (5): Immutable governance constraints
-- **Hooks** (4): Event-driven automation (session-start, session-end, pre-commit, post-deploy)
+- **Hooks** (6): Event-driven automation (session-start, session-end, pre-commit, post-deploy, pre-task, post-task)
 
 ---
 
@@ -87,13 +108,27 @@ Complete development lifecycles for multi-step processes.
 
 ```
 .agent/
-├── agents/               # 17 specialized agents
+├── agents/               # 19 specialized agents
 ├── commands/             # 31 slash commands
-├── skills/               # 26 capability modules
-├── workflows/            # 11 process templates
+├── skills/               # 31 capability modules
+├── workflows/            # 14 process templates
+├── engine/               # Autonomy Engine configs
 ├── hooks/                # Event automation
 ├── rules/                # Governance rules
 ├── checklists/           # Verification checklists
 ├── templates/            # Feature templates
 └── decisions/            # ADR system
+
+lib/                      # Runtime Engine (21 modules)
+├── workflow-engine.js    # State machine enforcement
+├── task-governance.js    # Locking, audit trail, decision timeline
+├── agent-reputation.js   # Score tracking & rankings
+├── self-healing.js       # CI failure detection & patch generation
+├── marketplace.js        # Community skill marketplace
+└── + 16 more modules     # Identity, plugins, hooks, registry...
+
+tests/                    # 261 tests (25 files)
+├── unit/                 # 21 module tests
+├── structural/           # Inventory + schema validation
+└── security/             # Injection scan + leakage detection
 ```

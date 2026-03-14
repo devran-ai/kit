@@ -1,7 +1,7 @@
 {
   "name": "antigravity-ai-kit",
-  "version": "2.2.0",
-  "description": "🚀 Trust-Grade AI development framework — 19 Agents, 31 Skills, 31 Commands, 14 Workflows. Runtime workflow engine, error budget tracking, and manifest verification.",
+  "version": "3.0.0",
+  "description": "🚀 Trust-Grade AI development framework with a 21-module runtime engine — 19 Agents, 31 Skills, 31 Commands, 14 Workflows, 261 Tests. Workflow enforcement, task governance, agent reputation, self-healing, and skill marketplace.",
   "main": "bin/ag-kit.js",
   "bin": {
     "ag-kit": "./bin/ag-kit.js"

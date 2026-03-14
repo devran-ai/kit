@@ -15,7 +15,8 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 | ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
 | 🔄 **Workflows**  | 14    | Process templates (/create, /debug, /deploy, /test...)                 |
 | ✅ **Checklists** | 3     | Quality gates (session-start, session-end, pre-commit)                 |
-| 🔗 **Hooks**      | 4     | Event-driven automation                                                |
+| 🔗 **Hooks**      | 6     | Event-driven automation (runtime + git-hook enforcement)               |
+| ⚙️ **Runtime**    | 21    | Runtime engine modules (governance, reputation, self-healing...)       |
 | ⚖️ **Rules**      | 5     | Immutable governance constraints                                       |
 
 ---
@@ -52,6 +53,10 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 
   Trust-Grade operating constraints
 
+- :gear: **[Runtime Engine](#runtime-engine)**
+
+  21 modules powering the runtime
+
 </div>
 
 ---
@@ -68,6 +73,7 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 
 - **🔒 Trust-Grade Governance** — `/explore → /plan → /work → /review` — Each iteration builds context
 - **🤖 Multi-Agent System** — 19 specialized agents that collaborate (Mobile Developer, DevOps, Database Architect...)
+- **⚙️ Runtime Engine** — 21 modules enforcing workflow transitions, task governance, agent reputation, and self-healing
 - **📦 Context as Artifact** — Persistent markdown files for plans, specs, and decisions
 - **🔄 Continuous Learning** — PAAL cycle extracts patterns from every session
 - **🛡️ Security First** — Built-in secret detection, vulnerability scanning, and compliance checks

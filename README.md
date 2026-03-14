@@ -1,11 +1,13 @@
 # 🚀 Antigravity AI Kit
 
-![version](https://img.shields.io/badge/version-2.1.0-blue)
+![version](https://img.shields.io/badge/version-3.0.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![AI Agents](https://img.shields.io/badge/AI%20Agents-19-purple)
 ![Skills](https://img.shields.io/badge/Skills-31-orange)
 ![Commands](https://img.shields.io/badge/Commands-31-red)
 ![Workflows](https://img.shields.io/badge/Workflows-14-teal)
+![Runtime Modules](https://img.shields.io/badge/Runtime%20Modules-21-blueviolet)
+![Tests](https://img.shields.io/badge/Tests-261%20passing-brightgreen)
 ![Checklists](https://img.shields.io/badge/Checklists-3-yellow)
 
 <p align="center">
@@ -13,13 +15,13 @@
 </p>
 
 <p align="center">
-  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> that brings <b>19 specialized agents</b>, <b>31 commands</b>, <b>28 skills</b>, and <b>11 workflows</b> to help you code 10x faster with governance-first principles.
+  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>21-module runtime engine</b>, <b>19 specialized agents</b>, <b>31 commands</b>, <b>31 skills</b>, and <b>14 workflows</b> — all backed by <b>261 tests</b> and governance-first principles.
 </p>
 
 <p align="center">
   🚀 <a href="#-quick-start">Quick Start</a> •
   🤖 <a href="#-agents-19">Agents</a> •
-  🛠️ <a href="#%EF%B8%8F-skills-28">Skills</a> •
+  🛠️ <a href="#%EF%B8%8F-skills-31">Skills</a> •
   ⌨️ <a href="#%EF%B8%8F-commands-31">Commands</a> •
   🔄 <a href="#-session-management">Sessions</a> •
   ⚖️ <a href="#%EF%B8%8F-operating-constraints">Governance</a>
@@ -35,8 +37,9 @@
 - [Architecture](#%EF%B8%8F-architecture-overview)
 - [Agents](#-agents-19)
 - [Commands](#%EF%B8%8F-commands-31)
-- [Skills](#%EF%B8%8F-skills-28)
-- [Workflows](#-workflows-11)
+- [Skills](#%EF%B8%8F-skills-31)
+- [Runtime Engine](#%EF%B8%8F-runtime-engine-21-modules)
+- [Workflows](#-workflows-14)
 - [Operating Constraints](#%EF%B8%8F-operating-constraints)
 - [Session Management](#-session-management)
 - [How to Extend](#-how-to-extend)
@@ -51,12 +54,14 @@
 | Feature           | Count | Description                                                            |
 | :---------------- | :---- | :--------------------------------------------------------------------- |
 | 🤖 **AI Agents**  | 19    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
-| 🛠️ **Skills**     | 28    | Domain knowledge modules (API, Testing, MCP, Architecture, Docker...) |
+| 🛠️ **Skills**     | 31    | Domain knowledge modules (API, Testing, MCP, Architecture, Docker...) |
 | ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 11    | Process templates (/create, /debug, /deploy, /test...)                 |
+| 🔄 **Workflows**  | 14    | Process templates (/create, /debug, /deploy, /test...)                 |
+| ⚙️ **Runtime**    | 21    | Runtime engine modules (governance, reputation, self-healing...)       |
 | ✅ **Checklists** | 3     | Quality gates (session-start, session-end, pre-commit)                 |
 | ⚖️ **Rules**      | 5     | Immutable governance constraints                                       |
 | 🔗 **Hooks**      | 6     | Event-driven automation (runtime + git-hook enforcement)               |
+| 🧪 **Tests**      | 261   | Unit, structural, and security tests (25 test files)                   |
 
 ---
 
@@ -64,6 +69,7 @@
 
 - **🔒 Trust-Grade Governance**: `/explore → /plan → /work → /review` — Each iteration builds context
 - **🤖 Multi-Agent System**: 19 specialized agents that collaborate (Mobile Developer, DevOps, Database Architect, Sprint Orchestrator...)
+- **⚙️ Runtime Engine**: 21 modules enforcing workflow transitions, task governance, agent reputation, self-healing, and marketplace
 - **📦 Context as Artifact**: Persistent markdown files for plans, specs, and decisions
 - **🔄 Continuous Learning**: PAAL cycle extracts patterns from every session
 - **🛡️ Security First**: Built-in secret detection, vulnerability scanning, and compliance checks
@@ -289,7 +295,7 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY
 
 ---
 
-## 🛠️ Skills (28)
+## 🛠️ Skills (31)
 
 ### Operational Skills (5)
 
@@ -341,7 +347,54 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY
 
 ---
 
-## 🔄 Workflows (11)
+## ⚙️ Runtime Engine (21 Modules)
+
+Antigravity AI Kit v3.0.0 includes a **full runtime engine** built across 4 phases — all using Node.js built-ins with zero external dependencies.
+
+### Phase 1 — Foundation Hardening
+
+| Module | Purpose |
+|:---|:---|
+| `workflow-engine` | Runtime state machine enforcement |
+| `session-manager` | Active session state management |
+| `verify` | Manifest integrity verification |
+| `updater` | Diff-based CLI update |
+| `error-budget` | Error budget tracking with metrics |
+
+### Phase 2 — Runtime Engine
+
+| Module | Purpose |
+|:---|:---|
+| `workflow-persistence` | Persistent state + checkpoints |
+| `agent-registry` | Agent contract validation |
+| `loading-engine` | Keyword matching + context budget |
+| `hook-system` | Event-driven lifecycle hooks |
+| `task-model` | Task CRUD with status tracking |
+
+### Phase 3 — Collaboration & Security
+
+| Module | Purpose |
+|:---|:---|
+| `identity` | Developer identity system |
+| `task-governance` | Locking, assignment, audit trail |
+| `skill-sandbox` | Runtime skill permission enforcement |
+| `conflict-detector` | Agent conflict detection |
+| `security-scanner` | Runtime injection & secret scanning |
+| `plugin-system` | Full plugin lifecycle management |
+
+### Phase 4 — Platform Leadership
+
+| Module | Purpose |
+|:---|:---|
+| `agent-reputation` | Score tracking, trends, rankings |
+| `engineering-manager` | Sprint planning, auto-assignment |
+| `self-healing` | CI failure detection & JSON patch generation |
+| `marketplace` | Community skill search & install |
+| `cli-commands` | Extracted CLI handlers for marketplace & heal |
+
+---
+
+## 🔄 Workflows (14)
 
 | Workflow          | Description              | Command          |
 | :---------------- | :----------------------- | :--------------- |
@@ -353,6 +406,9 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY
 | **orchestrate**   | Multi-agent coordination | `/orchestrate`   |
 | **plan**          | Implementation planning  | `/plan`          |
 | **preview**       | Preview changes          | `/preview`       |
+| **quality-gate**  | Pre-task validation      | `/quality-gate`  |
+| **retrospective** | Sprint audit & review    | `/retrospective` |
+| **review**        | Code review pipeline     | `/review`        |
 | **status**        | Project status check     | `/status`        |
 | **test**          | Test writing workflow    | `/test`          |
 | **ui-ux-pro-max** | Premium UI design        | `/ui-ux-pro-max` |
@@ -548,22 +604,29 @@ antigravity-ai-kit/
 ├── .agent/                    # Core AI Kit
 │   ├── agents/               # 19 specialized agents
 │   ├── commands/             # 31 slash commands
-│   ├── skills/               # 28 capability modules
-│   ├── workflows/            # 11 process templates
-│   ├── engine/               # Autonomy Engine (state machine, loading rules)
+│   ├── skills/               # 31 capability modules
+│   ├── workflows/            # 14 process templates
+│   ├── engine/               # Autonomy Engine (state machine, loading rules, configs)
 │   ├── hooks/                # 6 event hooks (runtime + git-hook)
 │   ├── rules.md              # Governance rules
 │   ├── checklists/           # Verification checklists (3)
 │   ├── templates/            # ADR, feature-request, bug-report templates
 │   ├── decisions/            # Architecture Decision Records
 │   └── manifest.json         # Machine-readable capability registry
+├── lib/                       # Runtime Engine (21 modules)
+│   ├── workflow-engine.js    # State machine enforcement
+│   ├── task-governance.js    # Locking, audit trail, decision timeline
+│   ├── agent-reputation.js   # Score tracking & rankings
+│   ├── self-healing.js       # CI failure detection & patch generation
+│   ├── marketplace.js        # Community skill marketplace
+│   └── + 16 more modules     # Identity, plugins, hooks, registry...
 ├── bin/                       # CLI (ag-kit)
 ├── create-antigravity-app/    # Project scaffolder (separate npm package)
-├── tests/                     # Test suites (43 tests)
-│   ├── unit/                 # CLI tests
+├── tests/                     # Test suites (261 tests, 25 files)
+│   ├── unit/                 # 21 module tests
 │   ├── structural/           # Inventory + schema validation
 │   └── security/             # Injection scan + leakage detection
-├── examples/                  # Usage examples (minimal, full-stack)
+├── docs/                      # MkDocs documentation site
 ├── .github/workflows/         # CI pipeline
 ├── .githooks/                 # Secret detection pre-commit hook
 ├── README.md                  # This file
@@ -619,7 +682,7 @@ MIT License — See [LICENSE](LICENSE) for details.
 - Context-driven development from [Google Conductor](https://developers.googleblog.com/en/conductor-introducing-context-driven-development-for-gemini-cli/)
 - Hook concepts from [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
 
-_Antigravity AI Kit v2.1.0 extends these foundations with Trust-Grade governance, session management, and 90+ capabilities._
+_Antigravity AI Kit v3.0.0 extends these foundations with a 21-module runtime engine, Trust-Grade governance, session management, and 100+ capabilities._
 
 ---
 
