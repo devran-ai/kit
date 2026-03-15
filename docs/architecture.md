@@ -1,6 +1,6 @@
 # Architecture
 
-Antigravity AI Kit v3.0.1 is an engineered framework with a **21-module runtime engine**, 19 agents, 31 skills, 31 commands, and 14 workflows.
+Antigravity AI Kit v3.1.0 is an engineered framework with a **21-module runtime engine**, 19 agents, 31 skills, 31 commands, and 14 workflows.
 
 ---
 
@@ -8,7 +8,7 @@ Antigravity AI Kit v3.0.1 is an engineered framework with a **21-module runtime 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      ANTIGRAVITY AI KIT v3.0.1                       │
+│                      ANTIGRAVITY AI KIT v3.1.0                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │

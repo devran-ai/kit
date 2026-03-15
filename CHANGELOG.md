@@ -5,6 +5,33 @@ All notable changes to Antigravity AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0] — 2026-03-15
+
+### Added
+- `CheatSheet.md` — English quick-reference for all kit capabilities
+- `documentation.md` — Documentation rules (SSOT, preservation, cross-reference integrity)
+- `sprint-tracking.md` — Sprint tracking protocol (ROADMAP.md as SSOT, lifecycle states)
+- Sprint State Validation section in `session-start.md` checklist
+- Sprint State Sync section in `session-end.md` checklist
+- 4 missing agents in `agents/README.md` Selection Matrix (frontend, backend, sprint, reliability)
+
+### Changed
+- `frontend-specialist.md` enriched: 80 → 350 lines (Deep Design Thinking, anti-AI-cliché, Maestro Auditor)
+- `backend-specialist.md` enriched: 89 → 270 lines (Clarify Before Coding, decision frameworks)
+- `coding-style.md` enriched: 31 → 88 lines (Python conventions, naming table, import order)
+- `security.md` enriched: 30 → 65 lines (GDPR data protection table, AI pipeline safety)
+- `testing.md` enriched: 38 → 85 lines (pytest patterns, quality principles table)
+- `git-workflow.md` — added push policy CAUTION alert
+- `session-start.md` / `session-end.md` — version headers updated to v3.0.1 → v3.1.0
+- Rules count updated: 5 → 8 across README.md, docs site, and architecture docs
+- Skills categorization fixed: Domain 12 → 13, Development 7 → 9
+
+### Fixed
+- `manifest.json` kitVersion drift: `2.2.0` → `3.1.0` (aligned with package.json)
+- `rules.md` skill table count: header `28` → `31`, added 4 missing skills
+- Author email corrected across `package.json`, `create-antigravity-app/package.json`, `SECURITY.md`
+- Version badge and text references: `v3.0.0` → `v3.1.0` across README and docs site
+
 ## [3.0.1] — 2026-03-14
 
 ### Added
@@ -123,6 +150,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Session management architecture
 - PAAL continuous learning cycle
 
+[3.1.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.0.1...v3.1.0
 [3.0.1]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v2.1.0...v3.0.0
 [2.1.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v2.0.0...v2.1.0

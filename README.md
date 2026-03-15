@@ -1,6 +1,6 @@
 # 🚀 Antigravity AI Kit
 
-![version](https://img.shields.io/badge/version-3.0.1-blue)
+![version](https://img.shields.io/badge/version-3.1.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![AI Agents](https://img.shields.io/badge/AI%20Agents-19-purple)
 ![Skills](https://img.shields.io/badge/Skills-31-orange)
@@ -361,7 +361,7 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY
 
 ## ⚙️ Runtime Engine (21 Modules)
 
-Antigravity AI Kit v3.0.1 includes a **full runtime engine** built across 4 phases — all using Node.js built-ins with zero external dependencies.
+Antigravity AI Kit v3.1.0 includes a **full runtime engine** built across 4 phases — all using Node.js built-ins with zero external dependencies.
 
 ### Phase 1 — Foundation Hardening
 
@@ -712,7 +712,7 @@ Want to use Antigravity AI Kit in your project? The **[Contributor Guide](https:
 - Context-driven development from [Google Conductor](https://developers.googleblog.com/en/conductor-introducing-context-driven-development-for-gemini-cli/)
 - Hook concepts from [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
 
-_Antigravity AI Kit v3.0.1 extends these foundations with a 21-module runtime engine, Trust-Grade governance, session management, and 100+ capabilities._
+_Antigravity AI Kit v3.1.0 extends these foundations with a 21-module runtime engine, Trust-Grade governance, session management, and 100+ capabilities._
 
 ---
 

@@ -13,7 +13,7 @@
 If you discover a security vulnerability, please report it responsibly:
 
 1. **DO NOT** open a public issue
-2. Email: **info@emredursun.nl** with subject: `[SECURITY] antigravity-ai-kit`
+2. Email: **info.emredursun@gmail.com** with subject: `[SECURITY] antigravity-ai-kit`
 3. Include:
    - Description of the vulnerability
    - Steps to reproduce

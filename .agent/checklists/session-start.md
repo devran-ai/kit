@@ -1,6 +1,6 @@
 # Session Start Checklist
 
-> **Framework**: Antigravity AI Kit v3.0.1  
+> **Framework**: Antigravity AI Kit v3.1.0  
 > **Purpose**: Complete this checklist at the beginning of every work session  
 > **Principle**: Full context before new work
 
