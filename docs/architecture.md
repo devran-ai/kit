@@ -1,6 +1,6 @@
 # Architecture
 
-Antigravity AI Kit v3.0.0 is an engineered framework with a **21-module runtime engine**, 19 agents, 31 skills, 31 commands, and 14 workflows.
+Antigravity AI Kit v3.0.1 is an engineered framework with a **21-module runtime engine**, 19 agents, 31 skills, 31 commands, and 14 workflows.
 
 ---
 
@@ -8,7 +8,7 @@ Antigravity AI Kit v3.0.0 is an engineered framework with a **21-module runtime 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      ANTIGRAVITY AI KIT v3.0.0                       │
+│                      ANTIGRAVITY AI KIT v3.0.1                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
@@ -99,7 +99,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 
 ### Rules & Hooks
 
-- **Rules** (5): Immutable governance constraints
+- **Rules** (8): Modular governance constraints (coding, security, testing, git, docs, sprint + 2 architecture files)
 - **Hooks** (6): Event-driven automation (session-start, session-end, pre-commit, post-deploy, pre-task, post-task)
 
 ---

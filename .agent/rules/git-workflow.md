@@ -2,7 +2,11 @@
 
 > **Priority**: HIGH — Enforced by hooks
 
----
+> [!CAUTION]
+> **PUSH POLICY**: NEVER push commits during implementation or task work.
+> Commits are **local-only** until the user explicitly requests the **session-end protocol**.
+> The pre-push hook runs the full LOCAL-CI-GATE (lint, type-check, tests, build) which takes 60-160 seconds.
+> Premature pushes waste time and block the agent. Only push once, at session end, after all work is verified.
 
 ## Commit Format
 

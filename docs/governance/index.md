@@ -47,6 +47,21 @@ Every interaction embodies three expert personas:
 - Conventional commit format
 - Required code review
 - No direct commits to main
+- Push policy: local-only until session-end
+
+### Documentation Rules
+
+- `docs/ROADMAP.md` as SSOT for sprint tracking
+- Keep a Changelog format for `CHANGELOG.md`
+- Cross-reference integrity enforced
+- No silent deletion of content
+
+### Sprint Tracking Rules
+
+- ROADMAP.md is the only task tracker
+- Session start/end sync protocols
+- Reject duplicate status tracking
+- Sprint lifecycle states: `[ ]` → `[/]` → `[x]` / `[-]`
 
 ---
 

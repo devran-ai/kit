@@ -1,6 +1,6 @@
 # 🚀 Antigravity AI Kit
 
-![version](https://img.shields.io/badge/version-3.0.0-blue)
+![version](https://img.shields.io/badge/version-3.0.1-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![AI Agents](https://img.shields.io/badge/AI%20Agents-19-purple)
 ![Skills](https://img.shields.io/badge/Skills-31-orange)
@@ -61,7 +61,7 @@
 | 🔄 **Workflows**  | 14    | Process templates (/create, /debug, /deploy, /test...)                 |
 | ⚙️ **Runtime**    | 21    | Runtime engine modules (governance, reputation, self-healing...)       |
 | ✅ **Checklists** | 3     | Quality gates (session-start, session-end, pre-commit)                 |
-| ⚖️ **Rules**      | 5     | Immutable governance constraints                                       |
+| ⚖️ **Rules**      | 8     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
 | 🔗 **Hooks**      | 6     | Event-driven automation (runtime + git-hook enforcement)               |
 | 🧪 **Tests**      | 261   | Unit, structural, and security tests (25 test files)                   |
 
@@ -325,7 +325,7 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY
 | `behavioral-modes`    | Adaptive AI operation     |
 | `mcp-integration`     | MCP server integration    |
 
-### Domain Skills (12)
+### Domain Skills (13)
 
 | Skill                  | Purpose                         |
 | :--------------------- | :------------------------------ |
@@ -341,8 +341,9 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY
 | `security-practices`   | OWASP, vulnerability prevention |
 | `docker-patterns`      | Containerization                |
 | `git-workflow`         | Branching, commits              |
+| `i18n-localization`    | Internationalization patterns   |
 
-### Development Skills (7)
+### Development Skills (9)
 
 | Skill                   | Purpose                 |
 | :---------------------- | :---------------------- |
@@ -353,12 +354,14 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY
 | `performance-profiling` | Core Web Vitals         |
 | `brainstorming`         | Socratic discovery      |
 | `plan-writing`          | Structured planning     |
+| `shell-conventions`     | PowerShell/Bash conventions |
+| `ui-ux-pro-max`         | Premium UI/UX design system |
 
 ---
 
 ## ⚙️ Runtime Engine (21 Modules)
 
-Antigravity AI Kit v3.0.0 includes a **full runtime engine** built across 4 phases — all using Node.js built-ins with zero external dependencies.
+Antigravity AI Kit v3.0.1 includes a **full runtime engine** built across 4 phases — all using Node.js built-ins with zero external dependencies.
 
 ### Phase 1 — Foundation Hardening
 
@@ -617,7 +620,7 @@ antigravity-ai-kit/
 │   ├── workflows/            # 14 process templates
 │   ├── engine/               # Autonomy Engine (state machine, loading rules, configs)
 │   ├── hooks/                # 6 event hooks (runtime + git-hook)
-│   ├── rules.md              # Governance rules
+│   ├── rules/                # 8 modular governance rules
 │   ├── checklists/           # Verification checklists (3)
 │   ├── templates/            # ADR, feature-request, bug-report templates
 │   ├── decisions/            # Architecture Decision Records
@@ -709,7 +712,7 @@ Want to use Antigravity AI Kit in your project? The **[Contributor Guide](https:
 - Context-driven development from [Google Conductor](https://developers.googleblog.com/en/conductor-introducing-context-driven-development-for-gemini-cli/)
 - Hook concepts from [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
 
-_Antigravity AI Kit v3.0.0 extends these foundations with a 21-module runtime engine, Trust-Grade governance, session management, and 100+ capabilities._
+_Antigravity AI Kit v3.0.1 extends these foundations with a 21-module runtime engine, Trust-Grade governance, session management, and 100+ capabilities._
 
 ---
 

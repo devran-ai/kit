@@ -1,6 +1,6 @@
 # Session End Checklist
 
-> **Framework**: Antigravity AI Kit v2.0.0  
+> **Framework**: Antigravity AI Kit v3.0.1  
 > **Purpose**: Complete this checklist before ending any work session  
 > **Principle**: Context preservation for continuity
 
@@ -12,7 +12,22 @@
   - What was accomplished
   - Open items and next steps
   - Any blockers discovered
-- [ ] **session-state.json** updated (if applicable)
+- [ ] **session-state.json** updated
+  - ⚠️ **Volatile-only metadata**: Only update machine-readable fields (lastCommit, currentTask, status). Never track task progress here.
+
+---
+
+## 📋 Sprint State Sync
+
+- [ ] **docs/ROADMAP.md** updated:
+  - Completed items marked `[x]`
+  - In-progress items marked `[/]`
+  - New discovered items added under appropriate section
+- [ ] **docs/CHANGELOG.md** synced with shipped work from this session
+- [ ] **Duplicate tracking prevention**:
+  - [ ] No task status tracked outside ROADMAP.md
+  - [ ] No duplicate entries between ROADMAP ↔ CHANGELOG ↔ session-context
+- [ ] **Sync verification**: ROADMAP.md ↔ session-context.md ↔ session-state.json reflect same state
 
 ---
 

@@ -1,6 +1,6 @@
 # Session Start Checklist
 
-> **Framework**: Antigravity AI Kit v2.0.0  
+> **Framework**: Antigravity AI Kit v3.0.1  
 > **Purpose**: Complete this checklist at the beginning of every work session  
 > **Principle**: Full context before new work
 
@@ -11,11 +11,27 @@
 - [ ] **session-context.md** loaded
   - Last session summary reviewed
   - Open items identified
+  - Handoff context verified (not just session-end boilerplate)
 - [ ] **session-state.json** loaded
   - Last commit verified
   - Current task identified
+  - **Staleness check**: Compare `lastCommit` with `git log --oneline -1` — if diverged, flag to user
 - [ ] **rules.md** loaded (if project has one)
   - Project-specific rules acknowledged
+
+---
+
+## 📋 Sprint State Validation
+
+- [ ] **docs/ROADMAP.md** loaded (SSOT for sprint tracking)
+  - Current sprint identified
+  - In-progress `[/]` items from last session reviewed
+  - Completed `[x]` items acknowledged
+- [ ] **Sprint state presented** to user before starting work
+  - Summary of where we left off
+  - Proposed next items to work on
+- [ ] **docs/ARCHITECTURE.md** reviewed for structural context
+- [ ] **docs/CHANGELOG.md** reviewed for recent shipped work
 
 ---
 

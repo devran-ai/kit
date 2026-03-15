@@ -73,6 +73,10 @@ The `intelligent-routing` skill automatically selects agents based on request ke
 | Deployment   | "deploy", "CI/CD", "production"     | `devops-engineer`         |
 | Performance  | "slow", "optimize", "performance"   | `performance-optimizer`   |
 | Discovery    | "explore", "map", "understand"      | `explorer-agent`          |
+| Frontend     | "frontend", "react", "css", "ui"    | `frontend-specialist`     |
+| Backend      | "backend", "api", "server", "node"  | `backend-specialist`      |
+| Sprint       | "sprint", "velocity", "backlog"     | `sprint-orchestrator`     |
+| Reliability  | "SRE", "incident", "production"     | `reliability-engineer`    |
 
 ---
 
