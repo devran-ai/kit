@@ -188,4 +188,4 @@ export const config = {
 
 ---
 
-> **Source**: Antigravity AI Kit — [besync-labs/antigravity-ai-kit](https://github.com/besync-labs/antigravity-ai-kit)
+> **Source**: Antigravity AI Kit — [antigravity-ai-kit](https://github.com/besync-labs/antigravity-ai-kit)

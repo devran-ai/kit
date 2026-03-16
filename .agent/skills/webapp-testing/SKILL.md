@@ -153,7 +153,7 @@ tests/
 
 ---
 
-## 9. BeSync Testing Standards
+## 9. Recommended Testing Standards
 
 ### Required Coverage
 

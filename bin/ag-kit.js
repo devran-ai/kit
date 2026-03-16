@@ -188,10 +188,11 @@ function initCommand(options) {
   }
   
   // C-2: Auto-backup before force-overwrite
+  let backupPath = null;
   if (options.force && fs.existsSync(agentPath)) {
-    logStep('1/4', 'Backing up existing .agent folder...');
+    logStep('1/5', 'Backing up existing .agent folder...');
     try {
-      const backupPath = backupDirectory(agentPath);
+      backupPath = backupDirectory(agentPath);
       log(`   ✓ Backup created: ${path.basename(backupPath)}`, 'green');
     } catch (err) {
       log(`   ⚠️  Backup failed: ${err.message}`, 'yellow');
@@ -200,7 +201,7 @@ function initCommand(options) {
   }
 
   // C-3: Atomic copy via temp directory
-  const stepPrefix = options.force && fs.existsSync(agentPath) ? '2/4' : '1/3';
+  const stepPrefix = options.force && fs.existsSync(agentPath) ? '2/5' : '1/3';
   logStep(stepPrefix, 'Copying .agent folder...');
   
   const tempPath = `${agentPath}.tmp-${Date.now()}`;
@@ -224,6 +225,42 @@ function initCommand(options) {
     }
     log(`   ✗ Failed to copy: ${err.message}`, 'red');
     process.exit(1);
+  }
+
+  // E3: Restore user data files from backup after force-overwrite
+  if (backupPath && fs.existsSync(backupPath)) {
+    logStep('3/5', 'Restoring user session data from backup...');
+    const userDataFiles = ['session-context.md', 'session-state.json', path.join('engine', 'identity.json')];
+    const userDataDirs = ['decisions', 'contexts'];
+    let restoredCount = 0;
+
+    for (const file of userDataFiles) {
+      const backupFile = path.join(backupPath, file);
+      const targetFile = path.join(agentPath, file);
+      if (fs.existsSync(backupFile)) {
+        const targetDirPath = path.dirname(targetFile);
+        if (!fs.existsSync(targetDirPath)) {
+          fs.mkdirSync(targetDirPath, { recursive: true });
+        }
+        fs.copyFileSync(backupFile, targetFile);
+        log(`   ✓ Restored ${file}`, 'green');
+        restoredCount++;
+      }
+    }
+
+    for (const dir of userDataDirs) {
+      const backupDir = path.join(backupPath, dir);
+      const targetDirPath = path.join(agentPath, dir);
+      if (fs.existsSync(backupDir)) {
+        safeCopyDirSync(backupDir, targetDirPath);
+        log(`   ✓ Restored ${dir}/`, 'green');
+        restoredCount++;
+      }
+    }
+
+    if (restoredCount === 0) {
+      log('   ○ No user data to restore', 'yellow');
+    }
   }
   
   // Verify installation

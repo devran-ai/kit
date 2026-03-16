@@ -19,7 +19,7 @@ User Request → Analyze → Select Stack → Plan → Scaffold → Coordinate �
 
 ---
 
-## 📦 BeSync Default Stack
+## 📦 Recommended Default Stack
 
 | Layer            | Technology                    | Alternative |
 | ---------------- | ----------------------------- | ----------- |

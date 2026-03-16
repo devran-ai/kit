@@ -1,6 +1,6 @@
 # Task-Complete Checkpoint
 
-> **Framework**: Antigravity AI Kit v3.5.0
+> **Framework**: Antigravity AI Kit v3.5.1
 > **Purpose**: Decision gate after task completion — present options before commit/push
 > **Principle**: Human-in-the-loop governance
 

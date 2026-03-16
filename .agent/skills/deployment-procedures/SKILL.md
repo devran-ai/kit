@@ -68,7 +68,7 @@ allowed-tools: Read, Glob, Grep, Bash
 
 ## 3. Platform-Specific Procedures
 
-### Vercel (BeSync Primary)
+### Vercel
 
 ```bash
 # Preview deploy (automatic on PR)
@@ -172,7 +172,7 @@ Before deploying:
 
 ---
 
-## 9. BeSync Deployment Flow
+## 9. Example Deployment Flow
 
 ```
 develop → staging (auto) → main → production (auto)

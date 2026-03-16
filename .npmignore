@@ -15,6 +15,7 @@ tests/
 .github/
 .cursor/
 .git/
+.githooks/
 
 # Configuration files
 vitest.config.js
@@ -24,3 +25,11 @@ vitest.config.js
 # Contribution docs (available via GitHub)
 CONTRIBUTING.md
 CHANGELOG.md
+
+# Build artifacts and temp files
+*.tgz
+npm-publish-output.txt
+
+# Backup and temp directories created by ag-kit
+.agent*.backup-*
+.agent*.tmp-*

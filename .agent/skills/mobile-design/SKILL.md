@@ -146,7 +146,7 @@ GPU-accelerated (FAST):     CPU-bound (SLOW):
 ### Before Starting ANY Mobile Project
 
 - [ ] Platform(s) confirmed (iOS/Android/Both)
-- [ ] Framework chosen (Expo preferred for BeSync)
+- [ ] Framework chosen (Expo recommended)
 - [ ] Navigation pattern decided
 - [ ] Offline requirements clarified
 - [ ] Design system tokens defined
@@ -167,7 +167,7 @@ GPU-accelerated (FAST):     CPU-bound (SLOW):
 
 ---
 
-## 🔗 BeSync Mobile Stack
+## 🔗 Recommended Mobile Stack
 
 | Layer      | Technology                       |
 | ---------- | -------------------------------- |
