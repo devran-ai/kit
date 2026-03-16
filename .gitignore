@@ -27,3 +27,6 @@ tests/.tmp-*/
 
 # Archives — internal reference docs, not for public repo
 docs/archives/
+
+# Agent identity (contains PII)
+.agent/engine/identity.json
