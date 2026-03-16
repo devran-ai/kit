@@ -1,6 +1,6 @@
 # Session End Checklist
 
-> **Framework**: Antigravity AI Kit v3.5.2  
+> **Framework**: Antigravity AI Kit v3.5.3  
 > **Purpose**: Complete this checklist before ending any work session  
 > **Principle**: Context preservation for continuity
 

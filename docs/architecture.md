@@ -1,6 +1,6 @@
 # Architecture
 
-Antigravity AI Kit v3.5.2 is an engineered framework with a **29-module runtime engine**, 19 agents, 32 skills, 31 commands, and 14 workflows.
+Antigravity AI Kit v3.5.3 is an engineered framework with a **29-module runtime engine**, 19 agents, 32 skills, 31 commands, and 14 workflows.
 
 ---
 

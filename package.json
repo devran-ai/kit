@@ -1,6 +1,6 @@
 {
   "name": "antigravity-ai-kit",
-  "version": "3.5.2",
+  "version": "3.5.3",
   "description": "🚀 Trust-Grade AI development framework with a 29-module runtime engine — 19 Agents, 32 Skills, 31 Commands, 14 Workflows, 8 Rules, 341 Tests. Workflow enforcement, task governance, agent reputation, self-healing, and skill marketplace.",
   "main": "bin/ag-kit.js",
   "bin": {
@@ -10,7 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest watch",
     "preversion": "npm test",
-    "version": "node scripts/sync-version.js && git add -A",
+    "version": "node scripts/sync-version.js && git add -A -- . ':!.agent/engine/identity.json'",
+    "prepublishOnly": "node scripts/clean-identity.js",
     "postinstall": "echo '✅ Antigravity AI Kit installed! Run: ag-kit init'"
   },
   "keywords": [

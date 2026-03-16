@@ -24,7 +24,7 @@ Your complete guide to the Antigravity AI Kit. Type `/help` for a quick overview
 
 ## Quick Overview
 
-**Antigravity AI Kit v3.5.2** — Trust-Grade AI Development Framework
+**Antigravity AI Kit v3.5.3** — Trust-Grade AI Development Framework
 
 | Category | Count | Description |
 |:---------|:------|:------------|
