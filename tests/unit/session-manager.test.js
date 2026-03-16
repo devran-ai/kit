@@ -98,6 +98,7 @@ describe('Session Manager', () => {
     manager.startSession(TMP_PROJECT);
 
     const task1 = manager.addTask(TMP_PROJECT, 'Task 1');
+    await new Promise((resolve) => setTimeout(resolve, 5));
     const task2 = manager.addTask(TMP_PROJECT, 'Task 2');
 
     manager.completeTask(TMP_PROJECT, task1.taskId);
