@@ -55,6 +55,57 @@ describe('ag-kit CLI', () => {
     }
   });
 
+  it('should run verify command without errors', () => {
+    const output = execSync(`node "${CLI_PATH}" verify`, { cwd: ROOT, encoding: 'utf-8' });
+    expect(output).toContain('manifest integrity');
+    expect(output).toMatch(/Passed:\s+\d+/);
+  });
+
+  it('should run scan command without errors', () => {
+    const output = execSync(`node "${CLI_PATH}" scan`, { cwd: ROOT, encoding: 'utf-8' });
+    expect(output).toContain('security scan');
+    expect(output).toContain('Files scanned');
+  });
+
+  it('should run plugin list command', () => {
+    const output = execSync(`node "${CLI_PATH}" plugin list`, { cwd: ROOT, encoding: 'utf-8' });
+    // Either shows plugins or "No plugins installed"
+    expect(output).toMatch(/Installed Plugins|No plugins installed/);
+  });
+
+  it('should run heal command with no CI output gracefully', () => {
+    const tmpDir = path.join(ROOT, 'tests', '.tmp-heal-test');
+    if (fs.existsSync(tmpDir)) {
+      fs.rmSync(tmpDir, { recursive: true });
+    }
+    fs.mkdirSync(tmpDir, { recursive: true });
+
+    try {
+      const output = execSync(`node "${CLI_PATH}" heal`, { cwd: tmpDir, encoding: 'utf-8' });
+      expect(output).toContain('No CI output found');
+    } finally {
+      if (fs.existsSync(tmpDir)) {
+        fs.rmSync(tmpDir, { recursive: true });
+      }
+    }
+  });
+
+  it('should run health command and report status', () => {
+    const output = execSync(`node "${CLI_PATH}" health`, { cwd: ROOT, encoding: 'utf-8' });
+    expect(output).toContain('Health Check');
+    expect(output).toMatch(/Error Budget|Config Validation|Plugin Integrity|Self-Healing/);
+  });
+
+  it('should fail gracefully on unknown command', () => {
+    let output = '';
+    try {
+      output = execSync(`node "${CLI_PATH}" nonexistent`, { cwd: ROOT, encoding: 'utf-8' });
+    } catch (/** @type {any} */ error) {
+      output = (error.stdout || '') + (error.stderr || '');
+    }
+    expect(output).toContain('Unknown command');
+  });
+
   it('should refuse init when .agent/ already exists without --force', () => {
     const tmpDir = path.join(ROOT, 'tests', '.tmp-exists-test');
     

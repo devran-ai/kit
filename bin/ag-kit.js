@@ -14,7 +14,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const VERSION = '3.0.0';
+const VERSION = require('../package.json').version;
 const AGENT_FOLDER = '.agent';
 
 // ANSI colors
@@ -71,6 +71,7 @@ ${colors.bright}Usage:${colors.reset}
   ag-kit market info <name> Get marketplace plugin details
   ag-kit market install <n> Install from marketplace
   ag-kit heal [--file <f>]  Detect and diagnose CI failures
+  ag-kit health             Run aggregated health check
   ag-kit --help             Show this help message
   ag-kit --version          Show version
 
@@ -524,16 +525,26 @@ const options = {
   file: null,
 };
 
-// Parse --path option
+// Parse --path option with traversal protection
 const pathIndex = args.indexOf('--path');
 if (pathIndex !== -1 && args[pathIndex + 1]) {
-  options.path = args[pathIndex + 1];
+  const rawPath = args[pathIndex + 1];
+  if (rawPath.includes('..')) {
+    log('Error: --path must not contain ".." segments', 'red');
+    process.exit(1);
+  }
+  options.path = path.resolve(rawPath);
 }
 
-// Parse --file option
+// Parse --file option with traversal protection
 const fileIndex = args.indexOf('--file');
 if (fileIndex !== -1 && args[fileIndex + 1]) {
-  options.file = args[fileIndex + 1];
+  const rawFile = args[fileIndex + 1];
+  if (rawFile.includes('..')) {
+    log('Error: --file must not contain ".." segments', 'red');
+    process.exit(1);
+  }
+  options.file = path.resolve(rawFile);
 }
 
 // Execute command
@@ -565,6 +576,14 @@ switch (command) {
   case 'heal': {
     const cliCmd = require('../lib/cli-commands');
     cliCmd.healCommand(process.cwd(), { file: options.file, apply: options.apply });
+    break;
+  }
+  case 'health': {
+    const cliHealth = require('../lib/cli-commands');
+    const result = cliHealth.healthCommand(process.cwd());
+    if (!result.healthy) {
+      process.exit(1);
+    }
     break;
   }
   case '--version':
