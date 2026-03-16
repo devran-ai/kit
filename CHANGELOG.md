@@ -5,6 +5,29 @@ All notable changes to Antigravity AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.1] — 2026-03-16
+
+### Security
+
+- **Symlink traversal guard** (C-1) — All copy and scan functions now use `lstatSync` to detect and skip symbolic links, preventing path traversal attacks outside `.agent/`
+- **Atomic copy for init** (C-3) — `init` copies to temp directory first, then renames atomically to prevent corruption on disk failure
+- **Auto-backup before init --force** (C-2) — Creates timestamped `.agent.backup-<timestamp>` before overwriting, preventing irreversible data loss
+
+### Fixed
+
+- **Stale CLI banner** (H-2) — Fixed `31 Skills` → `32 Skills` in `ag-kit` banner output
+- **Contexts preservation** (H-1) — Added `contexts/` to `PRESERVED_DIRS` in updater, preventing learning data loss during `ag-kit update`
+- **Duplicate copy functions** (H-4) — Consolidated `copyFolderSync` (ag-kit.js) and `copyDirSync` (plugin-system.js) into shared `safeCopyDirSync` in `lib/io.js`
+
+### Added
+
+- **Version transition display** (M-1) — `ag-kit update` now shows "Upgrading from vX → vY" when versions differ
+- **Enhanced dry-run for --force** (M-2) — `ag-kit init --dry-run --force` previews which user files would be overwritten
+- **Active session warning** (M-3) — `init --force` warns if `session-state.json` indicates active work in progress
+- **Safety documentation** (C-4) — Added "Safety Guarantees" section to README with project file safety table and init/update behavior guide
+
+---
+
 ## [3.3.0] — 2026-03-16
 
 ### Added

@@ -1,6 +1,6 @@
 # 🚀 Antigravity AI Kit
 
-![version](https://img.shields.io/badge/version-3.3.0-blue)
+![version](https://img.shields.io/badge/version-3.3.1-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![AI Agents](https://img.shields.io/badge/AI%20Agents-19-purple)
 ![Skills](https://img.shields.io/badge/Skills-32-orange)
@@ -100,22 +100,14 @@ Creates a new project with `.agent/` pre-configured. Templates: `minimal`, `node
 npx antigravity-ai-kit init
 ```
 
-This automatically copies the `.agent/` folder to your project.
-
-### Option 3: Manual Installation
+### 🔄 Updating
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/besync-labs/antigravity-ai-kit.git
-
-# 2. Copy .agent/ to your project
-cp -r antigravity-ai-kit/.agent/ your-project/.agent/
-
-# 3. Start your session
-/status
+ag-kit update             # Non-destructive — preserves your customizations
+ag-kit update --dry-run   # Preview changes without applying
 ```
 
-That's it! The kit is now active and ready to accelerate your development.
+> **Prefer `ag-kit update` over `ag-kit init --force`**. The update command preserves your session data, ADRs, learning contexts, and customizations. Use `init --force` only for clean reinstalls.
 
 ### ✅ Verify Installation
 
@@ -123,6 +115,31 @@ That's it! The kit is now active and ready to accelerate your development.
 ag-kit verify     # Manifest integrity check
 ag-kit scan       # Security scan
 ```
+
+### 🛡️ Safety Guarantees
+
+Antigravity AI Kit is designed to **never touch your project files**. All operations are scoped to the `.agent/` directory.
+
+| Your Project Files | Safe? | Details |
+|:---|:---|:---|
+| Source code (`src/`, `lib/`, `app/`) | ✅ Never touched | Init/update only operates on `.agent/` |
+| Config files (`.env`, `package.json`) | ✅ Never touched | No project config is read or written |
+| Documentation (`docs/`, `README.md`) | ✅ Never touched | Only `.agent/` docs are managed |
+| Tests (`tests/`, `__tests__/`) | ✅ Never touched | Kit tests are internal to the package |
+| Platform files (`android/`, `ios/`) | ✅ Never touched | No platform-specific operations |
+
+**`init --force` safety features (v3.3.1+):**
+- 🔒 **Auto-backup**: Creates timestamped backup of existing `.agent/` before overwriting
+- ⚛️ **Atomic copy**: Uses temp directory + rename to prevent corruption on failure
+- 🔗 **Symlink guard**: Skips symbolic links to prevent path traversal attacks
+- ⚠️ **Session warning**: Alerts if active work-in-progress would be destroyed
+- 🔍 **Dry-run preview**: `--dry-run --force` shows exactly which user files would be overwritten
+
+**`update` preserved files:**
+- `session-context.md` — Your active session notes
+- `session-state.json` — Your session metadata
+- `decisions/` — Your Architecture Decision Records
+- `contexts/` — Your learning data and plan quality logs
 
 ---
 

@@ -14,7 +14,18 @@ npx antigravity-ai-kit init
 
 This automatically copies the `.agent/` folder to your project. Done!
 
-> **Tip:** Use `npx antigravity-ai-kit init --force` to overwrite an existing `.agent/` folder.
+> **Tip:** Use `npx antigravity-ai-kit init --force` to overwrite an existing `.agent/` folder. A timestamped backup is created automatically.
+
+---
+
+### 🔄 Updating
+
+```bash
+ag-kit update             # Non-destructive — preserves your customizations
+ag-kit update --dry-run   # Preview changes without applying
+```
+
+> **Prefer `ag-kit update` over `init --force`**. The update command preserves your session data, ADRs, learning contexts, and customizations.
 
 ---
 
@@ -33,14 +44,6 @@ cp -r antigravity-ai-kit/.agent/ your-project/.agent/
 
 ---
 
-### Option 3: Direct Download
-
-1. Download the `.agent/` folder from [GitHub](https://github.com/besync-labs/antigravity-ai-kit)
-2. Place it in your project root
-3. Run `/status` in your AI-powered IDE
-
----
-
 ## ✅ Verify Installation
 
 After installing, validate your setup with the built-in CLI checks:
@@ -51,6 +54,10 @@ ag-kit scan       # Security scan
 ```
 
 Both should return clean results. If they report issues, try reinstalling with `--force`.
+
+## 🛡️ Safety Guarantees
+
+Antigravity AI Kit **only** operates within the `.agent/` directory. Your project files — source code, configs, tests, platform files — are **never touched** by `init`, `update`, or any CLI command.
 
 ---
 
