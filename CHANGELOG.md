@@ -5,6 +5,54 @@ All notable changes to Antigravity AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.0] — 2026-03-16
+
+### Added
+
+#### Senior Staff Engineer Agent Elevation
+- **14 agents elevated** to Senior Staff Engineer level with deep domain-specific methodologies, industry-standard frameworks, and professional decision matrices
+- **devops-engineer.md** (130 → 597 lines) — 12-Factor App, GitOps principles, Kubernetes orchestration, IaC patterns (Terraform/Pulumi), Observability Triad (logs/metrics/traces), Progressive Delivery (canary/blue-green/rolling), Deployment Strategy Decision Matrix, Container Security, Secret Management
+- **performance-optimizer.md** (120 → 538 lines) — Caching Architecture (Cache-Aside, Write-Through, Write-Behind, Read-Through, multi-layer), CDN Strategy, Load Balancing Algorithms, Backend Performance (connection pooling, query optimization), Performance Budget Framework, Distributed Tracing, RUM vs Synthetic monitoring
+- **reliability-engineer.md** (115 → 534 lines) — SRE Golden Signals, SLO/SLI/SLA Framework with error budgets, OpenTelemetry observability, Incident Response Protocol (SEV1-4), Chaos Engineering methodology, Deep Resilience Patterns (circuit breaker, bulkhead, retry with backoff), Capacity Planning models
+- **security-reviewer.md** (146 → 350 lines) — STRIDE Threat Modeling with structured output, Zero Trust Architecture principles, OAuth 2.0/OIDC flow selection matrix, OWASP Top 10 deep analysis (A01-A10), Supply Chain Security, GDPR Assessment checklist, vulnerability classification with escalation paths
+- **database-architect.md** (130 → 330 lines) — CAP Theorem decision framework, ACID vs BASE trade-offs, Event Sourcing & CQRS patterns, advanced index strategy (8 types + composite rules), zero-downtime migration patterns, query optimization (EXPLAIN ANALYZE), connection pooling, multi-tenancy patterns
+- **mobile-developer.md** (125 → 280 lines) — Navigation architecture decision matrix, state management hierarchy (6 levels), offline-first architecture (CRDT, queue+retry), iOS HIG / Material Design 3 platform-specific UX, mobile performance budgets, list rendering optimization
+- **explorer-agent.md** (146 → 260 lines) — DDD bounded context discovery, building block identification, context map assessment, architectural health metrics (8 quantified), technical debt classification (6 categories)
+- **e2e-runner.md** (111 → 310 lines) — Testing Diamond with test type decision matrix, Page Object Model pattern, contract testing (Zod schema validation), visual regression testing, accessibility testing (axe-core), test reliability engineering, quarantine protocol
+- **refactor-cleaner.md** (100 → 201 lines) — Code smell detection framework (9 smells), refactoring patterns catalog (6 patterns), safe refactoring protocol, architectural refactoring (Strangler Fig, Branch by Abstraction), metrics-driven refactoring with priority formula
+- **build-error-resolver.md** (85 → 207 lines) — Root cause analysis framework (5-step), expanded error taxonomy (TypeScript, module resolution, build tool, environment), dependency resolution patterns, CI/CD pipeline debugging, prevention patterns
+- **knowledge-agent.md** (80 → 197 lines) — Multi-source retrieval with priority ranking, decision archaeology protocol, knowledge gap identification (6 gap types), citation protocol with confidence levels
+- **doc-updater.md** (75 → 229 lines) — Diataxis documentation framework, change impact analysis matrix, documentation quality checklist (5 dimensions), API documentation standards, ADR management lifecycle
+- **architect.md** — Already SENIOR level; verified sufficient
+- **sprint-orchestrator.md** — Already SENIOR level; verified sufficient
+
+#### Skill Enrichment
+- **architecture/SKILL.md** (110 → 220 lines) — DDD Strategic Patterns (Bounded Contexts, Ubiquitous Language, Context Maps, Anti-Corruption Layer), DDD Tactical Patterns (Entity, Value Object, Aggregate, Repository, Domain Service, Domain Event, Factory), Aggregate Design Rules, 12-Factor App table, Event-Driven Architecture pattern selection, SOLID Applied with violation detection, ADR template
+- **security-practices/SKILL.md** (130 → 320 lines) — Zero Trust principles, OAuth 2.0 flow selection, API security patterns, supply chain security audit
+- **database-design/SKILL.md** (120 → 303 lines) — CAP theorem decision framework, ACID vs BASE, consistency models, migration safety patterns, connection pooling strategies
+
+#### Domain Enhancers Expansion
+- **domain-enhancers.md** — Added 3 new domain sections (reliability, observability, distributed systems) bringing total from 7 to 10 domain enhancers
+- Enhanced all existing 7 domain sections with deeper domain-specific requirements from elevated agents
+
+#### Loading Engine Enhancement
+- Added `reliability` domain rule with 14 keywords, linked to reliability-engineer agent
+- Added `observability` domain rule with 11 keywords, linked to reliability-engineer + devops-engineer agents
+- Added `implicitTriggers` to frontend, backend, database, and devops domains for broader detection
+- Enhanced `performance` domain with 4 additional keywords (cdn, latency, p99, tracing)
+- Enhanced `devops` domain with 4 additional keywords (terraform, gitops, canary, helm)
+- Domain rules count: 13 → 15
+
+### Changed
+
+#### Agent Tier Distribution (Before → After)
+- **ELITE** (unchanged): frontend-specialist (357 lines), planner (334 lines)
+- **SENIOR** (4 → 8): backend-specialist, architect, tdd-guide, code-reviewer + devops-engineer, performance-optimizer, reliability-engineer, e2e-runner
+- **INTERMEDIATE** (9 → 5): security-reviewer, database-architect, mobile-developer, explorer-agent, sprint-orchestrator
+- **JUNIOR** (5 → 0): All former junior agents elevated to INTERMEDIATE or higher
+
+---
+
 ## [3.2.0] — 2026-03-16
 
 ### Added
@@ -232,6 +280,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Session management architecture
 - PAAL continuous learning cycle
 
+[3.3.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.2.0...v3.3.0
 [3.2.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.1.0...v3.2.0
 [3.1.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.0.1...v3.1.0
 [3.0.1]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.0.0...v3.0.1
