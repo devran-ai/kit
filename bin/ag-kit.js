@@ -17,6 +17,7 @@ const path = require('path');
 const VERSION = require('../package.json').version;
 const AGENT_FOLDER = '.agent';
 const { safeCopyDirSync, readJsonSafe } = require('../lib/io');
+const { USER_DATA_FILES, USER_DATA_DIRS } = require('../lib/updater');
 
 // ANSI colors
 const colors = {
@@ -37,7 +38,24 @@ function logStep(step, message) {
   console.log(`${colors.cyan}[${step}]${colors.reset} ${message}`);
 }
 
+function loadBannerCounts() {
+  try {
+    const manifestPath = path.join(__dirname, '..', AGENT_FOLDER, 'manifest.json');
+    const manifest = readJsonSafe(manifestPath, null);
+    if (manifest?.capabilities) {
+      return {
+        agents: manifest.capabilities.agents?.count || 19,
+        skills: manifest.capabilities.skills?.count || 32,
+        commands: manifest.capabilities.commands?.count || 31,
+        workflows: manifest.capabilities.workflows?.count || 14,
+      };
+    }
+  } catch { /* fallback to defaults */ }
+  return { agents: 19, skills: 32, commands: 31, workflows: 14 };
+}
+
 function showBanner() {
+  const counts = loadBannerCounts();
   console.log(`
 ${colors.bright}${colors.blue}
    _____          __  .__                            .__  __          
@@ -50,8 +68,8 @@ ${colors.reset}
 ${colors.green}🚀 Antigravity AI Kit v${VERSION}${colors.reset}
 ${colors.yellow}   Transform Your IDE into an Autonomous Engineering Team${colors.reset}
 
-   • 19 AI Agents    • 32 Skills
-   • 31 Commands     • 14 Workflows
+   • ${counts.agents} AI Agents    • ${counts.skills} Skills
+   • ${counts.commands} Commands     • ${counts.workflows} Workflows
    • Runtime Engine  • Error Budget
 `);
 }
@@ -169,15 +187,13 @@ function initCommand(options) {
     log(`   To: ${agentPath}\n`, 'cyan');
     // M-2: Show force damage preview
     if (options.force && fs.existsSync(agentPath)) {
-      log('   ⚠️  --force would overwrite these user files:', 'yellow');
-      const userFiles = ['session-context.md', 'session-state.json'];
-      const userDirs = ['decisions', 'contexts'];
-      for (const f of userFiles) {
+      log('   ⚠️  --force would overwrite these user files (restored from backup):', 'yellow');
+      for (const f of USER_DATA_FILES) {
         if (fs.existsSync(path.join(agentPath, f))) {
           log(`      • ${f}`, 'yellow');
         }
       }
-      for (const d of userDirs) {
+      for (const d of USER_DATA_DIRS) {
         if (fs.existsSync(path.join(agentPath, d))) {
           log(`      • ${d}/ (directory)`, 'yellow');
         }
@@ -200,9 +216,13 @@ function initCommand(options) {
     }
   }
 
+  // Dynamic step counter — avoids hardcoded step strings
+  const isForceWithBackup = backupPath !== null;
+  const totalSteps = isForceWithBackup ? 5 : 3;
+  let currentStep = isForceWithBackup ? 2 : 1;
+
   // C-3: Atomic copy via temp directory
-  const stepPrefix = options.force && fs.existsSync(agentPath) ? '2/5' : '1/3';
-  logStep(stepPrefix, 'Copying .agent folder...');
+  logStep(`${currentStep}/${totalSteps}`, 'Copying .agent folder...');
   
   const tempPath = `${agentPath}.tmp-${Date.now()}`;
   try {
@@ -226,15 +246,14 @@ function initCommand(options) {
     log(`   ✗ Failed to copy: ${err.message}`, 'red');
     process.exit(1);
   }
+  currentStep++;
 
   // E3: Restore user data files from backup after force-overwrite
-  if (backupPath && fs.existsSync(backupPath)) {
-    logStep('3/5', 'Restoring user session data from backup...');
-    const userDataFiles = ['session-context.md', 'session-state.json', path.join('engine', 'identity.json')];
-    const userDataDirs = ['decisions', 'contexts'];
+  if (isForceWithBackup) {
+    logStep(`${currentStep}/${totalSteps}`, 'Restoring user session data from backup...');
     let restoredCount = 0;
 
-    for (const file of userDataFiles) {
+    for (const file of USER_DATA_FILES) {
       const backupFile = path.join(backupPath, file);
       const targetFile = path.join(agentPath, file);
       if (fs.existsSync(backupFile)) {
@@ -248,7 +267,7 @@ function initCommand(options) {
       }
     }
 
-    for (const dir of userDataDirs) {
+    for (const dir of USER_DATA_DIRS) {
       const backupDir = path.join(backupPath, dir);
       const targetDirPath = path.join(agentPath, dir);
       if (fs.existsSync(backupDir)) {
@@ -261,17 +280,19 @@ function initCommand(options) {
     if (restoredCount === 0) {
       log('   ○ No user data to restore', 'yellow');
     }
+    currentStep++;
   }
   
   // Verify installation
-  logStep('2/3', 'Verifying installation...');
+  logStep(`${currentStep}/${totalSteps}`, 'Verifying installation...');
   const skills = countItems(path.join(agentPath, 'skills'), 'dir');
   const commands = countItems(path.join(agentPath, 'commands'), 'file');
   const workflows = countItems(path.join(agentPath, 'workflows'), 'file');
   log(`   ✓ Skills: ${skills}, Commands: ${commands}, Workflows: ${workflows}`, 'green');
+  currentStep++;
   
   // Final message
-  logStep('3/3', 'Setup complete!');
+  logStep(`${currentStep}/${totalSteps}`, 'Setup complete!');
   
   if (!options.quiet) {
     console.log(`
@@ -461,11 +482,13 @@ function updateCommand(updateOptions) {
     const updater = require('../lib/updater');
     const isDryRun = updateOptions.dryRun;
 
-    // M-1: Show version transition
+    // M-1: Show version transition (use source kit version, not CLI version)
+    const sourcePackage = readJsonSafe(path.join(sourceRoot, 'package.json'), {});
+    const kitVersion = sourcePackage.version || VERSION;
     const currentManifest = readJsonSafe(path.join(agentPath, 'manifest.json'), {});
     const currentVersion = currentManifest.kitVersion || 'unknown';
-    if (currentVersion !== VERSION) {
-      log(`\n   📦 Upgrading from v${currentVersion} → v${VERSION}`, 'cyan');
+    if (currentVersion !== kitVersion) {
+      log(`\n   📦 Upgrading: v${currentVersion} → v${kitVersion}`, 'cyan');
     }
 
     if (isDryRun) {
