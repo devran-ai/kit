@@ -1,6 +1,6 @@
 # Skills
 
-Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **31 skills** across 7 categories.
+Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **32 skills** across 7 categories.
 
 ---
 
@@ -52,12 +52,13 @@ Core development patterns and best practices.
 
 Testing, debugging, and security.
 
-| Skill                    | Purpose                         |
-| :----------------------- | :------------------------------ |
-| **testing-patterns**     | TDD, unit, integration testing  |
-| **debugging-strategies** | Systematic debugging approaches |
-| **security-practices**   | OWASP, vulnerability prevention |
-| **webapp-testing**       | E2E and Playwright testing      |
+| Skill                    | Purpose                              |
+| :----------------------- | :----------------------------------- |
+| **testing-patterns**     | TDD, unit, integration testing       |
+| **debugging-strategies** | Systematic debugging approaches      |
+| **security-practices**   | OWASP, vulnerability prevention      |
+| **webapp-testing**       | E2E and Playwright testing           |
+| **plan-validation**      | Plan quality gate with scoring (70%) |
 
 ---
 
