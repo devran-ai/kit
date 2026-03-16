@@ -5,6 +5,24 @@ All notable changes to Antigravity AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.6.0] — 2026-03-16
+
+### Added
+
+- **`/pr` workflow** — Production-grade 8-step PR creation with MCP-first 3-tier fallback (MCP → `gh` CLI → manual), conflict resolution protocol, conventional commit titles, draft PR support, and CI verification
+- **`/pr` in Task-Complete Protocol** — Option 5 in checkpoint menu (9 options total) for seamless PR creation after task completion
+- Recommendation intelligence: "Feature branch with unpushed commits → recommend `/pr`"
+
+### Changed
+
+- Workflow count: 14 → 15 across README, manifest, docs site, package description, and 6 additional files
+- Task-Complete checkpoint: 8 → 9 options (added `/pr` between Commit & Push and Session-End)
+- `review.md` lifecycle: Next step updated from `/deploy` to `/pr`
+- `deploy.md` lifecycle: Previous step updated to `/pr`
+- SDLC lifecycle diagram: Ship phase now includes `/pr` between `/review` and `/deploy`
+
+---
+
 ## [3.5.0] — 2026-03-16
 
 ### Added
@@ -349,6 +367,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Session management architecture
 - PAAL continuous learning cycle
 
+[3.6.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.5.0...v3.6.0
 [3.5.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.4.1...v3.5.0
 [3.4.1]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.3.1...v3.4.1
 [3.3.1]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.3.0...v3.3.1

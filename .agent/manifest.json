@@ -243,7 +243,7 @@
       ]
     },
     "workflows": {
-      "count": 14,
+      "count": 15,
       "items": [
         {
           "name": "brainstorm",
@@ -272,6 +272,10 @@
         {
           "name": "plan",
           "file": "workflows/plan.md"
+        },
+        {
+          "name": "pr",
+          "file": "workflows/pr.md"
         },
         {
           "name": "preview",

@@ -1,7 +1,7 @@
 # Antigravity AI Kit — Workflows
 
 > **Purpose**: Process templates for common development tasks
-> **Count**: 14 Workflows
+> **Count**: 15 Workflows
 > **Standard**: Enterprise Workflow Standard (EWS) v1.0
 
 ---
@@ -27,6 +27,7 @@ Invoke them using slash commands (e.g., `/brainstorm authentication system`).
 | **ui-ux-pro-max** | `/ui-ux-pro-max` | Build | Premium UI/UX design and implementation |
 | **test** | `/test` | Verify | Systematic test writing and execution |
 | **review** | `/review` | Verify | Sequential quality gate pipeline |
+| **pr** | `/pr` | Ship | Production-grade PR creation with pre-flight checks |
 | **deploy** | `/deploy` | Ship | Production deployment with pre-flight checks |
 | **debug** | `/debug` | Reactive | Systematic problem investigation |
 | **orchestrate** | `/orchestrate` | Reactive | Multi-agent coordination for complex tasks |
@@ -41,8 +42,8 @@ Invoke them using slash commands (e.g., `/brainstorm authentication system`).
 Discover ──► Plan ──► Build ──► Verify ──► Ship ──► Evaluate
    │           │        │         │         │          │
    ▼           ▼        ▼         ▼         ▼          ▼
-/brainstorm  /plan   /create   /test     /deploy   /retrospective
-/quality-gate        /enhance  /review
+/brainstorm  /plan   /create   /test     /pr        /retrospective
+/quality-gate        /enhance  /review   /deploy
                      /preview
                      /ui-ux-pro-max
 

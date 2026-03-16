@@ -13,7 +13,7 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 | 🤖 **AI Agents**  | 19    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
 | 🛠️ **Skills**     | 32    | Domain knowledge modules (API, Testing, Plan Validation, Docker...)    |
 | ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 14    | Process templates (/create, /debug, /deploy, /test...)                 |
+| 🔄 **Workflows**  | 15    | Process templates (/create, /debug, /deploy, /pr, /test...)            |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
 | ⚙️ **Runtime**    | 29    | Runtime engine modules (governance, reputation, self-healing...)       |
@@ -43,7 +43,7 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :arrows_counterclockwise: **[Workflows](workflows/index.md)**
 
-  14 full development workflows
+  15 full development workflows
 
 - :repeat: **[Session Management](session-management.md)**
 

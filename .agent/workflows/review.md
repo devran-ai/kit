@@ -9,7 +9,7 @@ commit-types: [fix, refactor]
 # /review — Code Review Quality Gate
 
 > **Trigger**: `/review` (full) · `/review lint` · `/review tests` · `/review security` · `/review build`
-> **Lifecycle**: After implementation, before `/retrospective`
+> **Lifecycle**: After implementation, before `/pr`
 
 > [!CAUTION]
 > Sequential gate pipeline — each step must pass before proceeding. Failed gates block merge. No overrides.
@@ -183,6 +183,6 @@ Re-run: `/review` or `/review {gate}`
 ## Related Resources
 
 - **Previous**: `/test` (tests must pass before review)
-- **Next**: `/deploy` (deployment after all gates pass)
+- **Next**: `/pr` (create pull request after all gates pass)
 - **Skill**: `.agent/skills/verification-loop/SKILL.md`
 - **Related**: `/quality-gate` (pre-task research) · `/retrospective` (sprint-level audit)

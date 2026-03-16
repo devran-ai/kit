@@ -9,7 +9,7 @@ commit-types: [chore, fix]
 # /deploy — Production Deployment
 
 > **Trigger**: `/deploy [sub-command]`
-> **Lifecycle**: Ship — after `/review` gate passes
+> **Lifecycle**: Ship — after `/pr` is merged
 
 > [!CAUTION]
 > Deployment impacts production users and consumes platform credits. Every push to `production` triggers builds on hosting platforms (Vercel, Railway, etc.). Never deploy untested code. Always have a rollback plan before deploying.
@@ -189,7 +189,7 @@ Run `/deploy rollback` to restore [previous version].
 
 ## Related Resources
 
-- **Previous**: `/review` (quality gates must pass before deployment)
+- **Previous**: `/pr` (PR must be created and merged before deployment)
 - **Next**: `/status` (post-deploy monitoring)
 - **Skill**: `.agent/skills/deployment-procedures/SKILL.md`
 - **Global Rule**: Production Merge Discipline (see global rules)

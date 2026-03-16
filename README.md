@@ -5,7 +5,7 @@
 ![AI Agents](https://img.shields.io/badge/AI%20Agents-19-purple)
 ![Skills](https://img.shields.io/badge/Skills-32-orange)
 ![Commands](https://img.shields.io/badge/Commands-31-red)
-![Workflows](https://img.shields.io/badge/Workflows-14-teal)
+![Workflows](https://img.shields.io/badge/Workflows-15-teal)
 ![Runtime Modules](https://img.shields.io/badge/Runtime%20Modules-29-blueviolet)
 ![Tests](https://img.shields.io/badge/Tests-341%20passing-brightgreen)
 ![Checklists](https://img.shields.io/badge/Checklists-4-yellow)
@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>29-module runtime engine</b>, <b>19 specialized agents</b>, <b>31 commands</b>, <b>32 skills</b>, and <b>14 workflows</b> — all backed by <b>341 tests</b> and governance-first principles.
+  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>29-module runtime engine</b>, <b>19 specialized agents</b>, <b>31 commands</b>, <b>32 skills</b>, and <b>15 workflows</b> — all backed by <b>341 tests</b> and governance-first principles.
 </p>
 
 <p align="center">
@@ -40,7 +40,7 @@
 - [Commands](#%EF%B8%8F-commands-31)
 - [Skills](#%EF%B8%8F-skills-32)
 - [Runtime Engine](#%EF%B8%8F-runtime-engine-29-modules)
-- [Workflows](#-workflows-14)
+- [Workflows](#-workflows-15)
 - [Operating Constraints](#%EF%B8%8F-operating-constraints)
 - [Session Management](#-session-management)
 - [How to Extend](#-how-to-extend)
@@ -58,7 +58,7 @@
 | 🤖 **AI Agents**  | 19    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
 | 🛠️ **Skills**     | 32    | Domain knowledge modules (API, Testing, MCP, Architecture, Docker...) |
 | ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 14    | Process templates (/create, /debug, /deploy, /test...)                 |
+| 🔄 **Workflows**  | 15    | Process templates (/create, /debug, /deploy, /pr, /test...)            |
 | ⚙️ **Runtime**    | 29    | Runtime engine modules (governance, reputation, self-healing...)       |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | ⚖️ **Rules**      | 8     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
@@ -149,7 +149,7 @@ Antigravity AI Kit is designed to **never touch your project files**. All operat
 ┌─────────────────────────────────────────────────────────────────────┐
 │                    USER INTERFACE LAYER                              │
 │  ┌─────────────────────────┐  ┌─────────────────────────┐          │
-│  │  Slash Commands (31)    │  │  Workflows (14)         │          │
+│  │  Slash Commands (31)    │  │  Workflows (15)         │          │
 │  └────────────┬────────────┘  └────────────┬────────────┘          │
 ├───────────────┼────────────────────────────┼────────────────────────┤
 │               ▼         INTELLIGENCE LAYER ▼                        │
@@ -423,7 +423,7 @@ Antigravity AI Kit v3.2.0 includes a **full runtime engine** built across 4 phas
 
 ---
 
-## 🔄 Workflows (14)
+## 🔄 Workflows (15)
 
 | Workflow          | Description              | Command          |
 | :---------------- | :----------------------- | :--------------- |
@@ -434,6 +434,7 @@ Antigravity AI Kit v3.2.0 includes a **full runtime engine** built across 4 phas
 | **enhance**       | Improve existing code    | `/enhance`       |
 | **orchestrate**   | Multi-agent coordination | `/orchestrate`   |
 | **plan**          | Implementation planning  | `/plan`          |
+| **pr**            | Production-grade PR creation | `/pr`        |
 | **preview**       | Preview changes          | `/preview`       |
 | **quality-gate**  | Pre-task validation      | `/quality-gate`  |
 | **retrospective** | Sprint audit & review    | `/retrospective` |
@@ -634,7 +635,7 @@ antigravity-ai-kit/
 │   ├── agents/               # 19 specialized agents
 │   ├── commands/             # 31 slash commands
 │   ├── skills/               # 32 capability modules
-│   ├── workflows/            # 14 process templates
+│   ├── workflows/            # 15 process templates
 │   ├── engine/               # Autonomy Engine (state machine, loading rules, configs)
 │   ├── hooks/                # 8 event hooks (runtime + git-hook)
 │   ├── rules/                # 8 modular governance rules

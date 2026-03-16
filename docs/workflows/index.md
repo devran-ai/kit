@@ -1,6 +1,6 @@
 # Workflows
 
-Workflows are complete development lifecycles that guide you through multi-step processes. **14 workflows** for every development scenario.
+Workflows are complete development lifecycles that guide you through multi-step processes. **15 workflows** for every development scenario.
 
 ---
 
@@ -15,6 +15,7 @@ Workflows are complete development lifecycles that guide you through multi-step 
 | 🔧 `/enhance`       | Iterative development          | Adding/updating features                     |
 | 🎭 `/orchestrate`   | Multi-agent orchestration      | Complex tasks requiring specialists          |
 | 📋 `/plan`          | Implementation planning        | Creating structured task breakdowns          |
+| 🔀 `/pr`            | Production-grade PR creation   | Creating PRs with pre-flight checks and CI   |
 | 👁️ `/preview`       | Dev server management          | Starting/stopping local servers              |
 | 🔬 `/quality-gate`  | Pre-task research & validation | Market research and ethics review            |
 | 📊 `/retrospective` | Sprint-end quality audit       | Tier-1 compliance review after milestones    |

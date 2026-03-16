@@ -1,6 +1,6 @@
 # Architecture
 
-Antigravity AI Kit v3.5.3 is an engineered framework with a **29-module runtime engine**, 19 agents, 32 skills, 31 commands, and 14 workflows.
+Antigravity AI Kit v3.5.3 is an engineered framework with a **29-module runtime engine**, 19 agents, 32 skills, 31 commands, and 15 workflows.
 
 ---
 
@@ -25,9 +25,9 @@ Antigravity AI Kit v3.5.3 is an engineered framework with a **29-module runtime 
 │           ┌──────────────────┴──────────────────┐                   │
 │           ▼                                      ▼                   │
 │  ┌─────────────────────────────────────────────────────────┐        │
-│  │                    14 WORKFLOWS                          │        │
+│  │                    15 WORKFLOWS                          │        │
 │  │  /brainstorm • /create • /debug • /deploy • /enhance    │        │
-│  │  /orchestrate • /plan • /preview • /quality-gate         │        │
+│  │  /orchestrate • /plan • /pr • /preview • /quality-gate   │        │
 │  │  /retrospective • /review • /status • /test              │        │
 │  │  /ui-ux-pro-max                                          │        │
 │  └─────────────────────────────────────────────────────────┘        │
@@ -79,12 +79,12 @@ Domain expertise modules that extend AI capabilities.
 - **Planning**: plan-writing (tiered quality schema), plan-validation (completeness scoring), brainstorming
 - **Domain**: api-patterns, architecture, clean-code, database-design, testing-patterns, and 15 more
 
-### Workflows (14)
+### Workflows (15)
 
 Complete development lifecycles for multi-step processes.
 
 - /brainstorm, /create, /debug, /deploy, /enhance, /orchestrate
-- /plan, /preview, /quality-gate, /retrospective, /review
+- /plan, /pr, /preview, /quality-gate, /retrospective, /review
 - /status, /test, /ui-ux-pro-max
 
 ### Runtime Engine (29 Modules)
@@ -112,7 +112,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 ├── agents/               # 19 specialized agents
 ├── commands/             # 31 slash commands
 ├── skills/               # 32 capability modules
-├── workflows/            # 14 process templates
+├── workflows/            # 15 process templates
 ├── engine/               # Autonomy Engine configs
 ├── hooks/                # Event automation
 ├── rules/                # Governance rules
