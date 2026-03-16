@@ -16,6 +16,7 @@ const path = require('path');
 
 const VERSION = require('../package.json').version;
 const AGENT_FOLDER = '.agent';
+const { safeCopyDirSync, readJsonSafe } = require('../lib/io');
 
 // ANSI colors
 const colors = {
@@ -49,7 +50,7 @@ ${colors.reset}
 ${colors.green}🚀 Antigravity AI Kit v${VERSION}${colors.reset}
 ${colors.yellow}   Transform Your IDE into an Autonomous Engineering Team${colors.reset}
 
-   • 19 AI Agents    • 31 Skills
+   • 19 AI Agents    • 32 Skills
    • 31 Commands     • 14 Workflows
    • Runtime Engine  • Error Budget
 `);
@@ -95,23 +96,28 @@ ${colors.bright}IDE Reference:${colors.reset}
 `);
 }
 
-function copyFolderSync(src, dest) {
-  if (!fs.existsSync(dest)) {
-    fs.mkdirSync(dest, { recursive: true });
-  }
-  
-  const entries = fs.readdirSync(src, { withFileTypes: true });
-  
-  for (const entry of entries) {
-    const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
-    
-    if (entry.isDirectory()) {
-      copyFolderSync(srcPath, destPath);
-    } else {
-      fs.copyFileSync(srcPath, destPath);
-    }
-  }
+/**
+ * Creates a timestamped backup of a directory.
+ * @param {string} dirPath - Directory to back up
+ * @returns {string} Path to the backup directory
+ */
+function backupDirectory(dirPath) {
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const backupPath = `${dirPath}.backup-${timestamp}`;
+  safeCopyDirSync(dirPath, backupPath);
+  return backupPath;
+}
+
+/**
+ * Checks if there is an active session with in-progress work.
+ * @param {string} agentPath - Path to existing .agent directory
+ * @returns {boolean} True if session-state indicates active work
+ */
+function hasActiveSession(agentPath) {
+  const statePath = path.join(agentPath, 'session-state.json');
+  const state = readJsonSafe(statePath, null);
+  if (!state) return false;
+  return state.currentTask || state.inProgress || state.activeWorkflow;
 }
 
 function countItems(dir, type = 'dir') {
@@ -146,24 +152,76 @@ function initCommand(options) {
   // Check if already exists
   if (fs.existsSync(agentPath) && !options.force) {
     log(`\n⚠️  ${AGENT_FOLDER} folder already exists!`, 'yellow');
-    log('   Use --force to overwrite\n', 'yellow');
+    log('   Use --force to overwrite', 'yellow');
+    log('   Use ag-kit update for non-destructive updates\n', 'yellow');
     process.exit(1);
   }
   
+  // M-3: Active session warning for --force
+  if (options.force && fs.existsSync(agentPath) && hasActiveSession(agentPath)) {
+    log('\n⚠️  Active session detected! Force-overwrite will destroy in-progress work.', 'yellow');
+    log('   Consider using ag-kit update instead.\n', 'yellow');
+  }
+
   if (options.dryRun) {
     log('\n🔍 Dry run mode - no changes will be made\n', 'cyan');
     log(`   Would copy: ${sourcePath}`, 'cyan');
     log(`   To: ${agentPath}\n`, 'cyan');
+    // M-2: Show force damage preview
+    if (options.force && fs.existsSync(agentPath)) {
+      log('   ⚠️  --force would overwrite these user files:', 'yellow');
+      const userFiles = ['session-context.md', 'session-state.json'];
+      const userDirs = ['decisions', 'contexts'];
+      for (const f of userFiles) {
+        if (fs.existsSync(path.join(agentPath, f))) {
+          log(`      • ${f}`, 'yellow');
+        }
+      }
+      for (const d of userDirs) {
+        if (fs.existsSync(path.join(agentPath, d))) {
+          log(`      • ${d}/ (directory)`, 'yellow');
+        }
+      }
+      log('', 'reset');
+    }
     return;
   }
   
-  // Copy .agent folder
-  logStep('1/3', 'Copying .agent folder...');
+  // C-2: Auto-backup before force-overwrite
+  if (options.force && fs.existsSync(agentPath)) {
+    logStep('1/4', 'Backing up existing .agent folder...');
+    try {
+      const backupPath = backupDirectory(agentPath);
+      log(`   ✓ Backup created: ${path.basename(backupPath)}`, 'green');
+    } catch (err) {
+      log(`   ⚠️  Backup failed: ${err.message}`, 'yellow');
+      log('   Proceeding without backup...', 'yellow');
+    }
+  }
+
+  // C-3: Atomic copy via temp directory
+  const stepPrefix = options.force && fs.existsSync(agentPath) ? '2/4' : '1/3';
+  logStep(stepPrefix, 'Copying .agent folder...');
   
+  const tempPath = `${agentPath}.tmp-${Date.now()}`;
   try {
-    copyFolderSync(sourcePath, agentPath);
+    safeCopyDirSync(sourcePath, tempPath);
+    // Remove old directory if force-overwriting
+    if (fs.existsSync(agentPath)) {
+      fs.rmSync(agentPath, { recursive: true, force: true });
+    }
+    // Atomic rename: move temp to final
+    fs.renameSync(tempPath, agentPath);
     log('   ✓ Copied successfully', 'green');
   } catch (err) {
+    // Cleanup temp directory on failure
+    try {
+      if (fs.existsSync(tempPath)) {
+        fs.rmSync(tempPath, { recursive: true, force: true });
+      }
+    } catch {
+      // Cleanup failure is non-critical
+    }
     log(`   ✗ Failed to copy: ${err.message}`, 'red');
     process.exit(1);
   }
@@ -365,6 +423,13 @@ function updateCommand(updateOptions) {
   try {
     const updater = require('../lib/updater');
     const isDryRun = updateOptions.dryRun;
+
+    // M-1: Show version transition
+    const currentManifest = readJsonSafe(path.join(agentPath, 'manifest.json'), {});
+    const currentVersion = currentManifest.kitVersion || 'unknown';
+    if (currentVersion !== VERSION) {
+      log(`\n   📦 Upgrading from v${currentVersion} → v${VERSION}`, 'cyan');
+    }
 
     if (isDryRun) {
       log('\n🔍 Dry run mode — no changes will be made\n', 'cyan');
