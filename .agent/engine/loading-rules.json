@@ -118,7 +118,7 @@
   },
   "workflowBindings": [
     { "workflow": "brainstorm", "loadAgents": [], "loadSkills": ["brainstorming"], "bindingType": "inferred" },
-    { "workflow": "quality-gate", "loadAgents": [], "loadSkills": ["brainstorming"], "bindingType": "inferred" },
+    { "workflow": "quality-gate", "loadAgents": [], "loadSkills": ["brainstorming"], "loadRules": ["quality-gate"], "bindingType": "inferred" },
     { "workflow": "plan", "loadAgents": ["planner"], "loadSkills": ["plan-writing", "brainstorming", "plan-validation"], "bindingType": "explicit" },
     { "workflow": "create", "loadAgents": [], "loadSkills": ["app-builder", "clean-code"], "bindingType": "inferred" },
     { "workflow": "enhance", "loadAgents": [], "loadSkills": ["clean-code", "testing-patterns"], "bindingType": "inferred" },
@@ -140,7 +140,7 @@
   ],
   "planningMandates": {
     "description": "Mandatory resources loaded for every /plan invocation regardless of keyword matching. Ensures cross-cutting concerns are never omitted.",
-    "alwaysLoadRules": ["security", "testing", "coding-style", "documentation"],
+    "alwaysLoadRules": ["security", "testing", "coding-style", "documentation", "architecture"],
     "alwaysLoadSkills": ["security-practices", "testing-patterns"],
     "crossCuttingSections": [
       "security-considerations",

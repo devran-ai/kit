@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "kitVersion": "3.3.1",
-  "lastAuditedAt": "2026-03-16T00:30:00Z",
+  "kitVersion": "3.4.0",
+  "lastAuditedAt": "2026-03-16T05:47:00Z",
   "description": "Antigravity AI Kit — Trust-Grade AI Development Framework",
   "repository": "https://github.com/besync-labs/antigravity-ai-kit",
   "capabilities": {
@@ -87,6 +87,19 @@
         { "name": "status", "file": "workflows/status.md" },
         { "name": "test", "file": "workflows/test.md" },
         { "name": "ui-ux-pro-max", "file": "workflows/ui-ux-pro-max.md" }
+      ]
+    },
+    "rules": {
+      "count": 8,
+      "items": [
+        { "name": "architecture", "file": "rules/architecture.md" },
+        { "name": "coding-style", "file": "rules/coding-style.md" },
+        { "name": "documentation", "file": "rules/documentation.md" },
+        { "name": "git-workflow", "file": "rules/git-workflow.md" },
+        { "name": "quality-gate", "file": "rules/quality-gate.md" },
+        { "name": "security", "file": "rules/security.md" },
+        { "name": "sprint-tracking", "file": "rules/sprint-tracking.md" },
+        { "name": "testing", "file": "rules/testing.md" }
       ]
     }
   }

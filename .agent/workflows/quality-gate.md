@@ -190,6 +190,7 @@ If any of these conditions are met, **REJECT** the task:
 
 ## Related Resources
 
+- **Rule**: `.agent/rules/quality-gate.md` (enforcement principles for this workflow)
 - **Previous**: `/brainstorm` (explore options before validation)
 - **Next**: `/plan` (implementation planning after approval)
 - **Related**: `/retrospective` (post-sprint audit applies similar rigor)

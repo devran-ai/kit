@@ -95,4 +95,29 @@ describe('Structural Integrity — Inventory', () => {
     expect(skillBadge, 'README missing Skills badge').not.toBeNull();
     expect(Number(skillBadge[1])).toBe(manifest.capabilities.skills.count);
   });
+
+  // --- Rules Verification ---
+
+  it('should match rule count between manifest and filesystem', () => {
+    const ruleFiles = fs.readdirSync(path.join(AGENT_DIR, 'rules'))
+      .filter(f => f.endsWith('.md') && f !== 'README.md');
+    expect(ruleFiles.length).toBe(manifest.capabilities.rules.count);
+  });
+
+  it('should have a file for every declared rule', () => {
+    for (const rule of manifest.capabilities.rules.items) {
+      const rulePath = path.join(AGENT_DIR, rule.file);
+      expect(fs.existsSync(rulePath), `Missing rule: ${rule.file}`).toBe(true);
+    }
+  });
+
+  it('should not have undeclared rule files', () => {
+    const ruleFiles = fs.readdirSync(path.join(AGENT_DIR, 'rules'))
+      .filter(f => f.endsWith('.md') && f !== 'README.md');
+    const declaredNames = manifest.capabilities.rules.items.map(r => path.basename(r.file));
+
+    for (const file of ruleFiles) {
+      expect(declaredNames, `Undeclared rule file: ${file}`).toContain(file);
+    }
+  });
 });
