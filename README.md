@@ -7,15 +7,15 @@
 ![Commands](https://img.shields.io/badge/Commands-31-red)
 ![Workflows](https://img.shields.io/badge/Workflows-14-teal)
 ![Runtime Modules](https://img.shields.io/badge/Runtime%20Modules-29-blueviolet)
-![Tests](https://img.shields.io/badge/Tests-327%20passing-brightgreen)
-![Checklists](https://img.shields.io/badge/Checklists-3-yellow)
+![Tests](https://img.shields.io/badge/Tests-341%20passing-brightgreen)
+![Checklists](https://img.shields.io/badge/Checklists-4-yellow)
 
 <p align="center">
   <b>🎯 Transform Your IDE into an AI Engineering Team</b>
 </p>
 
 <p align="center">
-  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>29-module runtime engine</b>, <b>19 specialized agents</b>, <b>31 commands</b>, <b>32 skills</b>, and <b>14 workflows</b> — all backed by <b>327 tests</b> and governance-first principles.
+  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>29-module runtime engine</b>, <b>19 specialized agents</b>, <b>31 commands</b>, <b>32 skills</b>, and <b>14 workflows</b> — all backed by <b>341 tests</b> and governance-first principles.
 </p>
 
 <p align="center">

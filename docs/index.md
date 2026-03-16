@@ -14,8 +14,8 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 | 🛠️ **Skills**     | 32    | Domain knowledge modules (API, Testing, Plan Validation, Docker...)    |
 | ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
 | 🔄 **Workflows**  | 14    | Process templates (/create, /debug, /deploy, /test...)                 |
-| ✅ **Checklists** | 3     | Quality gates (session-start, session-end, pre-commit)                 |
-| 🔗 **Hooks**      | 7     | Event-driven automation (runtime + git-hook enforcement)               |
+| ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
+| 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
 | ⚙️ **Runtime**    | 29    | Runtime engine modules (governance, reputation, self-healing...)       |
 | ⚖️ **Rules**      | 8     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
 

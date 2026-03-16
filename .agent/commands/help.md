@@ -33,7 +33,7 @@ Your complete guide to the Antigravity AI Kit. Type `/help` for a quick overview
 | 🤖 Agents | 19 | Specialized AI roles for delegation |
 | 🛠️ Skills | 32 | Domain knowledge modules |
 | ⚖️ Rules | 8 | Modular governance constraints |
-| ✅ Checklists | 3 | Quality gate checklists |
+| ✅ Checklists | 4 | Quality gate checklists |
 | ⚙️ Runtime | 29 | Engine modules (governance, reputation, self-healing) |
 
 ### Getting Started

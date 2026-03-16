@@ -5,6 +5,52 @@ All notable changes to Antigravity AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.0] — 2026-03-16
+
+### Added
+
+#### Task-Complete Checkpoint
+- **CHECKPOINT phase** — New SDLC phase between VERIFY and REVIEW providing a developer decision gate with 8-option prompt before commit/push
+- **task-complete hook event** — 4-action runtime hook triggered after quality gates pass (8 hooks total)
+- **task-complete.md checklist** — Structured decision prompt with recommendation intelligence (sprint boundary, production impact, session duration)
+- **Task-Complete Protocol** — Added to GEMINI.md Session Protocol and rules.md Meta-Directives (F. Task-Complete Checkpoint Protocol)
+
+#### Version Synchronization Infrastructure
+- **version-sync.test.js** — 12 structural assertions verifying all version references match `package.json` SSOT on every `npm test` run
+- **sync-version.js** — Automated npm lifecycle script syncing 10 files on `npm version` commands
+- **npm lifecycle hooks** — `preversion` (runs tests), `version` (syncs files + stages) ensuring zero version drift
+
+### Changed
+
+- Workflow state machine: 7 → 8 phases, 13 → 15 transitions (added CHECKPOINT)
+- SDLC map: 6 → 7 phases with bidirectional checkpoint pointers
+- `WorkflowPhase` typedef: added CHECKPOINT to 9 valid phases
+- Manifest: `kitVersion` 3.5.0, checklists 3 → 4, hooks 7 → 8
+- README: 7-phase workflow diagram, updated capability counts
+- rules.md: Section renumbering (F → G → H) to accommodate new checkpoint protocol
+
+### Fixed
+
+- **14+ stale version references** across 12 files spanning 5 different versions (v2.0.0, v3.0.0, v3.1.0, v3.3.1, v3.4.1) synchronized to v3.5.0
+
+---
+
+## [3.4.1] — 2026-03-16
+
+### Added
+
+- **quality-gate.md** — Generic quality-gate governance rule for pre-task research and validation
+- **architecture.md** — Generic architecture governance rule for system design patterns and ADR management
+- Rules count: 6 → 8 across manifest, CheatSheet, and help.md
+
+### Fixed
+
+- Manifest `kitVersion` drift: `3.3.1` → `3.4.1` aligned with `package.json`
+- Skills count corrected: 31 → 32 in CheatSheet.md and help.md
+- Runtime modules count corrected: 21 → 29 in help.md
+
+---
+
 ## [3.3.1] — 2026-03-16
 
 ### Security
@@ -303,6 +349,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Session management architecture
 - PAAL continuous learning cycle
 
+[3.5.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.4.1...v3.5.0
+[3.4.1]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.3.1...v3.4.1
+[3.3.1]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.3.0...v3.3.1
 [3.3.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.2.0...v3.3.0
 [3.2.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.1.0...v3.2.0
 [3.1.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.0.1...v3.1.0
