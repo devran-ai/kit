@@ -82,7 +82,7 @@ You should see:
 /plan Add user authentication
 ```
 
-The Planner agent creates a detailed implementation plan.
+The Planner agent creates a validated implementation plan with quality scoring, cross-cutting concerns (security, testing, documentation), and tiered detail based on task complexity.
 
 ### 2. Review the Plan
 
@@ -108,7 +108,7 @@ Runs all quality gates: build, lint, test, coverage.
 
 - **[Agents](agents/index.md)** — 19 specialized AI agents
 - **[Commands](commands/index.md)** — 31 slash commands
-- **[Skills](skills/index.md)** — 31 domain expertise modules
+- **[Skills](skills/index.md)** — 32 domain expertise modules
 - **[Workflows](workflows/index.md)** — 14 development workflows
 - **[Session Management](session-management.md)** — Never lose context
 - **[Governance](governance/index.md)** — Operating constraints

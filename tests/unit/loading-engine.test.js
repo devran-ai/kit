@@ -66,7 +66,7 @@ describe('Loading Rules Engine', () => {
     const manySkills = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
     const result = engine.enforceContextBudget([], manySkills, ROOT);
 
-    expect(result.skills.length).toBeLessThanOrEqual(6);
+    expect(result.skills.length).toBeLessThanOrEqual(8);
     expect(result.trimmed).toBe(true);
   });
 
@@ -81,5 +81,115 @@ describe('Loading Rules Engine', () => {
     expect(plan).toHaveProperty('matchedDomains');
     expect(plan.budgetUsage).toHaveProperty('agentsUsed');
     expect(plan.budgetUsage).toHaveProperty('agentsMax');
+  });
+
+  // --- Planning-specific tests ---
+
+  describe('resolveForPlanning', () => {
+    it('should merge mandatory planning skills from planningMandates', async () => {
+      const engine = await loadEngine();
+      const result = engine.resolveForPlanning('Build a new dashboard widget', ROOT);
+
+      // Mandatory skills should always be present regardless of keyword match
+      expect(result.skills).toContain('security-practices');
+      expect(result.skills).toContain('testing-patterns');
+    });
+
+    it('should detect implicit security triggers during planning', async () => {
+      const engine = await loadEngine();
+      // "login form" contains "login" which is an implicit trigger for security domain
+      const result = engine.resolveForPlanning('Build a login form for users', ROOT);
+
+      expect(result.matchedDomains).toContain('security');
+      expect(result.agents).toContain('security-reviewer');
+      expect(result.skills).toContain('security-practices');
+    });
+
+    it('should detect implicit triggers for payment-related tasks', async () => {
+      const engine = await loadEngine();
+      const result = engine.resolveForPlanning('Add a checkout page with payment processing', ROOT);
+
+      expect(result.matchedDomains).toContain('security');
+    });
+
+    it('should return mandatory rules paths for planner reference', async () => {
+      const engine = await loadEngine();
+      const result = engine.resolveForPlanning('Refactor the user service', ROOT);
+
+      expect(result.mandatoryRules).toBeDefined();
+      expect(result.mandatoryRules.length).toBeGreaterThan(0);
+      expect(result.mandatoryRules.some((r) => r.includes('security.md'))).toBe(true);
+      expect(result.mandatoryRules.some((r) => r.includes('testing.md'))).toBe(true);
+    });
+
+    it('should not match implicit triggers for standard resolveForTask', async () => {
+      const engine = await loadEngine();
+      // "login" is an implicit trigger, not a keyword — resolveForTask should NOT match it
+      const result = engine.resolveForTask('Build a login form for users', ROOT);
+
+      // Only frontend should match (via "form" if it exists, but "login" is not a security keyword)
+      expect(result.matchedDomains).not.toContain('security');
+    });
+
+    it('should use word-boundary matching for implicit triggers (no false positives)', async () => {
+      const engine = await loadEngine();
+      // "form" is an implicit trigger but should NOT match inside "transform" or "performance"
+      const result = engine.resolveForPlanning('Transform the data and improve performance', ROOT);
+
+      // Security should NOT match — "form" appears inside other words, not as standalone
+      expect(result.matchedDomains).not.toContain('security');
+      // Mandatory skills should still be present (they are always injected)
+      expect(result.skills).toContain('security-practices');
+    });
+  });
+
+  describe('enforceContextBudget with protected items', () => {
+    it('should preserve protected skills during trimming', async () => {
+      const engine = await loadEngine();
+      const manySkills = ['security-practices', 'testing-patterns', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
+      const protectedItems = { agents: [], skills: ['security-practices', 'testing-patterns'] };
+      const result = engine.enforceContextBudget([], manySkills, ROOT, protectedItems);
+
+      expect(result.skills).toContain('security-practices');
+      expect(result.skills).toContain('testing-patterns');
+      expect(result.trimmed).toBe(true);
+    });
+
+    it('should trim non-protected items when over budget', async () => {
+      const engine = await loadEngine();
+      const manySkills = ['protected-a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
+      const protectedItems = { agents: [], skills: ['protected-a'] };
+      const result = engine.enforceContextBudget([], manySkills, ROOT, protectedItems);
+
+      expect(result.skills).toContain('protected-a');
+      expect(result.skills.length).toBeLessThanOrEqual(8);
+    });
+  });
+
+  describe('getLoadPlan with plan workflow', () => {
+    it('should use resolveForPlanning when workflow is plan', async () => {
+      const engine = await loadEngine();
+      const plan = engine.getLoadPlan('Build a login form', 'plan', ROOT);
+
+      // Should detect security via implicit triggers
+      expect(plan.matchedDomains).toContain('security');
+      // Should include mandatory rules
+      expect(plan.mandatoryRules).toBeDefined();
+      expect(plan.mandatoryRules.length).toBeGreaterThan(0);
+    });
+
+    it('should not include mandatoryRules for non-plan workflows', async () => {
+      const engine = await loadEngine();
+      const plan = engine.getLoadPlan('Build a login form', 'create', ROOT);
+
+      expect(plan.mandatoryRules).toBeUndefined();
+    });
+
+    it('should include plan-validation skill via workflow binding', async () => {
+      const engine = await loadEngine();
+      const plan = engine.getLoadPlan('Implement user authentication', 'plan', ROOT);
+
+      expect(plan.skills).toContain('plan-validation');
+    });
   });
 });

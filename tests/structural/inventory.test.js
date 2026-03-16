@@ -85,16 +85,14 @@ describe('Structural Integrity — Inventory', () => {
 
   it('should have README.md counts matching manifest', () => {
     const readme = fs.readFileSync(path.join(AGENT_DIR, '..', 'README.md'), 'utf-8');
-    
-    // Check that README contains the correct agent count
+
+    // Check that README contains the correct agent count (M-6: assert badge exists)
     const agentBadge = readme.match(/AI%20Agents-(\d+)/);
-    if (agentBadge) {
-      expect(Number(agentBadge[1])).toBe(manifest.capabilities.agents.count);
-    }
+    expect(agentBadge, 'README missing AI Agents badge').not.toBeNull();
+    expect(Number(agentBadge[1])).toBe(manifest.capabilities.agents.count);
 
     const skillBadge = readme.match(/Skills-(\d+)/);
-    if (skillBadge) {
-      expect(Number(skillBadge[1])).toBe(manifest.capabilities.skills.count);
-    }
+    expect(skillBadge, 'README missing Skills badge').not.toBeNull();
+    expect(Number(skillBadge[1])).toBe(manifest.capabilities.skills.count);
   });
 });

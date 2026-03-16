@@ -42,17 +42,29 @@ Framework for breaking down work into clear, actionable tasks with verification 
 
 ## Planning Principles
 
-> 🔴 **NO fixed templates. Each plan is UNIQUE to the task.**
+> 🔴 **NO fixed templates. Each plan's CONTENT is UNIQUE to the task.**
+> ✅ **Every plan MUST satisfy the quality schema in `plan-schema.md`.**
+> Dynamic content within a consistent structure = the standard.
 
-### Principle 1: Keep It SHORT
+### Principle 1: Right-Size to Task Tier
 
-| ❌ Wrong                    | ✅ Right              |
-| --------------------------- | --------------------- |
-| 50 tasks with sub-sub-tasks | 5-10 clear tasks max  |
-| Every micro-step listed     | Only actionable items |
-| Verbose descriptions        | One-line per task     |
+Plan length MUST match task complexity:
 
-> **Rule:** If plan is longer than 1 page, it's too long. Simplify.
+| Task Tier | Max Sections | Max Tasks | Guideline |
+| --------- | ------------ | --------- | --------- |
+| **Trivial** (1-2 files) | Tier 1 only (7 sections) | 5-8 tasks | ~1 page — concise, no specialist synthesis |
+| **Medium** (3-10 files) | Tier 1 + Tier 2 (15 sections) | 8-15 tasks | 2-3 pages — includes specialist input |
+| **Large** (10+ files) | Tier 1 + Tier 2 + domains (15+ sections) | 15-25 tasks | 3-5 pages — full multi-agent synthesis |
+
+| ❌ Wrong | ✅ Right |
+| -------- | -------- |
+| 50 tasks with sub-sub-tasks | Right-sized task count per tier |
+| Every micro-step listed | Only actionable items |
+| Verbose descriptions | One-line per task |
+| Large task crammed into 1 page | Large task gets full Tier 2 coverage |
+| Trivial task with 15 sections | Trivial task uses Tier 1 only |
+
+> **Rule:** Trivial tasks stay concise (~1 page). Medium/Large tasks expand to cover all required tier sections. Never sacrifice completeness for brevity on complex tasks.
 
 ---
 
@@ -95,6 +107,33 @@ Framework for breaking down work into clear, actionable tasks with verification 
 | "Verify the component works" | "Run `npm run dev`, click button, see toast" |
 | "Test the API"               | "curl localhost:3000/api/users returns 200"  |
 | "Check styles"               | "Open browser, verify dark mode works"       |
+
+---
+
+### Principle 5: Cross-Cutting Concerns Are Mandatory
+
+Every plan MUST explicitly address:
+
+1. **Security**: Reference `.agent/rules/security.md` — what security implications exist?
+2. **Testing**: Reference `.agent/rules/testing.md` — what test types are needed? Coverage targets?
+3. **Documentation**: Reference `.agent/rules/documentation.md` — which docs need updating?
+
+If a concern is genuinely not applicable, state `N/A — [one-line justification]`.
+
+**NEVER silently omit these sections.** Silent omission is a plan defect.
+
+---
+
+### Principle 6: Schema Compliance
+
+Every plan MUST satisfy the quality schema defined in `plan-schema.md`:
+
+- **Tier 1** sections are ALWAYS required. Omitting any Tier 1 section is a plan defect.
+- **Tier 2** sections are required for Medium and Large tasks (3+ files or 1+ hours).
+- Before presenting a plan, validate it against the schema checklist.
+- Plans scoring below 70% of their tier maximum must be revised before presentation.
+
+See also: `domain-enhancers.md` for domain-specific plan sections.
 
 ---
 

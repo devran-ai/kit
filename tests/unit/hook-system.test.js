@@ -10,15 +10,16 @@ async function loadHookSystem() {
 }
 
 describe('Hook Trigger System', () => {
-  it('should list all 6 hook events', async () => {
+  it('should list all 7 hook events', async () => {
     const hooks = await loadHookSystem();
     const events = hooks.listEvents(ROOT);
 
-    expect(events.length).toBe(6);
+    expect(events.length).toBe(7);
     expect(events.map((e) => e.event)).toContain('session-start');
     expect(events.map((e) => e.event)).toContain('session-end');
     expect(events.map((e) => e.event)).toContain('pre-commit');
     expect(events.map((e) => e.event)).toContain('phase-transition');
+    expect(events.map((e) => e.event)).toContain('plan-complete');
   });
 
   it('should return actions for session-start event', async () => {
@@ -91,7 +92,7 @@ describe('Hook Trigger System', () => {
     expect(report).toHaveProperty('events');
     expect(report).toHaveProperty('totalActions');
     expect(report).toHaveProperty('readyCount');
-    expect(report.events.length).toBe(6);
+    expect(report.events.length).toBe(7);
     expect(report.totalActions).toBeGreaterThan(0);
   });
 });

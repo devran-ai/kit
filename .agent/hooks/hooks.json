@@ -78,6 +78,16 @@
         { "action": "Identify carry-over candidates", "severity": "medium", "onFailure": "log" },
         { "action": "Produce sprint retrospective if ending", "severity": "high", "onFailure": "warn" }
       ]
+    },
+    {
+      "event": "plan-complete",
+      "description": "Triggered when a planned task reaches VERIFY phase. Runs plan retrospective to measure accuracy and feed learnings back into future planning.",
+      "enforcement": "runtime",
+      "actions": [
+        { "action": "Run plan-retrospective against original plan document (compare predicted vs actual files, tasks, estimates)", "severity": "medium", "onFailure": "log" },
+        { "action": "Append retrospective findings to contexts/plan-quality-log.md", "severity": "low", "onFailure": "log" },
+        { "action": "Extract learnings for continuous-learning skill (PAAL cycle)", "severity": "low", "onFailure": "log" }
+      ]
     }
   ]
 }

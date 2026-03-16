@@ -9,12 +9,15 @@ import path from 'path';
  * workflow-state.json transitions are correctly enforced.
  */
 
+const crypto = await import('crypto');
+
 const ROOT = path.resolve(import.meta.dirname, '../..');
 
-// Use a temp directory for isolated testing
-const TMP_PROJECT = path.join(ROOT, 'tests', '.tmp-workflow-test');
-const STATE_DIR = path.join(TMP_PROJECT, '.agent', 'engine');
-const STATE_FILE = path.join(STATE_DIR, 'workflow-state.json');
+// Use a UNIQUE temp directory for each test run to prevent race conditions
+// when Vitest runs test files in parallel threads
+let TMP_PROJECT;
+let STATE_DIR;
+let STATE_FILE;
 
 /** @returns {object} A fresh workflow state for testing */
 function createTestState() {
@@ -71,6 +74,10 @@ async function loadEngine() {
 
 describe('Workflow Engine — Transition Enforcement', () => {
   beforeEach(() => {
+    const uniqueId = crypto.randomUUID();
+    TMP_PROJECT = path.join(ROOT, 'tests', `.tmp-workflow-test-${uniqueId}`);
+    STATE_DIR = path.join(TMP_PROJECT, '.agent', 'engine');
+    STATE_FILE = path.join(STATE_DIR, 'workflow-state.json');
     setupTestProject();
   });
 

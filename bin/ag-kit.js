@@ -525,26 +525,28 @@ const options = {
   file: null,
 };
 
-// Parse --path option with traversal protection
+// Parse --path option with traversal protection (H-7: use path.resolve boundary check)
 const pathIndex = args.indexOf('--path');
 if (pathIndex !== -1 && args[pathIndex + 1]) {
-  const rawPath = args[pathIndex + 1];
-  if (rawPath.includes('..')) {
-    log('Error: --path must not contain ".." segments', 'red');
+  const resolvedPath = path.resolve(args[pathIndex + 1]);
+  const cwd = process.cwd();
+  if (!resolvedPath.startsWith(cwd + path.sep) && resolvedPath !== cwd) {
+    log('Error: --path must resolve within current working directory', 'red');
     process.exit(1);
   }
-  options.path = path.resolve(rawPath);
+  options.path = resolvedPath;
 }
 
-// Parse --file option with traversal protection
+// Parse --file option with traversal protection (H-7: use path.resolve boundary check)
 const fileIndex = args.indexOf('--file');
 if (fileIndex !== -1 && args[fileIndex + 1]) {
-  const rawFile = args[fileIndex + 1];
-  if (rawFile.includes('..')) {
-    log('Error: --file must not contain ".." segments', 'red');
+  const resolvedFile = path.resolve(args[fileIndex + 1]);
+  const cwdForFile = process.cwd();
+  if (!resolvedFile.startsWith(cwdForFile + path.sep) && resolvedFile !== cwdForFile) {
+    log('Error: --file must resolve within current working directory', 'red');
     process.exit(1);
   }
-  options.file = path.resolve(rawFile);
+  options.file = resolvedFile;
 }
 
 // Execute command

@@ -5,6 +5,88 @@ All notable changes to Antigravity AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] — 2026-03-16
+
+### Added
+
+#### Multi-Agent Plan Synthesis Pipeline
+- **Plan Quality Schema** (`plan-schema.md`) — Tiered scoring rubric (Tier 1: 60 pts, Tier 2: 80 pts) with domain enhancement bonus/penalty scoring
+- **Domain Enhancers** (`domain-enhancers.md`) — Domain-specific plan sections for frontend, backend, database, DevOps, and security
+- **Plan Validation Skill** (`plan-validation/SKILL.md`) — Quality gate with schema compliance, cross-cutting verification, specificity audit, and completeness scoring (70% pass threshold)
+- **Plan Retrospective** (`plan-retrospective.md`) — Post-implementation accuracy review comparing predicted vs actual files, tasks, estimates, and risks
+- **Plan Quality Log** (`contexts/plan-quality-log.md`) — Persistent accuracy log enabling adaptive learning across planning sessions
+
+#### Loading Engine Enhancements
+- `planningMandates` in `loading-rules.json` — Mandatory rules (security, testing, coding-style, documentation) always loaded during planning
+- `implicitTriggers` for security domain — Word-boundary regex matching for security-sensitive terms (login, payment, upload, admin, etc.)
+- `resolveForPlanning()` function in `loading-engine.js` — Planning-specific resolution with mandatory skill merging
+- Protected budget enforcement — Mandatory planning skills survive context budget trimming via `protectedItems` parameter
+- Context budget increased: `maxSkillsPerSession` 6 → 8
+
+#### Runtime Engine
+- `lib/io.js` — Centralized I/O module replacing scattered `fs` calls across runtime modules
+- `plan-complete` hook in `hooks.json` — Fires on VERIFY phase transition, triggers retrospective and learning extraction
+
+#### Test Suite (327 tests, +11 from v3.1.0)
+- 7 new loading-engine tests (resolveForPlanning, implicit triggers, protected budget, plan workflow routing)
+- 4 new structural/schema validation tests for plan-validation skill and plan-quality-log
+
+### Changed
+
+#### Planner Agent (`planner.md`) — Major Enhancement
+- Added Rule Consultation step (1.5) — Mandatory review of all governance rules with structured extraction algorithm
+- Added Specialist Synthesis step (3.5) — Explicit invocation protocol with input/output format per specialist and conflict resolution priority (Security > Testing > Architecture)
+- Added Domain Enhancement step (4.5) — `matchedDomains` data flow from loading engine with labeled domain sections
+- Added Self-Validation checklist — 8-point quality check before user presentation
+- Updated plan output format — Full tiered schema with all Tier 1 and Tier 2 sections
+- Added adaptive learning — Planner reads `plan-quality-log.md` for historical drift and blind spot compensation
+
+#### Plan Writing Skill (`plan-writing/SKILL.md`)
+- Replaced "1 page max" with tier-aware sizing (Trivial: ~1 page, Medium: 2-3 pages, Large: 3-5 pages)
+- Added Principle 5: Cross-Cutting Concerns Are Mandatory
+- Added Principle 6: Schema Compliance
+- Clarified "no fixed templates" — dynamic content within consistent structure
+
+#### Plan Workflow (`plan.md`) — v2.1.0 → v2.2.0
+- Added validation step (3.5) with 6-step self-validation procedure
+- Added `matchedDomains` and `mandatoryRules` data flow from loading engine
+- Added Post-Implementation Retrospective section
+- Updated completion criteria with domain coverage and retrospective logging
+
+#### Loading Rules (`loading-rules.json`)
+- Specialist contributors updated: security-reviewer and tdd-guide use `crossCuttingAlways: true` flag (cross-cutting sections always required, full specialist invocation for Medium+ only)
+- Plan workflow binding updated to include `plan-validation` skill
+
+#### Manifest & Counts
+- Skills: 31 → 32 (added plan-validation)
+- Hooks: 6 → 7 (added plan-complete)
+- Tests: 261 → 327 (25 → 32 test files)
+
+### Fixed
+
+#### Architectural Audit (18 fixes)
+- **C-1**: Manifest `kitVersion` drift — aligned with `package.json`
+- **H-1 through H-9**: High-severity fixes including orphan skill registration, schema validation gaps, missing test coverage, and broken cross-references
+- **M-1 through M-8**: Medium-severity fixes including stale counts, incorrect categorizations, and documentation drift
+
+#### Plan Generation Pipeline (9 gap fixes)
+- GAP 1: Specialist invocation protocol — explicit input/output format replacing vague "contribute" language
+- GAP 2: Plan-validation self-check — clarified as planner self-validation, not separate agent
+- GAP 3: `matchedDomains` data flow — explicit 6-step process from loading engine to planner
+- GAP 4: Retrospective trigger mechanism — concrete hook, data source, and planner integration
+- GAP 5: Unified cross-cutting enforcement — always required via rules, full specialist for Medium+
+- GAP 6: Rule extraction algorithm — 4-step assessment with applicability criteria table
+- GAP 7: Domain enhancement scoring — +2 bonus/-2 penalty per matched domain in plan-validation
+- GAP 8: Missing Tier 2 sections — added API/Data Model, Observability, Performance, Dependencies to output format
+- GAP 9: Tier-aware plan sizing — replaced fixed "1 page max" with tier-proportional sizing
+
+#### Documentation Sync
+- README.md — 7 stale references updated (context budget, skill count, test count, descriptions)
+- docs/index.md — 5 stale references updated (skills, hooks, runtime counts)
+- docs/architecture.md — 8 stale references updated (version, diagram counts, hook names, module counts)
+- docs/getting-started.md — Skills count 31 → 32, planner description updated
+- docs/agents/planner.md — Complete rewrite reflecting multi-agent synthesis pipeline
+
 ## [3.1.0] — 2026-03-15
 
 ### Added
@@ -150,6 +232,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Session management architecture
 - PAAL continuous learning cycle
 
+[3.2.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.1.0...v3.2.0
 [3.1.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.0.1...v3.1.0
 [3.0.1]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v2.1.0...v3.0.0

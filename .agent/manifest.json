@@ -34,7 +34,7 @@
       "directory": "commands/"
     },
     "skills": {
-      "count": 31,
+      "count": 32,
       "items": [
         { "name": "api-patterns", "directory": "skills/api-patterns/" },
         { "name": "app-builder", "directory": "skills/app-builder/" },
@@ -58,6 +58,7 @@
         { "name": "nodejs-patterns", "directory": "skills/nodejs-patterns/" },
         { "name": "parallel-agents", "directory": "skills/parallel-agents/" },
         { "name": "performance-profiling", "directory": "skills/performance-profiling/" },
+        { "name": "plan-validation", "directory": "skills/plan-validation/" },
         { "name": "plan-writing", "directory": "skills/plan-writing/" },
         { "name": "security-practices", "directory": "skills/security-practices/" },
         { "name": "strategic-compact", "directory": "skills/strategic-compact/" },

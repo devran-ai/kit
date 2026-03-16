@@ -1,6 +1,6 @@
 # Architecture
 
-Antigravity AI Kit v3.1.0 is an engineered framework with a **21-module runtime engine**, 19 agents, 31 skills, 31 commands, and 14 workflows.
+Antigravity AI Kit v3.2.0 is an engineered framework with a **29-module runtime engine**, 19 agents, 32 skills, 31 commands, and 14 workflows.
 
 ---
 
@@ -8,11 +8,11 @@ Antigravity AI Kit v3.1.0 is an engineered framework with a **21-module runtime 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      ANTIGRAVITY AI KIT v3.1.0                       │
+│                      ANTIGRAVITY AI KIT v3.2.0                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
-│  │   19 AGENTS     │  │   31 COMMANDS   │  │   31 SKILLS     │      │
+│  │   19 AGENTS     │  │   31 COMMANDS   │  │   32 SKILLS     │      │
 │  │                 │  │                 │  │                 │      │
 │  │ • Architect     │  │ • /plan         │  │ • api-patterns  │      │
 │  │ • Mobile Dev    │  │ • /implement    │  │ • architecture  │      │
@@ -36,11 +36,11 @@ Antigravity AI Kit v3.1.0 is an engineered framework with a **21-module runtime 
 │           ▼                                      ▼                   │
 │  ┌─────────────────┐                   ┌─────────────────┐          │
 │  │     RULES       │                   │     HOOKS       │          │
-│  │  (Governance)   │                   │  (6 Lifecycle)  │          │
+│  │  (Governance)   │                   │  (7 Lifecycle)  │          │
 │  └─────────────────┘                   └─────────────────┘          │
 │                                                                      │
 │  ┌─────────────────────────────────────────────────────────┐        │
-│  │              RUNTIME ENGINE (21 modules)                 │        │
+│  │              RUNTIME ENGINE (29 modules)                 │        │
 │  │  workflow-engine • session-manager • task-governance      │        │
 │  │  agent-reputation • self-healing • marketplace            │        │
 │  │  plugin-system • identity • conflict-detector • + 12      │        │
@@ -70,13 +70,14 @@ Slash commands for quick execution of common operations.
 - **Development**: /build, /fix, /debug, /refactor, /cook
 - **Quality**: /verify, /code-review, /security-scan, /perf
 
-### Skills (31)
+### Skills (32)
 
 Domain expertise modules that extend AI capabilities.
 
 - **Operational**: verification-loop, continuous-learning, strategic-compact, eval-harness, context-budget
 - **Orchestration**: intelligent-routing, parallel-agents, behavioral-modes, mcp-integration
-- **Domain**: api-patterns, architecture, clean-code, database-design, testing-patterns, and 17 more
+- **Planning**: plan-writing (tiered quality schema), plan-validation (completeness scoring), brainstorming
+- **Domain**: api-patterns, architecture, clean-code, database-design, testing-patterns, and 15 more
 
 ### Workflows (14)
 
@@ -86,7 +87,7 @@ Complete development lifecycles for multi-step processes.
 - /plan, /preview, /quality-gate, /retrospective, /review
 - /status, /test, /ui-ux-pro-max
 
-### Runtime Engine (21 Modules)
+### Runtime Engine (29 Modules)
 
 Node.js runtime modules that enforce governance, manage state, and provide platform features.
 
@@ -100,7 +101,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 ### Rules & Hooks
 
 - **Rules** (8): Modular governance constraints (coding, security, testing, git, docs, sprint + 2 architecture files)
-- **Hooks** (6): Event-driven automation (session-start, session-end, pre-commit, post-deploy, pre-task, post-task)
+- **Hooks** (7): Event-driven automation (session-start, session-end, pre-commit, phase-transition, sprint-checkpoint, secret-detection, plan-complete)
 
 ---
 
@@ -110,7 +111,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 .agent/
 ├── agents/               # 19 specialized agents
 ├── commands/             # 31 slash commands
-├── skills/               # 31 capability modules
+├── skills/               # 32 capability modules
 ├── workflows/            # 14 process templates
 ├── engine/               # Autonomy Engine configs
 ├── hooks/                # Event automation
@@ -119,7 +120,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 ├── templates/            # Feature templates
 └── decisions/            # ADR system
 
-lib/                      # Runtime Engine (21 modules)
+lib/                      # Runtime Engine (29 modules)
 ├── workflow-engine.js    # State machine enforcement
 ├── task-governance.js    # Locking, audit trail, decision timeline
 ├── agent-reputation.js   # Score tracking & rankings
@@ -127,7 +128,7 @@ lib/                      # Runtime Engine (21 modules)
 ├── marketplace.js        # Community skill marketplace
 └── + 16 more modules     # Identity, plugins, hooks, registry...
 
-tests/                    # 261 tests (25 files)
+tests/                    # 327 tests (32 files)
 ├── unit/                 # 21 module tests
 ├── structural/           # Inventory + schema validation
 └── security/             # Injection scan + leakage detection

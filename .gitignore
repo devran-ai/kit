@@ -22,6 +22,8 @@ build/
 
 # Test cache
 coverage/
+.vite/
+tests/.tmp-*/
 
 # Archives — internal reference docs, not for public repo
 docs/archives/

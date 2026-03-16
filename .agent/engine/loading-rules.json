@@ -13,6 +13,11 @@
     {
       "domain": "security",
       "keywords": ["auth", "security", "vulnerability", "password", "jwt", "oauth", "cors", "xss", "csrf", "injection"],
+      "implicitTriggers": [
+        "login", "signup", "register", "form", "payment", "checkout",
+        "user data", "profile", "upload", "download", "admin", "dashboard",
+        "permission", "role", "token", "session", "cookie"
+      ],
       "loadAgents": ["security-reviewer"],
       "loadSkills": ["security-practices"]
     },
@@ -91,14 +96,14 @@
   ],
   "contextBudget": {
     "maxAgentsPerSession": 4,
-    "maxSkillsPerSession": 6,
+    "maxSkillsPerSession": 8,
     "warningThresholdPercent": 80,
     "description": "Limits prevent context overflow. The kit selects only domain-relevant agents and skills for each task, keeping within the LLM context window."
   },
   "workflowBindings": [
     { "workflow": "brainstorm", "loadAgents": [], "loadSkills": ["brainstorming"], "bindingType": "inferred" },
     { "workflow": "quality-gate", "loadAgents": [], "loadSkills": ["brainstorming"], "bindingType": "inferred" },
-    { "workflow": "plan", "loadAgents": ["planner"], "loadSkills": ["plan-writing", "brainstorming"], "bindingType": "explicit" },
+    { "workflow": "plan", "loadAgents": ["planner"], "loadSkills": ["plan-writing", "brainstorming", "plan-validation"], "bindingType": "explicit" },
     { "workflow": "create", "loadAgents": [], "loadSkills": ["app-builder", "clean-code"], "bindingType": "inferred" },
     { "workflow": "enhance", "loadAgents": [], "loadSkills": ["clean-code", "testing-patterns"], "bindingType": "inferred" },
     { "workflow": "preview", "loadAgents": [], "loadSkills": ["shell-conventions"], "bindingType": "inferred" },
@@ -116,5 +121,34 @@
     },
     { "workflow": "retrospective", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" },
     { "workflow": "status", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" }
-  ]
+  ],
+  "planningMandates": {
+    "description": "Mandatory resources loaded for every /plan invocation regardless of keyword matching. Ensures cross-cutting concerns are never omitted.",
+    "alwaysLoadRules": ["security", "testing", "coding-style", "documentation"],
+    "alwaysLoadSkills": ["security-practices", "testing-patterns"],
+    "crossCuttingSections": [
+      "security-considerations",
+      "testing-strategy",
+      "rollback-strategy",
+      "documentation-updates"
+    ],
+    "specialistContributors": {
+      "architect": {
+        "contributes": "architecture-impact",
+        "triggerWhen": "medium-or-large-task"
+      },
+      "security-reviewer": {
+        "contributes": "threat-assessment",
+        "triggerWhen": "medium-or-large-task",
+        "crossCuttingAlways": true,
+        "note": "Cross-cutting security section (Tier 1) is always required via rule consultation. Full specialist invocation with STRIDE model is for Medium+ tasks."
+      },
+      "tdd-guide": {
+        "contributes": "test-strategy",
+        "triggerWhen": "medium-or-large-task",
+        "crossCuttingAlways": true,
+        "note": "Cross-cutting testing section (Tier 1) is always required via rule consultation. Full specialist invocation with test matrix is for Medium+ tasks."
+      }
+    }
+  }
 }
