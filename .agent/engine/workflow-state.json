@@ -37,6 +37,15 @@
       "startedAt": null,
       "completedAt": null
     },
+    "CHECKPOINT": {
+      "status": "pending",
+      "description": "Developer decision gate — presents completion options before commit/push",
+      "checklist": "checklists/task-complete.md",
+      "artifact": null,
+      "startedAt": null,
+      "completedAt": null,
+      "requiresApproval": true
+    },
     "REVIEW": {
       "status": "pending",
       "description": "Code review and security audit",
@@ -95,7 +104,7 @@
     },
     {
       "from": "VERIFY",
-      "to": "REVIEW",
+      "to": "CHECKPOINT",
       "trigger": "Quality gates pass",
       "guard": "All quality gates pass (build, lint, test)"
     },
@@ -104,6 +113,18 @@
       "to": "IMPLEMENT",
       "trigger": "Quality gates fail",
       "guard": "One or more quality gates failed"
+    },
+    {
+      "from": "CHECKPOINT",
+      "to": "REVIEW",
+      "trigger": "Developer chooses review/commit",
+      "guard": "Developer selects review or commit option"
+    },
+    {
+      "from": "CHECKPOINT",
+      "to": "IMPLEMENT",
+      "trigger": "Developer chooses continue working",
+      "guard": "Developer selects continue or batch option"
     },
     {
       "from": "REVIEW",

@@ -1,6 +1,6 @@
 # 🚀 Antigravity AI Kit
 
-![version](https://img.shields.io/badge/version-3.3.1-blue)
+![version](https://img.shields.io/badge/version-3.5.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![AI Agents](https://img.shields.io/badge/AI%20Agents-19-purple)
 ![Skills](https://img.shields.io/badge/Skills-32-orange)
@@ -60,9 +60,9 @@
 | ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
 | 🔄 **Workflows**  | 14    | Process templates (/create, /debug, /deploy, /test...)                 |
 | ⚙️ **Runtime**    | 29    | Runtime engine modules (governance, reputation, self-healing...)       |
-| ✅ **Checklists** | 3     | Quality gates (session-start, session-end, pre-commit)                 |
+| ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | ⚖️ **Rules**      | 8     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
-| 🔗 **Hooks**      | 7     | Event-driven automation (runtime + git-hook enforcement)               |
+| 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
 | 🧪 **Tests**      | 327   | Unit, structural, integration, and security tests (32 test files)      |
 
 ---
@@ -188,10 +188,10 @@ Antigravity AI Kit is designed to **never touch your project files**. All operat
 
 ### How It Works: The Autonomy Engine
 
-Antigravity AI Kit uses a **6-phase workflow state machine** that guides development:
+Antigravity AI Kit uses a **7-phase workflow state machine** that guides development:
 
 ```
-EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY
+EXPLORE → PLAN → IMPLEMENT → VERIFY → CHECKPOINT → REVIEW → DEPLOY
 ```
 
 | Phase | What Happens | Transition Guard |
@@ -200,6 +200,7 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY
 | **PLAN** | Implementation plan with user approval | Plan approved by user |
 | **IMPLEMENT** | Code generation with agent routing | Auto on commit |
 | **VERIFY** | Quality gates, tests, lint | All gates pass |
+| **CHECKPOINT** | Developer decision gate | Explicit developer choice |
 | **REVIEW** | Code review (human or Copilot) | Review approved |
 | **DEPLOY** | Production deployment | Deployment checklist complete |
 
@@ -635,9 +636,9 @@ antigravity-ai-kit/
 │   ├── skills/               # 32 capability modules
 │   ├── workflows/            # 14 process templates
 │   ├── engine/               # Autonomy Engine (state machine, loading rules, configs)
-│   ├── hooks/                # 7 event hooks (runtime + git-hook)
+│   ├── hooks/                # 8 event hooks (runtime + git-hook)
 │   ├── rules/                # 8 modular governance rules
-│   ├── checklists/           # Verification checklists (3)
+│   ├── checklists/           # Verification checklists (4)
 │   ├── templates/            # ADR, feature-request, bug-report templates
 │   ├── decisions/            # Architecture Decision Records
 │   └── manifest.json         # Machine-readable capability registry
@@ -728,7 +729,7 @@ Want to use Antigravity AI Kit in your project? The **[Contributor Guide](https:
 - Context-driven development from [Google Conductor](https://developers.googleblog.com/en/conductor-introducing-context-driven-development-for-gemini-cli/)
 - Hook concepts from [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
 
-_Antigravity AI Kit v3.2.0 extends these foundations with a 29-module runtime engine, Trust-Grade governance, session management, and 100+ capabilities._
+_Antigravity AI Kit v3.5.0 extends these foundations with a 29-module runtime engine, Trust-Grade governance, session management, and 100+ capabilities._
 
 ---
 

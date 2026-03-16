@@ -1,6 +1,6 @@
 # Antigravity AI Kit — CheatSheet
 
-> **Version**: v3.1.0 | **Quick Reference** for all capabilities
+> **Version**: v3.5.0 | **Quick Reference** for all capabilities
 > **Session**: Start with `/status`, end with session-end checklist
 
 ---
@@ -138,7 +138,7 @@
 
 ---
 
-## 🧩 Skills (31)
+## 🧩 Skills (32)
 
 ### Operational (5)
 
@@ -234,7 +234,7 @@
 
 ---
 
-## ⚖️ Governance Rules (6)
+## ⚖️ Governance Rules (8)
 
 | Rule File | Scope |
 |:----------|:------|
@@ -244,6 +244,8 @@
 | `git-workflow.md` | Commits, branches, push policy |
 | `documentation.md` | Doc hierarchy, SSOT, preservation |
 | `sprint-tracking.md` | ROADMAP.md as SSOT, session protocols |
+| `quality-gate.md` | Pre-task validation and quality standards |
+| `architecture.md` | System design patterns and ADR governance |
 
 ---
 

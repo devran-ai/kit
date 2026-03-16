@@ -13,7 +13,7 @@ Your complete guide to the Antigravity AI Kit. Type `/help` for a quick overview
 /help commands         # All 31 slash commands with descriptions
 /help workflows        # All 14 workflows with descriptions
 /help agents           # All 19 AI agents with domains
-/help skills           # All 31 skill modules
+/help skills           # All 32 skill modules
 /help rules            # Governance rules
 /help checklists       # Quality gate checklists
 /help cli              # Terminal CLI commands (ag-kit)
@@ -24,17 +24,17 @@ Your complete guide to the Antigravity AI Kit. Type `/help` for a quick overview
 
 ## Quick Overview
 
-**Antigravity AI Kit v3.0.0** — Trust-Grade AI Development Framework
+**Antigravity AI Kit v3.5.0** — Trust-Grade AI Development Framework
 
 | Category | Count | Description |
 |:---------|:------|:------------|
 | ⌨️ Commands | 31 | Slash commands for every development task |
 | 🔄 Workflows | 14 | Multi-step development lifecycles |
 | 🤖 Agents | 19 | Specialized AI roles for delegation |
-| 🛠️ Skills | 31 | Domain knowledge modules |
-| ⚖️ Rules | 4 | Immutable governance constraints |
+| 🛠️ Skills | 32 | Domain knowledge modules |
+| ⚖️ Rules | 8 | Modular governance constraints |
 | ✅ Checklists | 3 | Quality gate checklists |
-| ⚙️ Runtime | 21 | Engine modules (governance, reputation, self-healing) |
+| ⚙️ Runtime | 29 | Engine modules (governance, reputation, self-healing) |
 
 ### Getting Started
 
@@ -174,7 +174,7 @@ Agents are specialized AI roles. They are automatically activated based on task 
 
 ---
 
-## Skills (31)
+## Skills (32)
 
 Skills are domain knowledge modules that agents use. They are loaded automatically based on task context.
 
@@ -194,9 +194,9 @@ Skills are domain knowledge modules that agents use. They are loaded automatical
 
 ---
 
-## Rules (4)
+## Rules (8)
 
-Rules are immutable governance constraints that all agents must follow.
+Rules are modular governance constraints that all agents must follow.
 
 | Rule | Purpose |
 |:-----|:--------|
@@ -204,6 +204,10 @@ Rules are immutable governance constraints that all agents must follow.
 | `git-workflow` | Conventional commits, atomic changes, branch strategy |
 | `security` | Secret management, input validation, OWASP |
 | `testing` | Test-first, coverage targets, test naming |
+| `documentation` | Doc hierarchy, SSOT, preservation |
+| `sprint-tracking` | ROADMAP.md as SSOT, session protocols |
+| `quality-gate` | Pre-task validation and quality standards |
+| `architecture` | System design patterns and ADR governance |
 
 ---
 

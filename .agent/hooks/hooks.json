@@ -88,6 +88,17 @@
         { "action": "Append retrospective findings to contexts/plan-quality-log.md", "severity": "low", "onFailure": "log" },
         { "action": "Extract learnings for continuous-learning skill (PAAL cycle)", "severity": "low", "onFailure": "log" }
       ]
+    },
+    {
+      "event": "task-complete",
+      "description": "Triggered after quality gates pass. Presents developer with structured decision options before commit/push.",
+      "enforcement": "runtime",
+      "actions": [
+        { "action": "Present task completion decision prompt to developer", "severity": "critical", "onFailure": "block" },
+        { "action": "Evaluate change scope for recommendations (sprint boundary, production impact, session duration)", "severity": "high", "onFailure": "warn" },
+        { "action": "Check if tracking files (ROADMAP, session-context, session-state) need updating", "severity": "medium", "onFailure": "warn" },
+        { "action": "Suggest session-end protocol if session has accumulated significant changes", "severity": "low", "onFailure": "log" }
+      ]
     }
   ]
 }

@@ -30,6 +30,7 @@ function createTestState() {
       PLAN: { status: 'pending', description: 'Planning', startedAt: null, completedAt: null, artifact: null },
       IMPLEMENT: { status: 'pending', description: 'Implementation', startedAt: null, completedAt: null, artifact: null },
       VERIFY: { status: 'pending', description: 'Verification', startedAt: null, completedAt: null, artifact: null },
+      CHECKPOINT: { status: 'pending', description: 'Decision gate', startedAt: null, completedAt: null, artifact: null },
       REVIEW: { status: 'pending', description: 'Review', startedAt: null, completedAt: null, artifact: null },
       DEPLOY: { status: 'pending', description: 'Deployment', startedAt: null, completedAt: null, artifact: null },
       MAINTAIN: { status: 'pending', description: 'Maintenance', startedAt: null, completedAt: null, artifact: null },
@@ -40,8 +41,10 @@ function createTestState() {
       { from: 'EXPLORE', to: 'PLAN', trigger: 'Discovery complete', guard: 'Artifact exists' },
       { from: 'PLAN', to: 'IMPLEMENT', trigger: 'Plan approved', guard: 'Approved by user' },
       { from: 'IMPLEMENT', to: 'VERIFY', trigger: 'Implementation complete', guard: 'All items complete' },
-      { from: 'VERIFY', to: 'REVIEW', trigger: 'Quality gates pass', guard: 'All gates pass' },
+      { from: 'VERIFY', to: 'CHECKPOINT', trigger: 'Quality gates pass', guard: 'All gates pass' },
       { from: 'VERIFY', to: 'IMPLEMENT', trigger: 'Quality gates fail', guard: 'Gates failed' },
+      { from: 'CHECKPOINT', to: 'REVIEW', trigger: 'Developer chooses review/commit', guard: 'Developer selects option' },
+      { from: 'CHECKPOINT', to: 'IMPLEMENT', trigger: 'Developer chooses continue working', guard: 'Developer selects continue' },
       { from: 'REVIEW', to: 'DEPLOY', trigger: 'Review approved', guard: 'No critical findings' },
       { from: 'REVIEW', to: 'IMPLEMENT', trigger: 'Changes requested', guard: 'Critical findings' },
       { from: 'DEPLOY', to: 'MAINTAIN', trigger: 'Health check passes', guard: 'Healthy' },
@@ -93,7 +96,7 @@ describe('Workflow Engine — Transition Enforcement', () => {
 
     expect(state.schemaVersion).toBe('1.0.0');
     expect(state.currentPhase).toBe('IDLE');
-    expect(state.transitions).toHaveLength(13);
+    expect(state.transitions).toHaveLength(15);
   });
 
   it('should return current phase as IDLE for fresh state', async () => {
@@ -216,18 +219,19 @@ describe('Workflow Engine — Transition Enforcement', () => {
   it('should support multi-step workflow path', async () => {
     const engine = await loadEngine();
 
-    // Full happy path: IDLE → EXPLORE → PLAN → IMPLEMENT → VERIFY → REVIEW → DEPLOY → MAINTAIN → IDLE
+    // Full happy path: IDLE → EXPLORE → PLAN → IMPLEMENT → VERIFY → CHECKPOINT → REVIEW → DEPLOY → MAINTAIN → IDLE
     expect(engine.executeTransition(TMP_PROJECT, 'EXPLORE').success).toBe(true);
     expect(engine.executeTransition(TMP_PROJECT, 'PLAN').success).toBe(true);
     expect(engine.executeTransition(TMP_PROJECT, 'IMPLEMENT').success).toBe(true);
     expect(engine.executeTransition(TMP_PROJECT, 'VERIFY').success).toBe(true);
+    expect(engine.executeTransition(TMP_PROJECT, 'CHECKPOINT').success).toBe(true);
     expect(engine.executeTransition(TMP_PROJECT, 'REVIEW').success).toBe(true);
     expect(engine.executeTransition(TMP_PROJECT, 'DEPLOY').success).toBe(true);
     expect(engine.executeTransition(TMP_PROJECT, 'MAINTAIN').success).toBe(true);
     expect(engine.executeTransition(TMP_PROJECT, 'IDLE').success).toBe(true);
 
     const history = engine.getTransitionHistory(TMP_PROJECT);
-    expect(history).toHaveLength(8);
+    expect(history).toHaveLength(9);
     expect(engine.getCurrentPhase(TMP_PROJECT)).toBe('IDLE');
   });
 

@@ -218,7 +218,23 @@ After generating code, you MUST enter **Self-Correction Mode**.
 □ Only then may I declare "complete" or "done"
 ```
 
-### F. Continuous Learning Protocol
+### F. Task-Complete Checkpoint Protocol
+
+**After completing a task and before committing or pushing code, present the developer with structured decision options.**
+
+This protocol is defined in `.agent/checklists/task-complete.md` and enforced by the `task-complete` hook event.
+
+**PROHIBITED:**
+- ❌ Committing or pushing without presenting the checkpoint prompt
+- ❌ Auto-selecting options without explicit developer input
+- ❌ Skipping this checkpoint for session-end commits
+
+**REQUIRED:**
+- ✅ Present the 8-option decision prompt after every task completion
+- ✅ Wait for explicit developer response before proceeding
+- ✅ Evaluate change scope for intelligent recommendation annotation
+
+### G. Continuous Learning Protocol
 
 **User corrections become permanent operational rules.**
 
@@ -226,7 +242,7 @@ After generating code, you MUST enter **Self-Correction Mode**.
 2. **Internalize**: Add to operational memory for this session
 3. **Apply**: Use immediately and in all future similar situations
 
-### G. Error Recovery Protocol
+### H. Error Recovery Protocol
 
 **When errors occur, recover gracefully without excuses.**
 
