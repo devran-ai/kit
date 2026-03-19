@@ -9,7 +9,7 @@ commit-types: [feat, fix, refactor, perf, chore, docs, test]
 # /pr — Production-Grade Pull Request Workflow
 
 > **Trigger**: `/pr [target]` (default: `main`) · `/pr --draft [target]`
-> **Lifecycle**: Ship — after `/review` gate passes, before `/deploy`
+> **Lifecycle**: Ship — after `/preflight` readiness passes, before `/deploy`
 
 > [!CAUTION]
 > PR creation pushes code to remote and triggers CI pipelines. Always run local pre-flight checks via `/review` before pushing. Never create PRs with unresolved conflicts or failing tests. Every CI run consumes pipeline credits.
@@ -283,7 +283,7 @@ git commit -m "merge: resolve conflicts with <target>"
 
 ## Related Resources
 
-- **Previous**: `/review` (quality gates must pass before PR)
+- **Previous**: `/preflight` (production readiness verified) · `/review` (code quality gates)
 - **Next**: `/deploy` (deployment after PR is merged)
 - **Skills**: `.agent/skills/git-workflow/SKILL.md` · `.agent/skills/verification-loop/SKILL.md`
 - **Global Rule**: Production Merge Discipline (see global rules)

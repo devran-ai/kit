@@ -5,6 +5,20 @@ All notable changes to Antigravity AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.7.0] — 2026-03-19
+
+### Added
+
+- **`/preflight` workflow** — Production readiness assessment with weighted scoring across 10 audit domains
+- **`production-readiness` skill** — Operational skill for evaluating project architecture, security, and devops readiness
+
+### Changed
+
+- Workflow count: 15 → 16 across README, manifest, docs site, package description
+- Skills count: 32 → 33 across README, manifest, docs site, package description
+
+---
+
 ## [3.6.0] — 2026-03-16
 
 ### Added
@@ -367,6 +381,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Session management architecture
 - PAAL continuous learning cycle
 
+[3.7.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.6.0...v3.7.0
 [3.6.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.5.0...v3.6.0
 [3.5.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.4.1...v3.5.0
 [3.4.1]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.3.1...v3.4.1

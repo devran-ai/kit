@@ -1,6 +1,6 @@
 # Architecture
 
-Antigravity AI Kit v3.6.0 is an engineered framework with a **29-module runtime engine**, 19 agents, 32 skills, 31 commands, and 15 workflows.
+Antigravity AI Kit v3.7.0 is an engineered framework with a **29-module runtime engine**, 19 agents, 33 skills, 31 commands, and 16 workflows.
 
 ---
 
@@ -8,11 +8,11 @@ Antigravity AI Kit v3.6.0 is an engineered framework with a **29-module runtime 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      ANTIGRAVITY AI KIT v3.5.0                       │
+│                      ANTIGRAVITY AI KIT v3.7.0                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
-│  │   19 AGENTS     │  │   31 COMMANDS   │  │   32 SKILLS     │      │
+│  │   19 AGENTS     │  │   31 COMMANDS   │  │   33 SKILLS     │      │
 │  │                 │  │                 │  │                 │      │
 │  │ • Architect     │  │ • /plan         │  │ • api-patterns  │      │
 │  │ • Mobile Dev    │  │ • /implement    │  │ • architecture  │      │
@@ -25,11 +25,11 @@ Antigravity AI Kit v3.6.0 is an engineered framework with a **29-module runtime 
 │           ┌──────────────────┴──────────────────┐                   │
 │           ▼                                      ▼                   │
 │  ┌─────────────────────────────────────────────────────────┐        │
-│  │                    15 WORKFLOWS                          │        │
+│  │                    16 WORKFLOWS                          │        │
 │  │  /brainstorm • /create • /debug • /deploy • /enhance    │        │
-│  │  /orchestrate • /plan • /pr • /preview • /quality-gate   │        │
-│  │  /retrospective • /review • /status • /test              │        │
-│  │  /ui-ux-pro-max                                          │        │
+│  │  /orchestrate • /plan • /pr • /preflight • /preview      │        │
+│  │  /quality-gate • /retrospective • /review • /status      │        │
+│  │  /test • /ui-ux-pro-max                                  │        │
 │  └─────────────────────────────────────────────────────────┘        │
 │                              │                                       │
 │           ┌──────────────────┴──────────────────┐                   │
@@ -70,21 +70,21 @@ Slash commands for quick execution of common operations.
 - **Development**: /build, /fix, /debug, /refactor, /cook
 - **Quality**: /verify, /code-review, /security-scan, /perf
 
-### Skills (32)
+### Skills (33)
 
 Domain expertise modules that extend AI capabilities.
 
-- **Operational**: verification-loop, continuous-learning, strategic-compact, eval-harness, context-budget
+- **Operational**: verification-loop, continuous-learning, strategic-compact, eval-harness, context-budget, production-readiness
 - **Orchestration**: intelligent-routing, parallel-agents, behavioral-modes, mcp-integration
 - **Planning**: plan-writing (tiered quality schema), plan-validation (completeness scoring), brainstorming
 - **Domain**: api-patterns, architecture, clean-code, database-design, testing-patterns, and 15 more
 
-### Workflows (15)
+### Workflows (16)
 
 Complete development lifecycles for multi-step processes.
 
 - /brainstorm, /create, /debug, /deploy, /enhance, /orchestrate
-- /plan, /pr, /preview, /quality-gate, /retrospective, /review
+- /plan, /pr, /preflight, /preview, /quality-gate, /retrospective, /review
 - /status, /test, /ui-ux-pro-max
 
 ### Runtime Engine (29 Modules)

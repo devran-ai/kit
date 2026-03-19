@@ -190,6 +190,7 @@ Run `/deploy rollback` to restore [previous version].
 ## Related Resources
 
 - **Previous**: `/pr` (PR must be created and merged before deployment)
+- **Pre-requisite**: `/preflight` (production readiness must be verified before deployment)
 - **Next**: `/status` (post-deploy monitoring)
 - **Skill**: `.agent/skills/deployment-procedures/SKILL.md`
 - **Global Rule**: Production Merge Discipline (see global rules)

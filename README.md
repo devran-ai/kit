@@ -1,11 +1,11 @@
 # 🚀 Antigravity AI Kit
 
-![version](https://img.shields.io/badge/version-3.6.0-blue)
+![version](https://img.shields.io/badge/version-3.7.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![AI Agents](https://img.shields.io/badge/AI%20Agents-19-purple)
-![Skills](https://img.shields.io/badge/Skills-32-orange)
+![Skills](https://img.shields.io/badge/Skills-33-orange)
 ![Commands](https://img.shields.io/badge/Commands-31-red)
-![Workflows](https://img.shields.io/badge/Workflows-15-teal)
+![Workflows](https://img.shields.io/badge/Workflows-16-teal)
 ![Runtime Modules](https://img.shields.io/badge/Runtime%20Modules-29-blueviolet)
 ![Tests](https://img.shields.io/badge/Tests-341%20passing-brightgreen)
 ![Checklists](https://img.shields.io/badge/Checklists-4-yellow)
@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>29-module runtime engine</b>, <b>19 specialized agents</b>, <b>31 commands</b>, <b>32 skills</b>, and <b>15 workflows</b> — all backed by <b>341 tests</b> and governance-first principles.
+  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>29-module runtime engine</b>, <b>19 specialized agents</b>, <b>31 commands</b>, <b>33 skills</b>, and <b>16 workflows</b> — all backed by <b>341 tests</b> and governance-first principles.
 </p>
 
 <p align="center">
@@ -56,9 +56,9 @@
 | Feature           | Count | Description                                                            |
 | :---------------- | :---- | :--------------------------------------------------------------------- |
 | 🤖 **AI Agents**  | 19    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
-| 🛠️ **Skills**     | 32    | Domain knowledge modules (API, Testing, MCP, Architecture, Docker...) |
+| 🛠️ **Skills**     | 33    | Domain knowledge modules (API, Testing, MCP, Architecture, Docker...) |
 | ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 15    | Process templates (/create, /debug, /deploy, /pr, /test...)            |
+| 🔄 **Workflows**  | 16    | Process templates (/create, /debug, /deploy, /pr, /test...)            |
 | ⚙️ **Runtime**    | 29    | Runtime engine modules (governance, reputation, self-healing...)       |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | ⚖️ **Rules**      | 8     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
@@ -320,12 +320,13 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → CHECKPOINT → REVIEW → DEPLOY
 
 ---
 
-## 🛠️ Skills (32)
+## 🛠️ Skills (33)
 
-### Operational Skills (5)
+### Operational Skills (6)
 
 | Skill                 | Purpose                   |
 | :-------------------- | :------------------------ |
+| `production-readiness`| Production readiness audits |
 | `verification-loop`   | Continuous quality gates  |
 | `continuous-learning` | Pattern extraction (PAAL) |
 | `strategic-compact`   | Context window management |
@@ -423,7 +424,7 @@ Antigravity AI Kit v3.2.0 includes a **full runtime engine** built across 4 phas
 
 ---
 
-## 🔄 Workflows (15)
+## 🔄 Workflows (16)
 
 | Workflow          | Description              | Command          |
 | :---------------- | :----------------------- | :--------------- |
@@ -435,6 +436,7 @@ Antigravity AI Kit v3.2.0 includes a **full runtime engine** built across 4 phas
 | **orchestrate**   | Multi-agent coordination | `/orchestrate`   |
 | **plan**          | Implementation planning  | `/plan`          |
 | **pr**            | Production-grade PR creation | `/pr`        |
+| **preflight**     | Production readiness assessment | `/preflight`    |
 | **preview**       | Preview changes          | `/preview`       |
 | **quality-gate**  | Pre-task validation      | `/quality-gate`  |
 | **retrospective** | Sprint audit & review    | `/retrospective` |

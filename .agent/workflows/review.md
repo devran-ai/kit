@@ -183,6 +183,6 @@ Re-run: `/review` or `/review {gate}`
 ## Related Resources
 
 - **Previous**: `/test` (tests must pass before review)
-- **Next**: `/pr` (create pull request after all gates pass)
+- **Next**: `/preflight` (production readiness assessment) · `/pr` (create pull request)
 - **Skill**: `.agent/skills/verification-loop/SKILL.md`
 - **Related**: `/quality-gate` (pre-task research) · `/retrospective` (sprint-level audit)

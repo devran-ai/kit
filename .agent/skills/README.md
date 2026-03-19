@@ -1,7 +1,7 @@
 # Antigravity AI Kit — Skills
 
 > **Purpose**: Workflow definitions and domain knowledge extensions
-> **Count**: 31 Skills (5 Operational + 4 Orchestration + 13 Domain + 9 Development)
+> **Count**: 32 Skills (6 Operational + 4 Orchestration + 13 Domain + 9 Development)
 
 ---
 
@@ -25,7 +25,7 @@ Skills are automatically loaded based on task context. Agents invoke relevant sk
 
 ---
 
-## Operational Skills (5)
+## Operational Skills (6)
 
 | Skill                                               | Purpose                   |
 | :-------------------------------------------------- | :------------------------ |
@@ -34,6 +34,7 @@ Skills are automatically loaded based on task context. Agents invoke relevant sk
 | [strategic-compact](strategic-compact/SKILL.md)     | Context window management |
 | [eval-harness](eval-harness/SKILL.md)               | Performance evaluation    |
 | [context-budget](context-budget/SKILL.md)           | LLM token budget mgmt    |
+| [production-readiness](production-readiness/SKILL.md) | Production readiness audits |
 
 ---
 
