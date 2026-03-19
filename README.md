@@ -1,13 +1,13 @@
 # 🚀 Antigravity AI Kit
 
-![version](https://img.shields.io/badge/version-3.7.0-blue)
+![version](https://img.shields.io/badge/version-3.8.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![AI Agents](https://img.shields.io/badge/AI%20Agents-19-purple)
 ![Skills](https://img.shields.io/badge/Skills-33-orange)
 ![Commands](https://img.shields.io/badge/Commands-31-red)
-![Workflows](https://img.shields.io/badge/Workflows-16-teal)
+![Workflows](https://img.shields.io/badge/Workflows-17-teal)
 ![Runtime Modules](https://img.shields.io/badge/Runtime%20Modules-29-blueviolet)
-![Tests](https://img.shields.io/badge/Tests-341%20passing-brightgreen)
+![Tests](https://img.shields.io/badge/Tests-349%20passing-brightgreen)
 ![Checklists](https://img.shields.io/badge/Checklists-4-yellow)
 
 <p align="center">
@@ -15,13 +15,13 @@
 </p>
 
 <p align="center">
-  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>29-module runtime engine</b>, <b>19 specialized agents</b>, <b>31 commands</b>, <b>33 skills</b>, and <b>16 workflows</b> — all backed by <b>341 tests</b> and governance-first principles.
+  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>29-module runtime engine</b>, <b>19 specialized agents</b>, <b>31 commands</b>, <b>33 skills</b>, and <b>17 workflows</b> — all backed by <b>349 tests</b> and governance-first principles.
 </p>
 
 <p align="center">
   🚀 <a href="#-quick-start">Quick Start</a> •
   🤖 <a href="#-agents-19">Agents</a> •
-  🛠️ <a href="#%EF%B8%8F-skills-31">Skills</a> •
+  🛠️ <a href="#%EF%B8%8F-skills-33">Skills</a> •
   ⌨️ <a href="#%EF%B8%8F-commands-31">Commands</a> •
   🔄 <a href="#-session-management">Sessions</a> •
   ⚖️ <a href="#%EF%B8%8F-operating-constraints">Governance</a> •
@@ -38,9 +38,9 @@
 - [Architecture](#%EF%B8%8F-architecture-overview)
 - [Agents](#-agents-19)
 - [Commands](#%EF%B8%8F-commands-31)
-- [Skills](#%EF%B8%8F-skills-32)
+- [Skills](#%EF%B8%8F-skills-33)
 - [Runtime Engine](#%EF%B8%8F-runtime-engine-29-modules)
-- [Workflows](#-workflows-15)
+- [Workflows](#-workflows-17)
 - [Operating Constraints](#%EF%B8%8F-operating-constraints)
 - [Session Management](#-session-management)
 - [How to Extend](#-how-to-extend)
@@ -58,12 +58,12 @@
 | 🤖 **AI Agents**  | 19    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
 | 🛠️ **Skills**     | 33    | Domain knowledge modules (API, Testing, MCP, Architecture, Docker...) |
 | ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 16    | Process templates (/create, /debug, /deploy, /pr, /test...)            |
+| 🔄 **Workflows**  | 17    | Process templates (/create, /debug, /deploy, /pr, /test...)            |
 | ⚙️ **Runtime**    | 29    | Runtime engine modules (governance, reputation, self-healing...)       |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
-| ⚖️ **Rules**      | 8     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
+| ⚖️ **Rules**      | 9     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
 | 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
-| 🧪 **Tests**      | 327   | Unit, structural, integration, and security tests (32 test files)      |
+| 🧪 **Tests**      | 349   | Unit, structural, integration, and security tests (34 test files)      |
 
 ---
 
@@ -149,7 +149,7 @@ Antigravity AI Kit is designed to **never touch your project files**. All operat
 ┌─────────────────────────────────────────────────────────────────────┐
 │                    USER INTERFACE LAYER                              │
 │  ┌─────────────────────────┐  ┌─────────────────────────┐          │
-│  │  Slash Commands (31)    │  │  Workflows (15)         │          │
+│  │  Slash Commands (31)    │  │  Workflows (17)         │          │
 │  └────────────┬────────────┘  └────────────┬────────────┘          │
 ├───────────────┼────────────────────────────┼────────────────────────┤
 │               ▼         INTELLIGENCE LAYER ▼                        │
@@ -424,7 +424,7 @@ Antigravity AI Kit v3.2.0 includes a **full runtime engine** built across 4 phas
 
 ---
 
-## 🔄 Workflows (16)
+## 🔄 Workflows (17)
 
 | Workflow          | Description              | Command          |
 | :---------------- | :----------------------- | :--------------- |
@@ -444,6 +444,7 @@ Antigravity AI Kit v3.2.0 includes a **full runtime engine** built across 4 phas
 | **status**        | Project status check     | `/status`        |
 | **test**          | Test writing workflow    | `/test`          |
 | **ui-ux-pro-max** | Premium UI design        | `/ui-ux-pro-max` |
+| **upgrade**       | Non-destructive framework updates | `/upgrade` |
 
 ---
 
@@ -636,11 +637,11 @@ antigravity-ai-kit/
 ├── .agent/                    # Core AI Kit
 │   ├── agents/               # 19 specialized agents
 │   ├── commands/             # 31 slash commands
-│   ├── skills/               # 32 capability modules
-│   ├── workflows/            # 15 process templates
+│   ├── skills/               # 33 capability modules
+│   ├── workflows/            # 17 process templates
 │   ├── engine/               # Autonomy Engine (state machine, loading rules, configs)
 │   ├── hooks/                # 8 event hooks (runtime + git-hook)
-│   ├── rules/                # 8 modular governance rules
+│   ├── rules/                # 9 modular governance rules
 │   ├── checklists/           # Verification checklists (4)
 │   ├── templates/            # ADR, feature-request, bug-report templates
 │   ├── decisions/            # Architecture Decision Records
@@ -654,7 +655,7 @@ antigravity-ai-kit/
 │   └── + 16 more modules     # Identity, plugins, hooks, registry...
 ├── bin/                       # CLI (ag-kit)
 ├── create-antigravity-app/    # Project scaffolder (separate npm package)
-├── tests/                     # Test suites (327 tests, 32 files)
+├── tests/                     # Test suites (349 tests, 34 files)
 │   ├── unit/                 # Module tests (loading-engine, self-healing, plugins...)
 │   ├── structural/           # Inventory + schema validation
 │   └── security/             # Injection scan + leakage detection

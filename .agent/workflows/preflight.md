@@ -24,10 +24,10 @@ commit-types: [feat, fix, refactor, perf]
 
 ## Critical Rules
 
-1. **Evidence-backed scoring** — every domain score must cite observable proof (file, command output, observation)
+1. **Evidence-backed scoring** — every domain score must cite observable proof (file, command output, observation, or N/A justification)
 2. **Never bypass blockers** — blocker rule violations override total score (see skill for precedence)
 3. **Human approval required** — Go/No-Go recommendation requires explicit user decision
-4. **Non-destructive** — all checks are read-only analysis; no files modified, no commands with side effects
+4. **Non-destructive** — checks do not modify source code; verification commands (test suites, linters, builds) may run but must not alter project state
 5. **Skill-mediated delegation** — domain checks reference existing skills, never duplicate their logic
 6. **Fail-safe defaults** — unverifiable checks score 0, not assumed pass
 

@@ -5,6 +5,29 @@ All notable changes to Antigravity AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.8.0] — 2026-03-19
+
+### Added
+
+- **`/upgrade` workflow** — EWS v1.0 compliant non-destructive framework upgrade protocol (163 lines, all 11 sections) with preservation verification, rollback instructions, and `--dry-run` / `--verify-only` modes
+- **`agent-upgrade-policy.md`** — Global rule (Priority: CRITICAL) formalizing the Preservation Contract for 7 protected items (sessions, identity, rules, checklists, decisions, contexts)
+
+### Changed
+
+- **`/preflight` workflow** — Added `Bash` to allowed-tools, clarified non-destructive principle to allow verification commands (tests, linters, builds), fixed evidence types to include N/A justification
+- **`/pr` workflow** — Added Step 3a: `/preflight` prerequisite enforcement for feat/fix/refactor/perf commits
+- **`/deploy` workflow** — Clarified pre-flight step as "re-validation" checks (intentionally lighter than full `/preflight`)
+- **`production-readiness` skill** — Fixed D4 Quality Floor threshold notation (`score <= 7/15`), clarified verdict label to "Caps verdict at Conditionally Ready"
+- **Documentation alignment** — Fixed 20+ stale counts across README.md, docs/index.md, docs/architecture.md, docs/getting-started.md, docs/workflows/index.md, .agent/README.md, .agent/skills/README.md, .agent/commands/help.md, .agent/checklists/README.md, .agent/hooks/README.md
+- Added `plan-validation` skill to `skills/README.md` (was in manifest but missing from README)
+- Added `.vscode/` to `.gitignore`
+- Workflow count: 16 → 17 across all documentation
+- Skills count: 32 → 33 across all documentation
+- Rules count: 8 → 9 across all documentation
+- Tests count: 327/341 → 349 across all documentation
+- Test files count: 32 → 34 across all documentation
+
+
 ## [3.7.0] — 2026-03-19
 
 ### Added
@@ -381,6 +404,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Session management architecture
 - PAAL continuous learning cycle
 
+[3.8.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.7.0...v3.8.0
 [3.7.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.6.0...v3.7.0
 [3.6.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.5.0...v3.6.0
 [3.5.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.4.1...v3.5.0

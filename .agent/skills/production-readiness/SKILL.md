@@ -3,7 +3,7 @@ name: production-readiness
 description: Production readiness audit domains, weighted scoring criteria, and check specifications for the /preflight workflow.
 version: 1.0.0
 triggers: [pre-deploy, pre-launch, milestone, production-readiness]
-allowed-tools: Read, Grep
+allowed-tools: Read, Grep, Bash
 ---
 
 # Production Readiness
@@ -23,7 +23,7 @@ This skill defines the audit domains, sub-check rubrics, and scoring model used 
 ## Principles
 
 1. **Evidence over assertion** — every score must be backed by observable proof
-2. **Non-destructive** — all checks are read-only analysis
+2. **Non-destructive** — checks do not modify source code; test suites, linters, and builds may run as verification commands but must not alter project state
 3. **Fail-safe defaults** — unverifiable checks score 0 (not assumed pass)
 4. **Domain independence** — each domain is scored independently
 5. **Blocker precedence** — blocker rules override total score
@@ -225,7 +225,7 @@ Blocker rules **override** the total score. Even if the total score is above thr
 | :--- | :--- | :--- | :--- |
 | **Zero Domain** | Any domain scores 0/max | 🔴 Not Ready | A completely unchecked domain is a blind spot |
 | **Security Floor** | D5 < 50% (< 9/18) | 🔴 Not Ready | Security is non-negotiable for production |
-| **Quality Floor** | D4 < 50% (< 8/15) | 🟡 minimum | Code quality below threshold needs attention |
+| **Quality Floor** | D4 < 50% (score ≤ 7/15) | 🟡 Caps verdict at Conditionally Ready | Code quality below threshold needs attention |
 
 **Precedence**: Zero Domain > Security Floor > Quality Floor > Total Score
 

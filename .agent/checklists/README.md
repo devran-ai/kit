@@ -1,7 +1,7 @@
 # Antigravity AI Kit — Checklists
 
 > **Purpose**: Quality gates and structured workflows  
-> **Count**: 3 Core Checklists
+> **Count**: 4 Core Checklists
 
 ---
 
@@ -18,6 +18,7 @@ Checklists ensure consistent quality and context preservation across sessions. T
 | [session-start.md](session-start.md) | Beginning of session | Load context, verify environment |
 | [session-end.md](session-end.md)     | End of session       | Save state, document progress    |
 | [pre-commit.md](pre-commit.md)       | Before git commits   | Quality verification             |
+| [task-complete.md](task-complete.md) | After task done      | Completion verification          |
 
 ---
 

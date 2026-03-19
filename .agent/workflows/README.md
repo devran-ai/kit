@@ -1,7 +1,7 @@
 # Antigravity AI Kit — Workflows
 
 > **Purpose**: Process templates for common development tasks
-> **Count**: 16 Workflows
+> **Count**: 17 Workflows
 > **Standard**: Enterprise Workflow Standard (EWS) v1.0
 
 ---
@@ -34,6 +34,7 @@ Invoke them using slash commands (e.g., `/brainstorm authentication system`).
 | **orchestrate** | `/orchestrate` | Reactive | Multi-agent coordination for complex tasks |
 | **retrospective** | `/retrospective` | Evaluate | Tier-1 quality audit against market standards |
 | **status** | `/status` | Cross-cutting | Project status overview and health check |
+| **upgrade** | `/upgrade` | Maintenance | Formal protocol for non-destructive framework upgrades |
 
 ---
 
@@ -51,7 +52,7 @@ Discover ──► Plan ──► Build ──► Verify ──► Ship ──�
     Reactive (any phase)          Cross-cutting (any phase)
     ────────────────────          ────────────────────────
     /debug                        /status
-    /orchestrate
+    /orchestrate                  /upgrade
 ```
 
 ---

@@ -32,7 +32,7 @@
 
 **Branch**: —  
 **Repository**: —  
-**Framework**: Antigravity AI Kit v3.7.0
+**Framework**: Antigravity AI Kit v3.8.0
 
 ### Key File Locations
 

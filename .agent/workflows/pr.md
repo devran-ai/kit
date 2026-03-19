@@ -89,7 +89,17 @@ git merge origin/<target> --no-edit
 
 ### Step 3: Run Pre-Flight Checks
 
-Delegate to `/review` pipeline (Gates 1-5: lint, type-check, test, security, build).
+// turbo
+
+**3a. Verify /preflight status** (for `feat`, `fix`, `refactor`, `perf` commit types):
+- Check if `/preflight` scorecard exists in conversation context
+- If scorecard exists and status is Production Ready or Conditionally Ready → proceed
+- If no scorecard found → warn: "Consider running `/preflight` before `/pr` for full production readiness validation"
+- For lightweight commit types (`chore`, `docs`, `test`) → skip this check
+
+**3b. Run /review pipeline** (Gates 1-5: lint, type-check, test, security, build):
+
+Delegate to `/review` pipeline.
 
 - Scope filter applies:
   - `docs()` → skip all gates

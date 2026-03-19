@@ -1,7 +1,7 @@
 # Antigravity AI Kit — Hooks
 
 > **Purpose**: Event-driven automation triggered by specific actions  
-> **Count**: 4 Core Hooks + Templates
+> **Count**: 8 Event Hooks
 
 ---
 
@@ -15,10 +15,14 @@ Hooks are automated actions triggered by events during development sessions. The
 
 | Hook               | Trigger           | Action                | Status |
 | :----------------- | :---------------- | :-------------------- | :----- |
-| `session-start`    | Session begins    | Load context          | Active |
-| `session-end`      | Session ends      | Save state            | Active |
-| `pre-commit`       | Before git commit | Run verification      | Active |
-| `secret-detection` | After file write  | Block exposed secrets | Active |
+| `session-start`      | Session begins       | Load context            | Active |
+| `session-end`        | Session ends         | Save state              | Active |
+| `pre-commit`         | Before git commit    | Run verification        | Active |
+| `secret-detection`   | After file write     | Block exposed secrets   | Active |
+| `phase-transition`   | Workflow phase change| Enforce SDLC gates      | Active |
+| `sprint-checkpoint`  | Sprint milestone     | Progress verification   | Active |
+| `plan-complete`      | Plan finalized       | Plan validation trigger | Active |
+| `task-complete`      | Task finished        | Completion verification | Active |
 
 ---
 

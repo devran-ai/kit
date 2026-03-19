@@ -14,18 +14,20 @@ npx antigravity-ai-kit init
 
 This automatically copies the `.agent/` folder to your project. Done!
 
-> **Tip:** Use `npx antigravity-ai-kit init --force` to overwrite an existing `.agent/` folder. A timestamped backup is created automatically.
+> **Warning:** `npx antigravity-ai-kit init --force` is a **Catastrophic Repair** command. It will overwrite your customizations and session state. Do not use it for regular updates.
 
 ---
 
 ### 🔄 Updating
+
+AI Agents and Users MUST use `ag-kit update` for standard framework upgrades. This is a non-destructive AST merger.
 
 ```bash
 ag-kit update             # Non-destructive — preserves your customizations
 ag-kit update --dry-run   # Preview changes without applying
 ```
 
-> **Prefer `ag-kit update` over `init --force`**. The update command preserves your session data, ADRs, learning contexts, and customizations.
+> **Preservation Contract:** The `ag-kit update` command explicitly protects your customized `.agent/rules/`, `.agent/checklists/`, `session-state.json`, `session-context.md`, `identity.json`, and ADR files.
 
 ---
 
@@ -53,7 +55,7 @@ ag-kit verify     # Manifest integrity check
 ag-kit scan       # Security scan
 ```
 
-Both should return clean results. If they report issues, try reinstalling with `--force`.
+Both should return clean results. If they report issues, refer to the troubleshooting guide or run `ag-kit update` to repair missing core dependencies.
 
 ## 🛡️ Safety Guarantees
 
@@ -115,7 +117,7 @@ Runs all quality gates: build, lint, test, coverage.
 
 - **[Agents](agents/index.md)** — 19 specialized AI agents
 - **[Commands](commands/index.md)** — 31 slash commands
-- **[Skills](skills/index.md)** — 32 domain expertise modules
-- **[Workflows](workflows/index.md)** — 14 development workflows
+- **[Skills](skills/index.md)** — 33 domain expertise modules
+- **[Workflows](workflows/index.md)** — 17 development workflows
 - **[Session Management](session-management.md)** — Never lose context
 - **[Governance](governance/index.md)** — Operating constraints

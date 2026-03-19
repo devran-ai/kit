@@ -1,6 +1,6 @@
 # Architecture
 
-Antigravity AI Kit v3.7.0 is an engineered framework with a **29-module runtime engine**, 19 agents, 33 skills, 31 commands, and 16 workflows.
+Antigravity AI Kit v3.8.0 is an engineered framework with a **29-module runtime engine**, 19 agents, 33 skills, 31 commands, and 17 workflows.
 
 ---
 
@@ -8,7 +8,7 @@ Antigravity AI Kit v3.7.0 is an engineered framework with a **29-module runtime 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      ANTIGRAVITY AI KIT v3.7.0                       │
+│                      ANTIGRAVITY AI KIT v3.8.0                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
@@ -25,11 +25,11 @@ Antigravity AI Kit v3.7.0 is an engineered framework with a **29-module runtime 
 │           ┌──────────────────┴──────────────────┐                   │
 │           ▼                                      ▼                   │
 │  ┌─────────────────────────────────────────────────────────┐        │
-│  │                    16 WORKFLOWS                          │        │
+│  │                    17 WORKFLOWS                          │        │
 │  │  /brainstorm • /create • /debug • /deploy • /enhance    │        │
 │  │  /orchestrate • /plan • /pr • /preflight • /preview      │        │
 │  │  /quality-gate • /retrospective • /review • /status      │        │
-│  │  /test • /ui-ux-pro-max                                  │        │
+│  │  /test • /ui-ux-pro-max • /upgrade                       │        │
 │  └─────────────────────────────────────────────────────────┘        │
 │                              │                                       │
 │           ┌──────────────────┴──────────────────┐                   │
@@ -79,13 +79,13 @@ Domain expertise modules that extend AI capabilities.
 - **Planning**: plan-writing (tiered quality schema), plan-validation (completeness scoring), brainstorming
 - **Domain**: api-patterns, architecture, clean-code, database-design, testing-patterns, and 15 more
 
-### Workflows (16)
+### Workflows (17)
 
 Complete development lifecycles for multi-step processes.
 
 - /brainstorm, /create, /debug, /deploy, /enhance, /orchestrate
 - /plan, /pr, /preflight, /preview, /quality-gate, /retrospective, /review
-- /status, /test, /ui-ux-pro-max
+- /status, /test, /ui-ux-pro-max, /upgrade
 
 ### Runtime Engine (29 Modules)
 
@@ -100,7 +100,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 
 ### Rules & Hooks
 
-- **Rules** (8): Modular governance constraints (coding, security, testing, git, docs, sprint + 2 architecture files)
+- **Rules** (9): Modular governance constraints (coding, security, testing, git, docs, sprint, agent-upgrade-policy + 2 architecture files)
 - **Hooks** (7): Event-driven automation (session-start, session-end, pre-commit, phase-transition, sprint-checkpoint, secret-detection, plan-complete)
 
 ---
@@ -111,8 +111,8 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 .agent/
 ├── agents/               # 19 specialized agents
 ├── commands/             # 31 slash commands
-├── skills/               # 32 capability modules
-├── workflows/            # 15 process templates
+├── skills/               # 33 capability modules
+├── workflows/            # 17 process templates
 ├── engine/               # Autonomy Engine configs
 ├── hooks/                # Event automation
 ├── rules/                # Governance rules
@@ -128,7 +128,7 @@ lib/                      # Runtime Engine (29 modules)
 ├── marketplace.js        # Community skill marketplace
 └── + 16 more modules     # Identity, plugins, hooks, registry...
 
-tests/                    # 327 tests (32 files)
+tests/                    # 349 tests (34 files)
 ├── unit/                 # 21 module tests
 ├── structural/           # Inventory + schema validation
 └── security/             # Injection scan + leakage detection

@@ -11,13 +11,13 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 | Feature           | Count | Description                                                            |
 | :---------------- | :---- | :--------------------------------------------------------------------- |
 | 🤖 **AI Agents**  | 19    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
-| 🛠️ **Skills**     | 32    | Domain knowledge modules (API, Testing, Plan Validation, Docker...)    |
+| 🛠️ **Skills**     | 33    | Domain knowledge modules (API, Testing, Plan Validation, Docker...)    |
 | ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 15    | Process templates (/create, /debug, /deploy, /pr, /test...)            |
+| 🔄 **Workflows**  | 17    | Process templates (/create, /debug, /deploy, /pr, /test...)            |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
 | ⚙️ **Runtime**    | 29    | Runtime engine modules (governance, reputation, self-healing...)       |
-| ⚖️ **Rules**      | 8     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
+| ⚖️ **Rules**      | 9     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
 
 ---
 
@@ -39,11 +39,11 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :gear: **[Skills](skills/index.md)**
 
-  32 domain expertise modules
+  33 domain expertise modules
 
 - :arrows_counterclockwise: **[Workflows](workflows/index.md)**
 
-  15 full development workflows
+  17 full development workflows
 
 - :repeat: **[Session Management](session-management.md)**
 
