@@ -71,34 +71,10 @@ const SYNC_TARGETS = [
     replacer: (content, version) =>
       content.replace(/Antigravity AI Kit v[\d.]+/, `Antigravity AI Kit v${version}`),
   },
-  {
-    file: '.agent/checklists/pre-commit.md',
-    type: 'regex',
-    pattern: /Antigravity AI Kit v[\d.]+/,
-    replacer: (content, version) =>
-      content.replace(/Antigravity AI Kit v[\d.]+/, `Antigravity AI Kit v${version}`),
-  },
-  {
-    file: '.agent/checklists/session-start.md',
-    type: 'regex',
-    pattern: /Antigravity AI Kit v[\d.]+/,
-    replacer: (content, version) =>
-      content.replace(/Antigravity AI Kit v[\d.]+/, `Antigravity AI Kit v${version}`),
-  },
-  {
-    file: '.agent/checklists/session-end.md',
-    type: 'regex',
-    pattern: /Antigravity AI Kit v[\d.]+/,
-    replacer: (content, version) =>
-      content.replace(/Antigravity AI Kit v[\d.]+/, `Antigravity AI Kit v${version}`),
-  },
-  {
-    file: '.agent/checklists/task-complete.md',
-    type: 'regex',
-    pattern: /Antigravity AI Kit v[\d.]+/,
-    replacer: (content, version) =>
-      content.replace(/Antigravity AI Kit v[\d.]+/, `Antigravity AI Kit v${version}`),
-  },
+  // NOTE: .agent/checklists/ files are EXCLUDED from sync targets.
+  // They are STRICTLY PROTECTED per the Preservation Contract
+  // (.agent/rules/agent-upgrade-policy.md § 1) and must not be
+  // modified during upgrades. Version is stamped at init time only.
   {
     file: '.agent/session-context.md',
     type: 'regex',

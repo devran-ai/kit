@@ -88,27 +88,10 @@ describe('Version Synchronization — Single Source of Truth', () => {
   });
 
   // --- Checklist Layer ---
-
-  it('should have pre-commit.md version matching package.json', () => {
-    const file = readFile('.agent/checklists/pre-commit.md');
-    const match = file.match(/Antigravity AI Kit v([\d.]+)/);
-    expect(match, 'pre-commit.md missing version reference').not.toBeNull();
-    expect(match[1]).toBe(VERSION);
-  });
-
-  it('should have session-start.md version matching package.json', () => {
-    const file = readFile('.agent/checklists/session-start.md');
-    const match = file.match(/Antigravity AI Kit v([\d.]+)/);
-    expect(match, 'session-start.md missing version reference').not.toBeNull();
-    expect(match[1]).toBe(VERSION);
-  });
-
-  it('should have session-end.md version matching package.json', () => {
-    const file = readFile('.agent/checklists/session-end.md');
-    const match = file.match(/Antigravity AI Kit v([\d.]+)/);
-    expect(match, 'session-end.md missing version reference').not.toBeNull();
-    expect(match[1]).toBe(VERSION);
-  });
+  // NOTE: Checklists are EXCLUDED from version sync.
+  // They are STRICTLY PROTECTED per the Preservation Contract
+  // (.agent/rules/agent-upgrade-policy.md § 1) and must not be
+  // modified during upgrades. No version-sync tests needed.
 
   // --- Cross-Check ---
 
