@@ -1,6 +1,6 @@
 # 🚀 Antigravity AI Kit
 
-![version](https://img.shields.io/badge/version-3.10.0-blue)
+![version](https://img.shields.io/badge/version-3.10.1-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![AI Agents](https://img.shields.io/badge/AI%20Agents-20-purple)
 ![Skills](https://img.shields.io/badge/Skills-34-orange)

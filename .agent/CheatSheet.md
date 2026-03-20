@@ -1,6 +1,6 @@
 # Antigravity AI Kit — CheatSheet
 
-> **Version**: v3.10.0 | **Quick Reference** for all capabilities
+> **Version**: v3.10.1 | **Quick Reference** for all capabilities
 > **Session**: Start with `/status`, end with session-end checklist
 
 ---
