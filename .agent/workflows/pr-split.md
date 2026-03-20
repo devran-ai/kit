@@ -21,6 +21,7 @@ commit-types: [chore]
 
 ## Critical Rules
 
+0. **NO ARTIFACT FILES** — NEVER save API responses, diffs, or intermediate data as files in the project directory. Process ALL data in memory via shell pipes, variables, or direct tool output
 1. **NEVER** delete or force-push the original branch — preserve it as reference
 2. **ALWAYS** analyze the full diff before proposing a split plan
 3. **ALWAYS** verify each sub-PR independently passes `/review` pipeline

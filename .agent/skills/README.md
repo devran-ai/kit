@@ -1,7 +1,7 @@
 # Antigravity AI Kit — Skills
 
 > **Purpose**: Workflow definitions and domain knowledge extensions
-> **Count**: 34 Skills (7 Operational + 4 Orchestration + 13 Domain + 10 Development)
+> **Count**: 34 Skills (7 Operational + 4 Orchestration + 14 Domain + 9 Development)
 
 ---
 
@@ -25,7 +25,7 @@ Skills are automatically loaded based on task context. Agents invoke relevant sk
 
 ---
 
-## Operational Skills (6)
+## Operational Skills (7)
 
 | Skill                                               | Purpose                   |
 | :-------------------------------------------------- | :------------------------ |
@@ -50,7 +50,7 @@ Skills are automatically loaded based on task context. Agents invoke relevant sk
 
 ---
 
-## Domain Skills (13)
+## Domain Skills (14)
 
 ### Architecture & Design
 
@@ -79,10 +79,11 @@ Skills are automatically loaded based on task context. Agents invoke relevant sk
 | [docker-patterns](docker-patterns/SKILL.md)       | Containerization                |
 | [git-workflow](git-workflow/SKILL.md)             | Branching, commits              |
 | [security-practices](security-practices/SKILL.md) | OWASP, vulnerability prevention |
+| [pr-toolkit](pr-toolkit/SKILL.md)                 | PR lifecycle domain knowledge   |
 
 ---
 
-## Development Skills (10)
+## Development Skills (9)
 
 | Skill                                                   | Purpose                       |
 | :------------------------------------------------------ | :---------------------------- |
@@ -93,7 +94,6 @@ Skills are automatically loaded based on task context. Agents invoke relevant sk
 | [performance-profiling](performance-profiling/SKILL.md) | Core Web Vitals optimization  |
 | [brainstorming](brainstorming/SKILL.md)                 | Socratic discovery protocol   |
 | [plan-writing](plan-writing/SKILL.md)                   | Structured task breakdown     |
-| [pr-toolkit](pr-toolkit/SKILL.md)                       | PR lifecycle domain knowledge |
 | [shell-conventions](shell-conventions/SKILL.md)         | PowerShell/Bash conventions   |
 | [ui-ux-pro-max](ui-ux-pro-max/SKILL.md)                | Premium UI/UX design system   |
 

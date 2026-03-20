@@ -465,3 +465,70 @@ Generate PR title, summary, labels, and changelog from commits and diff. Used by
 | M (16-30 files, 300-700 LOC) | `size/M` |
 | L (31-50 files, 700-1500 LOC) | `size/L` |
 | XL (50+ files, 1500+ LOC) | `size/XL` |
+
+---
+
+## 13. Existing Reviewer Comment Engagement
+
+When reviewing or fixing PRs, analyze ALL existing reviews AND inline comments from all reviewers (including bots like Gemini Code Assist, CodeRabbit, Copilot, SonarCloud, etc.). Reference and respond to their findings — acknowledge valid points, challenge incorrect ones, and avoid duplicating already-flagged issues.
+
+### Comment Fetching Protocol
+
+Fetch comments from all three GitHub API endpoints:
+
+```bash
+# Review verdicts (APPROVE, REQUEST_CHANGES, COMMENT)
+gh api repos/<owner>/<repo>/pulls/<number>/reviews
+
+# Inline review comments (file-specific findings — where bots post)
+gh api repos/<owner>/<repo>/pulls/<number>/comments
+
+# General PR conversation (bot summaries, human discussion)
+gh api repos/<owner>/<repo>/issues/<number>/comments
+```
+
+### Bot Identification
+
+| Bot Name | Comment Pattern | Finding Format |
+| :--- | :--- | :--- |
+| `gemini-code-assist` | Inline comments with `Medium Priority` / `High Priority` labels, `Suggested change` blocks | Severity label + description + suggested code change |
+| `coderabbitai` | Summary review + inline comments with severity badges | Structured review with inline suggestions |
+| `github-actions[bot]` | CI check results and status comments | Pass/fail with log links |
+| `sonarcloud[bot]` | Quality gate status + inline issues | Coverage, duplications, security hotspots |
+| `dependabot[bot]` | Security alerts and version bumps | CVE references with severity |
+
+### Engagement Rules
+
+| Scenario | For `/pr-review` | For `/pr-fix` |
+| :--- | :--- | :--- |
+| Valid finding, still open | Agree: "As @{reviewer} flagged..." | Include in fix plan with attribution |
+| Valid finding, already fixed | Acknowledge: "Resolved in {sha}" | Skip — already handled |
+| Invalid/incorrect finding | Challenge with evidence | Skip fix, post justification comment |
+| Duplicate of your finding | Reference theirs, skip yours | Fix once, attribute to first finder |
+| Finding you missed | Amplify: "@{reviewer} correctly identified..." | Add to fix plan |
+
+### Attribution Format
+
+When posting review comments or fix summaries, always attribute findings:
+
+```markdown
+## For /pr-review output:
+"Agree with @gemini-code-assist — the Operational Skills count at `skills/README.md:28`
+should be 7, not 6. The heading was changed from (5) to (6) but two new skills were added
+(plan-validation and production-readiness), making the correct count 7."
+
+## For /pr-fix output:
+| # | Priority | Reviewer | File:Line | Finding | Fix Applied | Commit |
+| 1 | P2 | @gemini-code-assist | `skills/README.md:28` | Skills count wrong | Updated to (7) | `abc1234` |
+```
+
+### Cross-File Consistency Checks
+
+When bot reviewers flag inconsistencies, verify across ALL related files:
+
+| Check Type | Files to Cross-Reference | Example |
+| :--- | :--- | :--- |
+| Count headings | README.md headings vs actual items | "## Skills (6)" but 7 items listed |
+| Categorization | README.md categories vs CheatSheet.md categories | pr-toolkit in "Development" vs "Operations" |
+| Version strings | package.json, manifest.json, README badges | Version mismatch across files |
+| Feature counts | manifest.json capabilities vs file system | Manifest says 21 workflows but 20 files exist |

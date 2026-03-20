@@ -35,6 +35,7 @@ commit-types: [feat, fix, refactor, perf, chore, docs, test]
 
 ## Critical Rules
 
+0. **NO ARTIFACT FILES** — NEVER save API responses, diffs, or intermediate data as files in the project directory. Process ALL data in memory via shell pipes, variables, or direct tool output
 1. **ALWAYS** detect the project's branch strategy before validating target — prevents wrong-base PRs
 2. **ALWAYS** sync with target branch before creating PR — prevents merge conflicts
 3. **ALWAYS** run pre-flight `/review` locally before pushing — catches issues pre-CI

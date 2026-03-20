@@ -30,6 +30,7 @@ commit-types: [feat, fix, refactor, perf, chore, docs, test]
 
 ## Critical Rules
 
+0. **NO ARTIFACT FILES** — NEVER save API responses, diffs, or intermediate data as files in the project directory. Process ALL data in memory via shell pipes, variables, or direct tool output
 1. **NEVER** merge a PR with failing CI checks — no exceptions
 2. **NEVER** merge a PR without at least 1 approval (unless solo project)
 3. **NEVER** merge a PR with unresolved blocking dependencies (`Depends-On:` PRs still open)

@@ -31,3 +31,8 @@ docs/archives/
 
 # Agent identity (contains PII)
 .agent/engine/identity.json
+
+# PR workflow temporary artifacts (created by /pr-review, /pr-fix, etc.)
+# These MUST NOT be committed — they are intermediate data that should be processed in memory
+.agent/pr-*
+.agent/review-*
