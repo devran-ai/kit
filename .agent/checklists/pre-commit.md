@@ -1,6 +1,6 @@
 # Pre-Commit Checklist
 
-> **Framework**: Antigravity AI Kit v3.8.0  
+> **Framework**: Antigravity AI Kit v3.9.0  
 > **Purpose**: Quality gate before committing code  
 > **Principle**: Prevention over correction
 
