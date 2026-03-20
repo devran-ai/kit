@@ -1,6 +1,6 @@
 site_name: Antigravity AI Kit
 site_url: https://besync-labs.github.io/antigravity-ai-kit/
-site_description: Trust-Grade AI Development Framework — 29-Module Runtime Engine, 19 Agents, 33 Skills, 31 Commands, 17 Workflows, 349 Tests
+site_description: Trust-Grade AI Development Framework — 29-Module Runtime Engine, 20 Agents, 34 Skills, 37 Commands, 21 Workflows, 349 Tests
 site_author: Emre Dursun
 
 repo_name: besync-labs/antigravity-ai-kit
@@ -101,7 +101,7 @@ extra:
     - property: og:title
       content: Antigravity AI Kit — Trust-Grade AI Framework
     - property: og:description
-      content: Trust-Grade AI Development Framework with a 29-module runtime engine, 19 agents, 33 skills, 31 commands, and 17 workflows
+      content: Trust-Grade AI Development Framework with a 29-module runtime engine, 20 agents, 34 skills, 37 commands, and 21 workflows
     - property: og:url
       content: https://besync-labs.github.io/antigravity-ai-kit/
     - property: og:image
@@ -111,7 +111,7 @@ extra:
     - name: twitter:title
       content: Antigravity AI Kit
     - name: twitter:description
-      content: Trust-Grade AI Development Framework — 29-Module Runtime Engine, 19 Agents, 33 Skills, 31 Commands, 17 Workflows
+      content: Trust-Grade AI Development Framework — 29-Module Runtime Engine, 20 Agents, 34 Skills, 37 Commands, 21 Workflows
     - name: twitter:image
       content: https://besync-labs.github.io/antigravity-ai-kit/assets/og-image.png
 

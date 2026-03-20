@@ -1,6 +1,6 @@
 # Architecture
 
-Antigravity AI Kit v3.8.0 is an engineered framework with a **29-module runtime engine**, 19 agents, 33 skills, 31 commands, and 17 workflows.
+Antigravity AI Kit v3.8.0 is an engineered framework with a **29-module runtime engine**, 20 agents, 34 skills, 37 commands, and 21 workflows.
 
 ---
 
@@ -12,20 +12,20 @@ Antigravity AI Kit v3.8.0 is an engineered framework with a **29-module runtime 
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
-│  │   19 AGENTS     │  │   31 COMMANDS   │  │   33 SKILLS     │      │
+│  │   20 AGENTS     │  │   37 COMMANDS   │  │   34 SKILLS     │      │
 │  │                 │  │                 │  │                 │      │
 │  │ • Architect     │  │ • /plan         │  │ • api-patterns  │      │
 │  │ • Mobile Dev    │  │ • /implement    │  │ • architecture  │      │
 │  │ • DevOps        │  │ • /verify       │  │ • clean-code    │      │
 │  │ • DB Architect  │  │ • /deploy       │  │ • testing       │      │
 │  │ • Security      │  │ • /debug        │  │ • docker        │      │
-│  │ • + 14 more     │  │ • + 26 more     │  │ • + 26 more     │      │
+│  │ • + 15 more     │  │ • + 28 more     │  │ • + 27 more     │      │
 │  └─────────────────┘  └─────────────────┘  └─────────────────┘      │
 │                              │                                       │
 │           ┌──────────────────┴──────────────────┐                   │
 │           ▼                                      ▼                   │
 │  ┌─────────────────────────────────────────────────────────┐        │
-│  │                    17 WORKFLOWS                          │        │
+│  │                    21 WORKFLOWS                          │        │
 │  │  /brainstorm • /create • /debug • /deploy • /enhance    │        │
 │  │  /orchestrate • /plan • /pr • /preflight • /preview      │        │
 │  │  /quality-gate • /retrospective • /review • /status      │        │
@@ -53,16 +53,16 @@ Antigravity AI Kit v3.8.0 is an engineered framework with a **29-module runtime 
 
 ## Component Breakdown
 
-### Agents (19)
+### Agents (20)
 
 Specialized sub-agents that handle delegated tasks with focused expertise.
 
 - **Core**: Architect, Planner, Code Reviewer, TDD Specialist
 - **Domain**: Mobile, Frontend, Backend, Database, DevOps, Security, Performance
 - **Support**: Documentation, Build Error Resolver, Refactorer, Explorer, Knowledge
-- **Autonomy**: Sprint Orchestrator, Reliability Engineer
+- **Autonomy**: Sprint Orchestrator, Reliability Engineer, PR Reviewer
 
-### Commands (31)
+### Commands (37)
 
 Slash commands for quick execution of common operations.
 
@@ -70,21 +70,21 @@ Slash commands for quick execution of common operations.
 - **Development**: /build, /fix, /debug, /refactor, /cook
 - **Quality**: /verify, /code-review, /security-scan, /perf
 
-### Skills (33)
+### Skills (34)
 
 Domain expertise modules that extend AI capabilities.
 
 - **Operational**: verification-loop, continuous-learning, strategic-compact, eval-harness, context-budget, production-readiness
 - **Orchestration**: intelligent-routing, parallel-agents, behavioral-modes, mcp-integration
 - **Planning**: plan-writing (tiered quality schema), plan-validation (completeness scoring), brainstorming
-- **Domain**: api-patterns, architecture, clean-code, database-design, testing-patterns, and 15 more
+- **Domain**: api-patterns, architecture, clean-code, database-design, testing-patterns, pr-toolkit, and 15 more
 
-### Workflows (17)
+### Workflows (21)
 
 Complete development lifecycles for multi-step processes.
 
 - /brainstorm, /create, /debug, /deploy, /enhance, /orchestrate
-- /plan, /pr, /preflight, /preview, /quality-gate, /retrospective, /review
+- /plan, /pr, /pr-review, /pr-fix, /pr-merge, /pr-split, /preflight, /preview, /quality-gate, /retrospective, /review
 - /status, /test, /ui-ux-pro-max, /upgrade
 
 ### Runtime Engine (29 Modules)
@@ -109,10 +109,10 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 
 ```
 .agent/
-├── agents/               # 19 specialized agents
-├── commands/             # 31 slash commands
-├── skills/               # 33 capability modules
-├── workflows/            # 17 process templates
+├── agents/               # 20 specialized agents
+├── commands/             # 37 slash commands
+├── skills/               # 34 capability modules
+├── workflows/            # 21 process templates
 ├── engine/               # Autonomy Engine configs
 ├── hooks/                # Event automation
 ├── rules/                # Governance rules

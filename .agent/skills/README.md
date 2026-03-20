@@ -1,7 +1,7 @@
 # Antigravity AI Kit — Skills
 
 > **Purpose**: Workflow definitions and domain knowledge extensions
-> **Count**: 33 Skills (7 Operational + 4 Orchestration + 13 Domain + 9 Development)
+> **Count**: 34 Skills (7 Operational + 4 Orchestration + 13 Domain + 10 Development)
 
 ---
 
@@ -82,7 +82,7 @@ Skills are automatically loaded based on task context. Agents invoke relevant sk
 
 ---
 
-## Development Skills (9)
+## Development Skills (10)
 
 | Skill                                                   | Purpose                       |
 | :------------------------------------------------------ | :---------------------------- |
@@ -93,6 +93,7 @@ Skills are automatically loaded based on task context. Agents invoke relevant sk
 | [performance-profiling](performance-profiling/SKILL.md) | Core Web Vitals optimization  |
 | [brainstorming](brainstorming/SKILL.md)                 | Socratic discovery protocol   |
 | [plan-writing](plan-writing/SKILL.md)                   | Structured task breakdown     |
+| [pr-toolkit](pr-toolkit/SKILL.md)                       | PR lifecycle domain knowledge |
 | [shell-conventions](shell-conventions/SKILL.md)         | PowerShell/Bash conventions   |
 | [ui-ux-pro-max](ui-ux-pro-max/SKILL.md)                | Premium UI/UX design system   |
 

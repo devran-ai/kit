@@ -126,6 +126,11 @@
     { "workflow": "ui-ux-pro-max", "loadAgents": [], "loadSkills": ["ui-ux-pro-max", "frontend-patterns", "mobile-design"], "bindingType": "inferred" },
     { "workflow": "test", "loadAgents": [], "loadSkills": ["testing-patterns", "webapp-testing"], "bindingType": "inferred" },
     { "workflow": "review", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" },
+    { "workflow": "pr", "loadAgents": ["pr-reviewer"], "loadSkills": ["git-workflow", "pr-toolkit", "verification-loop"], "bindingType": "explicit" },
+    { "workflow": "pr-review", "loadAgents": ["pr-reviewer"], "loadSkills": ["pr-toolkit", "verification-loop"], "bindingType": "explicit" },
+    { "workflow": "pr-fix", "loadAgents": ["pr-reviewer"], "loadSkills": ["pr-toolkit", "verification-loop"], "bindingType": "explicit" },
+    { "workflow": "pr-merge", "loadAgents": ["pr-reviewer"], "loadSkills": ["pr-toolkit", "verification-loop"], "bindingType": "explicit" },
+    { "workflow": "pr-split", "loadAgents": ["pr-reviewer"], "loadSkills": ["pr-toolkit"], "bindingType": "explicit" },
     { "workflow": "deploy", "loadAgents": [], "loadSkills": ["deployment-procedures"], "bindingType": "inferred" },
     { "workflow": "debug", "loadAgents": [], "loadSkills": ["debugging-strategies"], "bindingType": "inferred" },
     {

@@ -14,8 +14,8 @@ describe('Agent Registry', () => {
     const registry = await loadRegistry();
     const report = registry.validateAllAgents(ROOT);
 
-    expect(report.total).toBe(19);
-    expect(report.valid).toBe(19);
+    expect(report.total).toBe(20);
+    expect(report.valid).toBe(20);
     expect(report.invalid).toBe(0);
   });
 
@@ -53,8 +53,8 @@ describe('Agent Registry', () => {
     const registry = await loadRegistry();
     const { agents, totalCount } = registry.loadRegistry(ROOT);
 
-    expect(totalCount).toBe(19);
-    expect(agents.length).toBe(19);
+    expect(totalCount).toBe(20);
+    expect(agents.length).toBe(20);
     expect(agents[0]).toHaveProperty('name');
     expect(agents[0]).toHaveProperty('file');
     expect(agents[0]).toHaveProperty('domain');

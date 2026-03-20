@@ -1,6 +1,6 @@
 # Commands
 
-Slash commands provide quick execution of common operations. **31 commands** across 10 categories.
+Slash commands provide quick execution of common operations. **37 commands** across 10 categories.
 
 ---
 
@@ -36,11 +36,17 @@ Slash commands provide quick execution of common operations. **31 commands** acr
 
 ### 🗃️ Git & PRs
 
-| Command      | Purpose                 |
-| :----------- | :---------------------- |
-| `/git`       | Git operations          |
-| `/pr`        | Pull request management |
-| `/changelog` | Generate changelog      |
+| Command        | Purpose                                       |
+| :------------- | :-------------------------------------------- |
+| `/git`         | Git operations                                |
+| `/pr`          | Create production-grade pull requests         |
+| `/pr-review`   | Review PR with senior engineering expertise   |
+| `/pr-fix`      | Fix PR based on review comments               |
+| `/pr-merge`    | Merge PR safely with dependency validation    |
+| `/pr-split`    | Split oversized PRs into focused sub-PRs      |
+| `/pr-status`   | Triage PRs with CI and merge readiness        |
+| `/pr-describe` | Auto-generate PR title, summary, and labels   |
+| `/changelog`   | Generate changelog                            |
 
 ### 🔍 Research & Discovery
 

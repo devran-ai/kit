@@ -1,7 +1,7 @@
 # Antigravity AI Kit — Commands
 
 > **Purpose**: Slash commands for quick access to common operations
-> **Count**: 31 Commands
+> **Count**: 37 Commands
 
 ---
 
@@ -40,7 +40,18 @@ Commands are quick invocations that trigger specific actions or workflows. Type 
 | `/adr`       | Create Architecture Decision Record |
 | `/changelog` | Generate changelog from commits     |
 | `/git`       | Git operations with best practices  |
-| `/pr`        | Create or manage pull requests      |
+| `/pr`        | Create production-grade pull requests |
+
+### PR Toolkit
+
+| Command        | Description                                     |
+| :------------- | :---------------------------------------------- |
+| `/pr-review`   | Review a PR with senior engineering expertise    |
+| `/pr-fix`      | Fix PR issues based on review comments           |
+| `/pr-merge`    | Merge PR safely with dependency validation       |
+| `/pr-split`    | Split oversized PRs into focused sub-PRs         |
+| `/pr-status`   | Triage PRs with CI, staleness, and merge readiness |
+| `/pr-describe` | Auto-generate PR title, summary, and labels      |
 
 ### Exploration & Research
 

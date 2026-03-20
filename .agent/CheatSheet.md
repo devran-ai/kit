@@ -25,7 +25,7 @@
 
 ---
 
-## 📋 Commands (31)
+## 📋 Commands (37)
 
 ### Core Workflow
 
@@ -54,7 +54,18 @@
 | `/adr` | Create Architecture Decision Record |
 | `/changelog` | Generate changelog from commits |
 | `/git` | Git operations with best practices |
-| `/pr` | Create or manage pull requests |
+| `/pr` | Create production-grade pull requests |
+
+### PR Toolkit
+
+| Command | Description |
+|:--------|:------------|
+| `/pr-review` | Review a PR with senior engineering expertise |
+| `/pr-fix` | Fix PR issues based on review comments |
+| `/pr-merge` | Merge PR safely with dependency validation |
+| `/pr-split` | Split oversized PRs into focused sub-PRs |
+| `/pr-status` | Triage PRs with CI, staleness, and merge readiness |
+| `/pr-describe` | Auto-generate PR title, summary, and labels |
 
 ### Exploration & Research
 
@@ -95,7 +106,7 @@
 
 ---
 
-## 🤖 Agents (19)
+## 🤖 Agents (20)
 
 ### Core Development
 
@@ -136,11 +147,17 @@
 | 🔭 Explorer Agent | Codebase discovery |
 | 📊 Sprint Orchestrator | Sprint planning & velocity |
 
+### PR & Code Review
+
+| Agent | Purpose |
+|:------|:--------|
+| 👀 PR Reviewer | PR review, branch strategy, code quality |
+
 ---
 
-## 🧩 Skills (32)
+## 🧩 Skills (34)
 
-### Operational (5)
+### Operational (7)
 
 | Skill | Purpose |
 |:------|:--------|
@@ -149,6 +166,8 @@
 | strategic-compact | Context window management |
 | eval-harness | Performance evaluation |
 | context-budget | LLM token budget management |
+| plan-validation | Plan quality gate with scoring |
+| production-readiness | Preflight audit and readiness checks |
 
 ### Orchestration (4)
 
@@ -179,13 +198,14 @@
 | testing-patterns | TDD, unit, integration |
 | debugging-strategies | Systematic debugging |
 
-### Domain — Operations (3)
+### Domain — Operations (4)
 
 | Skill | Purpose |
 |:------|:--------|
 | docker-patterns | Containerization |
 | git-workflow | Branching, commits |
 | security-practices | OWASP, vulnerability prevention |
+| pr-toolkit | PR lifecycle, review, merge, split |
 
 ### Development (9)
 
@@ -203,7 +223,7 @@
 
 ---
 
-## 🔄 Workflows (14)
+## 🔄 Workflows (21)
 
 | Workflow | Command | Phase |
 |:---------|:--------|:------|
@@ -214,27 +234,35 @@
 | enhance | `/enhance` | Build |
 | preview | `/preview` | Build |
 | ui-ux-pro-max | `/ui-ux-pro-max` | Build |
+| pr-fix | `/pr-fix` | Build |
+| pr-split | `/pr-split` | Build |
 | test | `/test` | Verify |
 | review | `/review` | Verify |
+| preflight | `/preflight` | Verify |
+| pr-review | `/pr-review` | Verify |
+| pr | `/pr` | Ship |
+| pr-merge | `/pr-merge` | Ship |
 | deploy | `/deploy` | Ship |
 | debug | `/debug` | Reactive |
 | orchestrate | `/orchestrate` | Reactive |
 | retrospective | `/retrospective` | Evaluate |
 | status | `/status` | Cross-cutting |
+| upgrade | `/upgrade` | Maintenance |
 
 ---
 
-## ✅ Checklists
+## ✅ Checklists (4)
 
 | Checklist | When to Use |
 |:----------|:------------|
 | `session-start.md` | Beginning of every work session |
 | `session-end.md` | Before ending any work session |
 | `pre-commit.md` | Before every commit |
+| `task-complete.md` | After completing any task |
 
 ---
 
-## ⚖️ Governance Rules (8)
+## ⚖️ Governance Rules (9)
 
 | Rule File | Scope |
 |:----------|:------|
@@ -246,6 +274,7 @@
 | `sprint-tracking.md` | ROADMAP.md as SSOT, session protocols |
 | `quality-gate.md` | Pre-task validation and quality standards |
 | `architecture.md` | System design patterns and ADR governance |
+| `agent-upgrade-policy.md` | Framework upgrade preservation rules |
 
 ---
 
@@ -254,7 +283,7 @@
 ### 1. Starting a New Feature
 
 ```
-/status → /plan → /create → /test → /review → /deploy
+/status → /plan → /create → /test → /review → /pr → /deploy
 ```
 
 ### 2. Fixing a Bug
@@ -281,6 +310,12 @@
 /status → /plan → /brainstorm → update ROADMAP.md
 ```
 
+### 6. PR Lifecycle
+
+```
+/pr → /pr-review → /pr-fix → /pr-merge
+```
+
 ---
 
 ## 📁 Directory Structure
@@ -293,12 +328,12 @@
 ├── CheatSheet.md            # This file
 ├── manifest.json            # Capability registry
 │
-├── agents/                  # 19 specialized agents
-├── commands/                # 31 slash commands
-├── skills/                  # 31 capability extensions
-├── workflows/               # 14 slash command workflows
+├── agents/                  # 20 specialized agents
+├── commands/                # 37 slash commands
+├── skills/                  # 34 capability extensions
+├── workflows/               # 21 slash command workflows
 ├── hooks/                   # Event-driven automation
-├── rules/                   # 6 modular governance rules
+├── rules/                   # 9 modular governance rules
 ├── contexts/                # Mode switching (brainstorm, debug, etc.)
 ├── checklists/              # Session & pre-commit verification
 ├── templates/               # Feature, ADR, bug-report templates

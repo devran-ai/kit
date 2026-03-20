@@ -1,6 +1,6 @@
 # Skills
 
-Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **33 skills** across 7 categories.
+Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **34 skills** across 7 categories.
 
 ---
 
@@ -74,6 +74,7 @@ DevOps, deployment, and performance.
 | **deployment-procedures** | CI/CD and rollback strategies               |
 | **performance-profiling** | Core Web Vitals optimization                |
 | **shell-conventions**     | Windows PowerShell conventions (avoid bash) |
+| **pr-toolkit**            | PR lifecycle, review, merge, split, analytics |
 
 ---
 

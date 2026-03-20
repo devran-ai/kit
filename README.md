@@ -2,10 +2,10 @@
 
 ![version](https://img.shields.io/badge/version-3.8.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
-![AI Agents](https://img.shields.io/badge/AI%20Agents-19-purple)
-![Skills](https://img.shields.io/badge/Skills-33-orange)
-![Commands](https://img.shields.io/badge/Commands-31-red)
-![Workflows](https://img.shields.io/badge/Workflows-17-teal)
+![AI Agents](https://img.shields.io/badge/AI%20Agents-20-purple)
+![Skills](https://img.shields.io/badge/Skills-34-orange)
+![Commands](https://img.shields.io/badge/Commands-37-red)
+![Workflows](https://img.shields.io/badge/Workflows-21-teal)
 ![Runtime Modules](https://img.shields.io/badge/Runtime%20Modules-29-blueviolet)
 ![Tests](https://img.shields.io/badge/Tests-349%20passing-brightgreen)
 ![Checklists](https://img.shields.io/badge/Checklists-4-yellow)
@@ -15,14 +15,14 @@
 </p>
 
 <p align="center">
-  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>29-module runtime engine</b>, <b>19 specialized agents</b>, <b>31 commands</b>, <b>33 skills</b>, and <b>17 workflows</b> — all backed by <b>349 tests</b> and governance-first principles.
+  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>29-module runtime engine</b>, <b>20 specialized agents</b>, <b>37 commands</b>, <b>34 skills</b>, and <b>21 workflows</b> — all backed by <b>349 tests</b> and governance-first principles.
 </p>
 
 <p align="center">
   🚀 <a href="#-quick-start">Quick Start</a> •
-  🤖 <a href="#-agents-19">Agents</a> •
-  🛠️ <a href="#%EF%B8%8F-skills-33">Skills</a> •
-  ⌨️ <a href="#%EF%B8%8F-commands-31">Commands</a> •
+  🤖 <a href="#-agents-20">Agents</a> •
+  🛠️ <a href="#%EF%B8%8F-skills-34">Skills</a> •
+  ⌨️ <a href="#%EF%B8%8F-commands-37">Commands</a> •
   🔄 <a href="#-session-management">Sessions</a> •
   ⚖️ <a href="#%EF%B8%8F-operating-constraints">Governance</a> •
   📖 <a href="#-contributor-guide">Contributor Guide</a>
@@ -36,11 +36,11 @@
 - [Key Features](#-key-features)
 - [Quick Start](#-quick-start)
 - [Architecture](#%EF%B8%8F-architecture-overview)
-- [Agents](#-agents-19)
-- [Commands](#%EF%B8%8F-commands-31)
-- [Skills](#%EF%B8%8F-skills-33)
+- [Agents](#-agents-20)
+- [Commands](#%EF%B8%8F-commands-37)
+- [Skills](#%EF%B8%8F-skills-34)
 - [Runtime Engine](#%EF%B8%8F-runtime-engine-29-modules)
-- [Workflows](#-workflows-17)
+- [Workflows](#-workflows-21)
 - [Operating Constraints](#%EF%B8%8F-operating-constraints)
 - [Session Management](#-session-management)
 - [How to Extend](#-how-to-extend)
@@ -55,10 +55,10 @@
 
 | Feature           | Count | Description                                                            |
 | :---------------- | :---- | :--------------------------------------------------------------------- |
-| 🤖 **AI Agents**  | 19    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
-| 🛠️ **Skills**     | 33    | Domain knowledge modules (API, Testing, MCP, Architecture, Docker...) |
-| ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 17    | Process templates (/create, /debug, /deploy, /pr, /test...)            |
+| 🤖 **AI Agents**  | 20    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
+| 🛠️ **Skills**     | 34    | Domain knowledge modules (API, Testing, MCP, Architecture, Docker...) |
+| ⌨️ **Commands**   | 37    | Slash commands for every development workflow                          |
+| 🔄 **Workflows**  | 21    | Process templates (/create, /debug, /deploy, /pr, /pr-merge, /test...)  |
 | ⚙️ **Runtime**    | 29    | Runtime engine modules (governance, reputation, self-healing...)       |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | ⚖️ **Rules**      | 9     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
@@ -70,7 +70,7 @@
 ## ✨ Key Features
 
 - **🔒 Trust-Grade Governance**: `/explore → /plan → /work → /review` — Each iteration builds context
-- **🤖 Multi-Agent System**: 19 specialized agents that collaborate (Mobile Developer, DevOps, Database Architect, Sprint Orchestrator...)
+- **🤖 Multi-Agent System**: 20 specialized agents that collaborate (Mobile Developer, DevOps, Database Architect, Sprint Orchestrator...)
 - **⚙️ Runtime Engine**: 29 modules enforcing workflow transitions, task governance, agent reputation, self-healing, and marketplace
 - **📦 Context as Artifact**: Persistent markdown files for plans, specs, and decisions
 - **🔄 Continuous Learning**: PAAL cycle extracts patterns from every session
@@ -149,7 +149,7 @@ Antigravity AI Kit is designed to **never touch your project files**. All operat
 ┌─────────────────────────────────────────────────────────────────────┐
 │                    USER INTERFACE LAYER                              │
 │  ┌─────────────────────────┐  ┌─────────────────────────┐          │
-│  │  Slash Commands (31)    │  │  Workflows (17)         │          │
+│  │  Slash Commands (37)    │  │  Workflows (21)         │          │
 │  └────────────┬────────────┘  └────────────┬────────────┘          │
 ├───────────────┼────────────────────────────┼────────────────────────┤
 │               ▼         INTELLIGENCE LAYER ▼                        │
@@ -158,7 +158,7 @@ Antigravity AI Kit is designed to **never touch your project files**. All operat
 │  │ Router           │  │ Machine          │  │ Engine           │  │
 │  └────────┬─────────┘  └──────────────────┘  └──────────────────┘  │
 ├───────────┼────────────────────────────────────────────────────────-┤
-│           ▼              AGENT LAYER (19)                            │
+│           ▼              AGENT LAYER (20)                            │
 │  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  │
 │  │ Core Agents      │  │ Domain Agents    │  │ Support Agents   │  │
 │  │ Planner          │  │ Mobile Dev       │  │ Security         │  │
@@ -167,7 +167,7 @@ Antigravity AI Kit is designed to **never touch your project files**. All operat
 │  │ TDD Specialist   │  │ DB, DevOps       │  │ Knowledge        │  │
 │  └────────┬─────────┘  └────────┬─────────┘  └────────┬─────────┘  │
 ├───────────┼─────────────────────┼─────────────────────┼────────────┤
-│           ▼              SKILL LAYER (32)              ▼            │
+│           ▼              SKILL LAYER (34)              ▼            │
 │  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  │
 │  │ Orchestration    │  │ Operational      │  │ Domain Skills    │  │
 │  │ Routing, Modes   │  │ Verification     │  │ API, Testing     │  │
@@ -208,7 +208,7 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → CHECKPOINT → REVIEW → DEPLOY
 
 ---
 
-## 🤖 Agents (19)
+## 🤖 Agents (20)
 
 ### Core Development
 
@@ -245,12 +245,13 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → CHECKPOINT → REVIEW → DEPLOY
 | Agent                    | Role                              | Triggers                      |
 | :----------------------- | :-------------------------------- | :---------------------------- |
 | **Planner**              | Multi-agent plan synthesis, tiered quality schema, specialist coordination | plan, breakdown, requirements |
+| **PR Reviewer**          | Pull request review & fixes       | pr, pull-request, review      |
 | **Sprint Orchestrator**  | Sprint planning, velocity         | sprint, roadmap, velocity     |
 | **Reliability Engineer** | SRE, production readiness         | reliability, SLA, monitoring  |
 
 ---
 
-## ⌨️ Commands (31)
+## ⌨️ Commands (37)
 
 ### Core Workflow
 
@@ -280,6 +281,12 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → CHECKPOINT → REVIEW → DEPLOY
 | `/changelog` | Generate changelog           |
 | `/git`       | Git operations               |
 | `/pr`        | Create/manage pull requests  |
+| `/pr-review` | Automated PR code review     |
+| `/pr-fix`    | Auto-fix PR review findings  |
+| `/pr-merge`  | Safe PR merge with validation|
+| `/pr-split`  | Split oversized PRs          |
+| `/pr-status` | PR triage and merge readiness|
+| `/pr-describe`| Auto-generate PR description|
 
 ### Exploration & Research
 
@@ -320,7 +327,7 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → CHECKPOINT → REVIEW → DEPLOY
 
 ---
 
-## 🛠️ Skills (33)
+## 🛠️ Skills (34)
 
 ### Operational Skills (6)
 
@@ -360,7 +367,7 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → CHECKPOINT → REVIEW → DEPLOY
 | `git-workflow`         | Branching, commits              |
 | `i18n-localization`    | Internationalization patterns   |
 
-### Development Skills (10)
+### Development Skills (11)
 
 | Skill                   | Purpose                 |
 | :---------------------- | :---------------------- |
@@ -373,6 +380,7 @@ EXPLORE → PLAN → IMPLEMENT → VERIFY → CHECKPOINT → REVIEW → DEPLOY
 | `plan-writing`          | Structured planning with tiered quality schema |
 | `plan-validation`       | Quality gate with completeness scoring |
 | `shell-conventions`     | PowerShell/Bash conventions |
+| `pr-toolkit`            | PR review & fix workflows |
 | `ui-ux-pro-max`         | Premium UI/UX design system |
 
 ---
@@ -424,7 +432,7 @@ Antigravity AI Kit v3.2.0 includes a **full runtime engine** built across 4 phas
 
 ---
 
-## 🔄 Workflows (17)
+## 🔄 Workflows (21)
 
 | Workflow          | Description              | Command          |
 | :---------------- | :----------------------- | :--------------- |
@@ -436,6 +444,10 @@ Antigravity AI Kit v3.2.0 includes a **full runtime engine** built across 4 phas
 | **orchestrate**   | Multi-agent coordination | `/orchestrate`   |
 | **plan**          | Implementation planning  | `/plan`          |
 | **pr**            | Production-grade PR creation | `/pr`        |
+| **pr-review**     | Automated PR code review     | `/pr-review` |
+| **pr-fix**        | Auto-fix PR review findings  | `/pr-fix`    |
+| **pr-merge**      | Safe PR merge with validation| `/pr-merge`  |
+| **pr-split**      | Split oversized PRs          | `/pr-split`  |
 | **preflight**     | Production readiness assessment | `/preflight`    |
 | **preview**       | Preview changes          | `/preview`       |
 | **quality-gate**  | Pre-task validation      | `/quality-gate`  |
@@ -635,10 +647,10 @@ Usage and instructions...
 ```
 antigravity-ai-kit/
 ├── .agent/                    # Core AI Kit
-│   ├── agents/               # 19 specialized agents
-│   ├── commands/             # 31 slash commands
-│   ├── skills/               # 33 capability modules
-│   ├── workflows/            # 17 process templates
+│   ├── agents/               # 20 specialized agents
+│   ├── commands/             # 37 slash commands
+│   ├── skills/               # 34 capability modules
+│   ├── workflows/            # 21 process templates
 │   ├── engine/               # Autonomy Engine (state machine, loading rules, configs)
 │   ├── hooks/                # 8 event hooks (runtime + git-hook)
 │   ├── rules/                # 9 modular governance rules

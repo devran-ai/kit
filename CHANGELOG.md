@@ -5,6 +5,47 @@ All notable changes to Antigravity AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.9.0] — 2026-03-20
+
+### Added
+
+- **PR Toolkit v2.0** — Comprehensive PR lifecycle management with 8 enhancements (E1-E8):
+  - **E1: Confidence Scoring** — 0-100 scoring framework for review findings with configurable thresholds (default 70, `--strict` 50, `--relaxed` 90)
+  - **E2: `/pr-merge` workflow** — Safe PR merge with dependency validation, CI verification, merge strategy selection (squash/merge-commit/rebase), post-merge checks, and dependent PR notification
+  - **E3: `/pr-status` command** — PR triage with CI status, staleness detection, dependency readiness, and merge eligibility scoring
+  - **E4: Git-Aware Context** — `git blame`-based detection of PR-introduced vs pre-existing issues with confidence score adjustments (+20 new, -10 pre-existing)
+  - **E5: `/pr-split` workflow** — Split L/XL PRs into focused sub-PRs by concern category (feature, tests, config, deps, docs, infra) with dependency-ordered merge plans
+  - **E6: PR Analytics** — DORA metrics alignment (deployment frequency, lead time, change failure rate, MTTR) mapped to PR metrics
+  - **E7: `/pr-describe` command** — Auto-generate conventional-commit title, structured summary, change categorization, and suggested labels from diff analysis
+  - **E8: PR Dependencies** — `Depends-On: #N` convention with cycle detection, cross-repo support, and merge ordering validation
+- **`pr-reviewer` agent** — Senior Staff Engineer PR review specialist with 6-perspective review protocol (PR Hygiene, Branch Strategy, Code Quality, Security, Testing, Architecture), confidence scoring, and git-aware context
+- **`pr-toolkit` skill v2.0** — 12-section domain knowledge skill (branch strategy detection, size classification, title enforcement, review patterns, fix prioritization, body checklist, repo health signals, confidence scoring, PR analytics, dependency management, split strategy, auto-description)
+- **`/pr-review` workflow** — Multi-perspective PR review with severity-scored findings and GitHub review posting
+- **`/pr-fix` workflow** — Fix PR issues based on review comments with P0-P3 priority ordering and verification
+- **`/pr-merge` command** — Command stub for safe PR merge
+- **`/pr-split` command** — Command stub for PR splitting
+- **`/pr-status` command** — Command stub for PR triage
+- **`/pr-describe` command** — Command stub for auto-description
+
+### Changed
+
+- **`/pr` workflow v3.0** — Added branch strategy detection (Step 1a), target branch validation (Step 1b), PR size & scope guard with XS-XL classification (Step 2.5), strict title validation, and PR Toolkit reference table
+- **`/pr` command** — Updated with full PR Toolkit command reference (7 commands)
+- **`/pr-review` command** — Added cross-references to `/pr-merge`, `/pr-split`, `/pr-status`
+- **`/pr-fix` command** — Added cross-references to `/pr-merge`, `/pr-status`
+- **Documentation alignment** — Fixed 30+ stale counts across all README files, docs site, GitHub Pages meta tags, SEO tags, and package.json
+  - Agent count: 19 → 20 across all documentation
+  - Command count: 31/33 → 37 across all documentation
+  - Workflow count: 17/19 → 21 across all documentation
+  - Skills count: 32/33 → 34 across all documentation
+  - Runtime modules: 21 → 29 in docs/overrides/main.html (was never updated)
+- **`.agent/CheatSheet.md`** — Complete rewrite with all current counts, PR Toolkit section, PR lifecycle scenario, 4 checklists, 9 rules
+- **`mkdocs.yml`** — Updated site description, OG meta tags, and Twitter card with correct counts
+- **`docs/overrides/main.html`** — Fixed all SEO meta tags with accurate counts
+- **`package.json`** — Updated description with accurate capability counts
+- **`manifest.json`** — Registered pr-merge and pr-split workflows, updated counts (commands 33→37, workflows 19→21)
+- **`loading-rules.json`** — Added workflow bindings for pr-merge and pr-split
+
 ## [3.8.0] — 2026-03-19
 
 ### Added

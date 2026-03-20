@@ -10,10 +10,10 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 
 | Feature           | Count | Description                                                            |
 | :---------------- | :---- | :--------------------------------------------------------------------- |
-| 🤖 **AI Agents**  | 19    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
-| 🛠️ **Skills**     | 33    | Domain knowledge modules (API, Testing, Plan Validation, Docker...)    |
-| ⌨️ **Commands**   | 31    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 17    | Process templates (/create, /debug, /deploy, /pr, /test...)            |
+| 🤖 **AI Agents**  | 20    | Specialized roles (Mobile, DevOps, Database, Security, PR Review...)   |
+| 🛠️ **Skills**     | 34    | Domain knowledge modules (API, Testing, PR Toolkit, Docker...)         |
+| ⌨️ **Commands**   | 37    | Slash commands for every development workflow                          |
+| 🔄 **Workflows**  | 21    | Process templates (/create, /debug, /deploy, /pr, /pr-merge...)        |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
 | ⚙️ **Runtime**    | 29    | Runtime engine modules (governance, reputation, self-healing...)       |
@@ -31,19 +31,19 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :robot: **[Agents](agents/index.md)**
 
-  19 specialized agents for delegation
+  20 specialized agents for delegation
 
 - :keyboard: **[Commands](commands/index.md)**
 
-  31 slash commands for quick execution
+  37 slash commands for quick execution
 
 - :gear: **[Skills](skills/index.md)**
 
-  33 domain expertise modules
+  34 domain expertise modules
 
 - :arrows_counterclockwise: **[Workflows](workflows/index.md)**
 
-  17 full development workflows
+  21 full development workflows
 
 - :repeat: **[Session Management](session-management.md)**
 
@@ -76,7 +76,7 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 ## Key Features
 
 - **🔒 Trust-Grade Governance** — `/explore → /plan → /work → /review` — Each iteration builds context
-- **🤖 Multi-Agent System** — 19 specialized agents that collaborate (Mobile Developer, DevOps, Database Architect...)
+- **🤖 Multi-Agent System** — 20 specialized agents that collaborate (Mobile Developer, DevOps, PR Reviewer...)
 - **⚙️ Runtime Engine** — 29 modules enforcing workflow transitions, task governance, agent reputation, and self-healing
 - **📦 Context as Artifact** — Persistent markdown files for plans, specs, and decisions
 - **🔄 Continuous Learning** — PAAL cycle extracts patterns from every session

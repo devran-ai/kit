@@ -41,10 +41,10 @@ ag-kit init
 ```
 
 This creates the `.agent/` folder with:
-- **19 AI agents** — specialized roles for every development task
-- **31 commands** — slash commands for development workflows
-- **33 skills** — domain expertise modules
-- **17 workflows** — complete development lifecycles
+- **20 AI agents** — specialized roles for every development task
+- **37 commands** — slash commands for development workflows
+- **34 skills** — domain expertise modules
+- **21 workflows** — complete development lifecycles
 
 ### Verify Installation
 

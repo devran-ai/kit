@@ -1,7 +1,7 @@
 # Antigravity AI Kit — Agents
 
 > **Purpose**: Specialized sub-agents for task delegation
-> **Count**: 19 Core Agents
+> **Count**: 20 Agents
 
 ---
 
@@ -56,6 +56,12 @@ Agents are specialized personas that handle delegated tasks with focused experti
 | 🔭 **Explorer Agent**      | `explorer-agent.md`      | Codebase discovery          |
 | 📊 **Sprint Orchestrator** | `sprint-orchestrator.md` | Sprint planning & velocity  |
 
+### PR & Code Review Agents
+
+| Agent                      | File                     | Purpose                     |
+| :------------------------- | :----------------------- | :-------------------------- |
+| 👀 **PR Reviewer**         | `pr-reviewer.md`         | PR review, branch strategy, code quality |
+
 ---
 
 ## Agent Selection Matrix
@@ -77,6 +83,7 @@ The `intelligent-routing` skill automatically selects agents based on request ke
 | Backend      | "backend", "api", "server", "node"  | `backend-specialist`      |
 | Sprint       | "sprint", "velocity", "backlog"     | `sprint-orchestrator`     |
 | Reliability  | "SRE", "incident", "production"     | `reliability-engineer`    |
+| PR Review    | "PR", "pull request", "review PR"   | `pr-reviewer`             |
 
 ---
 

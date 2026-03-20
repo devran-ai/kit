@@ -1,6 +1,6 @@
 # Agents
 
-Agents are specialized sub-agents that handle delegated tasks with focused expertise. **19 agents** across 3 categories.
+Agents are specialized sub-agents that handle delegated tasks with focused expertise. **20 agents** across 4 categories.
 
 ---
 
@@ -41,6 +41,14 @@ Agents are specialized sub-agents that handle delegated tasks with focused exper
 | 🧠 **Knowledge Agent**        | RAG retrieval                    | knowledge, context           |
 | 🛡️ **Reliability Engineer**   | SRE, production readiness        | reliability, sre, production |
 | 🎯 **Sprint Orchestrator**    | Sprint planning, velocity        | sprint, orchestrate          |
+
+---
+
+## PR & Code Review
+
+| Agent                       | Role                          | Triggers                     |
+| :-------------------------- | :---------------------------- | :--------------------------- |
+| 👀 **PR Reviewer**          | PR review, branch strategy    | PR, pull request, review     |
 
 ---
 

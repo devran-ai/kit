@@ -1,6 +1,6 @@
 # Workflows
 
-Workflows are complete development lifecycles that guide you through multi-step processes. **17 workflows** for every development scenario.
+Workflows are complete development lifecycles that guide you through multi-step processes. **21 workflows** for every development scenario.
 
 ---
 
@@ -15,7 +15,11 @@ Workflows are complete development lifecycles that guide you through multi-step 
 | 🔧 `/enhance`       | Iterative development          | Adding/updating features                     |
 | 🎭 `/orchestrate`   | Multi-agent orchestration      | Complex tasks requiring specialists          |
 | 📋 `/plan`          | Implementation planning        | Creating structured task breakdowns          |
-| 🔀 `/pr`            | Production-grade PR creation   | Creating PRs with pre-flight checks and CI   |
+| 🔀 `/pr`            | Production-grade PR creation   | Creating PRs with branch validation and CI   |
+| 👀 `/pr-review`     | Multi-perspective PR review    | Reviewing PRs with senior engineering expertise |
+| 🔧 `/pr-fix`        | Fix PR review findings         | Fixing PRs based on review comments          |
+| 🔗 `/pr-merge`      | Safe PR merge                  | Merging PRs with dependency validation       |
+| ✂️ `/pr-split`      | Split oversized PRs            | Splitting L/XL PRs into focused sub-PRs      |
 | ✈️ `/preflight`     | Production readiness audit     | Assessing app health against 10 domains      |
 | 👁️ `/preview`       | Dev server management          | Starting/stopping local servers              |
 | 🔬 `/quality-gate`  | Pre-task research & validation | Market research and ethics review            |

@@ -20,7 +20,7 @@ npx create-antigravity-app my-project
 
 ```
 my-project/
-├── .agent/              # 19 AI Agents, 33 Skills, 31 Commands, 17 Workflows
+├── .agent/              # 20 AI Agents, 34 Skills, 37 Commands, 21 Workflows
 ├── .githooks/           # Secret detection pre-commit hook
 ├── .gitignore           # Sensible defaults
 ├── package.json         # Project configuration
