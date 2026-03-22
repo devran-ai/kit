@@ -142,6 +142,41 @@ function countItems(dir, type = 'dir') {
   }
 }
 
+/**
+ * Generates IDE-specific config files during init.
+ * Extracted from initCommand for readability (gemini-code-assist M-2).
+ */
+function generateIdeConfigsForInit(agentPath, targetDir, options) {
+  try {
+    const { generateAllIdeConfigs, writeIdeConfigs, generateCursorConfig, generateOpenCodeConfig, generateCodexConfig } = require('../lib/ide-generator');
+    const manifest = JSON.parse(fs.readFileSync(path.join(agentPath, 'manifest.json'), 'utf-8'));
+    const rulesContent = fs.readFileSync(path.join(agentPath, 'rules.md'), 'utf-8');
+
+    const generatorMap = {
+      cursor: () => generateCursorConfig(manifest, rulesContent),
+      opencode: () => generateOpenCodeConfig(manifest),
+      codex: () => generateCodexConfig(manifest),
+    };
+
+    let configs;
+    if (options.ide && generatorMap[options.ide]) {
+      configs = [generatorMap[options.ide]()];
+    } else if (options.ide) {
+      log(`   ⚠️  Unknown IDE: ${options.ide}. Generating all configs.`, 'yellow');
+      configs = generateAllIdeConfigs(manifest, rulesContent);
+    } else {
+      configs = generateAllIdeConfigs(manifest, rulesContent);
+    }
+
+    const result = writeIdeConfigs(targetDir, configs, { force: options.force, skipExisting: !options.force });
+    for (const f of result.written) log(`   ✓ ${f}`, 'green');
+    for (const f of result.skipped) log(`   ⏭ ${f} (already exists)`, 'yellow');
+  } catch (err) {
+    log(`   ⚠️  IDE config generation failed: ${err.message}`, 'yellow');
+    log('   .agent/ installed successfully — IDE configs can be generated later', 'yellow');
+  }
+}
+
 function initCommand(options) {
   const targetDir = options.path || process.cwd();
   const agentPath = path.join(targetDir, AGENT_FOLDER);
@@ -286,43 +321,7 @@ function initCommand(options) {
   // Generate IDE configurations (Cursor, OpenCode, Codex)
   if (!options.skipIde) {
     logStep(`${currentStep}/${totalSteps}`, 'Generating IDE configurations...');
-    try {
-      const { generateAllIdeConfigs, writeIdeConfigs, generateCursorConfig, generateOpenCodeConfig, generateCodexConfig } = require('../lib/ide-generator');
-      const manifestPath = path.join(agentPath, 'manifest.json');
-      const rulesPath = path.join(agentPath, 'rules.md');
-      const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
-      const rulesContent = fs.readFileSync(rulesPath, 'utf-8');
-
-      let configs;
-      if (options.ide) {
-        const generatorMap = {
-          cursor: () => generateCursorConfig(manifest, rulesContent),
-          opencode: () => generateOpenCodeConfig(manifest),
-          codex: () => generateCodexConfig(manifest),
-        };
-        const generator = generatorMap[options.ide];
-        if (generator) {
-          configs = [generator()];
-        } else {
-          log(`   ⚠️  Unknown IDE: ${options.ide}. Generating all configs.`, 'yellow');
-          configs = generateAllIdeConfigs(manifest, rulesContent);
-        }
-      } else {
-        configs = generateAllIdeConfigs(manifest, rulesContent);
-      }
-
-      const ideOptions = { force: options.force, skipExisting: !options.force };
-      const result = writeIdeConfigs(targetDir, configs, ideOptions);
-      for (const f of result.written) {
-        log(`   ✓ ${f}`, 'green');
-      }
-      for (const f of result.skipped) {
-        log(`   ⏭ ${f} (already exists)`, 'yellow');
-      }
-    } catch (err) {
-      log(`   ⚠️  IDE config generation failed: ${err.message}`, 'yellow');
-      log('   .agent/ installed successfully — IDE configs can be generated later', 'yellow');
-    }
+    generateIdeConfigsForInit(agentPath, targetDir, options);
   }
   currentStep++;
 
