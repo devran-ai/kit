@@ -93,6 +93,6 @@ This checks:
 
 ## Questions?
 
-- Open an [issue](https://github.com/besync-labs/antigravity-ai-kit/issues)
+- Open an [issue](https://github.com/devran-ai/kit/issues)
 - Check existing discussions
-- Review the [documentation](https://besync-labs.github.io/antigravity-ai-kit)
+- Review the [documentation](https://devran-ai.github.io/kit)

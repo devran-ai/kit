@@ -1,6 +1,6 @@
 # create-antigravity-app
 
-> 🚀 Create a new project with [Antigravity AI Kit](https://github.com/besync-labs/antigravity-ai-kit) pre-configured.
+> 🚀 Create a new project with [Antigravity AI Kit](https://github.com/devran-ai/kit) pre-configured.
 
 ## Quick Start
 
@@ -48,4 +48,4 @@ Open your project in an AI-powered IDE and use these commands:
 
 ## License
 
-MIT — [Antigravity AI Kit](https://github.com/besync-labs/antigravity-ai-kit)
+MIT — [Antigravity AI Kit](https://github.com/devran-ai/kit)

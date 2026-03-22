@@ -445,16 +445,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Session management architecture
 - PAAL continuous learning cycle
 
-[3.8.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.7.0...v3.8.0
-[3.7.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.6.0...v3.7.0
-[3.6.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.5.0...v3.6.0
-[3.5.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.4.1...v3.5.0
-[3.4.1]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.3.1...v3.4.1
-[3.3.1]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.3.0...v3.3.1
-[3.3.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.2.0...v3.3.0
-[3.2.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.1.0...v3.2.0
-[3.1.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.0.1...v3.1.0
-[3.0.1]: https://github.com/besync-labs/antigravity-ai-kit/compare/v3.0.0...v3.0.1
-[3.0.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v2.1.0...v3.0.0
-[2.1.0]: https://github.com/besync-labs/antigravity-ai-kit/compare/v2.0.0...v2.1.0
-[2.0.0]: https://github.com/besync-labs/antigravity-ai-kit/releases/tag/v2.0.0
+[3.8.0]: https://github.com/devran-ai/kit/compare/v3.7.0...v3.8.0
+[3.7.0]: https://github.com/devran-ai/kit/compare/v3.6.0...v3.7.0
+[3.6.0]: https://github.com/devran-ai/kit/compare/v3.5.0...v3.6.0
+[3.5.0]: https://github.com/devran-ai/kit/compare/v3.4.1...v3.5.0
+[3.4.1]: https://github.com/devran-ai/kit/compare/v3.3.1...v3.4.1
+[3.3.1]: https://github.com/devran-ai/kit/compare/v3.3.0...v3.3.1
+[3.3.0]: https://github.com/devran-ai/kit/compare/v3.2.0...v3.3.0
+[3.2.0]: https://github.com/devran-ai/kit/compare/v3.1.0...v3.2.0
+[3.1.0]: https://github.com/devran-ai/kit/compare/v3.0.1...v3.1.0
+[3.0.1]: https://github.com/devran-ai/kit/compare/v3.0.0...v3.0.1
+[3.0.0]: https://github.com/devran-ai/kit/compare/v2.1.0...v3.0.0
+[2.1.0]: https://github.com/devran-ai/kit/compare/v2.0.0...v2.1.0
+[2.0.0]: https://github.com/devran-ai/kit/releases/tag/v2.0.0

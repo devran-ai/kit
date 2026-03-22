@@ -714,15 +714,15 @@ MIT License — See [LICENSE](LICENSE) for details.
 
 ## 🔗 Links
 
-- **Repository**: [github.com/besync-labs/antigravity-ai-kit](https://github.com/besync-labs/antigravity-ai-kit)
-- **Documentation**: [besync-labs.github.io/antigravity-ai-kit](https://besync-labs.github.io/antigravity-ai-kit)
+- **Repository**: [github.com/devran-ai/kit](https://github.com/devran-ai/kit)
+- **Documentation**: [devran-ai.github.io/kit](https://devran-ai.github.io/kit)
 - **Origin**: Derived from BeSync Trust-Grade AI Governance
 
 ---
 
 ## 📖 Contributor Guide
 
-Want to use Antigravity AI Kit in your project? The **[Contributor Guide](https://besync-labs.github.io/antigravity-ai-kit/contributor-guide/)** covers the full end-to-end lifecycle:
+Want to use Antigravity AI Kit in your project? The **[Contributor Guide](https://devran-ai.github.io/kit/contributor-guide/)** covers the full end-to-end lifecycle:
 
 | Phase | What You’ll Learn |
 |:---|:---|
@@ -734,7 +734,7 @@ Want to use Antigravity AI Kit in your project? The **[Contributor Guide](https:
 | **Quality Gates** | 5-gate pipeline: lint, types, tests, security, build |
 | **Completion** | Sprint retrospective, tracking updates, next sprint |
 
-👉 **[Read the full guide →](https://besync-labs.github.io/antigravity-ai-kit/contributor-guide/)**
+👉 **[Read the full guide →](https://devran-ai.github.io/kit/contributor-guide/)**
 
 ---
 
@@ -754,5 +754,5 @@ _Antigravity AI Kit v3.5.0 extends these foundations with a 29-module runtime en
 </p>
 
 <p align="center">
-  <a href="https://github.com/besync-labs/antigravity-ai-kit">⭐ Star me on GitHub</a>
+  <a href="https://github.com/devran-ai/kit">⭐ Star me on GitHub</a>
 </p>

@@ -312,7 +312,7 @@ ${colors.bright}Quick start:${colors.reset}
   ${colors.cyan}/implement${colors.reset}  Execute the plan
   ${colors.cyan}/verify${colors.reset}     Run quality gates
 
-${colors.yellow}📚 Documentation: https://github.com/besync-labs/antigravity-ai-kit${colors.reset}
+${colors.yellow}📚 Documentation: https://github.com/devran-ai/kit${colors.reset}
 `);
   }
 }
