@@ -88,10 +88,15 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 
 ---
 
-## What's New in v4.1.0
+## What's New in v4.2.1
 
-- **Cross-IDE Support** — Native config generation for Claude Code, Antigravity, Cursor, OpenCode, and Codex from a single `manifest.json`
-- **3 New Agents** — Mobile Developer, Database Specialist, and PR Reviewer join the 20 existing agents
-- **Plugin Marketplace** — Browse, install, and manage trust-verified skills with `kit market`
-- **Self-Healing CI** — Auto-diagnose and patch CI failures with `kit heal`
-- **Aggregated Health Check** — Single `kit health` command covers error budget, plugin integrity, config validation, and healing status
+- **Untrack hint** — Detects tracked `.agent/` and prints the `git rm --cached` command
+- **Documentation fixes** — Updated release notes, stale test counts corrected
+
+## What's New in v4.2.0
+
+- **Gitignore by default** — `kit init` adds `.agent/` to `.gitignore` automatically. Personal dev tooling stays local.
+- **`--shared` flag** — Opt-in for teams that want to commit `.agent/` to the repo
+- **Cross-IDE Support** — Native config generation for Claude Code, Antigravity, Cursor, OpenCode, and Codex
+- **3 Language Reviewers** — TypeScript, Python, Go specialized code review agents
+- **388 tests** — 37 test suites across unit, structural, and security
