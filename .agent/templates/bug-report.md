@@ -22,7 +22,7 @@
 
 - **OS**: [e.g., Windows 11, macOS 15, Ubuntu 24.04]
 - **Node.js**: [e.g., 20.x]
-- **Antigravity AI Kit version**: [e.g., 2.1.0]
+- **Devran AI Kit version**: [e.g., 2.1.0]
 - **IDE**: [e.g., VS Code 1.95, Cursor 0.45]
 
 ## Screenshots / Logs

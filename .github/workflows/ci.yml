@@ -1,4 +1,4 @@
-name: Antigravity AI Kit CI
+name: Devran AI Kit CI
 
 on:
   push:

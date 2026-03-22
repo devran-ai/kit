@@ -1,12 +1,12 @@
-# 🚀 Antigravity AI Kit
+# Devran AI Kit
 
-Welcome to the **Antigravity AI Kit** documentation — a Trust-Grade AI development framework for Antigravity IDE.
+Welcome to the **Devran AI Kit** documentation — a Trust-Grade AI development framework.
 
 ---
 
-## What is Antigravity AI Kit?
+## What is Devran AI Kit?
 
-Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
+Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 
 | Feature           | Count | Description                                                            |
 | :---------------- | :---- | :--------------------------------------------------------------------- |

@@ -1,4 +1,4 @@
-# Antigravity AI Kit — Agents
+# Devran AI Kit — Agents
 
 > **Purpose**: Specialized sub-agents for task delegation
 > **Count**: 20 Agents
@@ -108,7 +108,7 @@ Each agent file follows this structure:
 ```markdown
 # [Agent Name]
 
-> **Platform**: Antigravity AI Kit
+> **Platform**: Devran AI Kit
 > **Purpose**: [Brief description]
 
 ---

@@ -7,7 +7,7 @@ allowed-tools: Read, Glob, Grep
 
 # Native Parallel Agents
 
-> **Purpose**: Enable coordinating multiple specialized agents through Antigravity's native agent system while maintaining Trust-Grade governance.
+> **Purpose**: Enable coordinating multiple specialized agents through Devran AI Kit's native agent system while maintaining Trust-Grade governance.
 
 ## Overview
 

@@ -7,7 +7,7 @@
 
 ## 1. The Preservation Contract
 
-The Antigravity AI Kit exists organically alongside user code. User customizations must survive framework upgrades.
+The Devran AI Kit exists organically alongside user code. User customizations must survive framework upgrades.
 
 The following files and directories are **STRICTLY PROTECTED**:
 
@@ -29,11 +29,11 @@ This is the **canonical list**. The `/upgrade` workflow references this list —
 
 | Command | Purpose | Safety |
 | :--- | :--- | :--- |
-| `ag-kit update` | Non-destructive AST merger | Safe — preserves protected items |
-| `ag-kit update --dry-run` | Preview upgrade changes | Safe — read-only |
+| `kit update` | Non-destructive AST merger | Safe — preserves protected items |
+| `kit update --dry-run` | Preview upgrade changes | Safe — read-only |
 | `init --force` | Catastrophic repair | **DESTRUCTIVE** — wipes protected items |
 
-- **Mandated**: Use `ag-kit update` for all routine upgrades
+- **Mandated**: Use `kit update` for all routine upgrades
 - **Prohibited**: Never use `init --force` for routine upgrades. This is a last-resort catastrophic repair command that wipes protected files
 
 ---
@@ -42,8 +42,8 @@ This is the **canonical list**. The `/upgrade` workflow references this list —
 
 The `/upgrade` workflow follows the standard EWS v1.0 governance model:
 
-- **Human confirmation required** before executing `ag-kit update`
-- **Post-upgrade verification** via `ag-kit verify` is mandatory
+- **Human confirmation required** before executing `kit update`
+- **Post-upgrade verification** via `kit verify` is mandatory
 - **Preservation verification** — all 7 protected items must be confirmed intact after upgrade
 - **Rollback available** — `git checkout -- .agent/` restores pre-upgrade state if uncommitted
 

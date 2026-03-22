@@ -6,9 +6,9 @@ authority: fix-only
 reports-to: alignment-engine
 ---
 
-# Antigravity AI Kit — Build Error Resolver Agent
+# Devran AI Kit — Build Error Resolver Agent
 
-> **Platform**: Antigravity AI Kit
+> **Platform**: Devran AI Kit
 > **Purpose**: Rapid root cause analysis and resolution of build errors, dependency conflicts, and pipeline failures
 
 ---

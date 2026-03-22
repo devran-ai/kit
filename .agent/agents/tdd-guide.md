@@ -7,9 +7,9 @@ reports-to: alignment-engine
 relatedWorkflows: [orchestrate]
 ---
 
-# Antigravity AI Kit — TDD Guide Agent
+# Devran AI Kit — TDD Guide Agent
 
-> **Platform**: Antigravity AI Kit  
+> **Platform**: Devran AI Kit  
 > **Purpose**: Ensure all code is developed test-first with comprehensive coverage
 
 ---

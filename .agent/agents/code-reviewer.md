@@ -7,9 +7,9 @@ reports-to: alignment-engine
 relatedWorkflows: [orchestrate]
 ---
 
-# Antigravity AI Kit — Code Reviewer Agent
+# Devran AI Kit — Code Reviewer Agent
 
-> **Platform**: Antigravity AI Kit  
+> **Platform**: Devran AI Kit  
 > **Purpose**: Ensure high standards of code quality and security
 
 ---

@@ -28,7 +28,7 @@ Workflows are complete development lifecycles that guide you through multi-step 
 | 📈 `/status`        | Project status overview        | Checking current state and progress          |
 | 🧪 `/test`          | Systematic test writing        | Writing comprehensive tests                  |
 | 🎨 `/ui-ux-pro-max` | Premium UI/UX design           | Creating stunning interfaces                 |
-| 🔄 `/upgrade`       | Non-destructive framework updates | Updating Antigravity AI Kit safely        |
+| 🔄 `/upgrade`       | Non-destructive framework updates | Updating Devran AI Kit safely        |
 
 ---
 

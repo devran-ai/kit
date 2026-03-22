@@ -1,9 +1,25 @@
 # Changelog
 
-All notable changes to Antigravity AI Kit will be documented in this file.
+All notable changes to Devran AI Kit will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [4.0.0] — 2026-03-22
+
+### Breaking Changes
+
+- Package renamed from `antigravity-ai-kit` to `@devran-ai/kit`
+- CLI command renamed from `ag-kit` to `kit`
+- Scaffolder renamed from `create-antigravity-app` to `create-kit-app`
+
+### Changed
+
+- Full rebranding from "Antigravity AI Kit" to "Devran AI Kit"
+- README rewritten for enterprise clarity (758 lines to ~120 lines)
+- Removed `node_modules/` from git tracking (917 files, 236K lines)
+- Removed documentation bloat (archive docs, operational guides)
+- Removed `npm-publish-output.txt` build artifact
 
 ## [3.9.0] — 2026-03-20
 

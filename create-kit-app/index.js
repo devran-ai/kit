@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
 /**
- * create-antigravity-app
+ * create-kit-app
  * 
- * Project scaffolder for Antigravity AI Kit.
+ * Project scaffolder for Devran AI Kit.
  * Creates a new project with .agent/ pre-configured and starter templates.
  * 
  * Usage:
- *   npx create-antigravity-app my-project
- *   npx create-antigravity-app my-project --template nextjs
- *   npx create-antigravity-app my-project --template node-api
- *   npx create-antigravity-app . (initialize in current directory)
+ *   npx create-kit-app my-project
+ *   npx create-kit-app my-project --template nextjs
+ *   npx create-kit-app my-project --template node-api
+ *   npx create-kit-app . (initialize in current directory)
  * 
  * @version 1.0.0
  * @license MIT
@@ -48,7 +48,7 @@ const VERSION = '1.0.0';
 const TEMPLATES = {
   'minimal': {
     name: 'Minimal',
-    description: 'Bare project with Antigravity AI Kit only',
+    description: 'Bare project with Devran AI Kit only',
     dependencies: [],
     devDependencies: [],
     scripts: {
@@ -138,11 +138,11 @@ NODE_ENV=development
  */
 function showUsage() {
   console.log(`
-${colors.cyan}create-antigravity-app v${VERSION}${colors.reset}
-${colors.dim}Create a new project with Antigravity AI Kit pre-configured${colors.reset}
+${colors.cyan}create-kit-app v${VERSION}${colors.reset}
+${colors.dim}Create a new project with Devran AI Kit pre-configured${colors.reset}
 
 ${colors.yellow}Usage:${colors.reset}
-  npx create-antigravity-app <project-name> [options]
+  npx create-kit-app <project-name> [options]
 
 ${colors.yellow}Options:${colors.reset}
   --template <name>    Project template (default: minimal)
@@ -157,9 +157,9 @@ ${colors.yellow}Templates:${colors.reset}`);
 
   console.log(`
 ${colors.yellow}Examples:${colors.reset}
-  npx create-antigravity-app my-app
-  npx create-antigravity-app my-api --template node-api
-  npx create-antigravity-app .
+  npx create-kit-app my-app
+  npx create-kit-app my-api --template node-api
+  npx create-kit-app .
 `);
 }
 
@@ -213,7 +213,7 @@ ${colors.cyan}🚀 Creating ${template.name} project: ${projectName}${colors.res
       name: projectName,
       version: '0.1.0',
       private: true,
-      description: `${projectName} — powered by Antigravity AI Kit`,
+      description: `${projectName} — powered by Devran AI Kit`,
       scripts: template.scripts,
       engines: {
         node: '>=18.0.0',
@@ -245,16 +245,16 @@ ${colors.cyan}🚀 Creating ${template.name} project: ${projectName}${colors.res
     ].join('\n'));
   }
 
-  // Step 2: Install Antigravity AI Kit
-  console.log(`${colors.yellow}[2/3]${colors.reset} Installing Antigravity AI Kit...`);
+  // Step 2: Install Devran AI Kit
+  console.log(`${colors.yellow}[2/3]${colors.reset} Installing Devran AI Kit...`);
   try {
-    execSync('npx -y antigravity-ai-kit init', {
+    execSync('npx -y @devran-ai/kit init', {
       cwd: path.resolve(projectDir),
       stdio: 'pipe',
     });
     console.log(`   ${colors.green}✓${colors.reset} .agent/ installed`);
   } catch (/** @type {any} */ error) {
-    console.error(`${colors.red}❌ Failed to install Antigravity AI Kit${colors.reset}`);
+    console.error(`${colors.red}❌ Failed to install Devran AI Kit${colors.reset}`);
     console.error(error.message);
     process.exit(1);
   }
@@ -297,7 +297,7 @@ ${colors.green}✅ Project created successfully!${colors.reset}
 
 ${colors.cyan}Next steps:${colors.reset}
   ${isCurrentDir ? '' : `cd ${projectDir}\n  `}${template.dependencies.length > 0 ? '' : 'npm install\n  '}Open in your AI-powered IDE
-  Run ${colors.green}/status${colors.reset} to verify Antigravity AI Kit
+  Run ${colors.green}/status${colors.reset} to verify Devran AI Kit
 
 ${colors.cyan}Quick start:${colors.reset}
   ${colors.green}/plan${colors.reset}       Create implementation plan

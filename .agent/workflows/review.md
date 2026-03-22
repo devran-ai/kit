@@ -11,178 +11,94 @@ commit-types: [fix, refactor]
 > **Trigger**: `/review` (full) · `/review lint` · `/review tests` · `/review security` · `/review build`
 > **Lifecycle**: After implementation, before `/pr`
 
-> [!CAUTION]
-> Sequential gate pipeline — each step must pass before proceeding. Failed gates block merge. No overrides.
+> Standards: See `rules/workflow-standards.md`
 
-> [!TIP]
-> This workflow leverages the **verification-loop** skill. Read `.agent/skills/verification-loop/SKILL.md` for extended guidance.
+> [!CAUTION]
+> Sequential gate pipeline — each step must pass before proceeding. No overrides.
 
 ---
 
 ## Scope Filter
 
-| Commit Type | Review Required? | Rationale |
-| :---------- | :--------------- | :-------- |
-| `feat()` | ✅ Full review | New functionality needs all gates |
-| `fix()` | ✅ Full review | Bug fixes need regression verification |
-| `refactor()` | ✅ Full review | Structural changes need quality validation |
-| `test()` | ⚠️ Gate 3 only | Test-only changes need test verification |
-| `docs()` | ❌ Skip | No testable code changes |
-| `chore()` | ❌ Skip | Config/tooling, no code quality risk |
+Full review for feat, fix, refactor. Gate 3 only for test. Skip docs, chore.
 
 ---
 
 ## Critical Rules
 
-1. **SEQUENTIAL** — each gate must pass before the next runs
-2. **STOP ON FAILURE** — if a gate fails, stop immediately, show error + fix suggestion
-3. **NO OVERRIDES** — failed gates block merge, no exceptions
-4. **FULL-STACK** — all relevant stacks are scanned
-5. **DOCUMENT** — log results for audit trail
-
----
-
-## Argument Parsing
-
-| Command            | Gates Run                 |
-| :----------------- | :------------------------ |
-| `/review`          | All gates (1-5)           |
-| `/review lint`     | Gate 1 (Lint)             |
-| `/review types`    | Gate 2 (Type Check)       |
-| `/review tests`    | Gate 3 (Tests)            |
-| `/review security` | Gate 4 (Security Scan)    |
-| `/review build`    | Gate 5 (Build)            |
+1. Sequential — each gate must pass before next
+2. Stop on failure — show error + fix suggestion
+3. No overrides — failed gates block merge
+4. Full-stack scanning
 
 ---
 
 ## Pipeline Gates
 
-Execute gates IN ORDER. Stop at first failure.
+Execute IN ORDER. Stop at first failure.
 
 ### Gate 1: Lint
-
 // turbo
-
-Run the project's lint tool:
-
 ```bash
-# Examples (adapt to your stack):
-npm run lint            # JavaScript/TypeScript
-ruff check .            # Python
-cargo clippy            # Rust
+npm run lint  # or ruff check . / cargo clippy
 ```
 
 ### Gate 2: Type Check
-
 // turbo
-
-Run the project's type checker:
-
 ```bash
-# Examples:
-npx tsc --noEmit        # TypeScript
-mypy .                  # Python
+npx tsc --noEmit  # or mypy .
 ```
 
 ### Gate 3: Tests
-
 // turbo
-
-Run the project's test suite:
-
 ```bash
-# Examples:
-npm test                # Node.js
-pytest tests/ -q        # Python
-cargo test              # Rust
+npm test  # or pytest / cargo test
 ```
 
 ### Gate 4: Security Scan
-
 // turbo
-
-Run dependency and vulnerability scanning:
-
 ```bash
-# Examples:
-npm audit --audit-level=moderate    # Node.js
-pip-audit                           # Python
-cargo audit                         # Rust
+npm audit --audit-level=moderate  # or pip-audit / cargo audit
 ```
 
-### Gate 5: Build Verification
-
+### Gate 5: Build
 // turbo
-
-Verify the project builds successfully:
-
 ```bash
-# Examples:
-npm run build           # Node.js
-python -m build         # Python
-cargo build --release   # Rust
+npm run build  # or python -m build / cargo build --release
 ```
 
 ---
 
 ## Output Template
 
-### ✅ All Gates Passed
-
 ```markdown
-## ✅ Review Complete
+## Review Complete
 
-| Gate          | Status                | Duration |
-| :------------ | :-------------------- | :------- |
-| Lint          | ✅ Pass               | {time}   |
-| Type Check    | ✅ Pass               | {time}   |
-| Tests         | ✅ Pass ({n}/{n})     | {time}   |
-| Security      | ✅ No vulnerabilities | {time}   |
-| Build         | ✅ Pass               | {time}   |
+| Gate | Status | Duration |
+| :--- | :--- | :--- |
+| Lint / Type Check / Tests / Security / Build | Pass/Fail | {time} |
 
-**Verdict**: Ready for commit.
-```
-
-### ❌ Gate Failed
-
-```markdown
-## ❌ Review Failed at Gate {N}
-
-| Gate   | Status    |
-| :----- | :-------- |
-| {gate} | ❌ FAILED |
-
-### Error Output
-
-{error details}
-
-### Recommended Fix
-
-{fix steps}
-
-Re-run: `/review` or `/review {gate}`
+**Verdict**: Ready for commit / Failed at Gate {N}
 ```
 
 ---
 
 ## Governance
 
-**PROHIBITED:** Skipping gates · overriding failures · merging without all gates passing · ignoring security scan results
+**PROHIBITED:** Skipping gates · overriding failures · merging without all passing
 
-**REQUIRED:** Run all gates for merge-ready code · document results · fix failures before re-running
+**REQUIRED:** All gates for merge-ready code · document results · fix before re-run
 
 ---
 
 ## Completion Criteria
 
-- [ ] All applicable gates executed in sequence
-- [ ] Zero failures across all gates
-- [ ] Results documented with pass/fail + duration
-- [ ] Verdict rendered: "Ready for commit" or "Failed at Gate N"
+- [ ] All gates executed, zero failures
+- [ ] Results documented
+
+---
 
 ## Related Resources
 
-- **Previous**: `/test` (tests must pass before review)
-- **Next**: `/preflight` (production readiness assessment) · `/pr` (create pull request)
+- **Previous**: `/test` · **Next**: `/preflight` · `/pr`
 - **Skill**: `.agent/skills/verification-loop/SKILL.md`
-- **Related**: `/quality-gate` (pre-task research) · `/retrospective` (sprint-level audit)

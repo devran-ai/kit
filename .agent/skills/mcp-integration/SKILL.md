@@ -183,7 +183,7 @@ When an MCP server is unavailable:
 
 ---
 
-## Integration with Antigravity AI Kit
+## Integration with Devran AI Kit
 
 ### Loading Rules Integration
 

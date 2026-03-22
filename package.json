@@ -1,10 +1,10 @@
 {
-  "name": "antigravity-ai-kit",
-  "version": "3.10.1",
-  "description": "🚀 Trust-Grade AI development framework with a 29-module runtime engine — 20 Agents, 34 Skills, 37 Commands, 21 Workflows, 9 Rules, 349 Tests. Workflow enforcement, task governance, agent reputation, self-healing, and skill marketplace.",
-  "main": "bin/ag-kit.js",
+  "name": "@devran-ai/kit",
+  "version": "4.0.0",
+  "description": "Trust-grade AI development framework — zero-dependency runtime engine for agent orchestration, workflow governance, and skill management.",
+  "main": "bin/kit.js",
   "bin": {
-    "ag-kit": "./bin/ag-kit.js"
+    "kit": "./bin/kit.js"
   },
   "scripts": {
     "test": "vitest run",
@@ -12,14 +12,16 @@
     "preversion": "npm test",
     "version": "node scripts/sync-version.js && git add -A -- . ':!.agent/engine/identity.json'",
     "prepublishOnly": "node scripts/clean-identity.js",
-    "postinstall": "echo '✅ Antigravity AI Kit installed! Run: ag-kit init'"
+    "postinstall": "echo 'Devran AI Kit installed. Run: kit init'"
   },
   "keywords": [
     "ai",
     "agents",
     "gemini",
     "claude",
-    "antigravity",
+    "devran-ai",
+    "kit",
+    "governance",
     "development",
     "workflow",
     "skills",

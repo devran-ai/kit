@@ -1,4 +1,4 @@
-# Antigravity AI Kit — .agent/ Directory
+# Devran AI Kit — .agent/ Directory
 
 > **Purpose**: Core agent architecture for AI-assisted development
 > **Quick Start**: Copy this folder to your project root

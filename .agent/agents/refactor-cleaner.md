@@ -7,9 +7,9 @@ reports-to: alignment-engine
 relatedWorkflows: [orchestrate]
 ---
 
-# Antigravity AI Kit — Refactor Cleaner Agent
+# Devran AI Kit — Refactor Cleaner Agent
 
-> **Platform**: Antigravity AI Kit
+> **Platform**: Devran AI Kit
 > **Purpose**: Safe dead code removal, code smell remediation, and systematic refactoring
 
 ---

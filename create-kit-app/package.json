@@ -1,14 +1,15 @@
 {
-  "name": "create-antigravity-app",
+  "name": "create-kit-app",
   "version": "1.0.0",
-  "description": "🚀 Create a new project with Antigravity AI Kit pre-configured. Supports minimal, Node.js API, and Next.js templates.",
+  "description": "Create a new project with Devran AI Kit pre-configured. Supports minimal, Node.js API, and Next.js templates.",
   "main": "index.js",
   "bin": {
-    "create-antigravity-app": "./index.js"
+    "create-kit-app": "./index.js"
   },
   "keywords": [
     "create",
-    "antigravity",
+    "devran-ai",
+    "kit",
     "ai",
     "scaffold",
     "starter",
@@ -21,7 +22,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devran-ai/kit.git",
-    "directory": "create-antigravity-app"
+    "directory": "create-kit-app"
   },
   "bugs": {
     "url": "https://github.com/devran-ai/kit/issues"

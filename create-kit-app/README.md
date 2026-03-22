@@ -1,20 +1,20 @@
-# create-antigravity-app
+# create-kit-app
 
-> 🚀 Create a new project with [Antigravity AI Kit](https://github.com/devran-ai/kit) pre-configured.
+> Create a new project with [Devran AI Kit](https://github.com/devran-ai/kit) pre-configured.
 
 ## Quick Start
 
 ```bash
-npx create-antigravity-app my-project
+npx create-kit-app my-project
 ```
 
 ## Templates
 
 | Template | Command | Description |
 |:---------|:--------|:------------|
-| **Minimal** | `npx create-antigravity-app my-app` | Bare project with .agent/ only |
-| **Node.js API** | `npx create-antigravity-app my-api --template node-api` | Express + TypeScript + Vitest |
-| **Next.js** | `npx create-antigravity-app my-app --template nextjs` | Next.js with TypeScript + Tailwind |
+| **Minimal** | `npx create-kit-app my-app` | Bare project with .agent/ only |
+| **Node.js API** | `npx create-kit-app my-api --template node-api` | Express + TypeScript + Vitest |
+| **Next.js** | `npx create-kit-app my-app --template nextjs` | Next.js with TypeScript + Tailwind |
 
 ## What Gets Created
 
@@ -41,11 +41,11 @@ Open your project in an AI-powered IDE and use these commands:
 
 ```
 /plan       Create implementation plan
-/create     Build a new feature  
+/create     Build a new feature
 /test       Write and run tests
 /deploy     Deploy to production
 ```
 
 ## License
 
-MIT — [Antigravity AI Kit](https://github.com/devran-ai/kit)
+MIT — [Devran AI Kit](https://github.com/devran-ai/kit)

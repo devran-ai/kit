@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * Antigravity AI Kit CLI
- * 
+ * Devran AI Kit CLI
+ *
  * Usage:
- *   npx antigravity-ai-kit init
- *   ag-kit init [options]
- * 
+ *   npx @devran-ai/kit init
+ *   kit init [options]
+ *
  * @author Emre Dursun
  * @license MIT
  */
@@ -57,20 +57,10 @@ function loadBannerCounts() {
 function showBanner() {
   const counts = loadBannerCounts();
   console.log(`
-${colors.bright}${colors.blue}
-   _____          __  .__                            .__  __          
-  /  _  \\   _____/  |_|__|  ________________ ___  ___|__|/  |_ ___.__.
- /  /_\\  \\ /    \\   __\\  | / ___\\_  __ \\__  \\\\  \\/ /|  \\   __<   |  |
-/    |    \\   |  \\  | |  |/ /_/  >  | \\// __ \\\\   / |  ||  |  \\___  |
-\\____|__  /___|  /__| |__|\\___  /|__|  (____  /\\_/  |__||__|  / ____|
-        \\/     \\/        /_____/            \\/                \\/     
-${colors.reset}
-${colors.green}🚀 Antigravity AI Kit v${VERSION}${colors.reset}
-${colors.yellow}   Transform Your IDE into an Autonomous Engineering Team${colors.reset}
+${colors.bright}${colors.blue}Devran AI Kit${colors.reset} ${colors.green}v${VERSION}${colors.reset}
+Trust-grade AI development framework
 
-   • ${counts.agents} AI Agents    • ${counts.skills} Skills
-   • ${counts.commands} Commands     • ${counts.workflows} Workflows
-   • Runtime Engine  • Error Budget
+   ${counts.agents} Agents  |  ${counts.skills} Skills  |  ${counts.commands} Commands  |  ${counts.workflows} Workflows
 `);
 }
 
@@ -78,21 +68,21 @@ function showHelp() {
   showBanner();
   console.log(`
 ${colors.bright}Usage:${colors.reset}
-  ag-kit init [options]     Install .agent folder to your project
-  ag-kit update             Update to latest version
-  ag-kit status             Check installation status (alias: dashboard)
-  ag-kit verify             Run manifest integrity checks
-  ag-kit scan               Run security scan
-  ag-kit plugin list        List installed plugins
-  ag-kit plugin install <p> Install plugin from directory
-  ag-kit plugin remove <n>  Remove installed plugin
-  ag-kit market search <q>  Search marketplace plugins
-  ag-kit market info <name> Get marketplace plugin details
-  ag-kit market install <n> Install from marketplace
-  ag-kit heal [--file <f>]  Detect and diagnose CI failures
-  ag-kit health             Run aggregated health check
-  ag-kit --help             Show this help message
-  ag-kit --version          Show version
+  kit init [options]        Install .agent folder to your project
+  kit update                Update to latest version
+  kit status                Check installation status (alias: dashboard)
+  kit verify                Run manifest integrity checks
+  kit scan                  Run security scan
+  kit plugin list           List installed plugins
+  kit plugin install <p>    Install plugin from directory
+  kit plugin remove <n>     Remove installed plugin
+  kit market search <q>     Search marketplace plugins
+  kit market info <name>    Get marketplace plugin details
+  kit market install <n>    Install from marketplace
+  kit heal [--file <f>]     Detect and diagnose CI failures
+  kit health                Run aggregated health check
+  kit --help                Show this help message
+  kit --version             Show version
 
 ${colors.bright}Options:${colors.reset}
   --force                   Overwrite existing .agent folder
@@ -103,10 +93,10 @@ ${colors.bright}Options:${colors.reset}
   --file <path>             CI log file for heal command
 
 ${colors.bright}Examples:${colors.reset}
-  npx antigravity-ai-kit init
-  ag-kit init --force
-  ag-kit scan
-  ag-kit plugin list
+  npx @devran-ai/kit init
+  kit init --force
+  kit scan
+  kit plugin list
 
 ${colors.bright}IDE Reference:${colors.reset}
   Type ${colors.cyan}/help${colors.reset} in your AI-powered IDE for the full reference:
@@ -159,7 +149,7 @@ function initCommand(options) {
   if (!fs.existsSync(sourcePath)) {
     log(`\n❌ Source .agent folder not found at: ${sourcePath}`, 'red');
     log('   The package may be corrupted. Try reinstalling:', 'yellow');
-    log('   npm install -g antigravity-ai-kit\n', 'yellow');
+    log('   npm install -g @devran-ai/kit\n', 'yellow');
     process.exit(1);
   }
 
@@ -171,14 +161,14 @@ function initCommand(options) {
   if (fs.existsSync(agentPath) && !options.force) {
     log(`\n⚠️  ${AGENT_FOLDER} folder already exists!`, 'yellow');
     log('   Use --force to overwrite', 'yellow');
-    log('   Use ag-kit update for non-destructive updates\n', 'yellow');
+    log('   Use kit update for non-destructive updates\n', 'yellow');
     process.exit(1);
   }
   
   // M-3: Active session warning for --force
   if (options.force && fs.existsSync(agentPath) && hasActiveSession(agentPath)) {
     log('\n⚠️  Active session detected! Force-overwrite will destroy in-progress work.', 'yellow');
-    log('   Consider using ag-kit update instead.\n', 'yellow');
+    log('   Consider using kit update instead.\n', 'yellow');
   }
 
   if (options.dryRun) {
@@ -296,7 +286,7 @@ function initCommand(options) {
   
   if (!options.quiet) {
     console.log(`
-${colors.green}✅ Antigravity AI Kit installed successfully!${colors.reset}
+${colors.green}Devran AI Kit installed successfully.${colors.reset}
 
 ${colors.bright}Next steps:${colors.reset}
   1. Open your project in an AI-powered IDE
@@ -304,8 +294,8 @@ ${colors.bright}Next steps:${colors.reset}
   3. Use ${colors.cyan}/help${colors.reset} to see available commands
 
 ${colors.bright}Validate your installation:${colors.reset}
-  ${colors.cyan}ag-kit verify${colors.reset}   Manifest integrity check
-  ${colors.cyan}ag-kit scan${colors.reset}     Security scan
+  ${colors.cyan}kit verify${colors.reset}   Manifest integrity check
+  ${colors.cyan}kit scan${colors.reset}     Security scan
 
 ${colors.bright}Quick start:${colors.reset}
   ${colors.cyan}/plan${colors.reset}       Create implementation plan
@@ -324,11 +314,11 @@ function statusCommand() {
   
   if (!fs.existsSync(agentPath)) {
     log('❌ Not installed in current directory', 'red');
-    log('   Run: ag-kit init\n', 'yellow');
+    log('   Run: kit init\n', 'yellow');
     return;
   }
   
-  log('✅ Antigravity AI Kit is installed\n', 'green');
+  log('Devran AI Kit is installed\n', 'green');
   
   const skills = countItems(path.join(agentPath, 'skills'), 'dir');
   const commands = countItems(path.join(agentPath, 'commands'), 'file');
@@ -471,7 +461,7 @@ function updateCommand(updateOptions) {
 
   const agentPath = path.join(updateOptions.path || process.cwd(), '.agent');
   if (!fs.existsSync(agentPath)) {
-    log('\n❌ No .agent/ folder found. Run: ag-kit init\n', 'red');
+    log('\n❌ No .agent/ folder found. Run: kit init\n', 'red');
     process.exit(1);
   }
 
@@ -592,7 +582,7 @@ function pluginCommand(subCommand, pluginArg) {
       }
       case 'install': {
         if (!pluginArg) {
-          log('   ✗ Usage: ag-kit plugin install <path>\n', 'red');
+          log('   ✗ Usage: kit plugin install <path>\n', 'red');
           process.exit(1);
         }
         const pluginPath = path.resolve(pluginArg);
@@ -613,7 +603,7 @@ function pluginCommand(subCommand, pluginArg) {
       }
       case 'remove': {
         if (!pluginArg) {
-          log('   ✗ Usage: ag-kit plugin remove <name>\n', 'red');
+          log('   ✗ Usage: kit plugin remove <name>\n', 'red');
           process.exit(1);
         }
         logStep('1/1', `Removing plugin: ${pluginArg}...`);
@@ -627,7 +617,7 @@ function pluginCommand(subCommand, pluginArg) {
         break;
       }
       default:
-        log('   Usage: ag-kit plugin <list|install|remove>', 'yellow');
+        log('   Usage: kit plugin <list|install|remove>', 'yellow');
         console.log('');
         break;
     }
@@ -724,6 +714,6 @@ switch (command) {
     break;
   default:
     log(`Unknown command: ${command}`, 'red');
-    log('Run ag-kit --help for usage\n', 'yellow');
+    log('Run kit --help for usage\n', 'yellow');
     process.exit(1);
 }
