@@ -339,6 +339,19 @@ function initCommand(options) {
       } else {
         log('   ✓ .agent/ already in .gitignore', 'green');
       }
+      // Detect if .agent/ is still git-tracked despite being gitignored
+      try {
+        const { execSync } = require('child_process');
+        const tracked = execSync('git ls-files .agent/', { cwd: targetDir, encoding: 'utf-8' }).trim();
+        if (tracked.length > 0) {
+          log('', 'reset');
+          log('   ⚠️  .agent/ is gitignored but still tracked by git.', 'yellow');
+          log('   Run this to untrack (keeps local files):', 'yellow');
+          log(`   ${colors.cyan}git rm -r --cached .agent/${colors.reset}`, 'reset');
+        }
+      } catch {
+        // Not a git repo or git not available — skip hint
+      }
     } catch (err) {
       log(`   ⚠️  Could not update .gitignore: ${err.message}`, 'yellow');
     }
