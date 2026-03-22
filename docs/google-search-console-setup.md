@@ -8,7 +8,7 @@
 
 1. Go to [Google Search Console](https://search.google.com/search-console/welcome)
 2. Select **URL prefix** method
-3. Enter: `https://besync-labs.github.io/antigravity-ai-kit/`
+3. Enter: `https://devran-ai.github.io/kit/`
 4. Click **Continue**
 
 ---
@@ -46,7 +46,7 @@
 The sitemap URL is:
 
 ```
-https://besync-labs.github.io/antigravity-ai-kit/sitemap.xml
+https://devran-ai.github.io/kit/sitemap.xml
 ```
 
 ---

@@ -157,4 +157,4 @@ Releases follow the GitFlow release cycle:
 
 ## Questions?
 
-Open an [issue](https://github.com/besync-labs/antigravity-ai-kit/issues) or start a [discussion](https://github.com/besync-labs/antigravity-ai-kit/discussions).
+Open an [issue](https://github.com/devran-ai/kit/issues) or start a [discussion](https://github.com/devran-ai/kit/discussions).

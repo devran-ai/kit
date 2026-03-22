@@ -304,7 +304,7 @@ ${colors.cyan}Quick start:${colors.reset}
   ${colors.green}/create${colors.reset}     Build a new feature
   ${colors.green}/test${colors.reset}       Write and run tests
 
-${colors.dim}📚 https://github.com/besync-labs/antigravity-ai-kit${colors.reset}
+${colors.dim}📚 https://github.com/devran-ai/kit${colors.reset}
 `);
 }
 

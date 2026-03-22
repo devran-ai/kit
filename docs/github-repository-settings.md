@@ -38,7 +38,7 @@ ai-development
 Set the website field to:
 
 ```
-https://besync-labs.github.io/antigravity-ai-kit/
+https://devran-ai.github.io/kit/
 ```
 
 ---
