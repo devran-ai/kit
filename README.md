@@ -1,8 +1,8 @@
 # Devran AI Kit
 
-[![Version](https://img.shields.io/badge/version-4.2.0-blue.svg)](https://github.com/devran-ai/kit)
+[![Version](https://img.shields.io/badge/version-4.2.1-blue.svg)](https://github.com/devran-ai/kit)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-382%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-388%20passing-brightgreen.svg)](tests/)
 [![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](package.json)
 [![AI Agents](https://img.shields.io/badge/AI%20Agents-23-purple.svg)](.agent/agents/)
 [![Skills](https://img.shields.io/badge/Skills-34-orange.svg)](.agent/skills/)
@@ -26,7 +26,7 @@
 | Self-healing CI | None | None | Auto-diagnoses and patches failures |
 | Cross-IDE support | Single IDE | Single IDE | 5 IDEs from one source of truth |
 | Plugin marketplace | None | None | Trust-verified skill marketplace |
-| Test suite | None | None | 382+ tests with security validation |
+| Test suite | None | None | 388+ tests with security validation |
 | Runtime dependencies | Varies | Varies | **Zero** |
 
 ## Quick Start
@@ -95,7 +95,18 @@ IDLE -> EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> CHECKPOINT -> REVIEW -> DEPLOY
 
 Each phase requires explicit developer approval before transitioning. The engine enforces governance rules and tracks session state across restarts.
 
-## What's New in v4.1.0
+## What's New
+
+### v4.2.0
+
+| Change | Details |
+|---|---|
+| Gitignore by default | `kit init` adds `.agent/` to `.gitignore` — personal dev tooling |
+| `--shared` flag | Opt-in to commit `.agent/` for team sharing |
+| Untrack hint | Detects tracked `.agent/` and prints `git rm --cached` command |
+| 388 tests | 37 test suites across unit, structural, and security |
+
+### v4.1.0
 
 | Change | Details |
 |---|---|
@@ -103,7 +114,6 @@ Each phase requires explicit developer approval before transitioning. The engine
 | Multi-language reviewers | TypeScript, Python, Go dedicated review agents |
 | Continuous learning | Confidence scoring with time-based decay model |
 | MCP server templates | GitHub, Supabase, Vercel, PostgreSQL, Filesystem |
-| Test coverage | 382 tests (up from 348) across 36 test suites |
 
 ## Cross-IDE Support
 
@@ -200,7 +210,7 @@ kit/
 ├── create-kit-app/         # Project scaffolder
 ├── docs/                   # MkDocs documentation site
 ├── examples/               # Starter examples (minimal, full-stack)
-└── tests/                  # 382 tests (unit, structural, security)
+└── tests/                  # 388 tests (unit, structural, security)
 ```
 
 ## Security

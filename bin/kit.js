@@ -340,8 +340,8 @@ function initCommand(options) {
         log('   ✓ .agent/ already in .gitignore', 'green');
       }
       // Detect if .agent/ is still git-tracked despite being gitignored
+      const { execSync } = require('child_process');
       try {
-        const { execSync } = require('child_process');
         const tracked = execSync('git ls-files .agent/', { cwd: targetDir, encoding: 'utf-8' }).trim();
         if (tracked.length > 0) {
           log('', 'reset');
