@@ -1,42 +1,80 @@
 # Devran AI Kit
 
-![version](https://img.shields.io/badge/version-4.0.0-blue)
-![license](https://img.shields.io/badge/license-MIT-green)
-![AI Agents](https://img.shields.io/badge/AI%20Agents-20-purple)
-![Skills](https://img.shields.io/badge/Skills-34-orange)
-![tests](https://img.shields.io/badge/tests-349%20passing-brightgreen)
-![dependencies](https://img.shields.io/badge/dependencies-0-blue)
+[![Version](https://img.shields.io/badge/version-4.1.0-blue.svg)](https://github.com/devran-ai/kit)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/tests-382%20passing-brightgreen.svg)](tests/)
+[![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](package.json)
+[![AI Agents](https://img.shields.io/badge/AI%20Agents-23-purple.svg)](.agent/agents/)
+[![Skills](https://img.shields.io/badge/Skills-34-orange.svg)](.agent/skills/)
 
-Trust-grade AI development framework with a zero-dependency runtime engine for agent orchestration, workflow governance, and skill management.
+> Trust-Grade AI Development Framework — Zero dependencies. 23 agents. 34 skills. 21 workflows. One command.
+
+## Why Devran AI Kit?
+
+- **Not a prompt collection** — 31-module zero-dependency runtime engine with workflow state machine, circuit breaker, error budget, and self-healing CI
+- **Trust-grade governance** — Immutable operating constraints enforced through a 7-phase SDLC (IDLE > EXPLORE > PLAN > IMPLEMENT > VERIFY > CHECKPOINT > REVIEW > DEPLOY)
+- **Intelligent agent system** — 23 specialized agents with reputation scoring, domain-aware routing, and on-demand loading via keyword matching
+- **Cross-IDE support** — One `kit init` configures Claude Code, Antigravity, Cursor, OpenCode, and Codex from a single manifest source of truth
+
+## Comparison
+
+| Capability | Prompt Files | Rule Collections | **Devran AI Kit** |
+|---|---|---|---|
+| Agent orchestration | Manual | Manual | 23 agents with reputation scoring |
+| Workflow governance | None | None | 7-phase SDLC state machine |
+| Session persistence | None | None | Full state across restarts |
+| Self-healing CI | None | None | Auto-diagnoses and patches failures |
+| Cross-IDE support | Single IDE | Single IDE | 5 IDEs from one source of truth |
+| Plugin marketplace | None | None | Trust-verified skill marketplace |
+| Test suite | None | None | 382+ tests with security validation |
+| Runtime dependencies | Varies | Varies | **Zero** |
 
 ## Quick Start
 
+### Option 1: Create New Project (Recommended)
+
 ```bash
-# New project
 npx create-kit-app my-project
-
-# Add to existing project
-npx @devran-ai/kit init
-
-# Verify installation
-kit verify
-kit scan
+npx create-kit-app my-api --template node-api
+npx create-kit-app my-app --template nextjs
 ```
 
-## What It Does
+Creates a new project with `.agent/` pre-configured. Templates: `minimal`, `node-api`, `nextjs`.
 
-Devran AI Kit installs a `.agent/` directory into your project containing agents, skills, workflows, and governance rules that your AI-powered IDE can use. The runtime engine provides workflow enforcement, task governance, agent reputation tracking, self-healing CI, and a skill marketplace — all with zero production dependencies.
+### Option 2: Add to Existing Project
+
+```bash
+npx @devran-ai/kit init
+```
+
+### Updating
+
+```bash
+kit update              # Non-destructive — preserves your customizations
+kit update --dry-run    # Preview changes without applying
+```
+
+> Prefer `kit update` over `kit init --force`. The update command preserves your session data, ADRs, learning contexts, and customizations. Use `init --force` only for clean reinstalls.
+
+### Verify Installation
+
+```bash
+kit verify    # Manifest integrity check
+kit scan      # Security scan
+```
 
 ## Architecture
 
-| Component | Count | Description |
-|-----------|-------|-------------|
-| Agents | 20 | Specialized AI agents (planner, architect, security-reviewer, tdd-guide, etc.) |
-| Skills | 34 | Domain knowledge modules (API patterns, testing, deployment, security, etc.) |
-| Commands | 37 | Slash commands for IDE interaction (`/plan`, `/implement`, `/verify`, `/deploy`) |
-| Workflows | 21 | Process templates (PR creation, code review, debugging, quality gates) |
-| Rules | 9 | Governance constraints (coding style, security, testing, git workflow) |
-| Runtime Modules | 29 | Engine components (workflow state machine, error budget, plugin system) |
+| Component | Count | Purpose |
+|---|---|---|
+| Agents | 23 | Specialized AI agents with reputation scoring and domain routing |
+| Skills | 34 | Domain knowledge modules loaded on demand via keyword matching |
+| Commands | 37 | Slash commands for IDE interaction (`/plan`, `/implement`, `/verify`) |
+| Workflows | 21 | Process templates with quality gates and phase enforcement |
+| Runtime Modules | 31 | Engine components (state machine, circuit breaker, plugin system) |
+| Rules | 10 | Governance constraints (security, coding style, testing, git) |
+| Checklists | 4 | Verification checklists (pre-commit, deployment, review, release) |
+| Hooks | 8 | Lifecycle events (session start/end, phase transition, task complete) |
 
 ### Workflow State Machine
 
@@ -46,41 +84,134 @@ IDLE -> EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> CHECKPOINT -> REVIEW -> DEPLOY
 
 Each phase requires explicit developer approval before transitioning. The engine enforces governance rules and tracks session state across restarts.
 
-## CLI Commands
+## What's New in v4.1.0
 
-```bash
-kit init [--force] [--path <dir>]   # Install .agent/ framework
-kit update [--dry-run]               # Non-destructive framework update
-kit status                           # Dashboard with capabilities and metrics
-kit verify                           # Manifest integrity checks
-kit scan                             # Security scan (secrets, injection patterns)
-kit plugin <list|install|remove>     # Plugin management
-kit market <search|info|install>     # Marketplace integration
-kit heal [--file <path>] [--apply]   # CI failure detection and auto-fix
-kit health                           # Aggregated health check
+| Change | Details |
+|---|---|
+| Cross-IDE support | Cursor, OpenCode, Codex, Antigravity — all from one manifest |
+| Multi-language reviewers | TypeScript, Python, Go dedicated review agents |
+| Continuous learning | Confidence scoring with time-based decay model |
+| MCP server templates | GitHub, Supabase, Vercel, PostgreSQL, Filesystem |
+| Test coverage | 382 tests (up from 348) across 36 test suites |
+
+## Cross-IDE Support
+
+| IDE | Config Path | Format |
+|---|---|---|
+| Claude Code | `.agent/` | Native |
+| Antigravity | `.agent/` | Native |
+| Cursor | `.cursor/rules/` | YAML frontmatter + Markdown |
+| OpenCode | `.opencode/` | JSON |
+| Codex | `.codex/` | TOML |
+
+All generated automatically by `kit init`.
+
+## CLI Reference
+
+| Command | Description | Key Flags |
+|---|---|---|
+| `kit init` | Install `.agent/` framework into project | `--force`, `--path <dir>` |
+| `kit update` | Non-destructive framework update | `--dry-run` |
+| `kit status` | Dashboard with capabilities and metrics | — |
+| `kit verify` | Manifest integrity and structure checks | — |
+| `kit scan` | Security scan (secrets, injection patterns) | — |
+| `kit plugin` | Plugin management | `list`, `install`, `remove` |
+| `kit market` | Marketplace integration | `search`, `info`, `install` |
+| `kit heal` | CI failure detection and auto-fix | `--file <path>`, `--apply` |
+| `kit health` | Aggregated health check | — |
+
+## Safety Guarantees
+
+Devran AI Kit is designed to **never touch your project files**. All operations are scoped to the `.agent/` directory.
+
+| Your Project Files | Safe? | Details |
+|---|---|---|
+| Source code (`src/`, `lib/`, `app/`) | Never touched | Init/update only operates on `.agent/` |
+| Config files (`.env`, `package.json`) | Never touched | No project config is read or written |
+| Documentation (`docs/`, `README.md`) | Never touched | Only `.agent/` docs are managed |
+| Tests (`tests/`, `__tests__/`) | Never touched | Kit tests are internal to the package |
+| Platform files (`android/`, `ios/`) | Never touched | No platform-specific operations |
+
+`init --force` safety features:
+
+- **Auto-backup** — Creates timestamped backup of existing `.agent/` before overwriting
+- **Atomic copy** — Uses temp directory + rename to prevent corruption on failure
+- **Symlink guard** — Skips symbolic links to prevent path traversal attacks
+- **Session warning** — Alerts if active work-in-progress would be destroyed
+- **Dry-run preview** — `--dry-run --force` shows exactly which user files would be overwritten
+
+`update` preserved files:
+
+- `session-context.md` — Your active session notes
+- `session-state.json` — Your session metadata
+- `decisions/` — Your Architecture Decision Records
+- `contexts/` — Your learning data and plan quality logs
+- `rules/` — Your custom governance rules
+- `checklists/` — Your custom quality gates
+
+## Agents (23)
+
+| Category | Agents |
+|---|---|
+| **Core Development** | Architect, Code Reviewer, TDD Guide, Planner |
+| **Language Reviewers** | TypeScript Reviewer, Python Reviewer, Go Reviewer |
+| **Domain Specialists** | Frontend Specialist, Backend Specialist, Mobile Developer, Database Architect, DevOps Engineer |
+| **Quality & Security** | Security Reviewer, E2E Runner, Performance Optimizer, Reliability Engineer |
+| **Support & Intelligence** | Doc Updater, Build Error Resolver, Refactor Cleaner, Explorer Agent, Knowledge Agent |
+| **Autonomy** | PR Reviewer, Sprint Orchestrator |
+
+## Operating Constraints
+
+| Principle | Description |
+|---|---|
+| Trust > Optimization | User trust is never sacrificed for metrics |
+| Safety > Growth | User safety overrides business goals |
+| Explainability > Performance | Understandable AI beats faster AI |
+| Completion > Suggestion | Finish current work before proposing new |
+| Consistency > Speed | All affected files updated, not just target |
+
+## Repository Structure
+
 ```
+kit/
+├── .agent/                 # Framework directory (installed to projects)
+│   ├── agents/             # 23 specialized agent definitions
+│   ├── skills/             # 34 domain knowledge modules
+│   ├── commands/           # 37 slash command definitions
+│   ├── workflows/          # 21 workflow templates
+│   ├── rules/              # 10 governance constraints
+│   ├── checklists/         # 4 lifecycle quality gates
+│   ├── engine/             # Runtime config (loading-rules, MCP templates)
+│   ├── decisions/          # Architecture Decision Records
+│   └── manifest.json       # Definitive capability inventory
+├── lib/                    # 31 runtime modules (zero dependencies)
+├── bin/kit.js              # CLI entry point
+├── create-kit-app/         # Project scaffolder
+├── docs/                   # MkDocs documentation site
+├── examples/               # Starter examples (minimal, full-stack)
+└── tests/                  # 382 tests (unit, structural, security)
+```
+
+## Security
+
+Secret detection covers API keys, tokens, AWS credentials, and private keys. The scanner checks for prompt injection patterns, path traversal attempts, and symlink abuse. Plugins are verified with SHA-256 checksums before installation.
 
 ## Documentation
 
-Full documentation is available at [devran-ai.github.io/kit](https://devran-ai.github.io/kit/).
-
-- [Getting Started](https://devran-ai.github.io/kit/getting-started/)
-- [Architecture](https://devran-ai.github.io/kit/architecture/)
-- [Extending the Framework](https://devran-ai.github.io/kit/extending/)
-- [Contributor Guide](https://devran-ai.github.io/kit/contributor-guide/)
+Full documentation: [devran-ai.github.io/kit](https://devran-ai.github.io/kit/)
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow, branch strategy, and code standards.
+Fork the repo, create a feature branch, add tests, and open a PR. See [CONTRIBUTING.md](CONTRIBUTING.md) for branch strategy and code standards.
 
 ```bash
 git clone https://github.com/devran-ai/kit.git
-cd kit
-npm install
-npm test
+cd kit && npm install && npm test
 ```
 
-We use [GitFlow](CONTRIBUTING.md): feature branches merge to `dev`, releases merge to `main`.
+## Author
+
+**Emre Dursun** — [LinkedIn](https://www.linkedin.com/in/emre-dursun-nl/) · [GitHub](https://github.com/emredursun)
 
 ## License
 

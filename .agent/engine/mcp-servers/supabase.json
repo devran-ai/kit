@@ -1,0 +1,11 @@
+{
+  "name": "supabase",
+  "description": "Supabase — database, auth, storage, edge functions",
+  "transport": "stdio",
+  "command": "npx",
+  "args": ["-y", "@supabase/mcp-server-supabase"],
+  "env": {
+    "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}"
+  },
+  "capabilities": ["database", "auth", "storage", "edge-functions"]
+}

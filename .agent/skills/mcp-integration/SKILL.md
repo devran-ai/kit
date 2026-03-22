@@ -183,6 +183,22 @@ When an MCP server is unavailable:
 
 ---
 
+## Pre-configured Server Templates
+
+Templates are available in `.agent/engine/mcp-servers/`:
+
+| Server | Package | Required Env Var |
+|--------|---------|-----------------|
+| GitHub | `@modelcontextprotocol/server-github` | `GITHUB_TOKEN` |
+| Supabase | `@supabase/mcp-server-supabase` | `SUPABASE_ACCESS_TOKEN` |
+| Vercel | `@vercel/mcp` | `VERCEL_TOKEN` |
+| Filesystem | `@modelcontextprotocol/server-filesystem` | (none) |
+| PostgreSQL | `@modelcontextprotocol/server-postgres` | `DATABASE_URL` |
+
+Templates use `${VAR}` placeholders — set the environment variable before starting the server.
+
+---
+
 ## Integration with Devran AI Kit
 
 ### Loading Rules Integration

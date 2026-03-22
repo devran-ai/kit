@@ -91,6 +91,8 @@ ${colors.bright}Options:${colors.reset}
   --dry-run                 Preview actions without executing
   --apply                   Apply self-healing patches (default: dry-run)
   --file <path>             CI log file for heal command
+  --ide <name>              Generate config for single IDE (cursor|opencode|codex)
+  --skip-ide                Skip IDE config generation
 
 ${colors.bright}Examples:${colors.reset}
   npx @devran-ai/kit init
@@ -137,6 +139,43 @@ function countItems(dir, type = 'dir') {
     return entries.filter(e => e.isFile() && e.name !== 'README.md' && e.name.endsWith('.md')).length;
   } catch {
     return 0;
+  }
+}
+
+/**
+ * Generates IDE-specific config files during init.
+ * Extracted from initCommand for readability (gemini-code-assist M-2).
+ */
+function generateIdeConfigsForInit(agentPath, targetDir, options) {
+  try {
+    const { generateAllIdeConfigs, writeIdeConfigs, generateCursorConfig, generateOpenCodeConfig, generateCodexConfig } = require('../lib/ide-generator');
+    const manifest = JSON.parse(fs.readFileSync(path.join(agentPath, 'manifest.json'), 'utf-8'));
+    const rulesContent = fs.readFileSync(path.join(agentPath, 'rules.md'), 'utf-8');
+
+    const generatorMap = {
+      cursor: () => generateCursorConfig(manifest, rulesContent),
+      opencode: () => generateOpenCodeConfig(manifest),
+      codex: () => generateCodexConfig(manifest),
+    };
+
+    let configs;
+    if (options.ide && generatorMap[options.ide]) {
+      configs = [generatorMap[options.ide]()];
+    } else if (options.ide) {
+      const supported = Object.keys(generatorMap).join(', ');
+      log(`   ⚠️  Unknown IDE: "${options.ide}". Supported: ${supported}`, 'yellow');
+      log('   Skipping IDE config generation.', 'yellow');
+      return;
+    } else {
+      configs = generateAllIdeConfigs(manifest, rulesContent);
+    }
+
+    const result = writeIdeConfigs(targetDir, configs, { force: options.force, skipExisting: !options.force });
+    for (const f of result.written) log(`   ✓ ${f}`, 'green');
+    for (const f of result.skipped) log(`   ⏭ ${f} (already exists)`, 'yellow');
+  } catch (err) {
+    log(`   ⚠️  IDE config generation failed: ${err.message}`, 'yellow');
+    log('   .agent/ installed successfully — IDE configs can be generated later', 'yellow');
   }
 }
 
@@ -208,7 +247,7 @@ function initCommand(options) {
 
   // Dynamic step counter — avoids hardcoded step strings
   const isForceWithBackup = backupPath !== null;
-  const totalSteps = isForceWithBackup ? 5 : 3;
+  const totalSteps = isForceWithBackup ? 6 : 4;
   let currentStep = isForceWithBackup ? 2 : 1;
 
   // C-3: Atomic copy via temp directory
@@ -280,7 +319,14 @@ function initCommand(options) {
   const workflows = countItems(path.join(agentPath, 'workflows'), 'file');
   log(`   ✓ Skills: ${skills}, Commands: ${commands}, Workflows: ${workflows}`, 'green');
   currentStep++;
-  
+
+  // Generate IDE configurations (Cursor, OpenCode, Codex)
+  if (!options.skipIde) {
+    logStep(`${currentStep}/${totalSteps}`, 'Generating IDE configurations...');
+    generateIdeConfigsForInit(agentPath, targetDir, options);
+  }
+  currentStep++;
+
   // Final message
   logStep(`${currentStep}/${totalSteps}`, 'Setup complete!');
   
@@ -636,9 +682,17 @@ const options = {
   quiet: args.includes('--quiet'),
   dryRun: args.includes('--dry-run'),
   apply: args.includes('--apply'),
+  skipIde: args.includes('--skip-ide'),
+  ide: null,
   path: null,
   file: null,
 };
+
+// Parse --ide option
+const ideIndex = args.indexOf('--ide');
+if (ideIndex !== -1 && args[ideIndex + 1]) {
+  options.ide = args[ideIndex + 1].toLowerCase();
+}
 
 // Parse --path option with traversal protection (H-7: use path.resolve boundary check)
 const pathIndex = args.indexOf('--path');

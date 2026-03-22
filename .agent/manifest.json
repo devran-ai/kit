@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "kitVersion": "4.0.0",
+  "kitVersion": "4.1.0",
   "lastAuditedAt": null,
   "description": "Devran AI Kit — Trust-Grade AI Development Framework",
   "repository": "https://github.com/devran-ai/kit",
   "capabilities": {
     "agents": {
-      "count": 20,
+      "count": 23,
       "items": [
         {
           "name": "architect",
@@ -107,6 +107,21 @@
           "name": "tdd-guide",
           "file": "agents/tdd-guide.md",
           "domain": "Test-first enforcement"
+        },
+        {
+          "name": "typescript-reviewer",
+          "file": "agents/typescript-reviewer.md",
+          "domain": "TypeScript type safety review"
+        },
+        {
+          "name": "python-reviewer",
+          "file": "agents/python-reviewer.md",
+          "domain": "Python best practices review"
+        },
+        {
+          "name": "go-reviewer",
+          "file": "agents/go-reviewer.md",
+          "domain": "Go idioms and concurrency review"
         }
       ]
     },

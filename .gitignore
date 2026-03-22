@@ -9,6 +9,9 @@ Thumbs.db
 .idea/
 .vscode/
 .claude/
+.cursor/
+.opencode/
+.codex/
 *.swp
 *.swo
 

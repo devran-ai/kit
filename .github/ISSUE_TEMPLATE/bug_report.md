@@ -19,8 +19,14 @@ What you expected to happen.
 **Environment**
 - OS: [e.g., Windows 11, macOS 15]
 - Node.js: [e.g., 20.x]
-- AI Kit version: [e.g., 2.1.0]
-- IDE: [e.g., VS Code, Cursor]
+- Kit version: [run `kit --version`]
+- IDE:
+  - [ ] Claude Code
+  - [ ] Antigravity
+  - [ ] Cursor
+  - [ ] OpenCode
+  - [ ] Codex
+  - [ ] Other
 
 **Additional context**
 Add any other context, screenshots, or logs.

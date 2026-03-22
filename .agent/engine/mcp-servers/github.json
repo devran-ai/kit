@@ -1,0 +1,11 @@
+{
+  "name": "github",
+  "description": "GitHub API — issues, PRs, repos, code search",
+  "transport": "stdio",
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-github"],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+  },
+  "capabilities": ["issues", "pull-requests", "repos", "code-search"]
+}
