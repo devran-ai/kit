@@ -61,6 +61,31 @@ Both should return clean results. If they report issues, refer to the troublesho
 
 Devran AI Kit **only** operates within the `.agent/` directory. Your project files — source code, configs, tests, platform files — are **never touched** by `init`, `update`, or any CLI command.
 
+| Your Project Files | Safe? | Details |
+|---|---|---|
+| Source code (`src/`, `lib/`, `app/`) | Never touched | Init/update only operates on `.agent/` |
+| Config files (`.env`, `package.json`) | Never touched | No project config is read or written |
+| Documentation (`docs/`, `README.md`) | Never touched | Only `.agent/` docs are managed |
+| Tests (`tests/`, `__tests__/`) | Never touched | Kit tests are internal to the package |
+| Platform files (`android/`, `ios/`) | Never touched | No platform-specific operations |
+
+### `init --force` Safety Features
+
+- **Auto-backup** — Creates timestamped backup of existing `.agent/` before overwriting
+- **Atomic copy** — Uses temp directory + rename to prevent corruption on failure
+- **Symlink guard** — Skips symbolic links to prevent path traversal attacks
+- **Session warning** — Alerts if active work-in-progress would be destroyed
+- **Dry-run preview** — `--dry-run --force` shows exactly which user files would be overwritten
+
+### `update` Preserved Files
+
+- `session-context.md` — Your active session notes
+- `session-state.json` — Your session metadata
+- `decisions/` — Your Architecture Decision Records
+- `contexts/` — Your learning data and plan quality logs
+- `rules/` — Your custom governance rules
+- `checklists/` — Your custom quality gates
+
 ---
 
 ## First Session
@@ -115,7 +140,7 @@ Runs all quality gates: build, lint, test, coverage.
 
 ## Next Steps
 
-- **[Agents](agents/index.md)** — 20 specialized AI agents
+- **[Agents](agents/index.md)** — 23 specialized AI agents
 - **[Commands](commands/index.md)** — 37 slash commands
 - **[Skills](skills/index.md)** — 34 domain expertise modules
 - **[Workflows](workflows/index.md)** — 21 development workflows

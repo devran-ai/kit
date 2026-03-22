@@ -31,16 +31,36 @@
 
 ## Quick Start
 
-```bash
-npx @devran-ai/kit init        # Install framework
-kit status                      # View dashboard
-kit verify                      # Check integrity
-```
-
-Or scaffold a new project:
+### Option 1: Create New Project (Recommended)
 
 ```bash
 npx create-kit-app my-project
+npx create-kit-app my-api --template node-api
+npx create-kit-app my-app --template nextjs
+```
+
+Creates a new project with `.agent/` pre-configured. Templates: `minimal`, `node-api`, `nextjs`.
+
+### Option 2: Add to Existing Project
+
+```bash
+npx @devran-ai/kit init
+```
+
+### Updating
+
+```bash
+kit update              # Non-destructive — preserves your customizations
+kit update --dry-run    # Preview changes without applying
+```
+
+> Prefer `kit update` over `kit init --force`. The update command preserves your session data, ADRs, learning contexts, and customizations. Use `init --force` only for clean reinstalls.
+
+### Verify Installation
+
+```bash
+kit verify    # Manifest integrity check
+kit scan      # Security scan
 ```
 
 ## Architecture
@@ -100,6 +120,78 @@ All generated automatically by `kit init`.
 | `kit heal` | CI failure detection and auto-fix | `--file <path>`, `--apply` |
 | `kit health` | Aggregated health check | — |
 
+## Safety Guarantees
+
+Devran AI Kit is designed to **never touch your project files**. All operations are scoped to the `.agent/` directory.
+
+| Your Project Files | Safe? | Details |
+|---|---|---|
+| Source code (`src/`, `lib/`, `app/`) | Never touched | Init/update only operates on `.agent/` |
+| Config files (`.env`, `package.json`) | Never touched | No project config is read or written |
+| Documentation (`docs/`, `README.md`) | Never touched | Only `.agent/` docs are managed |
+| Tests (`tests/`, `__tests__/`) | Never touched | Kit tests are internal to the package |
+| Platform files (`android/`, `ios/`) | Never touched | No platform-specific operations |
+
+`init --force` safety features:
+
+- **Auto-backup** — Creates timestamped backup of existing `.agent/` before overwriting
+- **Atomic copy** — Uses temp directory + rename to prevent corruption on failure
+- **Symlink guard** — Skips symbolic links to prevent path traversal attacks
+- **Session warning** — Alerts if active work-in-progress would be destroyed
+- **Dry-run preview** — `--dry-run --force` shows exactly which user files would be overwritten
+
+`update` preserved files:
+
+- `session-context.md` — Your active session notes
+- `session-state.json` — Your session metadata
+- `decisions/` — Your Architecture Decision Records
+- `contexts/` — Your learning data and plan quality logs
+- `rules/` — Your custom governance rules
+- `checklists/` — Your custom quality gates
+
+## Agents (23)
+
+| Category | Agents |
+|---|---|
+| **Core Development** | Architect, Code Reviewer, TDD Guide, Planner |
+| **Language Reviewers** | TypeScript Reviewer, Python Reviewer, Go Reviewer |
+| **Domain Specialists** | Frontend Specialist, Backend Specialist, Mobile Developer, Database Architect, DevOps Engineer |
+| **Quality & Security** | Security Reviewer, E2E Runner, Performance Optimizer, Reliability Engineer |
+| **Support & Intelligence** | Doc Updater, Build Error Resolver, Refactor Cleaner, Explorer Agent, Knowledge Agent |
+| **Autonomy** | PR Reviewer, Sprint Orchestrator |
+
+## Operating Constraints
+
+| Principle | Description |
+|---|---|
+| Trust > Optimization | User trust is never sacrificed for metrics |
+| Safety > Growth | User safety overrides business goals |
+| Explainability > Performance | Understandable AI beats faster AI |
+| Completion > Suggestion | Finish current work before proposing new |
+| Consistency > Speed | All affected files updated, not just target |
+
+## Repository Structure
+
+```
+kit/
+├── .agent/                 # Framework directory (installed to projects)
+│   ├── agents/             # 23 specialized agent definitions
+│   ├── skills/             # 34 domain knowledge modules
+│   ├── commands/           # 37 slash command definitions
+│   ├── workflows/          # 21 workflow templates
+│   ├── rules/              # 10 governance constraints
+│   ├── checklists/         # 4 lifecycle quality gates
+│   ├── engine/             # Runtime config (loading-rules, MCP templates)
+│   ├── decisions/          # Architecture Decision Records
+│   └── manifest.json       # Definitive capability inventory
+├── lib/                    # 31 runtime modules (zero dependencies)
+├── bin/kit.js              # CLI entry point
+├── create-kit-app/         # Project scaffolder
+├── docs/                   # MkDocs documentation site
+├── examples/               # Starter examples (minimal, full-stack)
+└── tests/                  # 382 tests (unit, structural, security)
+```
+
 ## Security
 
 Secret detection covers API keys, tokens, AWS credentials, and private keys. The scanner checks for prompt injection patterns, path traversal attempts, and symlink abuse. Plugins are verified with SHA-256 checksums before installation.
@@ -116,6 +208,10 @@ Fork the repo, create a feature branch, add tests, and open a PR. See [CONTRIBUT
 git clone https://github.com/devran-ai/kit.git
 cd kit && npm install && npm test
 ```
+
+## Author
+
+**Emre Dursun** — [LinkedIn](https://linkedin.com/in/emredursun) · [GitHub](https://github.com/emredursun)
 
 ## License
 
