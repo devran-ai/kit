@@ -97,13 +97,19 @@ Each phase requires explicit developer approval before transitioning. The engine
 
 ## What's New
 
+### v4.2.1
+
+| Change | Details |
+|---|---|
+| Untrack hint | Detects tracked `.agent/` and prints `git rm --cached` command |
+| Documentation fixes | Updated release notes, stale test counts corrected |
+
 ### v4.2.0
 
 | Change | Details |
 |---|---|
 | Gitignore by default | `kit init` adds `.agent/` to `.gitignore` — personal dev tooling |
 | `--shared` flag | Opt-in to commit `.agent/` for team sharing |
-| Untrack hint | Detects tracked `.agent/` and prints `git rm --cached` command |
 | 388 tests | 37 test suites across unit, structural, and security |
 
 ### v4.1.0
