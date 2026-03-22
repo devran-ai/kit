@@ -1,5 +1,5 @@
 ---
-description: Review pull requests with Senior Staff Engineer expertise. Multi-perspective analysis covering PR hygiene, branch strategy, code quality, security, testing, and architecture. Engages with existing reviewer comments (bots and humans) and tracks review rounds.
+description: Multi-perspective PR review covering hygiene, branch strategy, code quality, security, testing, and architecture. Engages with existing reviewer comments and tracks review rounds.
 version: 1.1.0
 sdlc-phase: verify
 skills: [pr-toolkit, verification-loop]

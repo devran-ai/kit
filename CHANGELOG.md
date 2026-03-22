@@ -17,9 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Full rebranding from "Antigravity AI Kit" to "Devran AI Kit"
 - README rewritten for enterprise clarity (758 lines to ~120 lines)
-- Removed `node_modules/` from git tracking (917 files, 236K lines)
-- Removed documentation bloat (archive docs, operational guides)
-- Removed `npm-publish-output.txt` build artifact
+- Untracked `node_modules/` from git (917 files, 236K lines) — added to `.gitignore`
+- Deleted operational docs bloat (`google-search-console-setup.md`, `github-repository-settings.md`)
+- Deleted `npm-publish-output.txt` build artifact, added to `.gitignore`
+- Framework token optimization: 56% reduction across workflows, agents, and skills
 
 ## [3.9.0] — 2026-03-20
 

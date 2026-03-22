@@ -7,7 +7,7 @@ reports-to: alignment-engine
 relatedWorkflows: [orchestrate]
 ---
 
-# Devran AI Kit — TDD Guide Agent
+# TDD Guide Agent
 
 > **Platform**: Devran AI Kit  
 > **Purpose**: Ensure all code is developed test-first with comprehensive coverage

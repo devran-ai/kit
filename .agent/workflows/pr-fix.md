@@ -1,5 +1,5 @@
 ---
-description: Fix pull request issues based on review comments from all reviewers (humans and bots). Fetch findings, prioritize by severity, implement fixes with before/after evidence, verify, push, and post detailed resolution summary attributing each fix to the original reviewer.
+description: Fix PR issues from review comments. Fetch findings, prioritize by severity, implement fixes with evidence, verify, push, and post resolution summary with reviewer attribution.
 version: 1.1.0
 sdlc-phase: build
 skills: [pr-toolkit, verification-loop]

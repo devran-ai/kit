@@ -8,7 +8,7 @@ integration: 3-role-architecture
 relatedWorkflows: [orchestrate]
 ---
 
-# Devran AI Kit — Architect Agent
+# Architect Agent
 
 > **Platform**: Devran AI Kit  
 > **Purpose**: High-level system design and architectural decisions

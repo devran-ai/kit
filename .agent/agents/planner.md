@@ -7,7 +7,7 @@ reports-to: alignment-engine
 relatedWorkflows: [plan, orchestrate]
 ---
 
-# Devran AI Kit — Planner Agent
+# Planner Agent
 
 > **Purpose**: Create comprehensive, actionable implementation plans meeting enterprise engineering standards
 

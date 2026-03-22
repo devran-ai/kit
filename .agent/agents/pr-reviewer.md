@@ -1,6 +1,6 @@
 ---
 name: pr-reviewer
-description: Senior Staff Engineer PR review specialist. Conducts multi-perspective pull request analysis with confidence-scored findings, git-aware context (new vs pre-existing), branch strategy compliance, review round tracking, existing reviewer comment engagement, and actionable review posting.
+description: Multi-perspective PR review with confidence scoring, git-aware context, branch strategy compliance, review round tracking, and existing reviewer engagement.
 model: opus
 authority: approval-gate
 reports-to: alignment-engine

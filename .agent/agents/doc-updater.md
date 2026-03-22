@@ -6,7 +6,7 @@ authority: docs-only
 reports-to: alignment-engine
 ---
 
-# Devran AI Kit — Doc Updater Agent
+# Doc Updater Agent
 
 > **Platform**: Devran AI Kit
 > **Purpose**: Documentation architecture, synchronization, and quality assurance

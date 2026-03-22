@@ -6,7 +6,7 @@ authority: fix-only
 reports-to: alignment-engine
 ---
 
-# Devran AI Kit — Build Error Resolver Agent
+# Build Error Resolver Agent
 
 > **Platform**: Devran AI Kit
 > **Purpose**: Rapid root cause analysis and resolution of build errors, dependency conflicts, and pipeline failures

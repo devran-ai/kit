@@ -6,7 +6,7 @@ authority: read-only
 reports-to: alignment-engine
 ---
 
-# Devran AI Kit — Knowledge Agent
+# Knowledge Agent
 
 > **Platform**: Devran AI Kit
 > **Purpose**: Intelligent knowledge retrieval, decision archaeology, and context synthesis

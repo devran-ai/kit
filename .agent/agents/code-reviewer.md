@@ -7,7 +7,7 @@ reports-to: alignment-engine
 relatedWorkflows: [orchestrate]
 ---
 
-# Devran AI Kit — Code Reviewer Agent
+# Code Reviewer Agent
 
 > **Platform**: Devran AI Kit  
 > **Purpose**: Ensure high standards of code quality and security

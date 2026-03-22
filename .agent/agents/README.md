@@ -1,4 +1,4 @@
-# Devran AI Kit — Agents
+# Agents
 
 > **Purpose**: Specialized sub-agents for task delegation
 > **Count**: 20 Agents
