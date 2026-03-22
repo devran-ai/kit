@@ -18,5 +18,14 @@ What you'd like to see added or changed.
 - [ ] Workflow
 - [ ] Other
 
+**Affected IDEs**
+Which IDEs should this feature support?
+- [ ] All IDEs
+- [ ] Claude Code
+- [ ] Antigravity
+- [ ] Cursor
+- [ ] OpenCode
+- [ ] Codex
+
 **Additional context**
 Any other context, mockups, or references.

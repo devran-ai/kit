@@ -1,0 +1,11 @@
+{
+  "name": "postgres",
+  "description": "PostgreSQL — query execution, schema inspection, migrations",
+  "transport": "stdio",
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-postgres"],
+  "env": {
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "capabilities": ["query", "schema-inspect", "migrations"]
+}

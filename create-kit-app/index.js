@@ -259,6 +259,26 @@ ${colors.cyan}🚀 Creating ${template.name} project: ${projectName}${colors.res
     process.exit(1);
   }
 
+  // Generate IDE configurations (Cursor, OpenCode, Codex)
+  try {
+    const ideGenerator = require('../lib/ide-generator');
+    const resolvedProjectDir = path.resolve(projectDir);
+    const agentDir = path.join(resolvedProjectDir, '.agent');
+    const manifestPath = path.join(agentDir, 'manifest.json');
+    const rulesPath = path.join(agentDir, 'rules.md');
+    if (fs.existsSync(manifestPath) && fs.existsSync(rulesPath)) {
+      const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+      const rulesContent = fs.readFileSync(rulesPath, 'utf-8');
+      const configs = ideGenerator.generateAllIdeConfigs(manifest, rulesContent);
+      const result = ideGenerator.writeIdeConfigs(resolvedProjectDir, configs, { skipExisting: true });
+      if (result.written.length > 0) {
+        console.log(`   ${colors.green}✓${colors.reset} IDE configs generated (${result.written.length} files)`);
+      }
+    }
+  } catch {
+    // Non-fatal — IDE configs are optional
+  }
+
   // Step 3: Install dependencies
   if (template.dependencies.length > 0 || template.devDependencies.length > 0) {
     console.log(`${colors.yellow}[3/3]${colors.reset} Installing dependencies...`);

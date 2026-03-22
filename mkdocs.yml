@@ -80,6 +80,9 @@ nav:
       - Rules: governance/index.md
       - Operating Constraints: governance/constraints.md
   - Extending: extending.md
+  - Cross-IDE Setup: cross-ide-setup.md
+  - CLI Reference: cli-reference.md
+  - FAQ: faq.md
   - Contributing: contributing.md
 
 extra:

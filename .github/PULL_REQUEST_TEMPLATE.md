@@ -38,7 +38,18 @@
 - [ ] PR title follows conventional commits: `type(scope): description`
 - [ ] Branch synced with target (no conflicts)
 - [ ] Self-reviewed the diff
-- [ ] Counts synchronized (manifest, README, CheatSheet, CLI) if components added/removed
+- [ ] `npm test` passes locally (all tests green)
+- [ ] `kit verify` — manifest integrity check passes
+- [ ] `kit scan` — security scan clean
+- [ ] Documentation updated (if applicable)
+- [ ] Counts synchronized (manifest, README, CheatSheet, docs, CLI) if components added/removed
+
+## IDE Impact
+
+Does this PR affect IDE configuration generation?
+
+- [ ] No
+- [ ] Yes — agents, skills, or rules changed (IDE configs need regeneration)
 
 ## Related Issues
 

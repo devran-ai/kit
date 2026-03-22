@@ -24,7 +24,7 @@ This loads your session context and activates the orchestrator.
 ├── rules.md                # Core governance & identity
 ├── session-state.json      # Machine-readable state
 │
-├── agents/                 # 20 specialized agents
+├── agents/                 # 23 specialized agents
 ├── commands/               # 37 slash commands
 ├── skills/                 # 34 capability extensions
 ├── workflows/              # 21 slash command workflows

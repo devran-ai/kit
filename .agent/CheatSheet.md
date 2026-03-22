@@ -1,6 +1,6 @@
 # Devran AI Kit — CheatSheet
 
-> **Version**: v4.0.0 | **Quick Reference** for all capabilities
+> **Version**: v4.1.0 | **Quick Reference** for all capabilities
 > **Session**: Start with `/status`, end with session-end checklist
 
 ---
@@ -106,7 +106,7 @@
 
 ---
 
-## 🤖 Agents (20)
+## 🤖 Agents (23)
 
 ### Core Development
 
@@ -152,6 +152,14 @@
 | Agent | Purpose |
 |:------|:--------|
 | 👀 PR Reviewer | PR review, branch strategy, code quality |
+
+### Language-Specific Reviewers
+
+| Agent | Purpose |
+|:------|:--------|
+| 📘 TypeScript Reviewer | Type safety & TS patterns |
+| 🐍 Python Reviewer | PEP 8 & Python best practices |
+| 🔷 Go Reviewer | Go idioms & concurrency |
 
 ---
 
@@ -328,7 +336,7 @@
 ├── CheatSheet.md            # This file
 ├── manifest.json            # Capability registry
 │
-├── agents/                  # 20 specialized agents
+├── agents/                  # 23 specialized agents
 ├── commands/                # 37 slash commands
 ├── skills/                  # 34 capability extensions
 ├── workflows/               # 21 slash command workflows

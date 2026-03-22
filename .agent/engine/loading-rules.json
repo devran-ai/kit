@@ -108,6 +108,24 @@
       "keywords": ["refactor", "clean", "improve", "dead code", "technical debt", "simplify"],
       "loadAgents": ["refactor-cleaner"],
       "loadSkills": ["clean-code"]
+    },
+    {
+      "domain": "typescript",
+      "keywords": ["typescript", "ts", "type safety", "tsconfig", "tsc", "generics", "type guard", "discriminated union"],
+      "loadAgents": ["typescript-reviewer"],
+      "loadSkills": ["typescript-expert"]
+    },
+    {
+      "domain": "python",
+      "keywords": ["python", "django", "flask", "fastapi", "pep8", "mypy", "pytest", "asyncio", "pydantic"],
+      "loadAgents": ["python-reviewer"],
+      "loadSkills": []
+    },
+    {
+      "domain": "golang",
+      "keywords": ["go", "golang", "goroutine", "channel", "context", "errgroup", "go mod", "staticcheck"],
+      "loadAgents": ["go-reviewer"],
+      "loadSkills": []
     }
   ],
   "contextBudget": {
@@ -138,7 +156,7 @@
       "loadAgents": ["planner", "explorer-agent"],
       "loadSkills": ["parallel-agents", "intelligent-routing"],
       "bindingType": "explicit",
-      "dynamicAgentPool": ["architect", "backend-specialist", "frontend-specialist", "mobile-developer", "database-architect", "security-reviewer", "tdd-guide", "e2e-runner", "devops-engineer", "performance-optimizer", "reliability-engineer", "refactor-cleaner", "code-reviewer"]
+      "dynamicAgentPool": ["architect", "backend-specialist", "frontend-specialist", "mobile-developer", "database-architect", "security-reviewer", "tdd-guide", "e2e-runner", "devops-engineer", "performance-optimizer", "reliability-engineer", "refactor-cleaner", "code-reviewer", "typescript-reviewer", "python-reviewer", "go-reviewer"]
     },
     { "workflow": "retrospective", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" },
     { "workflow": "status", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" }
