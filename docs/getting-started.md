@@ -12,7 +12,9 @@ Get up and running with Devran AI Kit in **30 seconds**.
 npx @devran-ai/kit init
 ```
 
-This automatically copies the `.agent/` folder to your project. Done!
+This automatically copies the `.agent/` folder to your project and adds it to `.gitignore`. Done!
+
+> **Note**: `.agent/` is gitignored by default — it's personal dev tooling. For team-wide sharing, use `kit init --shared`.
 
 > **Warning:** `npx @devran-ai/kit init --force` is a **Catastrophic Repair** command. It will overwrite your customizations and session state. Do not use it for regular updates.
 

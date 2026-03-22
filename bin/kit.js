@@ -93,6 +93,7 @@ ${colors.bright}Options:${colors.reset}
   --file <path>             CI log file for heal command
   --ide <name>              Generate config for single IDE (cursor|opencode|codex)
   --skip-ide                Skip IDE config generation
+  --shared                  Commit .agent/ to repo (team mode — skip .gitignore)
 
 ${colors.bright}Examples:${colors.reset}
   npx @devran-ai/kit init
@@ -247,7 +248,7 @@ function initCommand(options) {
 
   // Dynamic step counter — avoids hardcoded step strings
   const isForceWithBackup = backupPath !== null;
-  const totalSteps = isForceWithBackup ? 6 : 4;
+  const totalSteps = isForceWithBackup ? 7 : 5;
   let currentStep = isForceWithBackup ? 2 : 1;
 
   // C-3: Atomic copy via temp directory
@@ -324,6 +325,26 @@ function initCommand(options) {
   if (!options.skipIde) {
     logStep(`${currentStep}/${totalSteps}`, 'Generating IDE configurations...');
     generateIdeConfigsForInit(agentPath, targetDir, options);
+  }
+  currentStep++;
+
+  // Add .agent/ to .gitignore (unless --shared)
+  if (!options.shared) {
+    logStep(`${currentStep}/${totalSteps}`, 'Configuring .gitignore...');
+    try {
+      const { addToGitignore } = require('../lib/io');
+      const result = addToGitignore(targetDir);
+      if (result.added) {
+        log('   ✓ .agent/ added to .gitignore (local dev tooling)', 'green');
+      } else {
+        log('   ✓ .agent/ already in .gitignore', 'green');
+      }
+    } catch (err) {
+      log(`   ⚠️  Could not update .gitignore: ${err.message}`, 'yellow');
+    }
+  } else {
+    logStep(`${currentStep}/${totalSteps}`, 'Shared mode — .agent/ will be committed');
+    log('   ℹ .gitignore not modified (--shared flag)', 'cyan');
   }
   currentStep++;
 
@@ -683,6 +704,7 @@ const options = {
   dryRun: args.includes('--dry-run'),
   apply: args.includes('--apply'),
   skipIde: args.includes('--skip-ide'),
+  shared: args.includes('--shared'),
   ide: null,
   path: null,
   file: null,
