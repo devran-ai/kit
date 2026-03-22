@@ -116,14 +116,30 @@ Before submitting a PR, ensure:
 
 ### Adding a Skill
 
-1. Create `.agent/skills/your-skill/SKILL.md` with frontmatter
+1. Create `.agent/skills/your-skill/SKILL.md` with frontmatter:
+   ```markdown
+   ---
+   name: your-skill
+   description: What this skill does
+   triggers: [keyword1, keyword2]
+   ---
+   # Your Skill
+   ## Overview
+   ...
+   ```
 2. Add entry to `.agent/manifest.json`
 3. Update counts everywhere (see Adding an Agent, step 3)
 4. Run `npm test`
 
 ### Adding a Workflow
 
-1. Create `.agent/workflows/your-workflow.md` with frontmatter
+1. Create `.agent/workflows/your-workflow.md` with frontmatter:
+   ```markdown
+   ---
+   description: What this workflow does
+   ---
+   # Steps...
+   ```
 2. Add entry to `.agent/manifest.json`
 3. Update counts
 4. Run `npm test`

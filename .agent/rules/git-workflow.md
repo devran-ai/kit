@@ -79,7 +79,7 @@ Examples:
 1. Create `hotfix/*` branch from `main`
 2. Fix the issue with minimal changes
 3. Create PR targeting `main`
-4. After merge, cherry-pick or merge `main` into `dev`
+4. After merge, merge `main` back into `dev` to sync the hotfix
 
 ---
 

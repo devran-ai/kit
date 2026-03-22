@@ -38,7 +38,7 @@ ag-kit update --dry-run   # Preview changes without applying
 git clone https://github.com/devran-ai/kit.git
 
 # 2. Copy .agent/ to your project
-cp -r antigravity-ai-kit/.agent/ your-project/.agent/
+cp -r kit/.agent/ your-project/.agent/
 
 # 3. Start your session
 /status
