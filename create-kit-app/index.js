@@ -239,8 +239,10 @@ ${colors.cyan}🚀 Creating ${template.name} project: ${projectName}${colors.res
       '.env.local',
       '*.log',
       '.DS_Store',
-      '.agent/session-context.md',
-      '.agent/session-state.json',
+      '',
+      '# Devran AI Kit (local dev tooling)',
+      '# Install: npx @devran-ai/kit init',
+      '.agent/',
       '',
     ].join('\n'));
   }
