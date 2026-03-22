@@ -275,7 +275,8 @@ ${colors.cyan}🚀 Creating ${template.name} project: ${projectName}${colors.res
         console.log(`   ${colors.green}✓${colors.reset} IDE configs generated (${result.written.length} files)`);
       }
     }
-  } catch {
+  } catch (err) {
+    console.error(`   ${colors.red}✗${colors.reset} IDE config generation failed: ${err.message}`);
     // Non-fatal — IDE configs are optional
   }
 

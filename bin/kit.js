@@ -162,8 +162,10 @@ function generateIdeConfigsForInit(agentPath, targetDir, options) {
     if (options.ide && generatorMap[options.ide]) {
       configs = [generatorMap[options.ide]()];
     } else if (options.ide) {
-      log(`   ⚠️  Unknown IDE: ${options.ide}. Generating all configs.`, 'yellow');
-      configs = generateAllIdeConfigs(manifest, rulesContent);
+      const supported = Object.keys(generatorMap).join(', ');
+      log(`   ⚠️  Unknown IDE: "${options.ide}". Supported: ${supported}`, 'yellow');
+      log('   Skipping IDE config generation.', 'yellow');
+      return;
     } else {
       configs = generateAllIdeConfigs(manifest, rulesContent);
     }
