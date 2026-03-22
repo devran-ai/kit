@@ -1,5 +1,21 @@
 # FAQ
 
+## Git & Teams
+
+**Should I commit `.agent/` to git?**
+
+By default, no. `kit init` adds `.agent/` to `.gitignore` automatically. The framework is personal dev tooling — your teammates who don't use it are unaffected. Anyone who wants it runs `npx @devran-ai/kit init`. For teams that agree to share it, use `kit init --shared`.
+
+**Will it conflict with my project's CLAUDE.md?**
+
+No. Your `CLAUDE.md` remains the single source of truth for team rules. The kit's `.agent/rules.md` provides additional governance for AI agents but does not override or duplicate your project-specific rules.
+
+**Does it affect CI/CD?**
+
+No. Since `.agent/` is gitignored by default, CI pipelines never see it. The kit is developer tooling, not build infrastructure.
+
+---
+
 ## General
 
 **What is Devran AI Kit?**

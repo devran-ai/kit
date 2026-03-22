@@ -1,6 +1,6 @@
 # Devran AI Kit
 
-[![Version](https://img.shields.io/badge/version-4.1.0-blue.svg)](https://github.com/devran-ai/kit)
+[![Version](https://img.shields.io/badge/version-4.2.0-blue.svg)](https://github.com/devran-ai/kit)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-382%20passing-brightgreen.svg)](tests/)
 [![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](package.json)
@@ -46,6 +46,17 @@ Creates a new project with `.agent/` pre-configured. Templates: `minimal`, `node
 ```bash
 npx @devran-ai/kit init
 ```
+
+## How It Works in Teams
+
+Devran AI Kit is **personal developer tooling** — like your IDE settings. `kit init` adds `.agent/` to `.gitignore` by default so it stays local.
+
+| Mode | Command | Behavior |
+|------|---------|----------|
+| Personal (default) | `kit init` | `.agent/` gitignored — local only |
+| Team (opt-in) | `kit init --shared` | `.agent/` committed — shared with team |
+
+Your project's `CLAUDE.md` remains the single source of truth. The kit enhances your personal workflow without affecting teammates. Anyone who wants it runs `npx @devran-ai/kit init`.
 
 ### Updating
 
