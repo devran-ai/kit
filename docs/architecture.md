@@ -1,6 +1,6 @@
 # Architecture
 
-Antigravity AI Kit v3.10.1 is an engineered framework with a **29-module runtime engine**, 20 agents, 34 skills, 37 commands, and 21 workflows.
+Devran AI Kit v4.0.0 is an engineered framework with a **29-module runtime engine**, 20 agents, 34 skills, 37 commands, and 21 workflows.
 
 ---
 
@@ -8,7 +8,7 @@ Antigravity AI Kit v3.10.1 is an engineered framework with a **29-module runtime
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      ANTIGRAVITY AI KIT v3.8.0                       │
+│                      DEVRAN AI KIT v4.0.0                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │

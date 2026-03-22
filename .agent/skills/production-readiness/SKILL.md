@@ -8,265 +8,119 @@ allowed-tools: Read, Grep, Bash
 
 # Production Readiness
 
-> **Purpose**: Assess project readiness for production deployment across 10 audit domains
-> **Invoked by**: `/preflight` workflow
-> **Reusable by**: `/retrospective`, `/deploy`
-
----
-
-## Overview
-
-This skill defines the audit domains, sub-check rubrics, and scoring model used by the `/preflight` workflow to generate a Production Readiness Scorecard. Each domain has weighted scoring with evidence-based pass criteria.
+> **Purpose**: Assess project readiness for production across 10 audit domains
+> **Invoked by**: `/preflight` | **Reusable by**: `/retrospective`, `/deploy`
 
 ---
 
 ## Principles
 
-1. **Evidence over assertion** — every score must be backed by observable proof
-2. **Non-destructive** — checks do not modify source code; test suites, linters, and builds may run as verification commands but must not alter project state
-3. **Fail-safe defaults** — unverifiable checks score 0 (not assumed pass)
-4. **Domain independence** — each domain is scored independently
+1. **Evidence over assertion** — every score backed by observable proof
+2. **Non-destructive** — checks don't modify source; verification commands may run
+3. **Fail-safe defaults** — unverifiable checks score 0
+4. **Domain independence** — each domain scored independently
 5. **Blocker precedence** — blocker rules override total score
 
 ---
 
 ## Domain Definitions
 
-### D1: Task Completeness (8 points)
+### D1: Task Completeness (8 pts) — Skill: `plan-writing`
 
-> Verify all planned work is complete, scope is aligned, and no undocumented features exist.
+ROADMAP/task tracker exists and current (2) | All milestone tasks complete (3) | No undocumented features (2) | No scope drift (1)
 
-**Primary Skill**: `plan-writing` · **Check Method**: Read ROADMAP.md, task files
+### D2: User Journey Validation (10 pts) — Skills: `webapp-testing`, `testing-patterns`
 
-| Sub-Check | Points | Pass Criteria |
-| :--- | :--- | :--- |
-| ROADMAP.md or task tracker exists and is current | 2 | File exists, contains structured task list |
-| All MVP/milestone tasks marked complete | 3 | No `[ ]` items remain in milestone scope |
-| No undocumented features | 2 | Every implemented feature has a task entry |
-| Scope drift detection | 1 | No features implemented outside planned scope |
+Critical flows identified, >=3 (2) | Happy path verified (3) | Error/edge handling (3) | Accessibility baseline (2)
 
----
+### D3: Implementation Correctness (10 pts) — Skills: `verification-loop`, `testing-patterns`
 
-### D2: User Journey Validation (10 points)
+Test suite passes (4) | Coverage >= target or 60% (2) | No dead code (2) | Features match specs (2)
 
-> Verify critical user flows work end-to-end and fail-safe behavior is defined.
+### D4: Code Quality (15 pts) — Skills: `verification-loop`, `clean-code` — Delegates to `/review`
 
-**Primary Skill**: `webapp-testing` · **Secondary Skill**: `testing-patterns` · **Check Method**: Walk critical flows, check error handling
+Lint passes (3) | Type check strict (3) | Build succeeds (3) | Style compliance (3) | Dependency health (3)
 
-| Sub-Check | Points | Pass Criteria |
-| :--- | :--- | :--- |
-| Critical user flows identified | 2 | At least 3 key flows documented or testable |
-| Happy path verified | 3 | Core flows produce expected outcomes |
-| Error/edge case handling | 3 | Graceful degradation on failure paths |
-| Accessibility baseline | 2 | Basic keyboard navigation, ARIA labels on critical elements |
+### D5: Security & Privacy (18 pts) — Skill: `security-practices` — **Highest weight**
 
----
+No hardcoded secrets (4) | Dependency vuln scan (3) | Auth/authz audit (3) | Input validation all endpoints (3) | HTTPS + security headers (3) | Privacy/PII compliance (2)
 
-### D3: Implementation Correctness (10 points)
+### D6: Configuration Readiness (8 pts) — Skills: `deployment-procedures`, `shell-conventions`
 
-> Verify features function as specified, no dead code, and test suite passes.
+Env vars documented (2) | No dev values in prod (2) | Secrets management defined (2) | Env-specific configs separated (2)
 
-**Primary Skill**: `verification-loop` · **Secondary Skill**: `testing-patterns` · **Check Method**: Run test suite, static analysis
+### D7: Performance Baseline (8 pts) — Skill: `performance-profiling`
 
-| Sub-Check | Points | Pass Criteria |
-| :--- | :--- | :--- |
-| Test suite passes | 4 | Zero test failures |
-| Test coverage adequate | 2 | Coverage ≥ project target (or ≥60% default) |
-| No dead code or unused exports | 2 | Static analysis clean |
-| Feature correctness audit | 2 | Implemented features match specifications |
+Bundle size within budget (2) | No perf anti-patterns (2) | Core Web Vitals baseline (2) | API p95 <500ms (2)
 
----
+### D8: Documentation (5 pts) — Skill: `plan-writing`
 
-### D4: Code Quality (15 points)
+README with setup (2) | API docs (1) | Runbook (1) | CHANGELOG current (1)
 
-> Verify code meets quality gates. Delegates to the `/review` workflow.
+### D9: Infrastructure & CI/CD (10 pts) — Skills: `deployment-procedures`, `docker-patterns`
 
-**Primary Skill**: `verification-loop` · **Secondary Skill**: `clean-code` · **Check Method**: Delegate to `/review`
+CI passes (3) | Deploy strategy defined (2) | Rollback capability (3) | Health check endpoint (2)
 
-| Sub-Check | Points | Pass Criteria |
-| :--- | :--- | :--- |
-| Lint passes | 3 | Zero lint errors |
-| Type check passes | 3 | Zero type errors in strict mode |
-| Build succeeds | 3 | Production build completes without errors |
-| Code style compliance | 3 | Follows project conventions (naming, structure) |
-| Dependency health | 3 | No critical/high vulnerabilities in dependencies |
+### D10: Observability & Monitoring (8 pts) — Skill: `deployment-procedures`
 
----
-
-### D5: Security & Privacy (18 points)
-
-> Non-negotiable security assessment. Highest weight domain.
-
-**Primary Skill**: `security-practices` · **Check Method**: OWASP check, secrets scan, dependency audit
-
-| Sub-Check | Points | Pass Criteria |
-| :--- | :--- | :--- |
-| No hardcoded secrets | 4 | Grep for API keys, passwords, tokens — zero matches |
-| Dependencies vulnerability scan | 3 | No critical/high CVEs in production deps |
-| Authentication/authorization audit | 3 | Auth flows follow security-practices skill standards |
-| Input validation on all endpoints | 3 | No unvalidated user input reaches business logic |
-| HTTPS/security headers configured | 3 | CSP, HSTS, X-Frame-Options present in production config |
-| Privacy compliance check | 2 | PII handling documented, consent mechanisms present |
-
----
-
-### D6: Configuration Readiness (8 points)
-
-> Verify environment configuration is production-ready.
-
-**Primary Skill**: `deployment-procedures` · **Secondary Skill**: `shell-conventions` · **Check Method**: Env var audit, config validation
-
-| Sub-Check | Points | Pass Criteria |
-| :--- | :--- | :--- |
-| All required env vars documented | 2 | `.env.example` or equivalent exists with all vars |
-| No dev-only values in production config | 2 | No `localhost`, `debug=true`, dev API keys |
-| Secrets management strategy defined | 2 | Secrets via env vars or vault, not committed |
-| Environment-specific configs separated | 2 | Dev/staging/prod configs isolated |
-
----
-
-### D7: Performance Baseline (8 points)
-
-> Verify performance meets baseline thresholds.
-
-**Primary Skill**: `performance-profiling` · **Check Method**: Bundle analysis, response time check
-
-| Sub-Check | Points | Pass Criteria |
-| :--- | :--- | :--- |
-| Bundle size within budget | 2 | Initial JS < 200KB gzipped (web) or reasonable for platform |
-| No obvious performance anti-patterns | 2 | No N+1 queries, unbounded loops, memory leaks |
-| Core Web Vitals baseline (web) | 2 | LCP < 2.5s, CLS < 0.1 (if applicable) |
-| API response times acceptable | 2 | p95 < 500ms for critical endpoints |
-
----
-
-### D8: Documentation (5 points)
-
-> Verify operational documentation is adequate.
-
-**Primary Skill**: `plan-writing` · **Check Method**: File existence and content check
-
-| Sub-Check | Points | Pass Criteria |
-| :--- | :--- | :--- |
-| README with setup instructions | 2 | README exists, includes install + run commands |
-| API documentation (if applicable) | 1 | Endpoints documented or N/A justified |
-| Runbook or incident procedures | 1 | Basic operational guide exists or N/A justified |
-| CHANGELOG current | 1 | Recent changes documented |
-
----
-
-### D9: Infrastructure & CI/CD (10 points)
-
-> Verify deployment pipeline and infrastructure readiness.
-
-**Primary Skill**: `deployment-procedures` · **Secondary Skill**: `docker-patterns` · **Check Method**: CI config analysis, deployment strategy
-
-| Sub-Check | Points | Pass Criteria |
-| :--- | :--- | :--- |
-| CI pipeline passes | 3 | All CI checks green on target branch |
-| Deployment strategy defined | 2 | Deploy method documented (manual, CD, container) |
-| Rollback capability exists | 3 | Rollback procedure tested or documented |
-| Health check endpoint (if applicable) | 2 | `/health` or equivalent returns service status |
-
----
-
-### D10: Observability & Monitoring (8 points)
-
-> Verify incident visibility and error tracking readiness.
-
-**Primary Skill**: `deployment-procedures` · **Check Method**: Config analysis, logging audit
-
-| Sub-Check | Points | Pass Criteria |
-| :--- | :--- | :--- |
-| Error tracking configured | 3 | Error monitoring service connected (Sentry, etc.) or plan documented |
-| Structured logging in place | 2 | Application logs are structured (JSON) with severity levels |
-| Alerting configured for critical paths | 2 | At least downtime/error-rate alerts defined |
-| No PII in logs | 1 | Grep logs config for email/password/token patterns |
+Error tracking configured (3) | Structured logging (2) | Alerting for critical paths (2) | No PII in logs (1)
 
 ---
 
 ## Scoring Model
 
-### Domain Weights
-
-| Domain | Weight | Max Score |
-| :--- | :--- | :--- |
+| Domain | Weight | Max |
+|:---|:---|:---|
 | D1: Task Completeness | 8% | 8 |
-| D2: User Journey Validation | 10% | 10 |
-| D3: Implementation Correctness | 10% | 10 |
+| D2: User Journey | 10% | 10 |
+| D3: Implementation | 10% | 10 |
 | D4: Code Quality | 15% | 15 |
 | D5: Security & Privacy | 18% | 18 |
-| D6: Configuration Readiness | 8% | 8 |
-| D7: Performance Baseline | 8% | 8 |
+| D6: Configuration | 8% | 8 |
+| D7: Performance | 8% | 8 |
 | D8: Documentation | 5% | 5 |
-| D9: Infrastructure & CI/CD | 10% | 10 |
-| D10: Observability & Monitoring | 8% | 8 |
+| D9: Infrastructure | 10% | 10 |
+| D10: Observability | 8% | 8 |
 | **Total** | **100%** | **100** |
 
 ---
 
-### Go/No-Go Thresholds
+## Go/No-Go Thresholds
 
 | Score | Status | Action |
-| :--- | :--- | :--- |
-| ≥ 85/100 | 🟢 **Production Ready** | Proceed to `/pr` → `/deploy` |
-| 70-84 | 🟡 **Conditionally Ready** | Fix medium issues, re-run with `--rescan` |
-| < 70 | 🔴 **Not Ready** | Fix critical/high issues, re-run with `--rescan` |
+|:---|:---|:---|
+| >= 85 | Production Ready | Proceed to `/pr` -> `/deploy` |
+| 70-84 | Conditionally Ready | Fix medium issues, `--rescan` |
+| < 70 | Not Ready | Fix critical/high, `--rescan` |
 
 ---
 
-### Blocker Rule Precedence
+## Blocker Rules (override total score)
 
-Blocker rules **override** the total score. Even if the total score is above threshold, a blocker rule violation forces a lower verdict.
+Evaluated BEFORE total score. Precedence: Zero Domain > Security Floor > Quality Floor > Total Score.
 
-**Evaluation order**: Blockers are checked BEFORE the total score is evaluated.
-
-| Rule | Condition | Override Verdict | Rationale |
-| :--- | :--- | :--- | :--- |
-| **Zero Domain** | Any domain scores 0/max | 🔴 Not Ready | A completely unchecked domain is a blind spot |
-| **Security Floor** | D5 < 50% (< 9/18) | 🔴 Not Ready | Security is non-negotiable for production |
-| **Quality Floor** | D4 < 50% (score ≤ 7/15) | 🟡 Caps verdict at Conditionally Ready | Code quality below threshold needs attention |
-
-**Precedence**: Zero Domain > Security Floor > Quality Floor > Total Score
+| Rule | Condition | Override |
+|:---|:---|:---|
+| Zero Domain | Any domain scores 0 | Not Ready |
+| Security Floor | D5 < 50% (<9/18) | Not Ready |
+| Quality Floor | D4 < 50% (<=7/15) | Caps at Conditionally Ready |
 
 ---
 
-### Evidence Requirements
+## Evidence Requirements
 
-Every sub-check score must be supported by one of:
-
-- **File evidence**: path to file or config that proves compliance
-- **Command output**: result of a verification command (lint, test, scan)
-- **Observation**: documented observation with specific detail
-- **N/A justification**: one-line reason why the check doesn't apply
-
-Unsupported scores default to 0.
+Every sub-check score must have: **file evidence** (path), **command output**, **observation** (specific detail), or **N/A justification**. Unsupported scores default to 0.
 
 ---
 
 ## Delta Comparison (`--rescan`)
 
-When invoked with `--rescan`, compare against the most recent previous scorecard:
-
-1. Load previous scorecard from conversation artifacts
-2. Run full D1-D10 scan with current state
-3. Generate delta table:
-
-```markdown
-| Domain | Previous | Current | Delta |
-| :--- | :--- | :--- | :--- |
-| D1: Tasks | 5/8 | 8/8 | +3 ✅ |
-| D5: Security | 6/18 | 14/18 | +8 ✅ |
-```
-
-4. Highlight regressions (negative delta) with `[!WARNING]`
-5. Summary: total improvement, remaining gaps, updated verdict
+Load previous scorecard -> run full D1-D10 -> generate delta table (domain, previous, current, delta) -> highlight regressions with WARNING -> summary with updated verdict.
 
 ---
 
 ## Integration
 
-- **Primary consumer**: `/preflight` workflow (Verify phase)
-- **Reusable by**: `/retrospective` (sprint audit can reference domain definitions)
-- **Reusable by**: `/deploy` (deployment pre-flight can reference D5, D6, D9 checks)
-- **References**: 8 existing skills via the delegation map in domain definitions
+- **Primary**: `/preflight` workflow (Verify phase)
+- **Reusable**: `/retrospective` (sprint audit), `/deploy` (can reference D5, D6, D9)
+- **References**: 8 existing skills via delegation map

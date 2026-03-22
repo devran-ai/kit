@@ -1,4 +1,4 @@
-# Antigravity AI Kit — Hooks
+# Devran AI Kit — Hooks
 
 > **Purpose**: Event-driven automation triggered by specific actions  
 > **Count**: 8 Event Hooks

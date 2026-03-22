@@ -1,14 +1,14 @@
-# Contributing to Antigravity AI Kit
+# Contributing to Devran AI Kit
 
-Thank you for your interest in contributing to **Antigravity AI Kit**!
+Thank you for your interest in contributing to **Devran AI Kit**!
 
 ## Getting Started
 
 1. **Fork** the repository
 2. **Clone** your fork:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/antigravity-ai-kit.git
-   cd antigravity-ai-kit
+   git clone https://github.com/YOUR_USERNAME/kit.git
+   cd kit
    ```
 3. **Install** dependencies:
    ```bash
@@ -111,7 +111,7 @@ Before submitting a PR, ensure:
    Instructions...
    ```
 2. Add entry to `.agent/manifest.json`
-3. Update count in `README.md`, `.agent/CheatSheet.md`, `bin/ag-kit.js`
+3. Update count in `README.md`, `.agent/CheatSheet.md`, `bin/kit.js`
 4. Run `npm test` to verify structural integrity
 
 ### Adding a Skill

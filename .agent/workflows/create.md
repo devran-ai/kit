@@ -11,132 +11,75 @@ commit-types: [feat]
 > **Trigger**: `/create [description]`
 > **Lifecycle**: Build — after `/plan` approval
 
-> [!IMPORTANT]
-> This workflow creates new code. All scaffolded code MUST follow existing project patterns and conventions. No orphan code — everything must integrate with the existing architecture.
-
-> [!TIP]
-> This workflow leverages the **app-builder** skill. Read `.agent/skills/app-builder/SKILL.md` for extended guidance.
+> Standards: See `rules/workflow-standards.md`
 
 ---
 
 ## Critical Rules
 
-1. **Follow existing patterns** — scan the codebase for conventions before writing anything
-2. **No orphan code** — every new file must be imported, referenced, or routed
-3. **Tests required** — every new feature must include appropriate tests
-4. **Stack-agnostic detection** — auto-detect the project type before scaffolding
-5. **User approval for major scaffolds** — present the plan before creating >5 files
-6. **Document public APIs** — add inline documentation for all exported functions/components
+1. Follow existing patterns — scan codebase before writing
+2. No orphan code — every file must be imported/referenced/routed
+3. Tests required for all new features
+4. Stack-agnostic detection from config files
+5. User approval for scaffolds creating >5 files
+6. Document all exported public APIs
 
 ---
 
 ## Steps
 
 // turbo
-1. **Clarify Requirements**
-   - What type of component, feature, or module?
-   - What is the acceptance criteria?
-   - Any specific patterns, libraries, or constraints?
+1. **Clarify Requirements** — component type, acceptance criteria, constraints
 
 // turbo
-2. **Detect Project Stack**
-   - Auto-detect the project type from config files (`package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, etc.)
-   - Identify the framework, language, and conventions in use
-   - Determine the appropriate scaffold structure
+2. **Detect Stack** — auto-detect from config files, identify framework/conventions
 
 // turbo
-3. **Analyze Existing Patterns**
-   - Search for similar components/modules in the codebase
-   - Identify naming conventions, file structure, and import patterns
-   - Note relevant utilities, helpers, and shared modules to reuse
+3. **Analyze Patterns** — find similar modules, naming conventions, import patterns, reusable utils
 
-4. **Present Scaffold Plan**
-   - Show the proposed file structure and integration points
-   - For major scaffolds (>5 files): present plan and wait for user approval
-   - For minor scaffolds: proceed with creation
+4. **Present Plan** (for >5 files) — show file structure, integration points. Wait for approval.
 
-5. **Implement**
-   - Create files following detected project conventions
-   - Apply SOLID principles and project-specific patterns
-   - Wire up imports, routes, and exports
+5. **Implement** — follow detected conventions, SOLID principles, wire up imports/routes
 
-6. **Add Tests**
-   - Unit tests for utilities and business logic
-   - Integration tests for component interactions
-   - E2E tests for critical user flows (when applicable)
+6. **Add Tests** — unit, integration, E2E as applicable
 
-7. **Document**
-   - Add inline documentation (JSDoc, docstrings, etc.)
-   - Update relevant README or docs if the feature is user-facing
-   - Create usage examples if appropriate
+7. **Document** — JSDoc/docstrings, README updates, usage examples
 
 ---
 
 ## Output Template
 
 ```markdown
-## 🏗️ Create: [Feature Name]
+## Create: [Feature]
 
-### Stack Detected
+- **Stack**: [language] + [framework]
+- **Files Created**: [list with purposes]
+- **Integration**: [how it connects]
+- **Tests**: [what's covered]
 
-- **Language**: [language]
-- **Framework**: [framework]
-- **Conventions**: [detected patterns]
-
-### Files Created
-
-| File | Purpose |
-| :--- | :------ |
-| `path/to/file` | [description] |
-
-### Integration Points
-
-- [How new code connects to existing architecture]
-
-### Tests Added
-
-- [x] Unit tests: `path/to/tests`
-- [x] Integration tests: `path/to/tests`
-
-### Next Steps
-
-After creation: proceed to `/test` for full test suite or `/preview` for visual verification.
+**Next**: `/test` or `/preview`
 ```
 
 ---
 
 ## Governance
 
-**PROHIBITED:**
-- Creating files without checking existing patterns first
-- Scaffolding framework-specific code in a different-stack project
-- Leaving orphan files not connected to the project
-- Skipping tests for new features
-- Skipping failed steps · proceeding without resolution
+**PROHIBITED:** Creating without checking patterns · wrong-stack scaffolding · orphan files · skipping tests
 
-**REQUIRED:**
-- Stack detection before scaffolding
-- Pattern analysis before implementation
-- User approval for scaffolds creating >5 files
-- Test coverage for all new code
-- Integration with existing project architecture
+**REQUIRED:** Stack detection · pattern analysis · user approval for >5 files · test coverage · integration
 
 ---
 
 ## Completion Criteria
 
-- [ ] Project stack is detected and documented
-- [ ] Existing patterns are analyzed and followed
-- [ ] All files are created and integrated (no orphans)
-- [ ] Tests are written and passing
-- [ ] Documentation is added for public APIs
-- [ ] After creation: proceed to `/test` for validation or `/preview` for visual check
+- [ ] Stack detected, patterns analyzed
+- [ ] Files created and integrated
+- [ ] Tests written and passing
+- [ ] Documentation added
 
 ---
 
 ## Related Resources
 
-- **Previous**: `/plan` (implementation plan must exist for major features)
-- **Next**: `/test` (validate new code) · `/preview` (visual verification)
+- **Previous**: `/plan` · **Next**: `/test` · `/preview`
 - **Skill**: `.agent/skills/app-builder/SKILL.md`
-- **Related Skills**: `.agent/skills/clean-code/SKILL.md` · `.agent/skills/architecture/SKILL.md`

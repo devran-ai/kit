@@ -1,6 +1,6 @@
 # Getting Started
 
-Get up and running with Antigravity AI Kit in **30 seconds**.
+Get up and running with Devran AI Kit in **30 seconds**.
 
 ---
 
@@ -9,25 +9,25 @@ Get up and running with Antigravity AI Kit in **30 seconds**.
 ### Option 1: NPX (Recommended)
 
 ```bash
-npx antigravity-ai-kit init
+npx @devran-ai/kit init
 ```
 
 This automatically copies the `.agent/` folder to your project. Done!
 
-> **Warning:** `npx antigravity-ai-kit init --force` is a **Catastrophic Repair** command. It will overwrite your customizations and session state. Do not use it for regular updates.
+> **Warning:** `npx @devran-ai/kit init --force` is a **Catastrophic Repair** command. It will overwrite your customizations and session state. Do not use it for regular updates.
 
 ---
 
 ### 🔄 Updating
 
-AI Agents and Users MUST use `ag-kit update` for standard framework upgrades. This is a non-destructive AST merger.
+AI Agents and Users MUST use `kit update` for standard framework upgrades. This is a non-destructive AST merger.
 
 ```bash
-ag-kit update             # Non-destructive — preserves your customizations
-ag-kit update --dry-run   # Preview changes without applying
+kit update             # Non-destructive — preserves your customizations
+kit update --dry-run   # Preview changes without applying
 ```
 
-> **Preservation Contract:** The `ag-kit update` command explicitly protects your customized `.agent/rules/`, `.agent/checklists/`, `session-state.json`, `session-context.md`, `identity.json`, and ADR files.
+> **Preservation Contract:** The `kit update` command explicitly protects your customized `.agent/rules/`, `.agent/checklists/`, `session-state.json`, `session-context.md`, `identity.json`, and ADR files.
 
 ---
 
@@ -51,15 +51,15 @@ cp -r kit/.agent/ your-project/.agent/
 After installing, validate your setup with the built-in CLI checks:
 
 ```bash
-ag-kit verify     # Manifest integrity check
-ag-kit scan       # Security scan
+kit verify     # Manifest integrity check
+kit scan       # Security scan
 ```
 
-Both should return clean results. If they report issues, refer to the troubleshooting guide or run `ag-kit update` to repair missing core dependencies.
+Both should return clean results. If they report issues, refer to the troubleshooting guide or run `kit update` to repair missing core dependencies.
 
-## 🛡️ Safety Guarantees
+## Safety Guarantees
 
-Antigravity AI Kit **only** operates within the `.agent/` directory. Your project files — source code, configs, tests, platform files — are **never touched** by `init`, `update`, or any CLI command.
+Devran AI Kit **only** operates within the `.agent/` directory. Your project files — source code, configs, tests, platform files — are **never touched** by `init`, `update`, or any CLI command.
 
 ---
 

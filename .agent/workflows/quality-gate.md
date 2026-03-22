@@ -6,192 +6,98 @@ skills: [brainstorming]
 commit-types: [docs, chore]
 ---
 
-# /quality-gate — Pre-Task Research & Validation Protocol
+# /quality-gate — Pre-Task Research & Validation
 
-> **Trigger**: `/quality-gate` — recommended before implementation of new features or refactors
+> **Trigger**: `/quality-gate` — before implementation of new features or refactors
 > **Lifecycle**: Before `/plan` — research informs planning
 
-> [!CAUTION]
-> Governance gate. Complete market research, gap analysis, and ethics review before implementation begins. Approval required.
+> Standards: See `rules/workflow-standards.md`
 
 ---
 
 ## Critical Rules
 
-1. **RESEARCH FIRST** — no implementation without validated research
-2. **EVIDENCE-BASED** — all claims backed by market data or competitor analysis
-3. **ETHICS GATE** — privacy, bias, and automation risks must be evaluated
-4. **APPROVAL REQUIRED** — present findings to Product Owner before proceeding
+1. No implementation without validated research
+2. All claims backed by market data or competitor analysis
+3. Ethics gate — privacy, bias, automation risks evaluated
+4. Approval required before proceeding
 
 ---
 
 ## Scope Filter
 
-| Task Type                         | Quality Gate Required? |
-| :-------------------------------- | :--------------------- |
-| `feat()` — new features           | ✅ Required            |
-| `refactor()` — structural changes | ✅ Required            |
-| `fix()` — bug fixes               | ❌ Skip                |
-| `chore()` — maintenance           | ❌ Skip                |
-| `docs()` — documentation          | ❌ Skip                |
-| `test()` — test additions         | ❌ Skip                |
+Required for `feat()` and `refactor()`. Skip for fix, chore, docs, test.
 
 ---
 
 ## Steps
 
-Execute IN ORDER. Do not skip any step.
-
-### Step 1: Market Research
+// turbo
+1. **Market Research** — survey 5+ market leaders for the feature domain
 
 // turbo
-
-Research the task domain across minimum 5 market leaders:
-
-- Identify the top competitors for the feature domain
-- Document: how is this feature implemented today?
-- Document: why did users adopt it? What outcomes does it drive?
-
-### Step 2: Comparative Analysis
+2. **Comparative Analysis** — produce comparison table (approach, AI/ML, UX, automation, privacy)
 
 // turbo
-
-Produce a comparison table:
-
-| Competitor | Approach | AI/ML Methods | UX Pattern | Automation Level | Data Privacy |
-| :--------- | :------- | :------------ | :--------- | :--------------- | :----------- |
-| {leader 1} | ...      | ...           | ...        | ...              | ...          |
-
-### Step 3: Gap Detection
+3. **Gap Detection** — where product meets/exceeds/falls-below market. Reject harmful/deceptive patterns.
 
 // turbo
-
-Identify and document:
-
-- Where your product meets/exceeds market standards
-- Where your product is BELOW market level
-- Outdated patterns in current/proposed approach
-- If the approach uses deceptive, spammy, or harmful patterns → **REJECT**
-
-### Step 4: Enhancement Strategy
+4. **Enhancement Strategy** — how product improves on baseline (transparency, ethics, user-centric, data sovereignty, accuracy)
 
 // turbo
-
-Define how your product improves upon the market baseline:
-
-- More transparent? (explainable metrics, clear scoring)
-- More ethical? (human-in-the-loop, consent-first)
-- More user-centric? (measurable funnel insights)
-- More data-sovereign? (local-first processing, user-owned data)
-- More accurate? (semantic analysis over keyword matching)
-
-**Rule:** Never replicate without improvement.
-
-### Step 5: Ethics, Bias & Automation Safety
+5. **Ethics & Safety** — GDPR, AI bias, automation safety, user autonomy, mitigations
 
 // turbo
+6. **Research Summary** — compile key insights, risks, proposed solution, dependencies
 
-Evaluate:
+7. **Present for Approval** — implementation blocked until explicit approval. Then proceed to `/plan`.
 
-- Privacy implications (GDPR, personal data handling)
-- AI bias risks in scoring, matching, or recommendations
-- Automation safety (rate limiting, anti-spam, ToS compliance)
-- User autonomy (human-in-the-loop preserved?)
-- Mitigation strategies for each identified risk
+---
 
-### Step 6: Research Summary
+## Rejection Triggers
 
-// turbo
-
-Compile findings into a research report:
-
-1. Research summary (from Steps 1-5)
-2. Key insights extracted
-3. Risks of weak approaches
-4. Proposed solution
-5. Why this approach is superior
-6. Dependencies and blockers
-
-### Step 7: Present for Approval
-
-Present the Research Report to the Product Owner via `notify_user`.
-**Implementation may NOT begin until explicit approval is received.**
-After approval, proceed to `/plan` for structured task planning.
+Reject if: no market research, harmful patterns, below market standard, unmitigated risks, no research justification.
 
 ---
 
 ## Output Template
 
 ```markdown
-# Quality Gate Report: [Feature Name]
+# Quality Gate Report: [Feature]
 
-> Date: [date] · Author: Antigravity AI Kit
-
-## Market Research (≥5 competitors)
-
-| Competitor | Approach | AI/ML | UX Pattern | Automation | Privacy |
-| :--------- | :------- | :---- | :--------- | :--------- | :------ |
-| [leader]   | ...      | ...   | ...        | ...        | ...     |
+## Market Research (5+ competitors)
+| Competitor | Approach | AI/ML | UX | Automation | Privacy |
 
 ## Gap Analysis
-
-| Area | Current State | Market Standard | Gap? |
-| :--- | :------------ | :-------------- | :--- |
-| [area] | [state] | [standard] | ✅/⚠️/❌ |
+| Area | Current | Market Standard | Gap? |
 
 ## Enhancement Strategy
-
-[How we improve upon the market baseline]
-
 ## Ethics & Safety Review
+## Verdict: Approved / Rejected — [reasoning]
 
-| Risk | Assessment | Mitigation |
-| :--- | :--------- | :--------- |
-| [risk] | [level] | [strategy] |
-
-## Verdict
-
-✅ Approved / ❌ Rejected — [reasoning]
-
-After approval: proceed to `/plan` for implementation planning.
+After approval: proceed to `/plan`.
 ```
-
----
-
-## Rejection Triggers
-
-If any of these conditions are met, **REJECT** the task:
-
-1. ❌ No market research for this feature domain
-2. ❌ Approach uses outdated or harmful patterns
-3. ❌ Solution is below market standard
-4. ❌ Ethics/privacy/automation risks unmitigated
-5. ❌ "Just implement it" without research justification
 
 ---
 
 ## Governance
 
-**PROHIBITED:** Implementing without research · skipping competitor analysis · ignoring ethics review · proceeding without approval · marking research "complete" without evidence
+**PROHIBITED:** Implementing without research · skipping competitors · ignoring ethics · proceeding without approval
 
-**REQUIRED:** Minimum 5 competitors analyzed · enhancement over baseline documented · all risks mitigated · Product Owner approval
+**REQUIRED:** 5+ competitors analyzed · enhancement documented · risks mitigated · approval received
 
 ---
 
 ## Completion Criteria
 
-- [ ] Market research completed (≥5 competitors)
-- [ ] Comparative analysis table produced
-- [ ] Gap detection documented
-- [ ] Enhancement strategy defined (improvement over baseline)
-- [ ] Ethics/bias/automation review completed
-- [ ] Research report saved as artifact
-- [ ] Presented to Product Owner and approved
+- [ ] Market research completed (5+ competitors)
+- [ ] Gap analysis and enhancement strategy defined
+- [ ] Ethics review completed
+- [ ] Approved by Product Owner
+
+---
 
 ## Related Resources
 
-- **Rule**: `.agent/rules/quality-gate.md` (enforcement principles for this workflow)
-- **Previous**: `/brainstorm` (explore options before validation)
-- **Next**: `/plan` (implementation planning after approval)
-- **Related**: `/retrospective` (post-sprint audit applies similar rigor)
-- **Skill**: `.agent/skills/brainstorming/SKILL.md` (Socratic questioning patterns)
+- **Previous**: `/brainstorm` · **Next**: `/plan`
+- **Skill**: `.agent/skills/brainstorming/SKILL.md`

@@ -12,21 +12,20 @@ commit-types: [feat, refactor, fix]
 > **Trigger**: `/orchestrate [task description]`
 > **Lifecycle**: Reactive — complex multi-domain tasks at any SDLC phase
 
-> [!CAUTION]
-> This workflow coordinates multiple agents on the same codebase. Ensure clear domain boundaries to avoid conflicting changes. Phase 2 (implementation) requires explicit user approval.
+> Standards: See `rules/workflow-standards.md`
 
-> [!TIP]
-> This workflow leverages the **parallel-agents** and **intelligent-routing** skills. Read `.agent/skills/parallel-agents/SKILL.md` and `.agent/skills/intelligent-routing/SKILL.md` for extended guidance.
+> [!CAUTION]
+> Coordinates multiple agents on same codebase. Ensure clear domain boundaries. Phase 2 requires explicit user approval.
 
 ---
 
 ## Critical Rules
 
-1. **2-Phase protocol** — always plan before implementing; never skip Phase 1
-2. **User approval gate** — Phase 2 cannot start without explicit user approval
-3. **Context passing mandatory** — every subagent must receive full context (original request, decisions made, previous work)
-4. **No agent conflicts** — agents must work on separate files or clearly delineated domains
-5. **Verification required** — run quality gates after all agents complete
+1. **2-Phase protocol** — always plan before implementing
+2. User approval gate between phases
+3. Every subagent receives full context (request, decisions, prior work)
+4. No agent conflicts — separate files or delineated domains
+5. Verification required after all agents complete
 
 ---
 
@@ -35,137 +34,73 @@ commit-types: [feat, refactor, fix]
 ### PHASE 1: Planning (Sequential)
 
 // turbo
-1. **Analyze Task Domains**
-   - Identify all domains involved (backend, frontend, database, security, etc.)
-   - Map which agents are needed
+1. **Analyze Domains** — identify all domains, map needed agents
 
 // turbo
-2. **Create Orchestration Plan**
-   - Use `planner` agent for structured task breakdown
-   - Use `explorer-agent` for codebase discovery if needed
-   - Define execution order and dependencies
+2. **Create Plan** — structured breakdown with execution order and dependencies
 
-> 🔴 **NO other agents during Phase 1!**
-
-3. **Checkpoint: User Approval**
-
-   ```
-   ✅ Orchestration plan created.
-
-   Agents needed: [list]
-   Estimated scope: [file count]
-
-   Approve to start implementation? (Y/N)
-   ```
-
-> 🔴 **DO NOT proceed to Phase 2 without explicit user approval!**
+3. **User Approval** — present plan, wait for explicit approval
 
 ### PHASE 2: Implementation (After Approval)
 
-4. **Execute in Groups**
+4. **Execute in Groups** — Foundation (data, security) → Core (app logic) → Quality (tests) → Operations (infra)
 
-   | Group | Agents | Domain |
-   | :--------- | :------------------------------- | :------------------------- |
-   | Foundation | `database-architect`, `security-reviewer` | Data layer, security |
-   | Core | `architect`, `backend-specialist`, `frontend-specialist`, `mobile-developer` | Application logic |
-   | Quality | `tdd-guide`, `e2e-runner` | Test coverage |
-   | Operations | `devops-engineer`, `reliability-engineer` | Infrastructure, reliability |
-
-5. **Context Passing** (for every subagent invocation)
-   - Original user request (full text)
-   - All decisions from Socratic questions
-   - Summary of previous agent work
-   - Current plan state
+5. **Context Passing** — every subagent gets: original request, decisions, prior agent work, plan state
 
 // turbo
-6. **Verification**
-   - Run full test suite
-   - Run lint and type-check
-   - Verify build succeeds
-   - Synthesize results into report
+6. **Verification** — tests, lint, type-check, build
 
 ---
 
-## Agent Selection Matrix
+## Agent Selection
 
-| Domain | Keywords | Agent(s) |
-| :----------- | :------------------------------------ | :------------------------------------------------------ |
-| Architecture | "design", "structure", "pattern" | `architect`, `planner` |
-| Backend | "API", "database", "server" | `backend-specialist`, `database-architect` |
-| Frontend | "UI", "component", "page" | `frontend-specialist` |
-| Mobile | "mobile", "expo", "react native" | `mobile-developer` |
-| Security | "security", "auth", "vulnerabilities" | `security-reviewer` |
-| Testing | "test", "coverage", "e2e" | `tdd-guide`, `e2e-runner` |
-| DevOps | "deploy", "CI/CD", "production" | `devops-engineer` |
-| Performance | "slow", "optimize", "speed" | `performance-optimizer` |
-| Reliability | "uptime", "monitoring", "resilience" | `reliability-engineer` |
-| Code Quality | "refactor", "clean", "lint" | `refactor-cleaner`, `code-reviewer` |
+| Domain | Agent(s) |
+| :--- | :--- |
+| Architecture | `architect`, `planner` |
+| Backend/DB | `backend-specialist`, `database-architect` |
+| Frontend | `frontend-specialist` |
+| Mobile | `mobile-developer` |
+| Security | `security-reviewer` |
+| Testing | `tdd-guide`, `e2e-runner` |
+| DevOps | `devops-engineer` |
+| Performance | `performance-optimizer` |
+| Code Quality | `refactor-cleaner`, `code-reviewer` |
 
 ---
 
 ## Output Template
 
 ```markdown
-## 🎭 Orchestration Complete
+## Orchestration Complete
 
 ### Agents Invoked
-
 | Agent | Domain | Summary |
-| :---- | :----- | :------ |
-| `[agent]` | [domain] | [what was done] |
 
 ### Deliverables
-
 | Action | File | Agent |
-| :----- | :--- | :---- |
-| Created | `path/to/file` | [agent] |
-| Modified | `path/to/file` | [agent] |
 
 ### Verification
-
-- ✅ Tests: [N] passing
-- ✅ Build: successful
-- ✅ Lint: clean
-
-### Next Steps
-
-- [suggestions for follow-up workflows]
+Tests / Build / Lint: status
 ```
 
 ---
 
 ## Governance
 
-**PROHIBITED:**
-- Skipping Phase 1 (planning) and jumping to implementation
-- Starting Phase 2 without explicit user approval
-- Invoking agents without passing full context
-- Allowing agents to work on overlapping files without coordination
-- Skipping verification after agent work completes
-- Skipping failed steps · proceeding without resolution
+**PROHIBITED:** Skipping Phase 1 · Phase 2 without approval · agents without context · overlapping files · skipping verification
 
-**REQUIRED:**
-- 2-Phase protocol (plan → approve → implement)
-- Full context passing to every subagent
-- Domain boundary enforcement
-- Quality verification after all agents complete
+**REQUIRED:** 2-Phase protocol · full context passing · domain boundaries · verification after completion
 
 ---
 
 ## Completion Criteria
 
-- [ ] Task domains are analyzed and agents are selected
-- [ ] Phase 1 plan is created and presented
-- [ ] User has explicitly approved Phase 2
-- [ ] All agents have completed their work
-- [ ] Context was passed to every subagent invocation
-- [ ] Verification passes (tests, build, lint)
-- [ ] Final synthesized report is delivered
+- [ ] Domains analyzed, plan approved
+- [ ] Agents executed with context
+- [ ] Verification passed
 
 ---
 
 ## Related Resources
 
-- **Cross-cutting**: Can be invoked at any SDLC phase for complex tasks
 - **Skills**: `.agent/skills/parallel-agents/SKILL.md` · `.agent/skills/intelligent-routing/SKILL.md`
-- **Agents**: See `.agent/agents/` for full agent catalog

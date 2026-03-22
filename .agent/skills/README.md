@@ -1,4 +1,4 @@
-# Antigravity AI Kit — Skills
+# Devran AI Kit — Skills
 
 > **Purpose**: Workflow definitions and domain knowledge extensions
 > **Count**: 34 Skills (7 Operational + 4 Orchestration + 14 Domain + 9 Development)

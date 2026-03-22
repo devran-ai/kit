@@ -1,9 +1,9 @@
 #!/bin/sh
-# Antigravity AI Kit — Pre-commit Hook
+# Devran AI Kit — Pre-commit Hook
 # Detects accidentally committed secrets and sensitive patterns
 # Install: git config core.hooksPath .githooks
 
-echo "🔒 Antigravity: Running secret detection scan..."
+echo "🔒 Kit: Running secret detection scan..."
 
 # Define patterns to detect
 PATTERNS=(
