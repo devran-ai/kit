@@ -329,9 +329,9 @@ function initCommand(options) {
   currentStep++;
 
   // Add .agent/ to .gitignore (unless --shared)
-  const { addToGitignore } = require('../lib/io');
-  const { execSync } = require('child_process');
   if (!options.shared) {
+    const { addToGitignore } = require('../lib/io');
+    const { execSync } = require('child_process');
     logStep(`${currentStep}/${totalSteps}`, 'Configuring .gitignore...');
     try {
       const result = addToGitignore(targetDir);
