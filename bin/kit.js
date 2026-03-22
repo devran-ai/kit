@@ -349,7 +349,7 @@ function initCommand(options) {
           log('   Run this to untrack (keeps local files):', 'yellow');
           log(`   ${colors.cyan}git rm -r --cached .agent/${colors.reset}`, 'reset');
         }
-      } catch {
+      } catch (err) {
         // Not a git repo or git not available — skip hint
       }
     } catch (err) {
