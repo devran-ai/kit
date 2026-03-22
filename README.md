@@ -211,7 +211,7 @@ cd kit && npm install && npm test
 
 ## Author
 
-**Emre Dursun** — [LinkedIn](https://linkedin.com/in/emredursun) · [GitHub](https://github.com/emredursun)
+**Emre Dursun** — [LinkedIn](https://www.linkedin.com/in/emre-dursun-nl/) · [GitHub](https://github.com/emredursun)
 
 ## License
 
