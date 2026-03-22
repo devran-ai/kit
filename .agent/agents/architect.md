@@ -8,9 +8,9 @@ integration: 3-role-architecture
 relatedWorkflows: [orchestrate]
 ---
 
-# Antigravity AI Kit — Architect Agent
+# Architect Agent
 
-> **Platform**: Antigravity AI Kit  
+> **Platform**: Devran AI Kit  
 > **Purpose**: High-level system design and architectural decisions
 
 ---

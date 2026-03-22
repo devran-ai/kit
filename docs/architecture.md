@@ -1,6 +1,6 @@
 # Architecture
 
-Antigravity AI Kit v3.10.1 is an engineered framework with a **29-module runtime engine**, 20 agents, 34 skills, 37 commands, and 21 workflows.
+Devran AI Kit v4.1.0 is an engineered framework with a **29-module runtime engine**, 23 agents, 34 skills, 37 commands, and 21 workflows.
 
 ---
 
@@ -8,18 +8,18 @@ Antigravity AI Kit v3.10.1 is an engineered framework with a **29-module runtime
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      ANTIGRAVITY AI KIT v3.8.0                       │
+│                      DEVRAN AI KIT v4.1.0                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
-│  │   20 AGENTS     │  │   37 COMMANDS   │  │   34 SKILLS     │      │
+│  │   23 AGENTS     │  │   37 COMMANDS   │  │   34 SKILLS     │      │
 │  │                 │  │                 │  │                 │      │
 │  │ • Architect     │  │ • /plan         │  │ • api-patterns  │      │
 │  │ • Mobile Dev    │  │ • /implement    │  │ • architecture  │      │
 │  │ • DevOps        │  │ • /verify       │  │ • clean-code    │      │
 │  │ • DB Architect  │  │ • /deploy       │  │ • testing       │      │
 │  │ • Security      │  │ • /debug        │  │ • docker        │      │
-│  │ • + 15 more     │  │ • + 28 more     │  │ • + 27 more     │      │
+│  │ • + 18 more     │  │ • + 28 more     │  │ • + 27 more     │      │
 │  └─────────────────┘  └─────────────────┘  └─────────────────┘      │
 │                              │                                       │
 │           ┌──────────────────┴──────────────────┐                   │
@@ -53,13 +53,14 @@ Antigravity AI Kit v3.10.1 is an engineered framework with a **29-module runtime
 
 ## Component Breakdown
 
-### Agents (20)
+### Agents (23)
 
 Specialized sub-agents that handle delegated tasks with focused expertise.
 
 - **Core**: Architect, Planner, Code Reviewer, TDD Specialist
 - **Domain**: Mobile, Frontend, Backend, Database, DevOps, Security, Performance
 - **Support**: Documentation, Build Error Resolver, Refactorer, Explorer, Knowledge
+- **Language**: TypeScript Reviewer, Python Reviewer, Go Reviewer
 - **Autonomy**: Sprint Orchestrator, Reliability Engineer, PR Reviewer
 
 ### Commands (37)
@@ -109,7 +110,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 
 ```
 .agent/
-├── agents/               # 20 specialized agents
+├── agents/               # 23 specialized agents
 ├── commands/             # 37 slash commands
 ├── skills/               # 34 capability modules
 ├── workflows/            # 21 process templates

@@ -32,7 +32,7 @@
 
 **Branch**: —  
 **Repository**: —  
-**Framework**: Antigravity AI Kit v3.10.1
+**Framework**: Devran AI Kit v4.0.0
 
 ### Key File Locations
 
@@ -41,7 +41,7 @@
 | Main Entry    | `.agent/`       |
 | Documentation | `docs/`         |
 | Configuration | `mkdocs.yml`    |
-| CLI Tool      | `bin/ag-kit.js` |
+| CLI Tool      | `bin/kit.js` |
 
 ---
 
@@ -51,7 +51,7 @@
 # Common commands to resume work
 git status
 git log -n 3 --oneline
-ag-kit status
+kit status
 ```
 
 ### Environment Notes

@@ -11,147 +11,75 @@ commit-types: [feat, refactor]
 > **Trigger**: `/enhance [description]`
 > **Lifecycle**: Build — after `/plan` or ad-hoc for minor updates
 
-> [!IMPORTANT]
-> This workflow modifies existing code. Always analyze the impact of changes before implementation. Preserve existing functionality — never break what works.
-
-> [!TIP]
-> This workflow leverages the **clean-code** skill. Read `.agent/skills/clean-code/SKILL.md` for extended guidance on code quality during iterative development.
+> Standards: See `rules/workflow-standards.md`
 
 ---
 
 ## Critical Rules
 
-1. **Preserve existing functionality** — changes must not break what currently works
-2. **Regression check mandatory** — run the full test suite after every change
-3. **User approval for major changes** — present an impact analysis before modifying >5 files
-4. **Incremental approach** — make small, verifiable changes rather than large rewrites
-5. **Follow existing conventions** — match the patterns already established in the codebase
-6. **Document changes** — update documentation to reflect the modified behavior
-
----
-
-## Argument Parsing
-
-| Command | Action |
-| :----------------------------- | :---------------------------------------------- |
-| `/enhance` | Prompt for feature description |
-| `/enhance [description]` | Begin enhancing the specified feature directly |
+1. Preserve existing functionality — never break what works
+2. Regression check mandatory after every change
+3. User approval for changes affecting >5 files
+4. Incremental approach — small, verifiable changes
+5. Follow existing conventions
+6. Document user-facing changes
 
 ---
 
 ## Steps
 
 // turbo
-1. **Understand Current State**
-   - Explore the project structure and architecture
-   - Review existing features, tech stack, and conventions
-   - Identify the files and modules relevant to the enhancement
+1. **Understand State** — explore structure, review features/stack/conventions, identify relevant files
 
 // turbo
-2. **Impact Analysis**
-   - Identify all files that will be affected by the change
-   - Map dependencies and downstream consumers
-   - Assess risk of regressions in adjacent features
-   - Flag any breaking changes or architectural implications
+2. **Impact Analysis** — affected files, dependencies, regression risk, breaking changes
 
-3. **Present Enhancement Plan** (for changes affecting >5 files)
+3. **Present Plan** (for >5 files) — show scope, affected areas, risk level. Wait for approval.
 
-   ```
-   "To add [feature]:
-   - I'll create [N] new files
-   - Modify [N] existing files
-   - Affected areas: [list]
-   - Estimated risk: Low | Medium | High
-
-   Should I proceed?"
-   ```
-
-4. **Implement Changes**
-   - Follow existing code patterns and conventions
-   - Apply changes incrementally
-   - Keep each change small and verifiable
+4. **Implement** — follow existing patterns, apply incrementally
 
 // turbo
-5. **Regression Check**
-   - Run the full test suite
-   - Verify build succeeds
-   - Check that existing functionality is preserved
-   - Run lint and type-check
+5. **Regression Check** — tests, build, lint, type-check
 
-6. **Document Changes**
-   - Update inline documentation
-   - Update README or docs if user-facing behavior changes
-   - Add changelog entry if applicable
+6. **Document** — update inline docs, README if user-facing, changelog if applicable
 
 ---
 
 ## Output Template
 
 ```markdown
-## 🔧 Enhancement: [Feature Name]
-
-### Changes Summary
+## Enhancement: [Feature]
 
 | Action | File | Description |
-| :----- | :--- | :---------- |
-| Modified | `path/to/file` | [what changed] |
-| Created | `path/to/file` | [purpose] |
+| :--- | :--- | :--- |
+| Modified/Created | `path` | [what] |
 
-### Impact Analysis
+- **Risk**: Low/Medium/High
+- **Regression**: tests/build/lint passing
 
-- **Files affected**: [count]
-- **Risk level**: Low | Medium | High
-- **Breaking changes**: None | [description]
-
-### Regression Check
-
-- ✅ Tests: [pass count] passing
-- ✅ Build: successful
-- ✅ Lint: clean
-- ✅ Type-check: clean
-
-### What Changed
-
-[Human-readable summary of the enhancement]
-
-After enhancement: proceed to `/test` for validation or `/preview` for visual check.
+**Next**: `/test` or `/preview`
 ```
 
 ---
 
 ## Governance
 
-**PROHIBITED:**
-- Breaking existing functionality to add new features
-- Making large changes without impact analysis
-- Skipping regression checks after modifications
-- Ignoring existing code conventions
-- Skipping failed steps · proceeding without resolution
+**PROHIBITED:** Breaking existing functionality · large changes without impact analysis · skipping regression checks
 
-**REQUIRED:**
-- Impact analysis before implementation
-- User approval for changes affecting >5 files
-- Regression check (tests, build, lint) after every change
-- Documentation update for user-facing changes
-- Incremental, verifiable changes
+**REQUIRED:** Impact analysis · user approval for >5 files · regression check · documentation updates
 
 ---
 
 ## Completion Criteria
 
-- [ ] Current state is understood (architecture, patterns, conventions)
-- [ ] Impact analysis is complete (affected files, risk level)
-- [ ] User approved the plan (for major changes)
-- [ ] Changes are implemented following existing patterns
-- [ ] Regression check passes (tests, build, lint, type-check)
-- [ ] Documentation is updated
-- [ ] After enhancement: proceed to `/test` for validation or `/preview` for visual check
+- [ ] Impact analysis complete
+- [ ] Changes implemented following patterns
+- [ ] Regression check passed
+- [ ] Documentation updated
 
 ---
 
 ## Related Resources
 
-- **Previous**: `/plan` (implementation plan for major enhancements)
-- **Next**: `/test` (validate changes) · `/preview` (visual verification)
+- **Previous**: `/plan` · **Next**: `/test` · `/preview`
 - **Skill**: `.agent/skills/clean-code/SKILL.md`
-- **Related Skills**: `.agent/skills/architecture/SKILL.md` · `.agent/skills/testing-patterns/SKILL.md`

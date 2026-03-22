@@ -1,6 +1,6 @@
 # Pre-Commit Checklist
 
-> **Framework**: Antigravity AI Kit
+> **Framework**: Devran AI Kit
 > **Purpose**: Quality gate before committing code  
 > **Principle**: Prevention over correction
 

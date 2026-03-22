@@ -4,16 +4,16 @@
 
 | Version | Supported          |
 | :------ | :----------------- |
-| 2.1.x   | ✅ Yes             |
-| 2.0.x   | ⚠️ Security fixes only |
-| < 2.0   | ❌ No              |
+| 4.x     | Yes                |
+| 3.x     | Security fixes only |
+| < 3.0   | No                 |
 
 ## Reporting a Vulnerability
 
 If you discover a security vulnerability, please report it responsibly:
 
 1. **DO NOT** open a public issue
-2. Email: **info.emredursun@gmail.com** with subject: `[SECURITY] antigravity-ai-kit`
+2. Email: **info.emredursun@gmail.com** with subject: `[SECURITY] @devran-ai/kit`
 3. Include:
    - Description of the vulnerability
    - Steps to reproduce
@@ -37,8 +37,8 @@ If you discover a security vulnerability, please report it responsibly:
 ## Scope
 
 This policy covers:
-- The `antigravity-ai-kit` npm package
-- The `create-antigravity-app` scaffolder
+- The `@devran-ai/kit` npm package
+- The `create-kit-app` scaffolder
 - GitHub Actions workflows in this repository
 
 This policy does **not** cover:

@@ -1,10 +1,10 @@
 ---
-description: Comprehensive reference for all Antigravity AI Kit capabilities
+description: Comprehensive reference for all Devran AI Kit capabilities
 ---
 
 # /help Command
 
-Your complete guide to the Antigravity AI Kit. Type `/help` for a quick overview, or drill down into specific categories.
+Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or drill down into specific categories.
 
 ## Usage
 
@@ -12,11 +12,11 @@ Your complete guide to the Antigravity AI Kit. Type `/help` for a quick overview
 /help                  # Quick overview of all capabilities
 /help commands         # All 37 slash commands with descriptions
 /help workflows        # All 21 workflows with descriptions
-/help agents           # All 20 AI agents with domains
+/help agents           # All 23 AI agents with domains
 /help skills           # All 34 skill modules
 /help rules            # Governance rules
 /help checklists       # Quality gate checklists
-/help cli              # Terminal CLI commands (ag-kit)
+/help cli              # Terminal CLI commands (kit)
 /help <command-name>   # Detail on a specific command (e.g., /help plan)
 ```
 
@@ -24,7 +24,7 @@ Your complete guide to the Antigravity AI Kit. Type `/help` for a quick overview
 
 ## Quick Overview
 
-**Antigravity AI Kit v3.10.1** — Trust-Grade AI Development Framework
+**Devran AI Kit v4.1.0** — Trust-Grade AI Development Framework
 
 | Category | Count | Description |
 |:---------|:------|:------------|
@@ -117,7 +117,7 @@ Your complete guide to the Antigravity AI Kit. Type `/help` for a quick overview
 | `/integrate` | Third-party service integration |
 | `/db` | Database schema design and migrations |
 | `/deploy` | Deploy to target environment with pre-flight checks |
-| `/setup` | Configure a new project with Antigravity AI Kit |
+| `/setup` | Configure a new project with Devran AI Kit |
 
 ### Context Management
 
@@ -240,24 +240,24 @@ Checklists are quality gates run at specific lifecycle moments.
 
 ---
 
-## CLI Commands (ag-kit)
+## CLI Commands (kit)
 
 Terminal commands available after installing the kit:
 
 | Command | Description |
 |:--------|:------------|
-| `ag-kit init` | Install .agent/ into your project |
-| `ag-kit status` | Show project health dashboard |
-| `ag-kit verify` | Run manifest integrity checks (90 checks) |
-| `ag-kit scan` | Enhanced security scanning |
-| `ag-kit update` | Update to latest version (diff-based, preserves customizations) |
-| `ag-kit heal` | Detect and diagnose CI failures |
-| `ag-kit plugin list` | List installed plugins |
-| `ag-kit plugin install <path>` | Install a plugin |
-| `ag-kit plugin remove <name>` | Remove a plugin |
-| `ag-kit market search <query>` | Search marketplace plugins |
-| `ag-kit market info <name>` | Get marketplace plugin details |
-| `ag-kit market install <name>` | Install from marketplace |
+| `kit init` | Install .agent/ into your project |
+| `kit status` | Show project health dashboard |
+| `kit verify` | Run manifest integrity checks (90 checks) |
+| `kit scan` | Enhanced security scanning |
+| `kit update` | Update to latest version (diff-based, preserves customizations) |
+| `kit heal` | Detect and diagnose CI failures |
+| `kit plugin list` | List installed plugins |
+| `kit plugin install <path>` | Install a plugin |
+| `kit plugin remove <name>` | Remove a plugin |
+| `kit market search <query>` | Search marketplace plugins |
+| `kit market info <name>` | Get marketplace plugin details |
+| `kit market install <name>` | Install from marketplace |
 
 ---
 
@@ -269,5 +269,5 @@ Debug issues:      /debug → /fix → /verify
 Write tests:       /tdd → /test → /verify
 Deploy:            /review → /deploy
 Learn more:        /help <topic>
-Terminal:          ag-kit verify | ag-kit scan | ag-kit status
+Terminal:          kit verify | kit scan | kit status
 ```

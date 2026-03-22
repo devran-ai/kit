@@ -9,7 +9,7 @@ async function loadVerify() {
   return require(modulePath);
 }
 
-describe('Manifest Verification — ag-kit verify', () => {
+describe('Manifest Verification — kit verify', () => {
   it('should pass all checks on the actual .agent/ directory', async () => {
     const verify = await loadVerify();
     const report = verify.runAllChecks(ROOT);

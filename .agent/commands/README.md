@@ -1,4 +1,4 @@
-# Antigravity AI Kit — Commands
+# Devran AI Kit — Commands
 
 > **Purpose**: Slash commands for quick access to common operations
 > **Count**: 37 Commands

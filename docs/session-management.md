@@ -2,7 +2,7 @@
 
 > **The secret to 10x productivity**: Never lose context between sessions.
 
-Antigravity AI Kit includes a robust **Session Management Architecture** that ensures continuity across work sessions.
+Devran AI Kit includes a robust **Session Management Architecture** that ensures continuity across work sessions.
 
 ---
 

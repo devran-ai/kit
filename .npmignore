@@ -30,6 +30,6 @@ CHANGELOG.md
 *.tgz
 npm-publish-output.txt
 
-# Backup and temp directories created by ag-kit
+# Backup and temp directories created by kit
 .agent*.backup-*
 .agent*.tmp-*

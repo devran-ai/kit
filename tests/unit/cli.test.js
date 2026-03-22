@@ -4,9 +4,9 @@ import fs from 'fs';
 import path from 'path';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
-const CLI_PATH = path.join(ROOT, 'bin', 'ag-kit.js');
+const CLI_PATH = path.join(ROOT, 'bin', 'kit.js');
 
-describe('ag-kit CLI', () => {
+describe('kit CLI', () => {
   it('should display version with --version flag', () => {
     const output = execSync(`node "${CLI_PATH}" --version`, { cwd: ROOT, encoding: 'utf-8' });
     expect(output.trim()).toMatch(/\d+\.\d+\.\d+/);
@@ -14,7 +14,7 @@ describe('ag-kit CLI', () => {
 
   it('should display help with --help flag', () => {
     const output = execSync(`node "${CLI_PATH}" --help`, { cwd: ROOT, encoding: 'utf-8' });
-    expect(output).toContain('Antigravity AI Kit');
+    expect(output).toContain('Devran AI Kit');
     expect(output).toContain('init');
     expect(output).toContain('status');
   });

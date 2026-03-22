@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Antigravity AI Kit — Clean Identity Template
+ * Devran AI Kit — Clean Identity Template
  *
  * Resets .agent/engine/identity.json to the empty template before
  * publishing. This prevents PII leaks caused by the identity module

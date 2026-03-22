@@ -6,9 +6,9 @@ authority: read-only
 reports-to: alignment-engine
 ---
 
-# Antigravity AI Kit — Knowledge Agent
+# Knowledge Agent
 
-> **Platform**: Antigravity AI Kit
+> **Platform**: Devran AI Kit
 > **Purpose**: Intelligent knowledge retrieval, decision archaeology, and context synthesis
 
 ---

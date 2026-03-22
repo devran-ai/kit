@@ -66,7 +66,7 @@ describe('Version Synchronization — Single Source of Truth', () => {
 
   it('should have docs/architecture.md version matching package.json', () => {
     const archDoc = readFile('docs/architecture.md');
-    const versionMatch = archDoc.match(/Antigravity AI Kit v([\d.]+)/);
+    const versionMatch = archDoc.match(/Devran AI Kit v([\d.]+)/);
     expect(versionMatch, 'docs/architecture.md missing version reference').not.toBeNull();
     expect(versionMatch[1]).toBe(VERSION);
   });
@@ -82,7 +82,7 @@ describe('Version Synchronization — Single Source of Truth', () => {
 
   it('should have help.md version matching package.json', () => {
     const help = readFile('.agent/commands/help.md');
-    const versionMatch = help.match(/Antigravity AI Kit v([\d.]+)/);
+    const versionMatch = help.match(/Devran AI Kit v([\d.]+)/);
     expect(versionMatch, 'help.md missing version reference').not.toBeNull();
     expect(versionMatch[1]).toBe(VERSION);
   });

@@ -1,6 +1,6 @@
 # Session End Checklist
 
-> **Framework**: Antigravity AI Kit
+> **Framework**: Devran AI Kit
 > **Purpose**: Complete this checklist before ending any work session  
 > **Principle**: Context preservation for continuity
 

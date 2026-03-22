@@ -6,9 +6,9 @@ authority: docs-only
 reports-to: alignment-engine
 ---
 
-# Antigravity AI Kit — Doc Updater Agent
+# Doc Updater Agent
 
-> **Platform**: Antigravity AI Kit
+> **Platform**: Devran AI Kit
 > **Purpose**: Documentation architecture, synchronization, and quality assurance
 
 ---

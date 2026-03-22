@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Antigravity AI Kit — Version Sync Script
+ * Devran AI Kit — Version Sync Script
  *
  * Automatically synchronizes version references across the codebase
  * when `npm version` is run. This is the companion to the
@@ -53,9 +53,9 @@ const SYNC_TARGETS = [
   {
     file: 'docs/architecture.md',
     type: 'regex',
-    pattern: /Antigravity AI Kit v[\d.]+/g,
+    pattern: /Devran AI Kit v[\d.]+/g,
     replacer: (content, version) =>
-      content.replace(/Antigravity AI Kit v[\d.]+/g, `Antigravity AI Kit v${version}`),
+      content.replace(/Devran AI Kit v[\d.]+/g, `Devran AI Kit v${version}`),
   },
   {
     file: '.agent/CheatSheet.md',
@@ -67,9 +67,9 @@ const SYNC_TARGETS = [
   {
     file: '.agent/commands/help.md',
     type: 'regex',
-    pattern: /Antigravity AI Kit v[\d.]+/,
+    pattern: /Devran AI Kit v[\d.]+/,
     replacer: (content, version) =>
-      content.replace(/Antigravity AI Kit v[\d.]+/, `Antigravity AI Kit v${version}`),
+      content.replace(/Devran AI Kit v[\d.]+/, `Devran AI Kit v${version}`),
   },
   // NOTE: .agent/checklists/ files are EXCLUDED from sync targets.
   // They are STRICTLY PROTECTED per the Preservation Contract
@@ -78,9 +78,9 @@ const SYNC_TARGETS = [
   {
     file: '.agent/session-context.md',
     type: 'regex',
-    pattern: /Antigravity AI Kit v[\d.]+/,
+    pattern: /Devran AI Kit v[\d.]+/,
     replacer: (content, version) =>
-      content.replace(/Antigravity AI Kit v[\d.]+/, `Antigravity AI Kit v${version}`),
+      content.replace(/Devran AI Kit v[\d.]+/, `Devran AI Kit v${version}`),
   },
 ];
 

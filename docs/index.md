@@ -1,16 +1,16 @@
-# 🚀 Antigravity AI Kit
+# Devran AI Kit
 
-Welcome to the **Antigravity AI Kit** documentation — a Trust-Grade AI development framework for Antigravity IDE.
+Welcome to the **Devran AI Kit** documentation — a Trust-Grade AI development framework.
 
 ---
 
-## What is Antigravity AI Kit?
+## What is Devran AI Kit?
 
-Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
+Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 
 | Feature           | Count | Description                                                            |
 | :---------------- | :---- | :--------------------------------------------------------------------- |
-| 🤖 **AI Agents**  | 20    | Specialized roles (Mobile, DevOps, Database, Security, PR Review...)   |
+| 🤖 **AI Agents**  | 23    | Specialized roles (Mobile, DevOps, Database, Security, PR Review...)   |
 | 🛠️ **Skills**     | 34    | Domain knowledge modules (API, Testing, PR Toolkit, Docker...)         |
 | ⌨️ **Commands**   | 37    | Slash commands for every development workflow                          |
 | 🔄 **Workflows**  | 21    | Process templates (/create, /debug, /deploy, /pr, /pr-merge...)        |
@@ -31,7 +31,7 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :robot: **[Agents](agents/index.md)**
 
-  20 specialized agents for delegation
+  23 specialized agents for delegation
 
 - :keyboard: **[Commands](commands/index.md)**
 
@@ -61,6 +61,10 @@ Antigravity AI Kit transforms your IDE into a **virtual engineering team** with:
 
   End-to-end project lifecycle
 
+- :desktop_computer: **[Cross-IDE Setup](cross-ide-setup.md)**
+
+  5 IDEs from one manifest
+
 </div>
 
 ---
@@ -76,8 +80,18 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 ## Key Features
 
 - **🔒 Trust-Grade Governance** — `/explore → /plan → /work → /review` — Each iteration builds context
-- **🤖 Multi-Agent System** — 20 specialized agents that collaborate (Mobile Developer, DevOps, PR Reviewer...)
+- **🤖 Multi-Agent System** — 23 specialized agents that collaborate (Mobile Developer, DevOps, PR Reviewer...)
 - **⚙️ Runtime Engine** — 29 modules enforcing workflow transitions, task governance, agent reputation, and self-healing
 - **📦 Context as Artifact** — Persistent markdown files for plans, specs, and decisions
 - **🔄 Continuous Learning** — PAAL cycle extracts patterns from every session
 - **🛡️ Security First** — Built-in secret detection, vulnerability scanning, and compliance checks
+
+---
+
+## What's New in v4.1.0
+
+- **Cross-IDE Support** — Native config generation for Claude Code, Antigravity, Cursor, OpenCode, and Codex from a single `manifest.json`
+- **3 New Agents** — Mobile Developer, Database Specialist, and PR Reviewer join the 20 existing agents
+- **Plugin Marketplace** — Browse, install, and manage trust-verified skills with `kit market`
+- **Self-Healing CI** — Auto-diagnose and patch CI failures with `kit heal`
+- **Aggregated Health Check** — Single `kit health` command covers error budget, plugin integrity, config validation, and healing status

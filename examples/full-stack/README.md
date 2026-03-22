@@ -1,10 +1,10 @@
-# Antigravity AI Kit: Full-Stack Example
+# Devran AI Kit: Full-Stack Example
 
-> A comprehensive example showing how Antigravity AI Kit orchestrates a complete full-stack development workflow.
+> A comprehensive example showing how Devran AI Kit orchestrates a complete full-stack development workflow.
 
 ## What This Example Shows
 
-This example demonstrates the **full power** of Antigravity AI Kit in a realistic project setting:
+This example demonstrates the **full power** of Devran AI Kit in a realistic project setting:
 
 1. All 11 workflows in action
 2. Session management (start/end protocols with handoff notes)
@@ -14,7 +14,7 @@ This example demonstrates the **full power** of Antigravity AI Kit in a realisti
 
 ## Scenario: Building a User Authentication System
 
-This walkthrough shows how you would use Antigravity AI Kit to build a complete auth system from scratch.
+This walkthrough shows how you would use Devran AI Kit to build a complete auth system from scratch.
 
 ### Phase 1: Explore & Plan
 
@@ -105,7 +105,7 @@ This example would create:
 
 ```
 full-stack-app/
-├── .agent/                    # Antigravity AI Kit (installed via npx)
+├── .agent/                    # Devran AI Kit (installed via npx)
 ├── src/
 │   ├── middleware/
 │   │   ├── auth.js            # JWT verification middleware

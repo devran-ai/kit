@@ -1,0 +1,9 @@
+{
+  "name": "filesystem",
+  "description": "Local filesystem — read, write, search, directory listing",
+  "transport": "stdio",
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-filesystem", "${PROJECT_ROOT}"],
+  "env": {},
+  "capabilities": ["read", "write", "search", "directory-listing"]
+}

@@ -1,95 +1,42 @@
-# 🚀 Antigravity AI Kit
+# Devran AI Kit
 
-![version](https://img.shields.io/badge/version-3.10.1-blue)
-![license](https://img.shields.io/badge/license-MIT-green)
-![AI Agents](https://img.shields.io/badge/AI%20Agents-20-purple)
-![Skills](https://img.shields.io/badge/Skills-34-orange)
-![Commands](https://img.shields.io/badge/Commands-37-red)
-![Workflows](https://img.shields.io/badge/Workflows-21-teal)
-![Runtime Modules](https://img.shields.io/badge/Runtime%20Modules-29-blueviolet)
-![Tests](https://img.shields.io/badge/Tests-349%20passing-brightgreen)
-![Checklists](https://img.shields.io/badge/Checklists-4-yellow)
+[![Version](https://img.shields.io/badge/version-4.1.0-blue.svg)](https://github.com/devran-ai/kit)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/tests-382%20passing-brightgreen.svg)](tests/)
+[![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](package.json)
+[![AI Agents](https://img.shields.io/badge/AI%20Agents-23-purple.svg)](.agent/agents/)
+[![Skills](https://img.shields.io/badge/Skills-34-orange.svg)](.agent/skills/)
 
-<p align="center">
-  <b>🎯 Transform Your IDE into an AI Engineering Team</b>
-</p>
+> Trust-Grade AI Development Framework — Zero dependencies. 23 agents. 34 skills. 21 workflows. One command.
 
-<p align="center">
-  Antigravity AI Kit is a <b>Trust-Grade AI development framework</b> with a <b>29-module runtime engine</b>, <b>20 specialized agents</b>, <b>37 commands</b>, <b>34 skills</b>, and <b>21 workflows</b> — all backed by <b>349 tests</b> and governance-first principles.
-</p>
+## Why Devran AI Kit?
 
-<p align="center">
-  🚀 <a href="#-quick-start">Quick Start</a> •
-  🤖 <a href="#-agents-20">Agents</a> •
-  🛠️ <a href="#%EF%B8%8F-skills-34">Skills</a> •
-  ⌨️ <a href="#%EF%B8%8F-commands-37">Commands</a> •
-  🔄 <a href="#-session-management">Sessions</a> •
-  ⚖️ <a href="#%EF%B8%8F-operating-constraints">Governance</a> •
-  📖 <a href="#-contributor-guide">Contributor Guide</a>
-</p>
+- **Not a prompt collection** — 31-module zero-dependency runtime engine with workflow state machine, circuit breaker, error budget, and self-healing CI
+- **Trust-grade governance** — Immutable operating constraints enforced through a 7-phase SDLC (IDLE > EXPLORE > PLAN > IMPLEMENT > VERIFY > CHECKPOINT > REVIEW > DEPLOY)
+- **Intelligent agent system** — 23 specialized agents with reputation scoring, domain-aware routing, and on-demand loading via keyword matching
+- **Cross-IDE support** — One `kit init` configures Claude Code, Antigravity, Cursor, OpenCode, and Codex from a single manifest source of truth
 
----
+## Comparison
 
-## 📚 Table of Contents
+| Capability | Prompt Files | Rule Collections | **Devran AI Kit** |
+|---|---|---|---|
+| Agent orchestration | Manual | Manual | 23 agents with reputation scoring |
+| Workflow governance | None | None | 7-phase SDLC state machine |
+| Session persistence | None | None | Full state across restarts |
+| Self-healing CI | None | None | Auto-diagnoses and patches failures |
+| Cross-IDE support | Single IDE | Single IDE | 5 IDEs from one source of truth |
+| Plugin marketplace | None | None | Trust-verified skill marketplace |
+| Test suite | None | None | 382+ tests with security validation |
+| Runtime dependencies | Varies | Varies | **Zero** |
 
-- [What is Antigravity AI Kit?](#-what-is-antigravity-ai-kit)
-- [Key Features](#-key-features)
-- [Quick Start](#-quick-start)
-- [Architecture](#%EF%B8%8F-architecture-overview)
-- [Agents](#-agents-20)
-- [Commands](#%EF%B8%8F-commands-37)
-- [Skills](#%EF%B8%8F-skills-34)
-- [Runtime Engine](#%EF%B8%8F-runtime-engine-29-modules)
-- [Workflows](#-workflows-21)
-- [Operating Constraints](#%EF%B8%8F-operating-constraints)
-- [Session Management](#-session-management)
-- [How to Extend](#-how-to-extend)
-- [Contributor Guide](#-contributor-guide)
-- [Acknowledgments](#-acknowledgments)
-
----
-
-## 🤔 What is Antigravity AI Kit?
-
-**Antigravity AI Kit** transforms your IDE into a **virtual engineering team** with:
-
-| Feature           | Count | Description                                                            |
-| :---------------- | :---- | :--------------------------------------------------------------------- |
-| 🤖 **AI Agents**  | 20    | Specialized roles (Mobile, DevOps, Database, Security, Performance...) |
-| 🛠️ **Skills**     | 34    | Domain knowledge modules (API, Testing, MCP, Architecture, Docker...) |
-| ⌨️ **Commands**   | 37    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 21    | Process templates (/create, /debug, /deploy, /pr, /pr-merge, /test...)  |
-| ⚙️ **Runtime**    | 29    | Runtime engine modules (governance, reputation, self-healing...)       |
-| ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
-| ⚖️ **Rules**      | 9     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
-| 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
-| 🧪 **Tests**      | 349   | Unit, structural, integration, and security tests (34 test files)      |
-
----
-
-## ✨ Key Features
-
-- **🔒 Trust-Grade Governance**: `/explore → /plan → /work → /review` — Each iteration builds context
-- **🤖 Multi-Agent System**: 20 specialized agents that collaborate (Mobile Developer, DevOps, Database Architect, Sprint Orchestrator...)
-- **⚙️ Runtime Engine**: 29 modules enforcing workflow transitions, task governance, agent reputation, self-healing, and marketplace
-- **📦 Context as Artifact**: Persistent markdown files for plans, specs, and decisions
-- **🔄 Continuous Learning**: PAAL cycle extracts patterns from every session
-- **🛡️ Security First**: Built-in secret detection, vulnerability scanning, and compliance checks
-
-### Core Philosophy
-
-> **"Trust > Optimization. Safety > Growth. Explainability > Performance."**
-
----
-
-## ⚡ Quick Start
+## Quick Start
 
 ### Option 1: Create New Project (Recommended)
 
 ```bash
-npx create-antigravity-app my-project
-npx create-antigravity-app my-api --template node-api
-npx create-antigravity-app my-app --template nextjs
+npx create-kit-app my-project
+npx create-kit-app my-api --template node-api
+npx create-kit-app my-app --template nextjs
 ```
 
 Creates a new project with `.agent/` pre-configured. Templates: `minimal`, `node-api`, `nextjs`.
@@ -97,662 +44,175 @@ Creates a new project with `.agent/` pre-configured. Templates: `minimal`, `node
 ### Option 2: Add to Existing Project
 
 ```bash
-npx antigravity-ai-kit init
+npx @devran-ai/kit init
 ```
 
-### 🔄 Updating
+### Updating
 
 ```bash
-ag-kit update             # Non-destructive — preserves your customizations
-ag-kit update --dry-run   # Preview changes without applying
+kit update              # Non-destructive — preserves your customizations
+kit update --dry-run    # Preview changes without applying
 ```
 
-> **Prefer `ag-kit update` over `ag-kit init --force`**. The update command preserves your session data, ADRs, learning contexts, and customizations. Use `init --force` only for clean reinstalls.
+> Prefer `kit update` over `kit init --force`. The update command preserves your session data, ADRs, learning contexts, and customizations. Use `init --force` only for clean reinstalls.
 
-### ✅ Verify Installation
+### Verify Installation
 
 ```bash
-ag-kit verify     # Manifest integrity check
-ag-kit scan       # Security scan
+kit verify    # Manifest integrity check
+kit scan      # Security scan
 ```
 
-### 🛡️ Safety Guarantees
+## Architecture
 
-Antigravity AI Kit is designed to **never touch your project files**. All operations are scoped to the `.agent/` directory.
+| Component | Count | Purpose |
+|---|---|---|
+| Agents | 23 | Specialized AI agents with reputation scoring and domain routing |
+| Skills | 34 | Domain knowledge modules loaded on demand via keyword matching |
+| Commands | 37 | Slash commands for IDE interaction (`/plan`, `/implement`, `/verify`) |
+| Workflows | 21 | Process templates with quality gates and phase enforcement |
+| Runtime Modules | 31 | Engine components (state machine, circuit breaker, plugin system) |
+| Rules | 10 | Governance constraints (security, coding style, testing, git) |
+| Checklists | 4 | Verification checklists (pre-commit, deployment, review, release) |
+| Hooks | 8 | Lifecycle events (session start/end, phase transition, task complete) |
+
+### Workflow State Machine
+
+```
+IDLE -> EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> CHECKPOINT -> REVIEW -> DEPLOY
+```
+
+Each phase requires explicit developer approval before transitioning. The engine enforces governance rules and tracks session state across restarts.
+
+## What's New in v4.1.0
+
+| Change | Details |
+|---|---|
+| Cross-IDE support | Cursor, OpenCode, Codex, Antigravity — all from one manifest |
+| Multi-language reviewers | TypeScript, Python, Go dedicated review agents |
+| Continuous learning | Confidence scoring with time-based decay model |
+| MCP server templates | GitHub, Supabase, Vercel, PostgreSQL, Filesystem |
+| Test coverage | 382 tests (up from 348) across 36 test suites |
+
+## Cross-IDE Support
+
+| IDE | Config Path | Format |
+|---|---|---|
+| Claude Code | `.agent/` | Native |
+| Antigravity | `.agent/` | Native |
+| Cursor | `.cursor/rules/` | YAML frontmatter + Markdown |
+| OpenCode | `.opencode/` | JSON |
+| Codex | `.codex/` | TOML |
+
+All generated automatically by `kit init`.
+
+## CLI Reference
+
+| Command | Description | Key Flags |
+|---|---|---|
+| `kit init` | Install `.agent/` framework into project | `--force`, `--path <dir>` |
+| `kit update` | Non-destructive framework update | `--dry-run` |
+| `kit status` | Dashboard with capabilities and metrics | — |
+| `kit verify` | Manifest integrity and structure checks | — |
+| `kit scan` | Security scan (secrets, injection patterns) | — |
+| `kit plugin` | Plugin management | `list`, `install`, `remove` |
+| `kit market` | Marketplace integration | `search`, `info`, `install` |
+| `kit heal` | CI failure detection and auto-fix | `--file <path>`, `--apply` |
+| `kit health` | Aggregated health check | — |
+
+## Safety Guarantees
+
+Devran AI Kit is designed to **never touch your project files**. All operations are scoped to the `.agent/` directory.
 
 | Your Project Files | Safe? | Details |
-|:---|:---|:---|
-| Source code (`src/`, `lib/`, `app/`) | ✅ Never touched | Init/update only operates on `.agent/` |
-| Config files (`.env`, `package.json`) | ✅ Never touched | No project config is read or written |
-| Documentation (`docs/`, `README.md`) | ✅ Never touched | Only `.agent/` docs are managed |
-| Tests (`tests/`, `__tests__/`) | ✅ Never touched | Kit tests are internal to the package |
-| Platform files (`android/`, `ios/`) | ✅ Never touched | No platform-specific operations |
+|---|---|---|
+| Source code (`src/`, `lib/`, `app/`) | Never touched | Init/update only operates on `.agent/` |
+| Config files (`.env`, `package.json`) | Never touched | No project config is read or written |
+| Documentation (`docs/`, `README.md`) | Never touched | Only `.agent/` docs are managed |
+| Tests (`tests/`, `__tests__/`) | Never touched | Kit tests are internal to the package |
+| Platform files (`android/`, `ios/`) | Never touched | No platform-specific operations |
 
-**`init --force` safety features (v3.3.1+):**
-- 🔒 **Auto-backup**: Creates timestamped backup of existing `.agent/` before overwriting
-- ⚛️ **Atomic copy**: Uses temp directory + rename to prevent corruption on failure
-- 🔗 **Symlink guard**: Skips symbolic links to prevent path traversal attacks
-- ⚠️ **Session warning**: Alerts if active work-in-progress would be destroyed
-- 🔍 **Dry-run preview**: `--dry-run --force` shows exactly which user files would be overwritten
+`init --force` safety features:
 
-**`update` preserved files:**
+- **Auto-backup** — Creates timestamped backup of existing `.agent/` before overwriting
+- **Atomic copy** — Uses temp directory + rename to prevent corruption on failure
+- **Symlink guard** — Skips symbolic links to prevent path traversal attacks
+- **Session warning** — Alerts if active work-in-progress would be destroyed
+- **Dry-run preview** — `--dry-run --force` shows exactly which user files would be overwritten
+
+`update` preserved files:
+
 - `session-context.md` — Your active session notes
 - `session-state.json` — Your session metadata
 - `decisions/` — Your Architecture Decision Records
 - `contexts/` — Your learning data and plan quality logs
+- `rules/` — Your custom governance rules
+- `checklists/` — Your custom quality gates
 
----
+## Agents (23)
 
-## 🏗️ Architecture Overview
+| Category | Agents |
+|---|---|
+| **Core Development** | Architect, Code Reviewer, TDD Guide, Planner |
+| **Language Reviewers** | TypeScript Reviewer, Python Reviewer, Go Reviewer |
+| **Domain Specialists** | Frontend Specialist, Backend Specialist, Mobile Developer, Database Architect, DevOps Engineer |
+| **Quality & Security** | Security Reviewer, E2E Runner, Performance Optimizer, Reliability Engineer |
+| **Support & Intelligence** | Doc Updater, Build Error Resolver, Refactor Cleaner, Explorer Agent, Knowledge Agent |
+| **Autonomy** | PR Reviewer, Sprint Orchestrator |
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                    USER INTERFACE LAYER                              │
-│  ┌─────────────────────────┐  ┌─────────────────────────┐          │
-│  │  Slash Commands (37)    │  │  Workflows (21)         │          │
-│  └────────────┬────────────┘  └────────────┬────────────┘          │
-├───────────────┼────────────────────────────┼────────────────────────┤
-│               ▼         INTELLIGENCE LAYER ▼                        │
-│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  │
-│  │ Intelligent      │  │ Workflow State   │  │ Context Budget   │  │
-│  │ Router           │  │ Machine          │  │ Engine           │  │
-│  └────────┬─────────┘  └──────────────────┘  └──────────────────┘  │
-├───────────┼────────────────────────────────────────────────────────-┤
-│           ▼              AGENT LAYER (20)                            │
-│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  │
-│  │ Core Agents      │  │ Domain Agents    │  │ Support Agents   │  │
-│  │ Planner          │  │ Mobile Dev       │  │ Security         │  │
-│  │ Architect        │  │ Frontend         │  │ Performance      │  │
-│  │ Code Reviewer    │  │ Backend          │  │ Docs, Explorer   │  │
-│  │ TDD Specialist   │  │ DB, DevOps       │  │ Knowledge        │  │
-│  └────────┬─────────┘  └────────┬─────────┘  └────────┬─────────┘  │
-├───────────┼─────────────────────┼─────────────────────┼────────────┤
-│           ▼              SKILL LAYER (34)              ▼            │
-│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  │
-│  │ Orchestration    │  │ Operational      │  │ Domain Skills    │  │
-│  │ Routing, Modes   │  │ Verification     │  │ API, Testing     │  │
-│  │ Parallel Agents  │  │ Learning, Budget │  │ Security, MCP    │  │
-│  └────────┬─────────┘  └────────┬─────────┘  └────────┬─────────┘  │
-├───────────┼─────────────────────┼─────────────────────┼────────────┤
-│           ▼           GOVERNANCE LAYER                 ▼            │
-│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  │
-│  │ rules/ (8)       │  │ hooks.json       │  │ manifest.json    │  │
-│  │ Governance       │  │ 7 Event Hooks    │  │ Integrity Check  │  │
-│  └──────────────────┘  └──────────────────┘  └──────────────────┘  │
-├─────────────────────────────────────────────────────────────────────┤
-│                    RUNTIME ENGINE (29 modules)                      │
-│  workflow-engine · session-manager · task-governance                │
-│  agent-reputation · self-healing · marketplace · + 15 more         │
-└─────────────────────────────────────────────────────────────────────┘
-```
+## Operating Constraints
 
-### How It Works: The Autonomy Engine
+| Principle | Description |
+|---|---|
+| Trust > Optimization | User trust is never sacrificed for metrics |
+| Safety > Growth | User safety overrides business goals |
+| Explainability > Performance | Understandable AI beats faster AI |
+| Completion > Suggestion | Finish current work before proposing new |
+| Consistency > Speed | All affected files updated, not just target |
 
-Antigravity AI Kit uses a **7-phase workflow state machine** that guides development:
+## Repository Structure
 
 ```
-EXPLORE → PLAN → IMPLEMENT → VERIFY → CHECKPOINT → REVIEW → DEPLOY
+kit/
+├── .agent/                 # Framework directory (installed to projects)
+│   ├── agents/             # 23 specialized agent definitions
+│   ├── skills/             # 34 domain knowledge modules
+│   ├── commands/           # 37 slash command definitions
+│   ├── workflows/          # 21 workflow templates
+│   ├── rules/              # 10 governance constraints
+│   ├── checklists/         # 4 lifecycle quality gates
+│   ├── engine/             # Runtime config (loading-rules, MCP templates)
+│   ├── decisions/          # Architecture Decision Records
+│   └── manifest.json       # Definitive capability inventory
+├── lib/                    # 31 runtime modules (zero dependencies)
+├── bin/kit.js              # CLI entry point
+├── create-kit-app/         # Project scaffolder
+├── docs/                   # MkDocs documentation site
+├── examples/               # Starter examples (minimal, full-stack)
+└── tests/                  # 382 tests (unit, structural, security)
 ```
 
-| Phase | What Happens | Transition Guard |
-|:------|:-------------|:-----------------|
-| **EXPLORE** | Codebase discovery, research | Exploration artifact exists |
-| **PLAN** | Implementation plan with user approval | Plan approved by user |
-| **IMPLEMENT** | Code generation with agent routing | Auto on commit |
-| **VERIFY** | Quality gates, tests, lint | All gates pass |
-| **CHECKPOINT** | Developer decision gate | Explicit developer choice |
-| **REVIEW** | Code review (human or Copilot) | Review approved |
-| **DEPLOY** | Production deployment | Deployment checklist complete |
+## Security
 
-**Intelligent Routing**: The kit analyzes your request keywords (including implicit security triggers like "login", "payment", "upload") and automatically loads the right agents and skills (max 4 agents + 8 skills per session to stay within context budgets). Planning workflows use protected budget enforcement — mandatory skills survive trimming even when over budget.
+Secret detection covers API keys, tokens, AWS credentials, and private keys. The scanner checks for prompt injection patterns, path traversal attempts, and symlink abuse. Plugins are verified with SHA-256 checksums before installation.
 
----
+## Documentation
 
-## 🤖 Agents (20)
+Full documentation: [devran-ai.github.io/kit](https://devran-ai.github.io/kit/)
 
-### Core Development
+## Contributing
 
-| Agent              | Role                    | Triggers                          |
-| :----------------- | :---------------------- | :-------------------------------- |
-| **Architect**      | System design, patterns | architecture, design, scalability |
-| **Code Reviewer**  | Quality assurance       | review, quality, best practices   |
-| **TDD Specialist** | Test-driven development | test, tdd, coverage               |
+Fork the repo, create a feature branch, add tests, and open a PR. See [CONTRIBUTING.md](CONTRIBUTING.md) for branch strategy and code standards.
 
-### Domain Specialists
-
-| Agent                    | Role                          | Triggers                     |
-| :----------------------- | :---------------------------- | :--------------------------- |
-| **Mobile Developer**     | iOS/Android patterns          | mobile, react-native, expo   |
-| **Frontend Specialist**  | React, Vue, UI/UX             | frontend, component, styling |
-| **Backend Specialist**   | Node.js, NestJS, APIs         | backend, api, server         |
-| **Database Architect**   | Schema, queries, optimization | database, prisma, sql        |
-| **DevOps Engineer**      | CI/CD, Docker, deployment     | devops, docker, deploy       |
-| **Security Auditor**     | Vulnerabilities, compliance   | security, auth, audit        |
-| **Performance Engineer** | Optimization, profiling       | performance, speed, metrics  |
-
-### Support & Intelligence
-
-| Agent                    | Role                       | Triggers              |
-| :----------------------- | :------------------------- | :-------------------- |
-| **Documentation Writer** | Docs, READMEs, guides      | documentation, readme |
-| **Build Error Resolver** | Rapid build fixes          | build, error, compile |
-| **Refactorer**           | Code cleanup, optimization | refactor, cleanup     |
-| **Explorer Agent**       | Codebase discovery         | explore, scout, discover |
-| **Knowledge Agent**      | RAG retrieval              | knowledge, search, context |
-
-### Autonomy Agents
-
-| Agent                    | Role                              | Triggers                      |
-| :----------------------- | :-------------------------------- | :---------------------------- |
-| **Planner**              | Multi-agent plan synthesis, tiered quality schema, specialist coordination | plan, breakdown, requirements |
-| **PR Reviewer**          | Pull request review & fixes       | pr, pull-request, review      |
-| **Sprint Orchestrator**  | Sprint planning, velocity         | sprint, roadmap, velocity     |
-| **Reliability Engineer** | SRE, production readiness         | reliability, SLA, monitoring  |
-
----
-
-## ⌨️ Commands (37)
-
-### Core Workflow
-
-| Command      | Description                |
-| :----------- | :------------------------- |
-| `/plan`      | Create implementation plan |
-| `/implement` | Execute the plan           |
-| `/verify`    | Run all quality gates      |
-| `/status`    | Check project status       |
-
-### Development
-
-| Command     | Description                   |
-| :---------- | :---------------------------- |
-| `/build`    | Build a new feature           |
-| `/fix`      | Fix linting/type errors       |
-| `/debug`    | Systematic debugging          |
-| `/refactor` | Improve code quality          |
-| `/cook`     | Full scratch-to-done workflow |
-
-### Documentation & Git
-
-| Command      | Description                  |
-| :----------- | :--------------------------- |
-| `/doc`       | Generate documentation       |
-| `/adr`       | Create architecture decision |
-| `/changelog` | Generate changelog           |
-| `/git`       | Git operations               |
-| `/pr`        | Create/manage pull requests  |
-| `/pr-review` | Automated PR code review     |
-| `/pr-fix`    | Auto-fix PR review findings  |
-| `/pr-merge`  | Safe PR merge with validation|
-| `/pr-split`  | Split oversized PRs          |
-| `/pr-status` | PR triage and merge readiness|
-| `/pr-describe`| Auto-generate PR description|
-
-### Exploration & Research
-
-| Command     | Description              |
-| :---------- | :----------------------- |
-| `/scout`    | Explore codebase         |
-| `/research` | Research technologies    |
-| `/ask`      | Ask questions about code |
-
-### Quality & Security
-
-| Command          | Description             |
-| :--------------- | :---------------------- |
-| `/code-review`   | Run code review         |
-| `/tdd`           | Test-driven development |
-| `/security-scan` | Security audit          |
-| `/perf`          | Performance analysis    |
-
-### Integration & Deployment
-
-| Command      | Description              |
-| :----------- | :----------------------- |
-| `/integrate` | Third-party integrations |
-| `/db`        | Database operations      |
-| `/deploy`    | Deploy to environment    |
-| `/design`    | UI/UX design             |
-
-### Context Management
-
-| Command       | Description       |
-| :------------ | :---------------- |
-| `/learn`      | Extract patterns  |
-| `/checkpoint` | Save progress     |
-| `/compact`    | Compress context  |
-| `/eval`       | Evaluate metrics  |
-| `/setup`      | Configure project |
-| `/help`       | **Comprehensive reference** — commands, workflows, agents, skills, rules, checklists |
-
----
-
-## 🛠️ Skills (34)
-
-### Operational Skills (6)
-
-| Skill                 | Purpose                   |
-| :-------------------- | :------------------------ |
-| `production-readiness`| Production readiness audits |
-| `verification-loop`   | Continuous quality gates  |
-| `continuous-learning` | Pattern extraction (PAAL) |
-| `strategic-compact`   | Context window management |
-| `eval-harness`        | Performance evaluation    |
-| `context-budget`      | Active token budget management |
-
-### Orchestration Skills (4)
-
-| Skill                 | Purpose                   |
-| :-------------------- | :------------------------ |
-| `intelligent-routing` | Auto agent selection      |
-| `parallel-agents`     | Multi-agent orchestration |
-| `behavioral-modes`    | Adaptive AI operation     |
-| `mcp-integration`     | MCP server integration    |
-
-### Domain Skills (13)
-
-| Skill                  | Purpose                         |
-| :--------------------- | :------------------------------ |
-| `api-patterns`         | RESTful API design              |
-| `architecture`         | System design patterns          |
-| `clean-code`           | Code quality principles         |
-| `database-design`      | Schema optimization             |
-| `testing-patterns`     | TDD, unit, integration          |
-| `typescript-expert`    | Advanced TypeScript             |
-| `frontend-patterns`    | React, component design         |
-| `nodejs-patterns`      | Backend patterns                |
-| `debugging-strategies` | Systematic debugging            |
-| `security-practices`   | OWASP, vulnerability prevention |
-| `docker-patterns`      | Containerization                |
-| `git-workflow`         | Branching, commits              |
-| `i18n-localization`    | Internationalization patterns   |
-
-### Development Skills (11)
-
-| Skill                   | Purpose                 |
-| :---------------------- | :---------------------- |
-| `app-builder`           | Full-stack scaffolding  |
-| `mobile-design`         | Mobile UI/UX patterns   |
-| `webapp-testing`        | E2E, Playwright testing |
-| `deployment-procedures` | CI/CD, rollback         |
-| `performance-profiling` | Core Web Vitals         |
-| `brainstorming`         | Socratic discovery      |
-| `plan-writing`          | Structured planning with tiered quality schema |
-| `plan-validation`       | Quality gate with completeness scoring |
-| `shell-conventions`     | PowerShell/Bash conventions |
-| `pr-toolkit`            | PR review & fix workflows |
-| `ui-ux-pro-max`         | Premium UI/UX design system |
-
----
-
-## ⚙️ Runtime Engine (29 Modules)
-
-Antigravity AI Kit v3.2.0 includes a **full runtime engine** built across 4 phases — all using Node.js built-ins with zero external dependencies.
-
-### Phase 1 — Foundation Hardening
-
-| Module | Purpose |
-|:---|:---|
-| `workflow-engine` | Runtime state machine enforcement |
-| `session-manager` | Active session state management |
-| `verify` | Manifest integrity verification |
-| `updater` | Diff-based CLI update |
-| `error-budget` | Error budget tracking with metrics |
-
-### Phase 2 — Runtime Engine
-
-| Module | Purpose |
-|:---|:---|
-| `workflow-persistence` | Persistent state + checkpoints |
-| `agent-registry` | Agent contract validation |
-| `loading-engine` | Keyword matching + implicit triggers + context budget |
-| `hook-system` | Event-driven lifecycle hooks |
-| `task-model` | Task CRUD with status tracking |
-
-### Phase 3 — Collaboration & Security
-
-| Module | Purpose |
-|:---|:---|
-| `identity` | Developer identity system |
-| `task-governance` | Locking, assignment, audit trail |
-| `skill-sandbox` | Runtime skill permission enforcement |
-| `conflict-detector` | Agent conflict detection |
-| `security-scanner` | Runtime injection & secret scanning |
-| `plugin-system` | Full plugin lifecycle management |
-
-### Phase 4 — Platform Leadership
-
-| Module | Purpose |
-|:---|:---|
-| `agent-reputation` | Score tracking, trends, rankings |
-| `engineering-manager` | Sprint planning, auto-assignment |
-| `self-healing` | CI failure detection & JSON patch generation |
-| `marketplace` | Community skill search & install |
-| `cli-commands` | Extracted CLI handlers for marketplace & heal |
-
----
-
-## 🔄 Workflows (21)
-
-| Workflow          | Description              | Command          |
-| :---------------- | :----------------------- | :--------------- |
-| **brainstorm**    | Creative ideation        | `/brainstorm`    |
-| **create**        | Scaffold new features    | `/create`        |
-| **debug**         | Systematic debugging     | `/debug`         |
-| **deploy**        | Deployment process       | `/deploy`        |
-| **enhance**       | Improve existing code    | `/enhance`       |
-| **orchestrate**   | Multi-agent coordination | `/orchestrate`   |
-| **plan**          | Implementation planning  | `/plan`          |
-| **pr**            | Production-grade PR creation | `/pr`        |
-| **pr-review**     | Automated PR code review     | `/pr-review` |
-| **pr-fix**        | Auto-fix PR review findings  | `/pr-fix`    |
-| **pr-merge**      | Safe PR merge with validation| `/pr-merge`  |
-| **pr-split**      | Split oversized PRs          | `/pr-split`  |
-| **preflight**     | Production readiness assessment | `/preflight`    |
-| **preview**       | Preview changes          | `/preview`       |
-| **quality-gate**  | Pre-task validation      | `/quality-gate`  |
-| **retrospective** | Sprint audit & review    | `/retrospective` |
-| **review**        | Code review pipeline     | `/review`        |
-| **status**        | Project status check     | `/status`        |
-| **test**          | Test writing workflow    | `/test`          |
-| **ui-ux-pro-max** | Premium UI design        | `/ui-ux-pro-max` |
-| **upgrade**       | Non-destructive framework updates | `/upgrade` |
-
----
-
-## ⚖️ Operating Constraints
-
-### Immutable Rules
-
-1. **Trust > Optimization** — Never compromise trust for speed
-2. **Safety > Growth** — Prevent harm before enabling capability
-3. **No Memory of Previous Sessions** — Treat each session as fresh
-4. **Explainability > Performance** — Be transparent about decisions
-5. **Human Override Always Available** — User can always interrupt
-
-### Governance Protocol
-
-```
-/explore → /plan → /work → /review → /deploy
+```bash
+git clone https://github.com/devran-ai/kit.git
+cd kit && npm install && npm test
 ```
 
-Each phase requires explicit approval before proceeding.
+## Author
 
----
+**Emre Dursun** — [LinkedIn](https://www.linkedin.com/in/emre-dursun-nl/) · [GitHub](https://github.com/emredursun)
 
-## 🔄 Session Management
+## License
 
-> **The secret to 10x productivity**: Never lose context between sessions.
-
-Antigravity AI Kit includes a robust **Session Management Architecture** that ensures continuity across work sessions. This is what separates casual AI usage from Trust-Grade AI development.
-
-### How It Works
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                     SESSION LIFECYCLE                                │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│  ┌──────────────┐       ┌──────────────┐       ┌──────────────┐     │
-│  │ Session      │  ───► │   WORK       │  ───► │ Session      │     │
-│  │ Start Hook   │       │   SESSION    │       │ End Hook     │     │
-│  └──────────────┘       └──────────────┘       └──────────────┘     │
-│         │                      │                      │              │
-│         ▼                      ▼                      ▼              │
-│  ┌──────────────┐       ┌──────────────┐       ┌──────────────┐     │
-│  │ Load Context │       │ Pre-Commit   │       │ Save State   │     │
-│  │ Verify Env   │       │ Quality Gate │       │ Handoff Docs │     │
-│  └──────────────┘       └──────────────┘       └──────────────┘     │
-│                                                                      │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
-### Key Components
-
-| Component                   | Purpose                       | Location                             |
-| :-------------------------- | :---------------------------- | :----------------------------------- |
-| **Session Context**         | Live session state, resumable | `.agent/session-context.md`          |
-| **Session Start Checklist** | Pre-flight verification       | `.agent/checklists/session-start.md` |
-| **Session End Checklist**   | Wrap-up and handoff           | `.agent/checklists/session-end.md`   |
-| **Pre-Commit Checklist**    | Quality gate before commits   | `.agent/checklists/pre-commit.md`    |
-
-### Usage
-
-**Starting a Session:**
-
-```
-Follow the session-start checklist
-```
-
-The AI will:
-
-1. ✅ Load previous session context
-2. ✅ Verify git status and branch
-3. ✅ Check dependencies and build
-4. ✅ Resume from last open task
-
-**During Work:**
-
-```
-/verify  # Run quality checks before commits
-```
-
-**Ending a Session:**
-
-```
-Follow the session-end checklist
-```
-
-The AI will:
-
-1. ✅ Update session-context.md with progress
-2. ✅ Document open items and next steps
-3. ✅ Commit all changes
-4. ✅ Create handoff notes
-
-### Productivity Benefits
-
-| Benefit                | Description                                   |
-| :--------------------- | :-------------------------------------------- |
-| **Zero Ramp-Up Time**  | Context loads automatically, resume instantly |
-| **No Lost Work**       | State persisted across sessions               |
-| **Consistent Quality** | Same quality gates every time                 |
-| **Clean Handoffs**     | Anyone can continue your work                 |
-| **Audit Trail**        | Every session documented                      |
-
-### Example Session Context
-
-```markdown
-# AI Session Context
-
-## Last Session Summary
-
-**Date**: February 5, 2026
-**Focus**: User authentication feature
-
-### What Was Done
-
-- ✅ Implemented JWT refresh tokens
-- ✅ Added login/logout endpoints
-- [ ] Email verification (in progress)
-
-### Open Items
-
-1. [ ] Complete email verification
-2. [ ] Add password reset flow
-
-## Quick Resume
-
-cd my-project && npm run dev
-```
-
----
-
-## 🔧 How to Extend
-
-### Adding Custom Agents
-
-```markdown
-## <!-- .agent/agents/my-agent.md -->
-
-name: my-agent
-description: Custom agent description
-triggers: [keyword1, keyword2]
-
----
-
-# My Agent
-
-Instructions for the agent...
-```
-
-### Adding Custom Skills
-
-```markdown
-## <!-- .agent/skills/my-skill/SKILL.md -->
-
-name: my-skill
-description: What this skill does
-triggers: [context, keywords]
-
----
-
-# My Skill
-
-## Overview
-
-...
-
-## Workflow
-
-...
-```
-
-### Adding Custom Commands
-
-```markdown
-## <!-- .agent/commands/my-command.md -->
-
-## description: What this command does
-
-# /my-command
-
-Usage and instructions...
-```
-
----
-
-## 📁 Repository Structure
-
-```
-antigravity-ai-kit/
-├── .agent/                    # Core AI Kit
-│   ├── agents/               # 20 specialized agents
-│   ├── commands/             # 37 slash commands
-│   ├── skills/               # 34 capability modules
-│   ├── workflows/            # 21 process templates
-│   ├── engine/               # Autonomy Engine (state machine, loading rules, configs)
-│   ├── hooks/                # 8 event hooks (runtime + git-hook)
-│   ├── rules/                # 9 modular governance rules
-│   ├── checklists/           # Verification checklists (4)
-│   ├── templates/            # ADR, feature-request, bug-report templates
-│   ├── decisions/            # Architecture Decision Records
-│   └── manifest.json         # Machine-readable capability registry
-├── lib/                       # Runtime Engine (29 modules)
-│   ├── workflow-engine.js    # State machine enforcement
-│   ├── task-governance.js    # Locking, audit trail, decision timeline
-│   ├── agent-reputation.js   # Score tracking & rankings
-│   ├── self-healing.js       # CI failure detection & patch generation
-│   ├── marketplace.js        # Community skill marketplace
-│   └── + 16 more modules     # Identity, plugins, hooks, registry...
-├── bin/                       # CLI (ag-kit)
-├── create-antigravity-app/    # Project scaffolder (separate npm package)
-├── tests/                     # Test suites (349 tests, 34 files)
-│   ├── unit/                 # Module tests (loading-engine, self-healing, plugins...)
-│   ├── structural/           # Inventory + schema validation
-│   └── security/             # Injection scan + leakage detection
-├── docs/                      # MkDocs documentation site
-├── .github/workflows/         # CI pipeline
-├── .githooks/                 # Secret detection pre-commit hook
-├── README.md                  # This file
-├── LICENSE                    # MIT License
-└── CHANGELOG.md               # Version history
-```
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-### Development Workflow
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run verification: `/verify`
-5. Submit a pull request
-
----
-
-## 📄 License
-
-MIT License — See [LICENSE](LICENSE) for details.
-
----
-
-## 👤 Author
-
-**Emre Dursun** — Full-Stack Automation Engineer | AI Development Specialist
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/emre-dursun-nl/)
-[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white)](https://emredursun.nl/)
-
-> _Creator of BeSync and the Trust-Grade AI Governance framework_
-
----
-
-## 🔗 Links
-
-- **Repository**: [github.com/besync-labs/antigravity-ai-kit](https://github.com/besync-labs/antigravity-ai-kit)
-- **Documentation**: [besync-labs.github.io/antigravity-ai-kit](https://besync-labs.github.io/antigravity-ai-kit)
-- **Origin**: Derived from BeSync Trust-Grade AI Governance
-
----
-
-## 📖 Contributor Guide
-
-Want to use Antigravity AI Kit in your project? The **[Contributor Guide](https://besync-labs.github.io/antigravity-ai-kit/contributor-guide/)** covers the full end-to-end lifecycle:
-
-| Phase | What You’ll Learn |
-|:---|:---|
-| **Onboard** | Install with `ag-kit init`, verify with `ag-kit status` |
-| **Identity** | Set up developer identity with role-based access |
-| **Sprint Planning** | Create sprints, define tasks, auto-assign agents |
-| **Task Management** | Lifecycle: `pending → in_progress → review → completed` |
-| **Development** | Trust-Grade workflow: `/explore → /plan → /work → /review` |
-| **Quality Gates** | 5-gate pipeline: lint, types, tests, security, build |
-| **Completion** | Sprint retrospective, tracking updates, next sprint |
-
-👉 **[Read the full guide →](https://besync-labs.github.io/antigravity-ai-kit/contributor-guide/)**
-
----
-
-## 🙏 Acknowledgments
-
-- Initial patterns from [vudovn/antigravity-kit](https://github.com/vudovn/antigravity-kit)
-- Command structure inspired by [nth5693/gemini-kit](https://github.com/nth5693/gemini-kit)
-- Context-driven development from [Google Conductor](https://developers.googleblog.com/en/conductor-introducing-context-driven-development-for-gemini-cli/)
-- Hook concepts from [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
-
-_Antigravity AI Kit v3.5.0 extends these foundations with a 29-module runtime engine, Trust-Grade governance, session management, and 100+ capabilities._
-
----
-
-<p align="center">
-  <b>Built with 💜 for developers who demand excellence</b>
-</p>
-
-<p align="center">
-  <a href="https://github.com/besync-labs/antigravity-ai-kit">⭐ Star me on GitHub</a>
-</p>
+[MIT](LICENSE)

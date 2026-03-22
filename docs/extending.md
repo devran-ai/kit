@@ -1,6 +1,6 @@
 # Extending the Kit
 
-Antigravity AI Kit is designed to be extensible. Add custom agents, skills, and commands to match your workflow.
+Devran AI Kit is designed to be extensible. Add custom agents, skills, and commands to match your workflow.
 
 ---
 

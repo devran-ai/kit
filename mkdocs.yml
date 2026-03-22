@@ -1,10 +1,10 @@
-site_name: Antigravity AI Kit
-site_url: https://besync-labs.github.io/antigravity-ai-kit/
-site_description: Trust-Grade AI Development Framework — 29-Module Runtime Engine, 20 Agents, 34 Skills, 37 Commands, 21 Workflows, 349 Tests
+site_name: Devran AI Kit
+site_url: https://devran-ai.github.io/kit/
+site_description: Trust-Grade AI Development Framework with 29-Module Runtime Engine, 20 Agents, 34 Skills, 37 Commands, 21 Workflows, 349 Tests
 site_author: Emre Dursun
 
-repo_name: besync-labs/antigravity-ai-kit
-repo_url: https://github.com/besync-labs/antigravity-ai-kit
+repo_name: devran-ai/kit
+repo_url: https://github.com/devran-ai/kit
 
 theme:
   name: material
@@ -80,15 +80,15 @@ nav:
       - Rules: governance/index.md
       - Operating Constraints: governance/constraints.md
   - Extending: extending.md
+  - Cross-IDE Setup: cross-ide-setup.md
+  - CLI Reference: cli-reference.md
+  - FAQ: faq.md
   - Contributing: contributing.md
-  - SEO Setup:
-      - Google Search Console: google-search-console-setup.md
-      - GitHub Repository Settings: github-repository-settings.md
 
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/besync-labs/antigravity-ai-kit
+      link: https://github.com/devran-ai/kit
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/emre-dursun-nl/
   generator: false
@@ -97,22 +97,22 @@ extra:
     - property: og:type
       content: website
     - property: og:site_name
-      content: Antigravity AI Kit
+      content: Devran AI Kit
     - property: og:title
-      content: Antigravity AI Kit — Trust-Grade AI Framework
+      content: Devran AI Kit — Trust-Grade AI Framework
     - property: og:description
       content: Trust-Grade AI Development Framework with a 29-module runtime engine, 20 agents, 34 skills, 37 commands, and 21 workflows
     - property: og:url
-      content: https://besync-labs.github.io/antigravity-ai-kit/
+      content: https://devran-ai.github.io/kit/
     - property: og:image
-      content: https://besync-labs.github.io/antigravity-ai-kit/assets/og-image.png
+      content: https://devran-ai.github.io/kit/assets/og-image.png
     - name: twitter:card
       content: summary_large_image
     - name: twitter:title
-      content: Antigravity AI Kit
+      content: Devran AI Kit
     - name: twitter:description
       content: Trust-Grade AI Development Framework — 29-Module Runtime Engine, 20 Agents, 34 Skills, 37 Commands, 21 Workflows
     - name: twitter:image
-      content: https://besync-labs.github.io/antigravity-ai-kit/assets/og-image.png
+      content: https://devran-ai.github.io/kit/assets/og-image.png
 
 copyright: Copyright &copy; 2026 Emre Dursun

@@ -1,0 +1,11 @@
+{
+  "name": "vercel",
+  "description": "Vercel — deployments, domains, environment variables",
+  "transport": "stdio",
+  "command": "npx",
+  "args": ["-y", "@vercel/mcp"],
+  "env": {
+    "VERCEL_TOKEN": "${VERCEL_TOKEN}"
+  },
+  "capabilities": ["deployments", "domains", "env-vars", "logs"]
+}

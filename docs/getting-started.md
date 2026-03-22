@@ -1,6 +1,6 @@
 # Getting Started
 
-Get up and running with Antigravity AI Kit in **30 seconds**.
+Get up and running with Devran AI Kit in **30 seconds**.
 
 ---
 
@@ -9,25 +9,25 @@ Get up and running with Antigravity AI Kit in **30 seconds**.
 ### Option 1: NPX (Recommended)
 
 ```bash
-npx antigravity-ai-kit init
+npx @devran-ai/kit init
 ```
 
 This automatically copies the `.agent/` folder to your project. Done!
 
-> **Warning:** `npx antigravity-ai-kit init --force` is a **Catastrophic Repair** command. It will overwrite your customizations and session state. Do not use it for regular updates.
+> **Warning:** `npx @devran-ai/kit init --force` is a **Catastrophic Repair** command. It will overwrite your customizations and session state. Do not use it for regular updates.
 
 ---
 
 ### 🔄 Updating
 
-AI Agents and Users MUST use `ag-kit update` for standard framework upgrades. This is a non-destructive AST merger.
+AI Agents and Users MUST use `kit update` for standard framework upgrades. This is a non-destructive AST merger.
 
 ```bash
-ag-kit update             # Non-destructive — preserves your customizations
-ag-kit update --dry-run   # Preview changes without applying
+kit update             # Non-destructive — preserves your customizations
+kit update --dry-run   # Preview changes without applying
 ```
 
-> **Preservation Contract:** The `ag-kit update` command explicitly protects your customized `.agent/rules/`, `.agent/checklists/`, `session-state.json`, `session-context.md`, `identity.json`, and ADR files.
+> **Preservation Contract:** The `kit update` command explicitly protects your customized `.agent/rules/`, `.agent/checklists/`, `session-state.json`, `session-context.md`, `identity.json`, and ADR files.
 
 ---
 
@@ -35,10 +35,10 @@ ag-kit update --dry-run   # Preview changes without applying
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/besync-labs/antigravity-ai-kit.git
+git clone https://github.com/devran-ai/kit.git
 
 # 2. Copy .agent/ to your project
-cp -r antigravity-ai-kit/.agent/ your-project/.agent/
+cp -r kit/.agent/ your-project/.agent/
 
 # 3. Start your session
 /status
@@ -51,15 +51,40 @@ cp -r antigravity-ai-kit/.agent/ your-project/.agent/
 After installing, validate your setup with the built-in CLI checks:
 
 ```bash
-ag-kit verify     # Manifest integrity check
-ag-kit scan       # Security scan
+kit verify     # Manifest integrity check
+kit scan       # Security scan
 ```
 
-Both should return clean results. If they report issues, refer to the troubleshooting guide or run `ag-kit update` to repair missing core dependencies.
+Both should return clean results. If they report issues, refer to the troubleshooting guide or run `kit update` to repair missing core dependencies.
 
-## 🛡️ Safety Guarantees
+## Safety Guarantees
 
-Antigravity AI Kit **only** operates within the `.agent/` directory. Your project files — source code, configs, tests, platform files — are **never touched** by `init`, `update`, or any CLI command.
+Devran AI Kit **only** operates within the `.agent/` directory. Your project files — source code, configs, tests, platform files — are **never touched** by `init`, `update`, or any CLI command.
+
+| Your Project Files | Safe? | Details |
+|---|---|---|
+| Source code (`src/`, `lib/`, `app/`) | Never touched | Init/update only operates on `.agent/` |
+| Config files (`.env`, `package.json`) | Never touched | No project config is read or written |
+| Documentation (`docs/`, `README.md`) | Never touched | Only `.agent/` docs are managed |
+| Tests (`tests/`, `__tests__/`) | Never touched | Kit tests are internal to the package |
+| Platform files (`android/`, `ios/`) | Never touched | No platform-specific operations |
+
+### `init --force` Safety Features
+
+- **Auto-backup** — Creates timestamped backup of existing `.agent/` before overwriting
+- **Atomic copy** — Uses temp directory + rename to prevent corruption on failure
+- **Symlink guard** — Skips symbolic links to prevent path traversal attacks
+- **Session warning** — Alerts if active work-in-progress would be destroyed
+- **Dry-run preview** — `--dry-run --force` shows exactly which user files would be overwritten
+
+### `update` Preserved Files
+
+- `session-context.md` — Your active session notes
+- `session-state.json` — Your session metadata
+- `decisions/` — Your Architecture Decision Records
+- `contexts/` — Your learning data and plan quality logs
+- `rules/` — Your custom governance rules
+- `checklists/` — Your custom quality gates
 
 ---
 
@@ -115,7 +140,7 @@ Runs all quality gates: build, lint, test, coverage.
 
 ## Next Steps
 
-- **[Agents](agents/index.md)** — 20 specialized AI agents
+- **[Agents](agents/index.md)** — 23 specialized AI agents
 - **[Commands](commands/index.md)** — 37 slash commands
 - **[Skills](skills/index.md)** — 34 domain expertise modules
 - **[Workflows](workflows/index.md)** — 21 development workflows

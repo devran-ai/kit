@@ -1,6 +1,6 @@
 # Contributor Guide — End-to-End Project Lifecycle
 
-> **Audience**: Developers adopting Antigravity AI Kit for their projects  
+> **Audience**: Developers adopting Devran AI Kit for their projects  
 > **Goal**: Transform any project into an AI-driven engineering platform  
 > **Time to Onboard**: ~5 minutes
 
@@ -21,14 +21,14 @@
 
 ## 1. Project Onboarding
 
-### Install Antigravity AI Kit
+### Install Devran AI Kit
 
 ```bash
 # Option A: Install globally
-npm install -g antigravity-ai-kit
+npm install -g @devran-ai/kit
 
 # Option B: Use npx (no install)
-npx antigravity-ai-kit init
+npx @devran-ai/kit init
 ```
 
 ### Initialize Your Project
@@ -37,7 +37,7 @@ Navigate to your project root and run:
 
 ```bash
 cd my-project
-ag-kit init
+kit init
 ```
 
 This creates the `.agent/` folder with:
@@ -49,7 +49,7 @@ This creates the `.agent/` folder with:
 ### Verify Installation
 
 ```bash
-ag-kit status
+kit status
 ```
 
 You should see a dashboard showing all capabilities are loaded.
@@ -166,7 +166,7 @@ This prevents other agents from modifying the same files simultaneously.
 
 ### The Trust-Grade Workflow
 
-Every task follows the **Trust-Grade workflow**. This is the core of Antigravity AI Kit:
+Every task follows the **Trust-Grade workflow**. This is the core of Devran AI Kit:
 
 ```
 /explore → /plan → /work → /review
@@ -252,7 +252,7 @@ The review pipeline runs:
 If your CI pipeline fails, use the **Self-Healing** module:
 
 ```bash
-ag-kit heal --file ci-output.log
+kit heal --file ci-output.log
 ```
 
 The module:
@@ -302,14 +302,14 @@ Include any carry-over tasks from Sprint 1.
 
 ## End-to-End Example: Building a Todo API
 
-Here's a complete walkthrough of using Antigravity AI Kit to build a Todo API from scratch.
+Here's a complete walkthrough of using Devran AI Kit to build a Todo API from scratch.
 
 ### 1. Onboard the Project
 
 ```bash
 mkdir todo-api && cd todo-api
 npm init -y
-ag-kit init
+kit init
 ```
 
 ### 2. Set Up Identity & Sprint
@@ -371,9 +371,9 @@ Commit all changes with proper conventional commit messages.
 ### 5. Verify CLI Dashboard
 
 ```bash
-ag-kit status     # Project health
-ag-kit verify     # Manifest integrity
-ag-kit scan       # Security scan
+kit status     # Project health
+kit verify     # Manifest integrity
+kit scan       # Security scan
 ```
 
 ---
@@ -388,7 +388,7 @@ ag-kit scan       # Security scan
 | **Use specialized agents** | Ask for "the Security agent" or "the Database Architect" by name |
 | **Run quality gates often** | Use `/review` after every logical chunk of work |
 | **Track decisions** | The Decision Timeline records every architectural choice |
-| **Use the marketplace** | `ag-kit market search <keyword>` to find community plugins |
+| **Use the marketplace** | `kit market search <keyword>` to find community plugins |
 
 ### 🤖 Agent Selection
 
@@ -423,7 +423,7 @@ Start each session with `/status` to see where you left off.
 
 ## Architecture for Teams
 
-For larger teams, Antigravity AI Kit supports:
+For larger teams, Devran AI Kit supports:
 
 | Feature | How It Works |
 |:---|:---|
@@ -439,14 +439,14 @@ For larger teams, Antigravity AI Kit supports:
 
 ```bash
 # CLI Commands
-ag-kit init              # Install .agent folder
-ag-kit status            # Project dashboard
-ag-kit verify            # Manifest integrity check
-ag-kit scan              # Security scan
-ag-kit update            # Update to latest version
-ag-kit plugin list       # List installed plugins
-ag-kit market search <q> # Search marketplace
-ag-kit heal              # Self-healing for CI failures
+kit init              # Install .agent folder
+kit status            # Project dashboard
+kit verify            # Manifest integrity check
+kit scan              # Security scan
+kit update            # Update to latest version
+kit plugin list       # List installed plugins
+kit market search <q> # Search marketplace
+kit heal              # Self-healing for CI failures
 
 # Slash Commands (in AI assistant)
 /plan                    # Create implementation plan

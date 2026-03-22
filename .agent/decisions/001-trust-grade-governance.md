@@ -6,7 +6,7 @@
 
 ## Context
 
-Antigravity AI Kit needed a governance philosophy that would ensure AI-assisted development remains safe, predictable, and aligned with engineering best practices. Without formal constraints, AI agents may produce technically correct but architecturally misaligned solutions, bypass security practices, or make decisions that optimize for speed over stability.
+Devran AI Kit needed a governance philosophy that would ensure AI-assisted development remains safe, predictable, and aligned with engineering best practices. Without formal constraints, AI agents may produce technically correct but architecturally misaligned solutions, bypass security practices, or make decisions that optimize for speed over stability.
 
 ## Decision
 

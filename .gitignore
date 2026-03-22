@@ -9,6 +9,9 @@ Thumbs.db
 .idea/
 .vscode/
 .claude/
+.cursor/
+.opencode/
+.codex/
 *.swp
 *.swo
 
@@ -20,6 +23,7 @@ Thumbs.db
 # Build output
 dist/
 build/
+npm-publish-output.txt
 
 # Test cache
 coverage/

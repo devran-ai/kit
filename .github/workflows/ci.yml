@@ -1,10 +1,10 @@
-name: Antigravity AI Kit CI
+name: Devran AI Kit CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
-    branches: [main]
+    branches: [main, dev]
 
 permissions:
   contents: read

@@ -1,10 +1,10 @@
-# Antigravity AI Kit: Minimal Example
+# Devran AI Kit: Minimal Example
 
-> A minimal example showing how to get started with Antigravity AI Kit in any project.
+> A minimal example showing how to get started with Devran AI Kit in any project.
 
 ## What This Example Shows
 
-This example demonstrates the **minimum viable setup** to start using Antigravity AI Kit in a project:
+This example demonstrates the **minimum viable setup** to start using Devran AI Kit in a project:
 
 1. Session management (start/end protocols)
 2. Basic workflow usage (`/plan`, `/implement`, `/verify`)
@@ -13,16 +13,16 @@ This example demonstrates the **minimum viable setup** to start using Antigravit
 ## Setup
 
 ```bash
-# Install Antigravity AI Kit into your project
-npx antigravity-ai-kit init
+# Install Devran AI Kit into your project
+npx @devran-ai/kit init
 
 # Verify installation
-npx antigravity-ai-kit status
+npx @devran-ai/kit status
 ```
 
 ## Directory Structure
 
-After running `ag-kit init`, your project will have:
+After running `kit init`, your project will have:
 
 ```
 your-project/
