@@ -258,6 +258,7 @@ Terminal commands available after installing the kit:
 | `kit market search <query>` | Search marketplace plugins |
 | `kit market info <name>` | Get marketplace plugin details |
 | `kit market install <name>` | Install from marketplace |
+| `kit sync-bot-commands` | Sync workflows to Telegram bot menu |
 
 ---
 

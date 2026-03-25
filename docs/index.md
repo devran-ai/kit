@@ -16,7 +16,7 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 | 🔄 **Workflows**  | 21    | Process templates (/create, /debug, /deploy, /pr, /pr-merge...)        |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
-| ⚙️ **Runtime**    | 29    | Runtime engine modules (governance, reputation, self-healing...)       |
+| ⚙️ **Runtime**    | 32    | Runtime engine modules (governance, reputation, self-healing...)       |
 | ⚖️ **Rules**      | 9     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
 
 ---
@@ -55,7 +55,7 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :gear: **[Runtime Engine](#runtime-engine)**
 
-  29 modules powering the runtime
+  32 modules powering the runtime
 
 - :book: **[Contributor Guide](contributor-guide.md)**
 
@@ -81,12 +81,19 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 
 - **🔒 Trust-Grade Governance** — `/explore → /plan → /work → /review` — Each iteration builds context
 - **🤖 Multi-Agent System** — 23 specialized agents that collaborate (Mobile Developer, DevOps, PR Reviewer...)
-- **⚙️ Runtime Engine** — 29 modules enforcing workflow transitions, task governance, agent reputation, and self-healing
+- **⚙️ Runtime Engine** — 32 modules enforcing workflow transitions, task governance, agent reputation, and self-healing
 - **📦 Context as Artifact** — Persistent markdown files for plans, specs, and decisions
 - **🔄 Continuous Learning** — PAAL cycle extracts patterns from every session
 - **🛡️ Security First** — Built-in secret detection, vulnerability scanning, and compliance checks
 
 ---
+
+## What's New in v4.3.0
+
+- **Telegram sync** — `kit sync-bot-commands` scans `.agent/workflows/` and `.agent/commands/` frontmatter, pushes to Telegram Bot API via `setMyCommands`
+- **CLI flags** — `--dry-run`, `--token`, `--limit`, `--source` for fine-grained control
+- **Runtime modules** — 29 → 32 (added `telegram-sync.js` and others)
+- **434 tests** — 38 test suites across unit, structural, and security
 
 ## What's New in v4.2.1
 

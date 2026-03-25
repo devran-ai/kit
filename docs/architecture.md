@@ -1,6 +1,6 @@
 # Architecture
 
-Devran AI Kit v4.3.0 is an engineered framework with a **29-module runtime engine**, 23 agents, 34 skills, 37 commands, and 21 workflows.
+Devran AI Kit v4.3.0 is an engineered framework with a **32-module runtime engine**, 23 agents, 34 skills, 37 commands, and 21 workflows.
 
 ---
 
@@ -8,7 +8,7 @@ Devran AI Kit v4.3.0 is an engineered framework with a **29-module runtime engin
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      DEVRAN AI KIT v4.2.1                       │
+│                      DEVRAN AI KIT v4.3.0                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
@@ -40,7 +40,7 @@ Devran AI Kit v4.3.0 is an engineered framework with a **29-module runtime engin
 │  └─────────────────┘                   └─────────────────┘          │
 │                                                                      │
 │  ┌─────────────────────────────────────────────────────────┐        │
-│  │              RUNTIME ENGINE (29 modules)                 │        │
+│  │              RUNTIME ENGINE (32 modules)                 │        │
 │  │  workflow-engine • session-manager • task-governance      │        │
 │  │  agent-reputation • self-healing • marketplace            │        │
 │  │  plugin-system • identity • conflict-detector • + 12      │        │
@@ -121,7 +121,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 ├── templates/            # Feature templates
 └── decisions/            # ADR system
 
-lib/                      # Runtime Engine (29 modules)
+lib/                      # Runtime Engine (32 modules)
 ├── workflow-engine.js    # State machine enforcement
 ├── task-governance.js    # Locking, audit trail, decision timeline
 ├── agent-reputation.js   # Score tracking & rankings

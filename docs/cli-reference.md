@@ -122,6 +122,25 @@ kit health
 
 ---
 
+### kit sync-bot-commands
+
+Sync `.agent/workflows/` and `.agent/commands/` descriptions to the Telegram Bot API menu.
+
+```bash
+kit sync-bot-commands [options]
+```
+
+| Flag | Description |
+|------|-------------|
+| `--token <BOT_TOKEN>` | Telegram bot token (or set `TELEGRAM_BOT_TOKEN` env var) |
+| `--dry-run` | Preview commands without pushing to Telegram |
+| `--limit <N>` | Max commands to sync (1–100, default: all) |
+| `--source <type>` | Source to scan: `workflows` (default), `commands`, or `both` |
+
+Reads frontmatter `description` from each workflow/command markdown file and formats them as Telegram bot menu commands. Priority tiers (critical, high, medium, low) determine ordering when the limit is reached.
+
+---
+
 ## Exit Codes
 
 | Code | Meaning |

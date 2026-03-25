@@ -5,6 +5,53 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.3.0] — 2026-03-25
+
+### Added
+
+- **`kit sync-bot-commands`** — New CLI command that scans `.agent/workflows/` and `.agent/commands/` frontmatter descriptions and pushes them to the Telegram Bot API via `setMyCommands`
+- **`lib/telegram-sync.js`** — Runtime module with `syncBotCommands()`, `buildCommandList()`, `pushToTelegram()`, `readBotToken()`, and validation utilities
+- **46 new tests** for telegram-sync module (extractFrontmatter, formatCommand, getPriority, buildCommandList, readBotToken, scanDirectory, validateBotToken, pushToTelegram, syncBotCommands)
+
+### Changed
+
+- Runtime modules: 31 → 32
+- Tests: 388 → 434 (38 test suites)
+- CLI flags: `--dry-run`, `--token <BOT_TOKEN>`, `--limit <N>`, `--source workflows|commands|both`
+- Telegram limits enforced: max 100 commands, 32-char command names, 256-char descriptions
+
+---
+
+## [4.2.1] — 2026-03-24
+
+### Changed
+
+- **Untrack hint** — Detects tracked `.agent/` and prints `git rm --cached` command
+- **Documentation fixes** — Updated release notes, stale test counts corrected
+
+---
+
+## [4.2.0] — 2026-03-23
+
+### Added
+
+- **Gitignore by default** — `kit init` adds `.agent/` to `.gitignore` — personal dev tooling
+- **`--shared` flag** — Opt-in to commit `.agent/` for team sharing
+- **388 tests** — 37 test suites across unit, structural, and security
+
+---
+
+## [4.1.0] — 2026-03-23
+
+### Added
+
+- **Cross-IDE support** — Cursor, OpenCode, Codex, Antigravity — all generated from one manifest
+- **Multi-language reviewers** — TypeScript, Python, Go dedicated review agents
+- **Continuous learning** — Confidence scoring with time-based decay model
+- **MCP server templates** — GitHub, Supabase, Vercel, PostgreSQL, Filesystem
+
+---
+
 ## [4.0.0] — 2026-03-22
 
 ### Breaking Changes
@@ -462,6 +509,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Session management architecture
 - PAAL continuous learning cycle
 
+[4.3.0]: https://github.com/devran-ai/kit/compare/v4.2.1...v4.3.0
+[4.2.1]: https://github.com/devran-ai/kit/compare/v4.2.0...v4.2.1
+[4.2.0]: https://github.com/devran-ai/kit/compare/v4.1.0...v4.2.0
+[4.1.0]: https://github.com/devran-ai/kit/compare/v4.0.0...v4.1.0
+[4.0.0]: https://github.com/devran-ai/kit/compare/v3.9.0...v4.0.0
+[3.9.0]: https://github.com/devran-ai/kit/compare/v3.8.0...v3.9.0
 [3.8.0]: https://github.com/devran-ai/kit/compare/v3.7.0...v3.8.0
 [3.7.0]: https://github.com/devran-ai/kit/compare/v3.6.0...v3.7.0
 [3.6.0]: https://github.com/devran-ai/kit/compare/v3.5.0...v3.6.0

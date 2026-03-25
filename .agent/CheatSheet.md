@@ -326,6 +326,23 @@
 
 ---
 
+## 🖥️ CLI Commands (kit)
+
+| Command | Description | Key Flags |
+|:--------|:------------|:----------|
+| `kit init` | Install `.agent/` framework | `--force`, `--shared`, `--path`, `--dry-run` |
+| `kit update` | Non-destructive framework update | `--dry-run` |
+| `kit status` | Project health dashboard | — |
+| `kit verify` | Manifest integrity checks | — |
+| `kit scan` | Security scan | — |
+| `kit heal` | CI failure detection and auto-fix | `--file`, `--apply` |
+| `kit health` | Aggregated health check | — |
+| `kit plugin` | Plugin management | `list`, `install`, `remove` |
+| `kit market` | Marketplace integration | `search`, `info`, `install` |
+| `kit sync-bot-commands` | Sync workflows to Telegram bot menu | `--token`, `--dry-run`, `--limit`, `--source` |
+
+---
+
 ## 📁 Directory Structure
 
 ```

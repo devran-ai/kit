@@ -101,7 +101,7 @@ extra:
     - property: og:title
       content: Devran AI Kit — Trust-Grade AI Framework
     - property: og:description
-      content: Trust-Grade AI Development Framework with a 29-module runtime engine, 20 agents, 34 skills, 37 commands, and 21 workflows
+      content: Trust-Grade AI Development Framework with a 32-module runtime engine, 23 agents, 34 skills, 37 commands, and 21 workflows
     - property: og:url
       content: https://devran-ai.github.io/kit/
     - property: og:image
