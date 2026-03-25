@@ -81,6 +81,7 @@ ${colors.bright}Usage:${colors.reset}
   kit market install <n>    Install from marketplace
   kit heal [--file <f>]     Detect and diagnose CI failures
   kit health                Run aggregated health check
+  kit sync-bot-commands     Sync workflows to Telegram bot menu
   kit --help                Show this help message
   kit --version             Show version
 
@@ -790,6 +791,72 @@ switch (command) {
     if (!result.healthy) {
       process.exit(1);
     }
+    break;
+  }
+  case 'sync-bot-commands': {
+    showBanner();
+    const telegramSync = require('../lib/telegram-sync');
+    // Validate CLI arguments
+    const tokenIdx = args.indexOf('--token');
+    if (tokenIdx !== -1 && !args[tokenIdx + 1]) {
+      log('Error: --token requires a value', 'red');
+      process.exit(1);
+    }
+    const limitIdx = args.indexOf('--limit');
+    if (limitIdx !== -1) {
+      const lv = parseInt(args[limitIdx + 1], 10);
+      if (isNaN(lv) || lv < 1 || lv > telegramSync.MAX_COMMANDS) {
+        log(`Error: --limit must be 1-${telegramSync.MAX_COMMANDS}`, 'red');
+        process.exit(1);
+      }
+    }
+    const sourceIdx = args.indexOf('--source');
+    if (sourceIdx !== -1 && !['workflows', 'commands', 'both'].includes(args[sourceIdx + 1])) {
+      log('Error: --source must be workflows|commands|both', 'red');
+      process.exit(1);
+    }
+    const syncOptions = {
+      token: tokenIdx !== -1 ? args[tokenIdx + 1] : undefined,
+      limit: limitIdx !== -1 ? parseInt(args[limitIdx + 1], 10) : undefined,
+      source: sourceIdx !== -1 ? args[sourceIdx + 1] : 'workflows',
+      dryRun: args.includes('--dry-run'),
+    };
+
+    logStep('1/2', 'Scanning workflows...');
+    (async () => {
+      try {
+        const result = await telegramSync.syncBotCommands(process.cwd(), syncOptions);
+
+        if (result.commands.length > 0) {
+          log(`\n   Commands (${result.commands.length}):`, 'cyan');
+          for (const cmd of result.commands) {
+            const desc = cmd.description.length > 60 ? cmd.description.slice(0, 60) + '...' : cmd.description;
+            log(`   /${cmd.command} — ${desc}`, 'reset');
+          }
+          console.log('');
+        }
+
+        logStep('2/2', result.message);
+        console.log('');
+
+        if (result.success) {
+          const icon = syncOptions.dryRun ? '🔍' : '✅';
+          const clr = syncOptions.dryRun ? 'cyan' : 'green';
+          log(`   ${icon} ${result.message}\n`, clr);
+        } else {
+          log(`   ⚠️  ${result.message}\n`, 'yellow');
+          if (!syncOptions.token && !telegramSync.readBotToken()) {
+            log('   Provide a bot token:', 'yellow');
+            log('   kit sync-bot-commands --token <BOT_TOKEN>', 'cyan');
+            log('   Or set TELEGRAM_BOT_TOKEN environment variable\n', 'cyan');
+          }
+          process.exit(1);
+        }
+      } catch (err) {
+        log(`   ✗ Sync failed: ${err?.message || String(err)}`, 'red');
+        process.exit(1);
+      }
+    })();
     break;
   }
   case '--version':
