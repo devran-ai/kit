@@ -1,6 +1,6 @@
 {
   "name": "@devran-ai/kit",
-  "version": "4.2.1",
+  "version": "4.3.0",
   "description": "Trust-grade AI development framework — zero-dependency runtime engine for agent orchestration, workflow governance, and skill management.",
   "main": "bin/kit.js",
   "bin": {
