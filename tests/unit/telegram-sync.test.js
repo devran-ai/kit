@@ -11,11 +11,14 @@ const {
   readBotToken,
   scanDirectory,
   validateBotToken,
+  validateScope,
   pushToTelegram,
   syncBotCommands,
   MAX_COMMANDS,
   MAX_COMMAND_LENGTH,
   MAX_DESCRIPTION_LENGTH,
+  VALID_SCOPES,
+  DEFAULT_SCOPE,
 } = require('../../lib/telegram-sync');
 
 // ---------------------------------------------------------------------------
@@ -317,6 +320,37 @@ describe('validateBotToken', () => {
 });
 
 // ---------------------------------------------------------------------------
+// validateScope
+// ---------------------------------------------------------------------------
+
+describe('validateScope', () => {
+  it('accepts all valid scope types', () => {
+    for (const scope of VALID_SCOPES) {
+      expect(validateScope(scope)).toEqual({ valid: true });
+    }
+  });
+
+  it('rejects null/undefined', () => {
+    expect(validateScope(null).valid).toBe(false);
+    expect(validateScope(undefined).valid).toBe(false);
+  });
+
+  it('rejects empty string', () => {
+    expect(validateScope('').valid).toBe(false);
+  });
+
+  it('rejects invalid scope type', () => {
+    const result = validateScope('chat');
+    expect(result.valid).toBe(false);
+    expect(result.error).toContain('Invalid scope');
+  });
+
+  it('rejects non-string input', () => {
+    expect(validateScope(42).valid).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
 // pushToTelegram (mocked fetch)
 // ---------------------------------------------------------------------------
 
@@ -368,6 +402,42 @@ describe('pushToTelegram', () => {
     const result = await pushToTelegram(validToken, commands);
     expect(result.success).toBe(false);
     expect(result.message).toContain('invalid JSON');
+  });
+
+  it('includes default scope in request body when no scope provided', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    await pushToTelegram(validToken, commands);
+    const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(callBody.scope).toEqual({ type: 'all_private_chats' });
+  });
+
+  it('includes explicit scope in request body', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    await pushToTelegram(validToken, commands, 'all_group_chats');
+    const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(callBody.scope).toEqual({ type: 'all_group_chats' });
+  });
+
+  it('wraps default scope type as object', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    await pushToTelegram(validToken, commands, 'default');
+    const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(callBody.scope).toEqual({ type: 'default' });
+  });
+
+  it('rejects invalid scope without calling API', async () => {
+    const result = await pushToTelegram(validToken, commands, 'invalid_scope');
+    expect(result.success).toBe(false);
+    expect(result.message).toContain('Invalid scope');
   });
 });
 
@@ -430,5 +500,35 @@ describe('syncBotCommands', () => {
     });
     expect(result.success).toBe(true);
     expect(result.commands.length).toBe(2);
+  });
+
+  it('passes explicit scope through to pushToTelegram', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    await syncBotCommands(tmpDir, {
+      token: '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345',
+      scope: 'all_group_chats',
+    });
+    const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(callBody.scope).toEqual({ type: 'all_group_chats' });
+  });
+
+  it('uses default scope when none provided', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    await syncBotCommands(tmpDir, {
+      token: '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345',
+    });
+    const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(callBody.scope).toEqual({ type: 'all_private_chats' });
+  });
+
+  it('shows scope in dry-run message', async () => {
+    const result = await syncBotCommands(tmpDir, { dryRun: true, scope: 'all_group_chats' });
+    expect(result.message).toContain('scope: all_group_chats');
   });
 });

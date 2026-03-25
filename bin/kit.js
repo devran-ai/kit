@@ -82,6 +82,7 @@ ${colors.bright}Usage:${colors.reset}
   kit heal [--file <f>]     Detect and diagnose CI failures
   kit health                Run aggregated health check
   kit sync-bot-commands     Sync workflows to Telegram bot menu
+                            [--scope <type>] [--token <t>] [--dry-run]
   kit --help                Show this help message
   kit --version             Show version
 
@@ -815,10 +816,16 @@ switch (command) {
       log('Error: --source must be workflows|commands|both', 'red');
       process.exit(1);
     }
+    const scopeIdx = args.indexOf('--scope');
+    if (scopeIdx !== -1 && !telegramSync.VALID_SCOPES.includes(args[scopeIdx + 1])) {
+      log(`Error: --scope must be ${telegramSync.VALID_SCOPES.join('|')}`, 'red');
+      process.exit(1);
+    }
     const syncOptions = {
       token: tokenIdx !== -1 ? args[tokenIdx + 1] : undefined,
       limit: limitIdx !== -1 ? parseInt(args[limitIdx + 1], 10) : undefined,
       source: sourceIdx !== -1 ? args[sourceIdx + 1] : 'workflows',
+      scope: scopeIdx !== -1 ? args[scopeIdx + 1] : undefined,
       dryRun: args.includes('--dry-run'),
     };
 

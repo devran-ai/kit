@@ -339,7 +339,7 @@
 | `kit health` | Aggregated health check | — |
 | `kit plugin` | Plugin management | `list`, `install`, `remove` |
 | `kit market` | Marketplace integration | `search`, `info`, `install` |
-| `kit sync-bot-commands` | Sync workflows to Telegram bot menu | `--token`, `--dry-run`, `--limit`, `--source` |
+| `kit sync-bot-commands` | Sync workflows to Telegram bot menu | `--scope`, `--token`, `--dry-run`, `--limit`, `--source` |
 
 ---
 

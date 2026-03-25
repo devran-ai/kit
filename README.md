@@ -155,7 +155,7 @@ All generated automatically by `kit init`.
 | `kit market` | Marketplace integration | `search`, `info`, `install` |
 | `kit heal` | CI failure detection and auto-fix | `--file <path>`, `--apply` |
 | `kit health` | Aggregated health check | — |
-| `kit sync-bot-commands` | Sync workflows to Telegram bot menu | `--token`, `--dry-run`, `--limit`, `--source` |
+| `kit sync-bot-commands` | Sync workflows to Telegram bot menu | `--scope`, `--token`, `--dry-run`, `--limit`, `--source` |
 
 ## Safety Guarantees
 

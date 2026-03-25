@@ -136,6 +136,7 @@ kit sync-bot-commands [options]
 | `--dry-run` | Preview commands without pushing to Telegram |
 | `--limit <N>` | Max commands to sync (1–100, default: all) |
 | `--source <type>` | Source to scan: `workflows` (default), `commands`, or `both` |
+| `--scope <type>` | Command scope: `default`, `all_private_chats` (default), `all_group_chats`, `all_chat_administrators` |
 
 Reads frontmatter `description` from each workflow/command markdown file and formats them as Telegram bot menu commands. Priority tiers (critical, high, medium, low) determine ordering when the limit is reached.
 
