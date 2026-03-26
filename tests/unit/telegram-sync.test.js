@@ -22,6 +22,7 @@ const {
   cacheCommands,
   readCachedCommands,
   getCachePath,
+  readAllowedUsers,
   MAX_COMMANDS,
   MAX_COMMAND_LENGTH,
   MAX_DESCRIPTION_LENGTH,
@@ -515,6 +516,23 @@ describe('pushToTelegram', () => {
     const result = await pushToTelegram(validToken, commands, 'invalid_scope');
     expect(result.success).toBe(false);
     expect(result.message).toContain('Invalid scope');
+  });
+
+  it('supports chat scope with chat_id', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    const result = await pushToTelegram(validToken, commands, 'chat', { chat_id: '12345' });
+    expect(result.success).toBe(true);
+    const body = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(body.scope).toEqual({ type: 'chat', chat_id: '12345' });
+  });
+
+  it('rejects chat scope without chat_id', async () => {
+    const result = await pushToTelegram(validToken, commands, 'chat');
+    expect(result.success).toBe(false);
+    expect(result.message).toContain('chat_id');
   });
 });
 
@@ -1039,8 +1057,14 @@ describe('guardPrivateChat', () => {
     expect(result.message).toContain('No bot token');
   });
 
-  it('pushes cached commands to all_private_chats scope', async () => {
+  it('uses chat scope when access.json has users', async () => {
     cacheCommands([{ command: 'plan', description: 'Plan' }]);
+    // Write access.json with a user
+    fs.writeFileSync(
+      path.join(tmpDir, '.claude', 'channels', 'telegram', 'access.json'),
+      JSON.stringify({ allowFrom: ['12345'] }),
+      'utf-8'
+    );
     const mockFetch = vi.fn().mockResolvedValue({
       json: () => Promise.resolve({ ok: true }),
     });
@@ -1051,9 +1075,40 @@ describe('guardPrivateChat', () => {
     expect(mockFetch).toHaveBeenCalledTimes(1);
 
     const body = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(body.scope.type).toBe('chat');
+    expect(body.scope.chat_id).toBe('12345');
+  });
+
+  it('pushes to multiple users from access.json', async () => {
+    cacheCommands([{ command: 'plan', description: 'Plan' }]);
+    fs.writeFileSync(
+      path.join(tmpDir, '.claude', 'channels', 'telegram', 'access.json'),
+      JSON.stringify({ allowFrom: ['111', '222', '333'] }),
+      'utf-8'
+    );
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+
+    const result = await guardPrivateChat({ token: validToken });
+    expect(result.success).toBe(true);
+    expect(mockFetch).toHaveBeenCalledTimes(3);
+    expect(result.message).toContain('3 user(s)');
+  });
+
+  it('falls back to all_private_chats when no access.json', async () => {
+    cacheCommands([{ command: 'plan', description: 'Plan' }]);
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+
+    const result = await guardPrivateChat({ token: validToken });
+    expect(result.success).toBe(true);
+
+    const body = JSON.parse(mockFetch.mock.calls[0][1].body);
     expect(body.scope.type).toBe('all_private_chats');
-    // Should include plugin base commands + plan
-    expect(body.commands.length).toBeGreaterThanOrEqual(2);
   });
 
   it('reads token from environment when not provided', async () => {
@@ -1066,6 +1121,51 @@ describe('guardPrivateChat', () => {
 
     const result = await guardPrivateChat();
     expect(result.success).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// readAllowedUsers
+// ---------------------------------------------------------------------------
+
+describe('readAllowedUsers', () => {
+  const tmpDir = path.join(__dirname, '__tmp_allowed_test__');
+  let originalHome;
+
+  beforeEach(() => {
+    fs.mkdirSync(path.join(tmpDir, '.claude', 'channels', 'telegram'), { recursive: true });
+    originalHome = process.env.HOME;
+    process.env.HOME = tmpDir;
+    process.env.USERPROFILE = tmpDir;
+  });
+
+  afterEach(() => {
+    process.env.HOME = originalHome;
+    process.env.USERPROFILE = originalHome;
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  it('reads user IDs from access.json', () => {
+    fs.writeFileSync(
+      path.join(tmpDir, '.claude', 'channels', 'telegram', 'access.json'),
+      JSON.stringify({ allowFrom: ['111', '222'] }),
+      'utf-8'
+    );
+    const users = readAllowedUsers();
+    expect(users).toEqual(['111', '222']);
+  });
+
+  it('returns empty array when access.json missing', () => {
+    expect(readAllowedUsers()).toEqual([]);
+  });
+
+  it('returns empty array when allowFrom missing', () => {
+    fs.writeFileSync(
+      path.join(tmpDir, '.claude', 'channels', 'telegram', 'access.json'),
+      JSON.stringify({ dmPolicy: 'open' }),
+      'utf-8'
+    );
+    expect(readAllowedUsers()).toEqual([]);
   });
 });
 

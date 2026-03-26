@@ -1,8 +1,8 @@
 # Devran AI Kit
 
-[![Version](https://img.shields.io/badge/version-4.4.0-blue.svg)](https://github.com/devran-ai/kit)
+[![Version](https://img.shields.io/badge/version-4.4.1-blue.svg)](https://github.com/devran-ai/kit)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-492%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-499%20passing-brightgreen.svg)](tests/)
 [![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](package.json)
 [![AI Agents](https://img.shields.io/badge/AI%20Agents-23-purple.svg)](.agent/agents/)
 [![Skills](https://img.shields.io/badge/Skills-34-orange.svg)](.agent/skills/)
