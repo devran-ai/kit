@@ -1,5 +1,6 @@
 ---
 description: Create implementation plan. Invokes planner agent for structured task breakdown.
+args: feature or task description
 version: 2.2.0
 sdlc-phase: plan
 agents: [planner]

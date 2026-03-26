@@ -83,6 +83,7 @@ ${colors.bright}Usage:${colors.reset}
   kit health                Run aggregated health check
   kit sync-bot-commands     Sync workflows to Telegram bot menu
                             [--scope <type>] [--token <t>] [--dry-run]
+                            [--clear] (delete commands from scope(s))
   kit --help                Show this help message
   kit --version             Show version
 
@@ -797,7 +798,97 @@ switch (command) {
   case 'sync-bot-commands': {
     showBanner();
     const telegramSync = require('../lib/telegram-sync');
-    // Validate CLI arguments
+
+    // --guard: restore cached commands to private chat (lightweight re-sync)
+    if (args.includes('--guard')) {
+      logStep('1/1', 'Restoring menu from cache...');
+      (async () => {
+        try {
+          const tokenIdx = args.indexOf('--token');
+          const guardOpts = tokenIdx !== -1 ? { token: args[tokenIdx + 1] } : {};
+          const result = await telegramSync.guardPrivateChat(guardOpts);
+          if (result.success) {
+            log(`   ✅ ${result.message}\n`, 'green');
+          } else {
+            log(`   ⚠️  ${result.message}\n`, 'yellow');
+            process.exit(1);
+          }
+        } catch (err) {
+          log(`   ✗ Guard failed: ${err?.message || String(err)}`, 'red');
+          process.exit(1);
+        }
+      })();
+      break;
+    }
+
+    // --install-guard: install SessionStart hook in global settings
+    if (args.includes('--install-guard')) {
+      logStep('1/2', 'Installing SessionStart guard hook...');
+      const guardPath = path.resolve(__dirname, '..', 'lib', 'telegram-menu-guard.js');
+
+      if (!fs.existsSync(guardPath)) {
+        log(`   ✗ Guard script not found: ${guardPath}`, 'red');
+        process.exit(1);
+      }
+
+      const settingsPath = path.join(process.env.HOME || process.env.USERPROFILE || '', '.claude', 'settings.json');
+      try {
+        const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
+        const hookCommand = `node "${guardPath.replace(/\\/g, '\\\\')}"`;
+
+        // Check if already installed
+        const sessionHooks = settings.hooks?.SessionStart || [];
+        const alreadyInstalled = sessionHooks.some(entry =>
+          entry.hooks?.some(h => h.command?.includes('telegram-menu-guard'))
+        );
+
+        if (alreadyInstalled) {
+          logStep('2/2', 'Guard hook already installed');
+          log('   ✅ SessionStart guard is active\n', 'green');
+          break;
+        }
+
+        // Add the guard hook
+        if (!settings.hooks) settings.hooks = {};
+        if (!settings.hooks.SessionStart) settings.hooks.SessionStart = [];
+
+        settings.hooks.SessionStart.push({
+          matcher: '*',
+          hooks: [{
+            type: 'command',
+            command: hookCommand,
+          }],
+        });
+
+        fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2), 'utf-8');
+
+        logStep('2/2', 'Guard hook installed');
+        log(`   ✅ SessionStart hook added to ${settingsPath}`, 'green');
+        log('   Menu will auto-restore on every new session\n', 'cyan');
+
+        // Also ensure cache exists
+        const cache = telegramSync.readCachedCommands();
+        if (!cache) {
+          log('   ⚠️  No command cache found. Running sync to create cache...\n', 'yellow');
+          (async () => {
+            try {
+              const syncResult = await telegramSync.syncBotCommands(process.cwd());
+              if (syncResult.success) {
+                log(`   ✅ Cache created with ${syncResult.commands.length} commands\n`, 'green');
+              }
+            } catch (syncErr) {
+              log(`   ⚠️  Cache creation failed: ${syncErr?.message || String(syncErr)}`, 'yellow');
+            }
+          })();
+        }
+      } catch (err) {
+        log(`   ✗ Failed to install guard: ${err?.message || String(err)}`, 'red');
+        process.exit(1);
+      }
+      break;
+    }
+
+    // Standard sync flow
     const tokenIdx = args.indexOf('--token');
     if (tokenIdx !== -1 && !args[tokenIdx + 1]) {
       log('Error: --token requires a value', 'red');
@@ -827,9 +918,10 @@ switch (command) {
       source: sourceIdx !== -1 ? args[sourceIdx + 1] : 'workflows',
       scope: scopeIdx !== -1 ? args[scopeIdx + 1] : undefined,
       dryRun: args.includes('--dry-run'),
+      clear: args.includes('--clear'),
     };
 
-    logStep('1/2', 'Scanning workflows...');
+    logStep('1/2', syncOptions.clear ? 'Clearing commands...' : 'Scanning workflows...');
     (async () => {
       try {
         const result = await telegramSync.syncBotCommands(process.cwd(), syncOptions);
@@ -844,6 +936,14 @@ switch (command) {
         }
 
         logStep('2/2', result.message);
+
+        if (result.scopeResults && result.scopeResults.length > 0) {
+          for (const sr of result.scopeResults) {
+            const icon = sr.success ? 'OK' : 'FAIL';
+            const clr = sr.success ? 'green' : 'red';
+            log(`   [${icon}] ${sr.scope}: ${sr.message}`, clr);
+          }
+        }
         console.log('');
 
         if (result.success) {
@@ -852,7 +952,7 @@ switch (command) {
           log(`   ${icon} ${result.message}\n`, clr);
         } else {
           log(`   ⚠️  ${result.message}\n`, 'yellow');
-          if (!syncOptions.token && !telegramSync.readBotToken()) {
+          if (!syncOptions.clear && !syncOptions.token && !telegramSync.readBotToken()) {
             log('   Provide a bot token:', 'yellow');
             log('   kit sync-bot-commands --token <BOT_TOKEN>', 'cyan');
             log('   Or set TELEGRAM_BOT_TOKEN environment variable\n', 'cyan');

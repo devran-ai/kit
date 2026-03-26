@@ -1,5 +1,6 @@
 ---
 description: Structured brainstorming. Explore options before committing to implementation.
+args: topic
 version: 2.1.0
 sdlc-phase: discover
 skills: [brainstorming]

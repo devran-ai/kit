@@ -1,5 +1,6 @@
 ---
 description: Safe PR merge with dependency validation, CI verification, post-merge checks, and branch cleanup.
+args: "PR #"
 version: 1.0.0
 sdlc-phase: ship
 skills: [pr-toolkit, verification-loop]

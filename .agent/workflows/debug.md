@@ -1,5 +1,6 @@
 ---
 description: Systematic debugging workflow. Activates DEBUG mode for problem investigation.
+args: error or issue description
 version: 2.1.0
 sdlc-phase: reactive
 skills: [debugging-strategies]

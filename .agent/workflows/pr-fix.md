@@ -1,5 +1,6 @@
 ---
 description: Fix PR issues from review comments. Fetch findings, prioritize by severity, implement fixes with evidence, verify, push, and post resolution summary with reviewer attribution.
+args: "PR #"
 version: 1.1.0
 sdlc-phase: build
 skills: [pr-toolkit, verification-loop]

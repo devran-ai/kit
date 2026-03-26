@@ -1,5 +1,6 @@
 ---
 description: Multi-agent orchestration for complex tasks requiring multiple specialists.
+args: task description
 version: 2.1.0
 sdlc-phase: reactive
 agents: [planner, explorer-agent]

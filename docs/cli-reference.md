@@ -136,9 +136,33 @@ kit sync-bot-commands [options]
 | `--dry-run` | Preview commands without pushing to Telegram |
 | `--limit <N>` | Max commands to sync (1–100, default: all) |
 | `--source <type>` | Source to scan: `workflows` (default), `commands`, or `both` |
-| `--scope <type>` | Command scope: `default`, `all_private_chats` (default), `all_group_chats`, `all_chat_administrators` |
+| `--scope <type>` | Target single scope: `default`, `all_private_chats`, `all_group_chats`, `all_chat_administrators`. Omit to push to all scopes |
+| `--clear` | Delete commands from scope(s) instead of pushing |
+| `--guard` | Restore cached commands to `all_private_chats` scope (lightweight re-sync) |
+| `--install-guard` | Install SessionStart hook in `~/.claude/settings.json` for automatic menu restoration |
 
 Reads frontmatter `description` from each workflow/command markdown file and formats them as Telegram bot menu commands. Priority tiers (critical, high, medium, low) determine ordering when the limit is reached.
+
+When a workflow frontmatter includes an `args` field (e.g., `args: "PR #"`), the args hint is appended to the Telegram description: `Review PR (+ PR #)`. This helps users know which commands accept arguments.
+
+#### Menu Guard System
+
+The Telegram plugin overwrites bot menu commands on every session start with its own defaults (`/start`, `/help`, `/status`). The guard system solves this permanently:
+
+```bash
+kit sync-bot-commands                  # Sync workflows + create cache
+kit sync-bot-commands --install-guard  # Install SessionStart hook (one-time)
+```
+
+After installation, the guard runs automatically on every new Claude Code session:
+
+1. SessionStart hook fires `lib/telegram-menu-guard.js`
+2. Guard spawns a detached child process (non-blocking)
+3. Child waits 8 seconds for the plugin to finish connecting
+4. Reads cached commands from `~/.claude/channels/telegram/bot-menu-cache.json`
+5. Pushes the full menu (workflows + plugin base commands) to `all_private_chats` scope
+
+The cache is auto-created on every successful `sync-bot-commands` run and merges plugin base commands (`/start`, `/help`) so they remain accessible.
 
 ---
 

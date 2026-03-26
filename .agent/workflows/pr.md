@@ -1,5 +1,6 @@
 ---
 description: Production-grade PR creation with branch strategy validation, size/scope guards, pre-flight checks, and CI verification.
+args: branch name
 version: 3.0.0
 sdlc-phase: ship
 skills: [git-workflow, pr-toolkit, verification-loop]

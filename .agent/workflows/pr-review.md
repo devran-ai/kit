@@ -1,5 +1,6 @@
 ---
 description: Multi-perspective PR review covering hygiene, branch strategy, code quality, security, testing, and architecture. Engages with existing reviewer comments and tracks review rounds.
+args: "PR #"
 version: 1.1.0
 sdlc-phase: verify
 skills: [pr-toolkit, verification-loop]

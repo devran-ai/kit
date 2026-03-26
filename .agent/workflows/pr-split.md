@@ -1,5 +1,6 @@
 ---
 description: Guide splitting large PRs into focused sub-PRs by concern category with dependency-ordered merge plan.
+args: "PR #"
 version: 1.0.0
 sdlc-phase: build
 skills: [pr-toolkit, git-workflow]

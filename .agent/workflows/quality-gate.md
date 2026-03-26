@@ -1,5 +1,6 @@
 ---
 description: Pre-task research and validation protocol. Market research, gap analysis, and ethics review before implementation.
+args: feature name
 version: 2.1.0
 sdlc-phase: discover
 skills: [brainstorming]

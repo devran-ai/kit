@@ -5,6 +5,7 @@ import fs from 'fs';
 
 const {
   extractFrontmatter,
+  extractFrontmatterField,
   formatCommand,
   getPriority,
   buildCommandList,
@@ -13,12 +14,22 @@ const {
   validateBotToken,
   validateScope,
   pushToTelegram,
+  deleteFromTelegram,
+  pushToAllScopes,
+  clearAllScopes,
   syncBotCommands,
+  guardPrivateChat,
+  cacheCommands,
+  readCachedCommands,
+  getCachePath,
   MAX_COMMANDS,
   MAX_COMMAND_LENGTH,
   MAX_DESCRIPTION_LENGTH,
   VALID_SCOPES,
   DEFAULT_SCOPE,
+  PLUGIN_BASE_COMMANDS,
+  GUARD_DELAY_MS,
+  CACHE_FILENAME,
 } = require('../../lib/telegram-sync');
 
 // ---------------------------------------------------------------------------
@@ -81,6 +92,54 @@ describe('extractFrontmatter', () => {
     // Empty description falls through to fallback
     expect(result).not.toBeNull();
     expect(result.name).toBe('nodesc');
+  });
+
+  it('extracts args from frontmatter', () => {
+    const file = path.join(tmpDir, 'pr-review.md');
+    fs.writeFileSync(file, '---\ndescription: Review a pull request\nargs: "PR #"\n---\n');
+    const result = extractFrontmatter(file);
+    expect(result).toEqual({ name: 'pr-review', description: 'Review a pull request', args: 'PR #' });
+  });
+
+  it('returns no args field when args not in frontmatter', () => {
+    const file = path.join(tmpDir, 'status.md');
+    fs.writeFileSync(file, '---\ndescription: Show status\n---\n');
+    const result = extractFrontmatter(file);
+    expect(result).toEqual({ name: 'status', description: 'Show status' });
+    expect(result).not.toHaveProperty('args');
+  });
+
+  it('extracts unquoted args', () => {
+    const file = path.join(tmpDir, 'deploy.md');
+    fs.writeFileSync(file, '---\ndescription: Deploy app\nargs: environment\n---\n');
+    const result = extractFrontmatter(file);
+    expect(result.args).toBe('environment');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// extractFrontmatterField
+// ---------------------------------------------------------------------------
+
+describe('extractFrontmatterField', () => {
+  it('extracts unquoted value', () => {
+    const lines = ['description: Some text', 'version: 1.0'];
+    expect(extractFrontmatterField(lines, 'description')).toBe('Some text');
+  });
+
+  it('extracts quoted value and strips quotes', () => {
+    const lines = ['description: "Quoted text"'];
+    expect(extractFrontmatterField(lines, 'description')).toBe('Quoted text');
+  });
+
+  it('returns null for missing key', () => {
+    const lines = ['description: text'];
+    expect(extractFrontmatterField(lines, 'args')).toBeNull();
+  });
+
+  it('returns null for empty value', () => {
+    const lines = ['args:'];
+    expect(extractFrontmatterField(lines, 'args')).toBeNull();
   });
 });
 
@@ -227,6 +286,24 @@ describe('buildCommandList', () => {
     const commands = buildCommandList(tmpDir, { source: 'invalid' });
     // Falls back to 'workflows'
     expect(commands.length).toBeGreaterThan(0);
+  });
+
+  it('appends args hint to description when args present', () => {
+    fs.writeFileSync(
+      path.join(workflowDir, 'pr-review.md'),
+      '---\ndescription: Review a pull request\nargs: "PR #"\n---\n'
+    );
+    const commands = buildCommandList(tmpDir);
+    const prReview = commands.find(c => c.command === 'pr_review');
+    expect(prReview).toBeDefined();
+    expect(prReview.description).toBe('Review a pull request (+ PR #)');
+  });
+
+  it('does not append args hint when args not present', () => {
+    const commands = buildCommandList(tmpDir);
+    const status = commands.find(c => c.command === 'status');
+    expect(status).toBeDefined();
+    expect(status.description).not.toContain('(+');
   });
 });
 
@@ -491,15 +568,17 @@ describe('syncBotCommands', () => {
     }
   });
 
-  it('calls API with provided token', async () => {
+  it('calls API with provided token for single scope', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
       json: () => Promise.resolve({ ok: true }),
     }));
     const result = await syncBotCommands(tmpDir, {
       token: '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345',
+      scope: 'all_private_chats',
     });
     expect(result.success).toBe(true);
     expect(result.commands.length).toBe(2);
+    expect(result.scopeResults).toHaveLength(1);
   });
 
   it('passes explicit scope through to pushToTelegram', async () => {
@@ -511,24 +590,541 @@ describe('syncBotCommands', () => {
       token: '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345',
       scope: 'all_group_chats',
     });
+    expect(mockFetch).toHaveBeenCalledTimes(1);
     const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
     expect(callBody.scope).toEqual({ type: 'all_group_chats' });
   });
 
-  it('uses default scope when none provided', async () => {
+  it('pushes to all 4 scopes when no scope specified (default)', async () => {
     const mockFetch = vi.fn().mockResolvedValue({
       json: () => Promise.resolve({ ok: true }),
     });
     vi.stubGlobal('fetch', mockFetch);
-    await syncBotCommands(tmpDir, {
+    const result = await syncBotCommands(tmpDir, {
       token: '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345',
     });
-    const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
-    expect(callBody.scope).toEqual({ type: 'all_private_chats' });
+    expect(mockFetch).toHaveBeenCalledTimes(4);
+    expect(result.success).toBe(true);
+    expect(result.scopeResults).toHaveLength(4);
+    const scopes = result.scopeResults.map(r => r.scope).sort();
+    expect(scopes).toEqual([...VALID_SCOPES].sort());
   });
 
-  it('shows scope in dry-run message', async () => {
+  it('reports partial failure when one scope fails', async () => {
+    let callCount = 0;
+    const mockFetch = vi.fn().mockImplementation(() => {
+      callCount++;
+      if (callCount === 2) {
+        return Promise.resolve({ json: () => Promise.resolve({ ok: false, error_code: 400, description: 'Bad Request' }) });
+      }
+      return Promise.resolve({ json: () => Promise.resolve({ ok: true }) });
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    const result = await syncBotCommands(tmpDir, {
+      token: '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345',
+    });
+    expect(result.success).toBe(false);
+    expect(result.scopeResults.filter(r => r.success)).toHaveLength(3);
+    expect(result.scopeResults.filter(r => !r.success)).toHaveLength(1);
+  });
+
+  it('shows all scopes in dry-run message when no scope specified', async () => {
+    const result = await syncBotCommands(tmpDir, { dryRun: true });
+    expect(result.message).toContain('scope: all');
+    for (const scope of VALID_SCOPES) {
+      expect(result.message).toContain(scope);
+    }
+  });
+
+  it('shows single scope in dry-run message', async () => {
     const result = await syncBotCommands(tmpDir, { dryRun: true, scope: 'all_group_chats' });
     expect(result.message).toContain('scope: all_group_chats');
+  });
+
+  it('clears commands for single scope', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    const result = await syncBotCommands(tmpDir, {
+      token: '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345',
+      clear: true,
+      scope: 'default',
+    });
+    expect(result.success).toBe(true);
+    expect(result.commands).toHaveLength(0);
+    expect(result.scopeResults).toHaveLength(1);
+    expect(result.scopeResults[0].scope).toBe('default');
+    const url = mockFetch.mock.calls[0][0];
+    expect(url).toContain('/deleteMyCommands');
+  });
+
+  it('clears commands from all scopes', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    const result = await syncBotCommands(tmpDir, {
+      token: '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345',
+      clear: true,
+    });
+    expect(result.success).toBe(true);
+    expect(mockFetch).toHaveBeenCalledTimes(4);
+    expect(result.scopeResults).toHaveLength(4);
+  });
+
+  it('clear mode returns error without token', async () => {
+    const origHome = process.env.HOME;
+    const origUserProfile = process.env.USERPROFILE;
+    delete process.env.TELEGRAM_BOT_TOKEN;
+    process.env.HOME = '/nonexistent';
+    process.env.USERPROFILE = '/nonexistent';
+    try {
+      const result = await syncBotCommands(tmpDir, { clear: true });
+      expect(result.success).toBe(false);
+      expect(result.message).toContain('No bot token');
+    } finally {
+      process.env.HOME = origHome;
+      process.env.USERPROFILE = origUserProfile;
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// deleteFromTelegram
+// ---------------------------------------------------------------------------
+
+describe('deleteFromTelegram', () => {
+  const validToken = '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345';
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('rejects invalid token without calling API', async () => {
+    const result = await deleteFromTelegram('bad');
+    expect(result.success).toBe(false);
+  });
+
+  it('calls deleteMyCommands endpoint', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    await deleteFromTelegram(validToken, 'default');
+    expect(mockFetch.mock.calls[0][0]).toContain('/deleteMyCommands');
+  });
+
+  it('returns success on ok: true', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    }));
+    const result = await deleteFromTelegram(validToken, 'all_private_chats');
+    expect(result.success).toBe(true);
+    expect(result.message).toContain('Cleared');
+  });
+
+  it('returns error on ok: false', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: false, error_code: 401, description: 'Unauthorized' }),
+    }));
+    const result = await deleteFromTelegram(validToken, 'default');
+    expect(result.success).toBe(false);
+    expect(result.message).toContain('Unauthorized');
+  });
+
+  it('rejects invalid scope', async () => {
+    const result = await deleteFromTelegram(validToken, 'invalid');
+    expect(result.success).toBe(false);
+    expect(result.message).toContain('Invalid scope');
+  });
+
+  it('sends scope in request body', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    await deleteFromTelegram(validToken, 'all_group_chats');
+    const body = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(body.scope).toEqual({ type: 'all_group_chats' });
+  });
+});
+
+// ---------------------------------------------------------------------------
+// pushToAllScopes
+// ---------------------------------------------------------------------------
+
+describe('pushToAllScopes', () => {
+  const validToken = '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345';
+  const commands = [{ command: 'test', description: 'Test' }];
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('makes 4 API calls (one per scope)', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    const { results, allSuccess } = await pushToAllScopes(validToken, commands);
+    expect(mockFetch).toHaveBeenCalledTimes(4);
+    expect(allSuccess).toBe(true);
+    expect(results).toHaveLength(4);
+  });
+
+  it('returns allSuccess false when any scope fails', async () => {
+    let callCount = 0;
+    vi.stubGlobal('fetch', vi.fn().mockImplementation(() => {
+      callCount++;
+      if (callCount === 1) {
+        return Promise.resolve({ json: () => Promise.resolve({ ok: false, error_code: 400 }) });
+      }
+      return Promise.resolve({ json: () => Promise.resolve({ ok: true }) });
+    }));
+    const { results, allSuccess } = await pushToAllScopes(validToken, commands);
+    expect(allSuccess).toBe(false);
+    expect(results.filter(r => r.success)).toHaveLength(3);
+  });
+
+  it('each result has scope field', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    }));
+    const { results } = await pushToAllScopes(validToken, commands);
+    const scopes = results.map(r => r.scope).sort();
+    expect(scopes).toEqual([...VALID_SCOPES].sort());
+  });
+
+  it('fails fast with invalid token', async () => {
+    const { results, allSuccess } = await pushToAllScopes('bad', commands);
+    expect(allSuccess).toBe(false);
+    expect(results.every(r => !r.success)).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// clearAllScopes
+// ---------------------------------------------------------------------------
+
+describe('clearAllScopes', () => {
+  const validToken = '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345';
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('makes 4 delete calls', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+    const { results, allSuccess } = await clearAllScopes(validToken);
+    expect(mockFetch).toHaveBeenCalledTimes(4);
+    expect(allSuccess).toBe(true);
+    expect(results).toHaveLength(4);
+    for (const call of mockFetch.mock.calls) {
+      expect(call[0]).toContain('/deleteMyCommands');
+    }
+  });
+
+  it('fails fast with invalid token', async () => {
+    const { allSuccess } = await clearAllScopes('bad');
+    expect(allSuccess).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Constants (new)
+// ---------------------------------------------------------------------------
+
+describe('PLUGIN_BASE_COMMANDS', () => {
+  it('contains start and help commands', () => {
+    expect(PLUGIN_BASE_COMMANDS).toEqual([
+      { command: 'start', description: 'Welcome and setup guide' },
+      { command: 'help', description: 'What this bot can do' },
+    ]);
+  });
+
+  it('is frozen', () => {
+    expect(Object.isFrozen(PLUGIN_BASE_COMMANDS)).toBe(true);
+  });
+});
+
+describe('GUARD_DELAY_MS', () => {
+  it('is 8000ms', () => {
+    expect(GUARD_DELAY_MS).toBe(8000);
+  });
+});
+
+describe('CACHE_FILENAME', () => {
+  it('equals bot-menu-cache.json', () => {
+    expect(CACHE_FILENAME).toBe('bot-menu-cache.json');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// getCachePath
+// ---------------------------------------------------------------------------
+
+describe('getCachePath', () => {
+  it('returns path under .claude/channels/telegram/', () => {
+    const result = getCachePath();
+    expect(result).toContain('.claude');
+    expect(result).toContain('channels');
+    expect(result).toContain('telegram');
+    expect(result).toContain('bot-menu-cache.json');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// cacheCommands
+// ---------------------------------------------------------------------------
+
+describe('cacheCommands', () => {
+  const tmpDir = path.join(__dirname, '__tmp_cache_test__');
+  let originalHome;
+
+  beforeEach(() => {
+    fs.mkdirSync(path.join(tmpDir, '.claude', 'channels', 'telegram'), { recursive: true });
+    originalHome = process.env.HOME;
+    process.env.HOME = tmpDir;
+    // Also set USERPROFILE for Windows
+    process.env.USERPROFILE = tmpDir;
+  });
+
+  afterEach(() => {
+    process.env.HOME = originalHome;
+    process.env.USERPROFILE = originalHome;
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  it('writes cache file with merged commands', () => {
+    const commands = [
+      { command: 'plan', description: 'Create plan' },
+      { command: 'debug', description: 'Debug mode' },
+    ];
+    const result = cacheCommands(commands);
+    expect(result.success).toBe(true);
+    expect(result.count).toBe(4); // 2 plugin + 2 workflow
+
+    const cached = JSON.parse(fs.readFileSync(result.path, 'utf-8'));
+    expect(cached.version).toBe(1);
+    expect(cached.commands).toHaveLength(4);
+    expect(cached.commands[0].command).toBe('start');
+    expect(cached.commands[1].command).toBe('help');
+    expect(cached.commands[2].command).toBe('plan');
+    expect(cached.commands[3].command).toBe('debug');
+  });
+
+  it('skips plugin commands that already exist in workflows', () => {
+    const commands = [
+      { command: 'start', description: 'Custom start' },
+      { command: 'plan', description: 'Create plan' },
+    ];
+    const result = cacheCommands(commands);
+    // existingNames = {start, plan}, so only 'help' from plugin base is added
+    // merged = [help, start(custom), plan] = 3
+    expect(result.count).toBe(3);
+    const cached = JSON.parse(fs.readFileSync(result.path, 'utf-8'));
+    expect(cached.commands).toHaveLength(3);
+    expect(cached.commands[0].command).toBe('help');
+    expect(cached.commands[1].command).toBe('start');
+    expect(cached.commands[1].description).toBe('Custom start');
+  });
+
+  it('includes timestamp in cache', () => {
+    cacheCommands([{ command: 'test', description: 'Test' }]);
+    const cached = JSON.parse(fs.readFileSync(getCachePath(), 'utf-8'));
+    expect(cached.timestamp).toBeDefined();
+    expect(new Date(cached.timestamp).getTime()).toBeGreaterThan(0);
+  });
+
+  it('creates directories if missing', () => {
+    // Remove the pre-created dirs
+    fs.rmSync(path.join(tmpDir, '.claude'), { recursive: true, force: true });
+    const result = cacheCommands([{ command: 'x', description: 'x' }]);
+    expect(result.success).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// readCachedCommands
+// ---------------------------------------------------------------------------
+
+describe('readCachedCommands', () => {
+  const tmpDir = path.join(__dirname, '__tmp_read_cache_test__');
+  let originalHome;
+
+  beforeEach(() => {
+    fs.mkdirSync(path.join(tmpDir, '.claude', 'channels', 'telegram'), { recursive: true });
+    originalHome = process.env.HOME;
+    process.env.HOME = tmpDir;
+    process.env.USERPROFILE = tmpDir;
+  });
+
+  afterEach(() => {
+    process.env.HOME = originalHome;
+    process.env.USERPROFILE = originalHome;
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  it('reads valid cache', () => {
+    const cache = {
+      version: 1,
+      timestamp: new Date().toISOString(),
+      commandCount: 2,
+      commands: [
+        { command: 'plan', description: 'Plan' },
+        { command: 'test', description: 'Test' },
+      ],
+    };
+    fs.writeFileSync(getCachePath(), JSON.stringify(cache), 'utf-8');
+    const result = readCachedCommands();
+    expect(result).not.toBeNull();
+    expect(result.commands).toHaveLength(2);
+  });
+
+  it('returns null for missing cache', () => {
+    const result = readCachedCommands();
+    expect(result).toBeNull();
+  });
+
+  it('returns null for empty commands array', () => {
+    fs.writeFileSync(getCachePath(), JSON.stringify({ commands: [] }), 'utf-8');
+    expect(readCachedCommands()).toBeNull();
+  });
+
+  it('returns null for invalid JSON', () => {
+    fs.writeFileSync(getCachePath(), 'not json', 'utf-8');
+    expect(readCachedCommands()).toBeNull();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// guardPrivateChat
+// ---------------------------------------------------------------------------
+
+describe('guardPrivateChat', () => {
+  const validToken = '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345';
+  const tmpDir = path.join(__dirname, '__tmp_guard_test__');
+  let originalHome;
+
+  beforeEach(() => {
+    fs.mkdirSync(path.join(tmpDir, '.claude', 'channels', 'telegram'), { recursive: true });
+    originalHome = process.env.HOME;
+    process.env.HOME = tmpDir;
+    process.env.USERPROFILE = tmpDir;
+  });
+
+  afterEach(() => {
+    process.env.HOME = originalHome;
+    process.env.USERPROFILE = originalHome;
+    delete process.env.TELEGRAM_BOT_TOKEN;
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+    vi.restoreAllMocks();
+  });
+
+  it('fails when no cache exists', async () => {
+    const result = await guardPrivateChat({ token: validToken });
+    expect(result.success).toBe(false);
+    expect(result.message).toContain('No cached commands');
+  });
+
+  it('fails when no token available', async () => {
+    // Create cache
+    cacheCommands([{ command: 'plan', description: 'Plan' }]);
+    const result = await guardPrivateChat();
+    expect(result.success).toBe(false);
+    expect(result.message).toContain('No bot token');
+  });
+
+  it('pushes cached commands to all_private_chats scope', async () => {
+    cacheCommands([{ command: 'plan', description: 'Plan' }]);
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+
+    const result = await guardPrivateChat({ token: validToken });
+    expect(result.success).toBe(true);
+    expect(mockFetch).toHaveBeenCalledTimes(1);
+
+    const body = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(body.scope.type).toBe('all_private_chats');
+    // Should include plugin base commands + plan
+    expect(body.commands.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it('reads token from environment when not provided', async () => {
+    cacheCommands([{ command: 'test', description: 'Test' }]);
+    process.env.TELEGRAM_BOT_TOKEN = validToken;
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+
+    const result = await guardPrivateChat();
+    expect(result.success).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// syncBotCommands — auto-caching
+// ---------------------------------------------------------------------------
+
+describe('syncBotCommands auto-caching', () => {
+  const validToken = '123456789:ABCdefGHIjklMNOpqrSTUvwxYZ_12345';
+  const tmpDir = path.join(__dirname, '__tmp_sync_cache_test__');
+  const projectDir = path.join(tmpDir, 'project');
+  let originalHome;
+
+  beforeEach(() => {
+    fs.mkdirSync(path.join(tmpDir, '.claude', 'channels', 'telegram'), { recursive: true });
+    fs.mkdirSync(path.join(projectDir, '.agent', 'workflows'), { recursive: true });
+    fs.writeFileSync(
+      path.join(projectDir, '.agent', 'workflows', 'plan.md'),
+      '---\ndescription: Create plan\n---\n'
+    );
+    originalHome = process.env.HOME;
+    process.env.HOME = tmpDir;
+    process.env.USERPROFILE = tmpDir;
+  });
+
+  afterEach(() => {
+    process.env.HOME = originalHome;
+    process.env.USERPROFILE = originalHome;
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+    vi.restoreAllMocks();
+  });
+
+  it('caches commands after successful sync', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+
+    await syncBotCommands(projectDir, { token: validToken });
+
+    const cache = readCachedCommands();
+    expect(cache).not.toBeNull();
+    expect(cache.commands.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('caches commands after single-scope sync', async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ ok: true }),
+    });
+    vi.stubGlobal('fetch', mockFetch);
+
+    await syncBotCommands(projectDir, { token: validToken, scope: 'default' });
+
+    const cache = readCachedCommands();
+    expect(cache).not.toBeNull();
+  });
+
+  it('does not cache on dry run', async () => {
+    await syncBotCommands(projectDir, { token: validToken, dryRun: true });
+    expect(readCachedCommands()).toBeNull();
   });
 });

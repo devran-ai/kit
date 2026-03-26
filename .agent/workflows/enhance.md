@@ -1,5 +1,6 @@
 ---
 description: Add or update features in existing application. Iterative development.
+args: feature description
 version: 2.1.0
 sdlc-phase: build
 skills: [clean-code, testing-patterns]

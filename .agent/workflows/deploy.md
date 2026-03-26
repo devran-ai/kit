@@ -1,5 +1,6 @@
 ---
 description: Production deployment with pre-flight checks, execution, and verification.
+args: environment
 version: 2.1.0
 sdlc-phase: ship
 skills: [deployment-procedures]

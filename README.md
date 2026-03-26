@@ -1,8 +1,8 @@
 # Devran AI Kit
 
-[![Version](https://img.shields.io/badge/version-4.3.0-blue.svg)](https://github.com/devran-ai/kit)
+[![Version](https://img.shields.io/badge/version-4.4.0-blue.svg)](https://github.com/devran-ai/kit)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-434%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-492%20passing-brightgreen.svg)](tests/)
 [![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](package.json)
 [![AI Agents](https://img.shields.io/badge/AI%20Agents-23-purple.svg)](.agent/agents/)
 [![Skills](https://img.shields.io/badge/Skills-34-orange.svg)](.agent/skills/)
@@ -82,7 +82,7 @@ kit scan      # Security scan
 | Skills | 34 | Domain knowledge modules loaded on demand via keyword matching |
 | Commands | 37 | Slash commands for IDE interaction (`/plan`, `/implement`, `/verify`) |
 | Workflows | 21 | Process templates with quality gates and phase enforcement |
-| Runtime Modules | 32 | Engine components (state machine, circuit breaker, plugin system) |
+| Runtime Modules | 33 | Engine components (state machine, circuit breaker, plugin system) |
 | Rules | 10 | Governance constraints (security, coding style, testing, git) |
 | Checklists | 4 | Verification checklists (pre-commit, deployment, review, release) |
 | Hooks | 8 | Lifecycle events (session start/end, phase transition, task complete) |
@@ -97,12 +97,23 @@ Each phase requires explicit developer approval before transitioning. The engine
 
 ## What's New
 
+### v4.4.0
+
+| Change | Details |
+|---|---|
+| Telegram menu guard | SessionStart hook auto-restores workflow menu after Telegram plugin overwrite. Cache-based, non-blocking, zero-config after install |
+| `--guard` flag | `kit sync-bot-commands --guard` — lightweight restore from cache to `all_private_chats` scope |
+| `--install-guard` flag | `kit sync-bot-commands --install-guard` — one-command SessionStart hook installation |
+| Command cache | Auto-caches synced commands to `~/.claude/channels/telegram/bot-menu-cache.json` with plugin base commands merged |
+| Runtime modules | 32 → 33 (`lib/telegram-menu-guard.js` added) |
+| Tests | 434 → 492 (38 test suites) |
+
 ### v4.3.0
 
 | Change | Details |
 |---|---|
 | Telegram sync | `kit sync-bot-commands` — scans `.agent/workflows/` and `.agent/commands/` frontmatter, pushes to Telegram Bot API via `setMyCommands` |
-| CLI flags | `--dry-run`, `--token`, `--limit`, `--source` for fine-grained control |
+| CLI flags | `--dry-run`, `--token`, `--limit`, `--source`, `--scope`, `--clear` for fine-grained control |
 | Runtime modules | 31 → 32 (`lib/telegram-sync.js` added) |
 | Tests | 388 → 434 (38 test suites) |
 
@@ -155,7 +166,7 @@ All generated automatically by `kit init`.
 | `kit market` | Marketplace integration | `search`, `info`, `install` |
 | `kit heal` | CI failure detection and auto-fix | `--file <path>`, `--apply` |
 | `kit health` | Aggregated health check | — |
-| `kit sync-bot-commands` | Sync workflows to Telegram bot menu | `--scope`, `--token`, `--dry-run`, `--limit`, `--source` |
+| `kit sync-bot-commands` | Sync workflows to Telegram bot menu (all scopes) | `--scope`, `--token`, `--dry-run`, `--clear`, `--limit`, `--source`, `--guard`, `--install-guard` |
 
 ## Safety Guarantees
 
@@ -221,12 +232,12 @@ kit/
 │   ├── engine/             # Runtime config (loading-rules, MCP templates)
 │   ├── decisions/          # Architecture Decision Records
 │   └── manifest.json       # Definitive capability inventory
-├── lib/                    # 32 runtime modules (zero dependencies)
+├── lib/                    # 33 runtime modules (zero dependencies)
 ├── bin/kit.js              # CLI entry point
 ├── create-kit-app/         # Project scaffolder
 ├── docs/                   # MkDocs documentation site
 ├── examples/               # Starter examples (minimal, full-stack)
-└── tests/                  # 434 tests (unit, structural, security)
+└── tests/                  # 492 tests (unit, structural, security)
 ```
 
 ## Security

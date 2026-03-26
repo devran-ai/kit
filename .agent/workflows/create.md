@@ -1,5 +1,6 @@
 ---
 description: Create new features, components, or modules from scratch.
+args: component or feature name
 version: 2.1.0
 sdlc-phase: build
 skills: [app-builder, clean-code]

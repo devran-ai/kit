@@ -1,5 +1,6 @@
 ---
 description: Premium UI/UX design and implementation workflow.
+args: component or page
 version: 2.1.0
 sdlc-phase: build
 skills: [ui-ux-pro-max, frontend-patterns, mobile-design]

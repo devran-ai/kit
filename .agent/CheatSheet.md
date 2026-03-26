@@ -1,6 +1,6 @@
 # Devran AI Kit — CheatSheet
 
-> **Version**: v4.3.0 | **Quick Reference** for all capabilities
+> **Version**: v4.4.0 | **Quick Reference** for all capabilities
 > **Session**: Start with `/status`, end with session-end checklist
 
 ---
@@ -339,7 +339,7 @@
 | `kit health` | Aggregated health check | — |
 | `kit plugin` | Plugin management | `list`, `install`, `remove` |
 | `kit market` | Marketplace integration | `search`, `info`, `install` |
-| `kit sync-bot-commands` | Sync workflows to Telegram bot menu | `--scope`, `--token`, `--dry-run`, `--limit`, `--source` |
+| `kit sync-bot-commands` | Sync workflows to Telegram bot menu (all scopes) | `--scope`, `--token`, `--dry-run`, `--clear`, `--limit`, `--source` |
 
 ---
 

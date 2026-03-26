@@ -24,7 +24,7 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 
 ## Quick Overview
 
-**Devran AI Kit v4.3.0** — Trust-Grade AI Development Framework
+**Devran AI Kit v4.4.0** — Trust-Grade AI Development Framework
 
 | Category | Count | Description |
 |:---------|:------|:------------|
@@ -258,7 +258,7 @@ Terminal commands available after installing the kit:
 | `kit market search <query>` | Search marketplace plugins |
 | `kit market info <name>` | Get marketplace plugin details |
 | `kit market install <name>` | Install from marketplace |
-| `kit sync-bot-commands` | Sync workflows to Telegram bot menu (`--scope`, `--token`, `--dry-run`) |
+| `kit sync-bot-commands` | Sync workflows to Telegram bot menu — all scopes (`--scope`, `--token`, `--dry-run`, `--clear`) |
 
 ---
 
