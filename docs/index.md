@@ -1,5 +1,9 @@
 # Devran AI Kit
 
+<p align="center">
+  <img src="assets/og-image.png" alt="Devran AI Kit — Trust-Grade AI Development Framework" width="800" />
+</p>
+
 Welcome to the **Devran AI Kit** documentation — a Trust-Grade AI development framework.
 
 ---

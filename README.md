@@ -1,11 +1,19 @@
 # Devran AI Kit
 
-[![Version](https://img.shields.io/badge/version-4.5.0-blue.svg)](https://github.com/devran-ai/kit)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-499%20passing-brightgreen.svg)](tests/)
-[![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](package.json)
-[![AI Agents](https://img.shields.io/badge/AI%20Agents-23-purple.svg)](.agent/agents/)
-[![Skills](https://img.shields.io/badge/Skills-34-orange.svg)](.agent/skills/)
+<p align="center">
+  <a href="https://devran-ai.github.io/kit/">
+    <img src="docs/assets/og-image.png" alt="Devran AI Kit — Trust-Grade AI Development Framework" width="800" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-4.5.0-blue.svg" alt="Version" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" /></a>
+  <a href="tests/"><img src="https://img.shields.io/badge/tests-499%20passing-brightgreen.svg" alt="Tests" /></a>
+  <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" alt="Dependencies" /></a>
+  <a href=".agent/agents/"><img src="https://img.shields.io/badge/AI%20Agents-23-purple.svg" alt="AI Agents" /></a>
+  <a href=".agent/skills/"><img src="https://img.shields.io/badge/Skills-34-orange.svg" alt="Skills" /></a>
+</p>
 
 > Trust-Grade AI Development Framework — Zero dependencies. 23 agents. 34 skills. 22 workflows. One command.
 
