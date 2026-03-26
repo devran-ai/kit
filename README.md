@@ -244,6 +244,12 @@ kit/
 
 Secret detection covers API keys, tokens, AWS credentials, and private keys. The scanner checks for prompt injection patterns, path traversal attempts, and symlink abuse. Plugins are verified with SHA-256 checksums before installation.
 
+## Telegram Integration
+
+Control your Claude Code session from Telegram — send messages, trigger workflows, and receive responses from your phone.
+
+See the **[Telegram Setup Guide](docs/telegram-setup.md)** for step-by-step instructions.
+
 ## Documentation
 
 Full documentation: [devran-ai.github.io/kit](https://devran-ai.github.io/kit/)
