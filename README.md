@@ -260,7 +260,7 @@ You (Telegram)  ──>  Bot  ──>  Claude Code  ──>  Bot  ──>  You (
 | Plan a feature | `/plan auth system` — bot executes immediately |
 | Review a PR | `/pr_review PR #5` — multi-perspective review runs |
 | Deploy to production | `/deploy staging` — pre-flight checks + deploy |
-| Check project status | `/status` — instant overview |
+| Check project status | `/project_status` — instant overview |
 | Debug an issue | `/debug login page crashes on mobile` |
 
 **Smart argument handling** — Send `/plan` alone and the bot asks what you need. Send `/plan auth system` and it executes directly. No extra steps.

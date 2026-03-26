@@ -13,7 +13,7 @@ Slash commands provide quick execution of common operations. **37 commands** acr
 | `/plan`      | Create implementation plan |
 | `/implement` | Execute plan with tracking |
 | `/setup`     | Configure project context  |
-| `/status`    | Current session status     |
+| `/project_status` | Current session status |
 
 ### 🔨 Development
 

@@ -181,7 +181,7 @@ describe('formatCommand', () => {
 
 describe('getPriority', () => {
   it('returns 3 for critical workflows', () => {
-    expect(getPriority('status')).toBe(3);
+    expect(getPriority('project-status')).toBe(3);
     expect(getPriority('review')).toBe(3);
     expect(getPriority('plan')).toBe(3);
   });
@@ -214,7 +214,7 @@ describe('buildCommandList', () => {
   beforeEach(() => {
     fs.mkdirSync(workflowDir, { recursive: true });
     // Create test workflows
-    fs.writeFileSync(path.join(workflowDir, 'status.md'), '---\ndescription: Project status overview\n---\n');
+    fs.writeFileSync(path.join(workflowDir, 'project-status.md'), '---\ndescription: Project status overview\n---\n');
     fs.writeFileSync(path.join(workflowDir, 'review.md'), '---\ndescription: Code review pipeline\n---\n');
     fs.writeFileSync(path.join(workflowDir, 'brainstorm.md'), '---\ndescription: Structured brainstorming\n---\n');
     fs.writeFileSync(path.join(workflowDir, 'custom.md'), '---\ndescription: Custom workflow\n---\n');
@@ -232,10 +232,10 @@ describe('buildCommandList', () => {
 
   it('sorts by priority (critical first)', () => {
     const commands = buildCommandList(tmpDir);
-    // status (3) and review (3) should come before brainstorm (1) and custom (0)
+    // project-status (3) and review (3) should come before brainstorm (1) and custom (0)
     const names = commands.map(c => c.command);
     const reviewIdx = names.indexOf('review');
-    const statusIdx = names.indexOf('status');
+    const statusIdx = names.indexOf('project-status');
     const brainstormIdx = names.indexOf('brainstorm');
     expect(reviewIdx).toBeLessThan(brainstormIdx);
     expect(statusIdx).toBeLessThan(brainstormIdx);
@@ -302,7 +302,7 @@ describe('buildCommandList', () => {
 
   it('does not append args hint when args not present', () => {
     const commands = buildCommandList(tmpDir);
-    const status = commands.find(c => c.command === 'status');
+    const status = commands.find(c => c.command === 'project_status');
     expect(status).toBeDefined();
     expect(status.description).not.toContain('(+');
   });

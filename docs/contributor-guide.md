@@ -223,7 +223,7 @@ This triggers:
 | `/test` | Write tests for your implementation |
 | `/enhance` | Improve existing code |
 | `/deploy` | Deploy with pre-flight checks |
-| `/status` | Check project and sprint status |
+| `/project_status` | Check project and sprint status |
 | `/security-scan` | Run security analysis |
 | `/retrospective` | Sprint review and audit |
 
@@ -417,7 +417,7 @@ Your session state persists between conversations:
 - Decision history
 - Error budget metrics
 
-Start each session with `/status` to see where you left off.
+Start each session with `/project_status` to see where you left off.
 
 ---
 
@@ -456,7 +456,7 @@ kit heal              # Self-healing for CI failures
 /test                    # Write tests
 /review                  # Quality gate pipeline
 /deploy                  # Production deployment
-/status                  # Sprint & project status
+/project_status          # Sprint & project status
 /retrospective           # Sprint audit & review
 /security-scan           # Security analysis
 ```

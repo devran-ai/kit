@@ -373,7 +373,7 @@ ${colors.green}Devran AI Kit installed successfully.${colors.reset}
 
 ${colors.bright}Next steps:${colors.reset}
   1. Open your project in an AI-powered IDE
-  2. Run ${colors.cyan}/status${colors.reset} to verify
+  2. Run ${colors.cyan}/project_status${colors.reset} to verify
   3. Use ${colors.cyan}/help${colors.reset} to see available commands
 
 ${colors.bright}Validate your installation:${colors.reset}

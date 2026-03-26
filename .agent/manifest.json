@@ -271,7 +271,7 @@
       ]
     },
     "workflows": {
-      "count": 21,
+      "count": 22,
       "items": [
         {
           "name": "brainstorm",
@@ -342,8 +342,12 @@
           "file": "workflows/review.md"
         },
         {
-          "name": "status",
-          "file": "workflows/status.md"
+          "name": "help-kit",
+          "file": "workflows/help-kit.md"
+        },
+        {
+          "name": "project-status",
+          "file": "workflows/project-status.md"
         },
         {
           "name": "test",

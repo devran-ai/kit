@@ -182,4 +182,4 @@ Poll CI status via `gh pr checks`. Report each check. Note draft PRs may not tri
 - **Previous**: `/preflight` · `/review`
 - **Next**: `/deploy`
 - **Skills**: `.agent/skills/pr-toolkit/SKILL.md` · `.agent/skills/git-workflow/SKILL.md`
-- **Related**: `/pr-review` · `/pr-fix` · `/status`
+- **Related**: `/pr-review` · `/pr-fix` · `/project_status`

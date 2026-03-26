@@ -1,10 +1,10 @@
 ---
-name: status
+name: project-status
 description: Display current session status and context
-workflow: status
+workflow: project-status
 ---
 
-# /status
+# /project_status
 
 > **Purpose**: Quick overview of current session state
 
@@ -13,7 +13,7 @@ workflow: status
 ## Usage
 
 ```
-/status
+/project_status
 ```
 
 ---

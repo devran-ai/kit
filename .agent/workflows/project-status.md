@@ -6,9 +6,9 @@ skills: [verification-loop]
 commit-types: [chore]
 ---
 
-# /status — Project Status Overview
+# /project_status — Project Status Overview
 
-> **Trigger**: `/status [sub-command]`
+> **Trigger**: `/project_status [sub-command]`
 > **Lifecycle**: Cross-cutting — any SDLC phase
 
 > Standards: See `rules/workflow-standards.md`
@@ -30,10 +30,10 @@ commit-types: [chore]
 
 | Command | Action |
 | :--- | :--- |
-| `/status` | Full report |
-| `/status brief` | One-line summary |
-| `/status health` | Build, tests, server only |
-| `/status git` | Branch, changes, commits only |
+| `/project_status` | Full report |
+| `/project_status brief` | One-line summary |
+| `/project_status health` | Build, tests, server only |
+| `/project_status git` | Branch, changes, commits only |
 
 ---
 

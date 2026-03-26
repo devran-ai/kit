@@ -43,7 +43,7 @@ git clone https://github.com/devran-ai/kit.git
 cp -r kit/.agent/ your-project/.agent/
 
 # 3. Start your session
-/status
+/project_status
 ```
 
 ---
@@ -96,7 +96,7 @@ Devran AI Kit **only** operates within the `.agent/` directory. Your project fil
 2. Run the status command:
 
 ```
-/status
+/project_status
 ```
 
 You should see:

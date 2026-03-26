@@ -159,7 +159,8 @@
       "dynamicAgentPool": ["architect", "backend-specialist", "frontend-specialist", "mobile-developer", "database-architect", "security-reviewer", "tdd-guide", "e2e-runner", "devops-engineer", "performance-optimizer", "reliability-engineer", "refactor-cleaner", "code-reviewer", "typescript-reviewer", "python-reviewer", "go-reviewer"]
     },
     { "workflow": "retrospective", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" },
-    { "workflow": "status", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" }
+    { "workflow": "project-status", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" },
+    { "workflow": "help-kit", "loadAgents": [], "loadSkills": [], "bindingType": "inferred" }
   ],
   "planningMandates": {
     "description": "Mandatory resources loaded for every /plan invocation regardless of keyword matching. Ensures cross-cutting concerns are never omitted.",

@@ -1,7 +1,7 @@
 # Devran AI Kit — CheatSheet
 
 > **Version**: v4.4.1 | **Quick Reference** for all capabilities
-> **Session**: Start with `/status`, end with session-end checklist
+> **Session**: Start with `/project_status`, end with session-end checklist
 
 ---
 
@@ -9,7 +9,7 @@
 
 ### Start a Session
 
-1. Run `/status` to load context
+1. Run `/project_status` to load context
 2. Review sprint state from `docs/ROADMAP.md`
 3. Verify Git state and dependencies
 4. Confirm direction with user
@@ -34,7 +34,7 @@
 | `/plan` | Create implementation plan |
 | `/implement` | Execute the approved plan |
 | `/verify` | Run all quality gates |
-| `/status` | Check project status |
+| `/project_status` | Check project status |
 
 ### Development
 
@@ -254,7 +254,8 @@
 | debug | `/debug` | Reactive |
 | orchestrate | `/orchestrate` | Reactive |
 | retrospective | `/retrospective` | Evaluate |
-| status | `/status` | Cross-cutting |
+| help-kit | `/help_kit` | Cross-cutting |
+| project-status | `/project_status` | Cross-cutting |
 | upgrade | `/upgrade` | Maintenance |
 
 ---
@@ -291,13 +292,13 @@
 ### 1. Starting a New Feature
 
 ```
-/status → /plan → /create → /test → /review → /pr → /deploy
+/project_status → /plan → /create → /test → /review → /pr → /deploy
 ```
 
 ### 2. Fixing a Bug
 
 ```
-/status → /debug → /fix → /test → /review
+/project_status → /debug → /fix → /test → /review
 ```
 
 ### 3. UI/UX Design Work
@@ -309,13 +310,13 @@
 ### 4. Code Quality Improvement
 
 ```
-/status → /review → /refactor → /test → /verify
+/project_status → /review → /refactor → /test → /verify
 ```
 
 ### 5. Sprint Planning
 
 ```
-/status → /plan → /brainstorm → update ROADMAP.md
+/project_status → /plan → /brainstorm → update ROADMAP.md
 ```
 
 ### 6. PR Lifecycle

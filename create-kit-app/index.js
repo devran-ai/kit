@@ -320,7 +320,7 @@ ${colors.green}✅ Project created successfully!${colors.reset}
 
 ${colors.cyan}Next steps:${colors.reset}
   ${isCurrentDir ? '' : `cd ${projectDir}\n  `}${template.dependencies.length > 0 ? '' : 'npm install\n  '}Open in your AI-powered IDE
-  Run ${colors.green}/status${colors.reset} to verify Devran AI Kit
+  Run ${colors.green}/project_status${colors.reset} to verify Devran AI Kit
 
 ${colors.cyan}Quick start:${colors.reset}
   ${colors.green}/plan${colors.reset}       Create implementation plan

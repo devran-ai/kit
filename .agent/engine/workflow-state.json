@@ -65,7 +65,7 @@
     "MAINTAIN": {
       "status": "pending",
       "description": "Post-deploy monitoring and operational handoff",
-      "workflow": "status",
+      "workflow": "project-status",
       "artifact": null,
       "startedAt": null,
       "completedAt": null

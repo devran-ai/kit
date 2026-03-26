@@ -28,7 +28,7 @@ Devran AI Kit v4.4.1 is an engineered framework with a **32-module runtime engin
 │  │                    21 WORKFLOWS                          │        │
 │  │  /brainstorm • /create • /debug • /deploy • /enhance    │        │
 │  │  /orchestrate • /plan • /pr • /preflight • /preview      │        │
-│  │  /quality-gate • /retrospective • /review • /status      │        │
+│  │  /quality-gate • /retrospective • /review • /project-status │      │
 │  │  /test • /ui-ux-pro-max • /upgrade                       │        │
 │  └─────────────────────────────────────────────────────────┘        │
 │                              │                                       │
@@ -67,7 +67,7 @@ Specialized sub-agents that handle delegated tasks with focused expertise.
 
 Slash commands for quick execution of common operations.
 
-- **Planning**: /plan, /implement, /status, /setup
+- **Planning**: /plan, /implement, /project_status, /setup
 - **Development**: /build, /fix, /debug, /refactor, /cook
 - **Quality**: /verify, /code-review, /security-scan, /perf
 
@@ -86,7 +86,7 @@ Complete development lifecycles for multi-step processes.
 
 - /brainstorm, /create, /debug, /deploy, /enhance, /orchestrate
 - /plan, /pr, /pr-review, /pr-fix, /pr-merge, /pr-split, /preflight, /preview, /quality-gate, /retrospective, /review
-- /status, /test, /ui-ux-pro-max, /upgrade
+- /project-status, /help-kit, /test, /ui-ux-pro-max, /upgrade
 
 ### Runtime Engine (29 Modules)
 

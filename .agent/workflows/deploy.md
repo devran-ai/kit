@@ -86,7 +86,7 @@ Deploy only production-impacting changes: `apps/`, `docker/`, infra config. Neve
 - **Health**: All checks passing
 - **Rollback**: `/deploy rollback` to [previous]
 
-**Next**: `/status` for monitoring.
+**Next**: `/project_status` for monitoring.
 ```
 
 ---
