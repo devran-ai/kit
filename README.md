@@ -11,9 +11,10 @@
 
 ## Why Devran AI Kit?
 
-- **Not a prompt collection** — 32-module zero-dependency runtime engine with workflow state machine, circuit breaker, error budget, and self-healing CI
+- **Not a prompt collection** — 33-module zero-dependency runtime engine with workflow state machine, circuit breaker, error budget, and self-healing CI
 - **Trust-grade governance** — Immutable operating constraints enforced through a 7-phase SDLC (IDLE > EXPLORE > PLAN > IMPLEMENT > VERIFY > CHECKPOINT > REVIEW > DEPLOY)
 - **Intelligent agent system** — 23 specialized agents with reputation scoring, domain-aware routing, and on-demand loading via keyword matching
+- **Telegram integration** — Control your Claude Code session from your phone. Trigger workflows, review PRs, and deploy — all from a Telegram chat
 - **Cross-IDE support** — One `kit init` configures Claude Code, Antigravity, Cursor, OpenCode, and Codex from a single manifest source of truth
 
 ## Comparison
@@ -26,7 +27,8 @@
 | Self-healing CI | None | None | Auto-diagnoses and patches failures |
 | Cross-IDE support | Single IDE | Single IDE | 5 IDEs from one source of truth |
 | Plugin marketplace | None | None | Trust-verified skill marketplace |
-| Test suite | None | None | 434+ tests with security validation |
+| Telegram control | None | None | Full IDE control from your phone |
+| Test suite | None | None | 492+ tests with security validation |
 | Runtime dependencies | Varies | Varies | **Zero** |
 
 ## Quick Start
@@ -246,9 +248,33 @@ Secret detection covers API keys, tokens, AWS credentials, and private keys. The
 
 ## Telegram Integration
 
-Control your Claude Code session from Telegram — send messages, trigger workflows, and receive responses from your phone.
+Run your entire development workflow from your phone. Devran AI Kit turns any Telegram chat into a full Claude Code remote control.
 
-See the **[Telegram Setup Guide](docs/telegram-setup.md)** for step-by-step instructions.
+```
+You (Telegram)  ──>  Bot  ──>  Claude Code  ──>  Bot  ──>  You (Telegram)
+```
+
+| What you can do | How |
+|---|---|
+| Trigger any workflow | Type `/` in the chat — all 21 workflows appear as a native bot menu |
+| Plan a feature | `/plan auth system` — bot executes immediately |
+| Review a PR | `/pr_review PR #5` — multi-perspective review runs |
+| Deploy to production | `/deploy staging` — pre-flight checks + deploy |
+| Check project status | `/status` — instant overview |
+| Debug an issue | `/debug login page crashes on mobile` |
+
+**Smart argument handling** — Send `/plan` alone and the bot asks what you need. Send `/plan auth system` and it executes directly. No extra steps.
+
+**Menu guard** — The bot menu auto-restores on every session. Your 21 workflows are always one tap away.
+
+### Get started
+
+```bash
+kit sync-bot-commands                  # Push workflows to bot menu
+kit sync-bot-commands --install-guard  # Keep menu persistent across sessions
+```
+
+**[Full setup guide](docs/telegram-setup.md)** — Create a bot, install the plugin, pair your account, and start using workflows from Telegram in under 5 minutes.
 
 ## Documentation
 
