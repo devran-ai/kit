@@ -1,13 +1,13 @@
 # Devran AI Kit
 
-[![Version](https://img.shields.io/badge/version-4.4.1-blue.svg)](https://github.com/devran-ai/kit)
+[![Version](https://img.shields.io/badge/version-4.5.0-blue.svg)](https://github.com/devran-ai/kit)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-499%20passing-brightgreen.svg)](tests/)
 [![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](package.json)
 [![AI Agents](https://img.shields.io/badge/AI%20Agents-23-purple.svg)](.agent/agents/)
 [![Skills](https://img.shields.io/badge/Skills-34-orange.svg)](.agent/skills/)
 
-> Trust-Grade AI Development Framework — Zero dependencies. 23 agents. 34 skills. 21 workflows. One command.
+> Trust-Grade AI Development Framework — Zero dependencies. 23 agents. 34 skills. 22 workflows. One command.
 
 ## Why Devran AI Kit?
 
@@ -83,7 +83,7 @@ kit scan      # Security scan
 | Agents | 23 | Specialized AI agents with reputation scoring and domain routing |
 | Skills | 34 | Domain knowledge modules loaded on demand via keyword matching |
 | Commands | 37 | Slash commands for IDE interaction (`/plan`, `/implement`, `/verify`) |
-| Workflows | 21 | Process templates with quality gates and phase enforcement |
+| Workflows | 22 | Process templates with quality gates and phase enforcement |
 | Runtime Modules | 33 | Engine components (state machine, circuit breaker, plugin system) |
 | Rules | 10 | Governance constraints (security, coding style, testing, git) |
 | Checklists | 4 | Verification checklists (pre-commit, deployment, review, release) |
@@ -256,7 +256,7 @@ You (Telegram)  ──>  Bot  ──>  Claude Code  ──>  Bot  ──>  You (
 
 | What you can do | How |
 |---|---|
-| Trigger any workflow | Type `/` in the chat — all 21 workflows appear as a native bot menu |
+| Trigger any workflow | Type `/` in the chat — all 22 workflows appear as a native bot menu |
 | Plan a feature | `/plan auth system` — bot executes immediately |
 | Review a PR | `/pr_review PR #5` — multi-perspective review runs |
 | Deploy to production | `/deploy staging` — pre-flight checks + deploy |
@@ -265,7 +265,7 @@ You (Telegram)  ──>  Bot  ──>  Claude Code  ──>  Bot  ──>  You (
 
 **Smart argument handling** — Send `/plan` alone and the bot asks what you need. Send `/plan auth system` and it executes directly. No extra steps.
 
-**Menu guard** — The bot menu auto-restores on every session. Your 21 workflows are always one tap away.
+**Menu guard** — The bot menu auto-restores on every session. Your 22 workflows are always one tap away.
 
 ### Get started
 

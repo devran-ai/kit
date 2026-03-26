@@ -11,7 +11,7 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 ```
 /help                  # Quick overview of all capabilities
 /help commands         # All 37 slash commands with descriptions
-/help workflows        # All 21 workflows with descriptions
+/help workflows        # All 22 workflows with descriptions
 /help agents           # All 23 AI agents with domains
 /help skills           # All 34 skill modules
 /help rules            # Governance rules
@@ -24,13 +24,13 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 
 ## Quick Overview
 
-**Devran AI Kit v4.4.1** — Trust-Grade AI Development Framework
+**Devran AI Kit v4.5.0** — Trust-Grade AI Development Framework
 
 | Category | Count | Description |
 |:---------|:------|:------------|
 | ⌨️ Commands | 37 | Slash commands for every development task |
 | 🔄 Workflows | 22 | Multi-step development lifecycles |
-| 🤖 Agents | 20 | Specialized AI roles for delegation |
+| 🤖 Agents | 23 | Specialized AI roles for delegation |
 | 🛠️ Skills | 34 | Domain knowledge modules |
 | ⚖️ Rules | 9 | Modular governance constraints |
 | ✅ Checklists | 4 | Quality gate checklists |
@@ -160,7 +160,7 @@ Workflows are multi-step development lifecycles. Use them with the `/` prefix.
 
 ---
 
-## Agents (20)
+## Agents (23)
 
 Agents are specialized AI roles. They are automatically activated based on task context, or you can request a specific agent.
 

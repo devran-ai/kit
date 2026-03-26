@@ -20,7 +20,7 @@ Commands are quick invocations that trigger specific actions or workflows. Type 
 | `/plan`      | Create implementation plan |
 | `/implement` | Execute the approved plan  |
 | `/verify`    | Run all quality gates      |
-| `/status`    | Check project status       |
+| `/project_status` | Check project status  |
 
 ### Development
 
