@@ -34,7 +34,7 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 | 🛠️ Skills | 34 | Domain knowledge modules |
 | ⚖️ Rules | 9 | Modular governance constraints |
 | ✅ Checklists | 4 | Quality gate checklists |
-| ⚙️ Runtime | 29 | Engine modules (governance, reputation, self-healing) |
+| ⚙️ Runtime | 33 | Engine modules (governance, reputation, self-healing) |
 
 ### Getting Started
 

@@ -27,7 +27,7 @@ This loads your session context and activates the orchestrator.
 ├── agents/                 # 23 specialized agents
 ├── commands/               # 37 slash commands
 ├── skills/                 # 34 capability extensions
-├── workflows/              # 21 slash command workflows
+├── workflows/              # 22 slash command workflows
 ├── hooks/                  # Event-driven automation
 ├── rules/                  # Modular governance
 ├── contexts/               # Mode switching

@@ -145,6 +145,6 @@ Runs all quality gates: build, lint, test, coverage.
 - **[Agents](agents/index.md)** — 23 specialized AI agents
 - **[Commands](commands/index.md)** — 37 slash commands
 - **[Skills](skills/index.md)** — 34 domain expertise modules
-- **[Workflows](workflows/index.md)** — 21 development workflows
+- **[Workflows](workflows/index.md)** — 22 development workflows
 - **[Session Management](session-management.md)** — Never lose context
 - **[Governance](governance/index.md)** — Operating constraints

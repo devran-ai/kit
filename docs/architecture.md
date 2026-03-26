@@ -25,7 +25,7 @@ Devran AI Kit v4.5.0 is an engineered framework with a **33-module runtime engin
 │           ┌──────────────────┴──────────────────┐                   │
 │           ▼                                      ▼                   │
 │  ┌─────────────────────────────────────────────────────────┐        │
-│  │                    21 WORKFLOWS                          │        │
+│  │                    22 WORKFLOWS                          │        │
 │  │  /brainstorm • /create • /debug • /deploy • /enhance    │        │
 │  │  /orchestrate • /plan • /pr • /preflight • /preview      │        │
 │  │  /quality-gate • /retrospective • /review • /project-status │      │
@@ -40,7 +40,7 @@ Devran AI Kit v4.5.0 is an engineered framework with a **33-module runtime engin
 │  └─────────────────┘                   └─────────────────┘          │
 │                                                                      │
 │  ┌─────────────────────────────────────────────────────────┐        │
-│  │              RUNTIME ENGINE (32 modules)                 │        │
+│  │              RUNTIME ENGINE (33 modules)                 │        │
 │  │  workflow-engine • session-manager • task-governance      │        │
 │  │  agent-reputation • self-healing • marketplace            │        │
 │  │  plugin-system • identity • conflict-detector • + 12      │        │
@@ -80,7 +80,7 @@ Domain expertise modules that extend AI capabilities.
 - **Planning**: plan-writing (tiered quality schema), plan-validation (completeness scoring), brainstorming
 - **Domain**: api-patterns, architecture, clean-code, database-design, testing-patterns, pr-toolkit, and 15 more
 
-### Workflows (21)
+### Workflows (22)
 
 Complete development lifecycles for multi-step processes.
 
@@ -88,7 +88,7 @@ Complete development lifecycles for multi-step processes.
 - /plan, /pr, /pr-review, /pr-fix, /pr-merge, /pr-split, /preflight, /preview, /quality-gate, /retrospective, /review
 - /project-status, /help-kit, /test, /ui-ux-pro-max, /upgrade
 
-### Runtime Engine (29 Modules)
+### Runtime Engine (33 Modules)
 
 Node.js runtime modules that enforce governance, manage state, and provide platform features.
 
@@ -121,7 +121,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 ├── templates/            # Feature templates
 └── decisions/            # ADR system
 
-lib/                      # Runtime Engine (32 modules)
+lib/                      # Runtime Engine (33 modules)
 ├── workflow-engine.js    # State machine enforcement
 ├── task-governance.js    # Locking, audit trail, decision timeline
 ├── agent-reputation.js   # Score tracking & rankings

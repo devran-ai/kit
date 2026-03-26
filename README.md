@@ -228,7 +228,7 @@ kit/
 │   ├── agents/             # 23 specialized agent definitions
 │   ├── skills/             # 34 domain knowledge modules
 │   ├── commands/           # 37 slash command definitions
-│   ├── workflows/          # 21 workflow templates
+│   ├── workflows/          # 22 workflow templates
 │   ├── rules/              # 10 governance constraints
 │   ├── checklists/         # 4 lifecycle quality gates
 │   ├── engine/             # Runtime config (loading-rules, MCP templates)

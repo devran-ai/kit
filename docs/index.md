@@ -13,7 +13,7 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 | 🤖 **AI Agents**  | 23    | Specialized roles (Mobile, DevOps, Database, Security, PR Review...)   |
 | 🛠️ **Skills**     | 34    | Domain knowledge modules (API, Testing, PR Toolkit, Docker...)         |
 | ⌨️ **Commands**   | 37    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 21    | Process templates (/create, /debug, /deploy, /pr, /pr-merge...)        |
+| 🔄 **Workflows**  | 22    | Process templates (/create, /debug, /deploy, /pr, /pr-merge...)        |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
 | ⚙️ **Runtime**    | 33    | Runtime engine modules (governance, reputation, self-healing...)       |
@@ -43,7 +43,7 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :arrows_counterclockwise: **[Workflows](workflows/index.md)**
 
-  21 full development workflows
+  22 full development workflows
 
 - :repeat: **[Session Management](session-management.md)**
 

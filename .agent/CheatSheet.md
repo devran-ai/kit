@@ -357,7 +357,7 @@
 ├── agents/                  # 23 specialized agents
 ├── commands/                # 37 slash commands
 ├── skills/                  # 34 capability extensions
-├── workflows/               # 21 slash command workflows
+├── workflows/               # 22 slash command workflows
 ├── hooks/                   # Event-driven automation
 ├── rules/                   # 9 modular governance rules
 ├── contexts/                # Mode switching (brainstorm, debug, etc.)
