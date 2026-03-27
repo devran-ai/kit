@@ -54,11 +54,11 @@ feature/xxx  →  PR  →  main
    git checkout -b feat/your-feature-name
    ```
 2. **Make changes** and commit with conventional messages
-4. **Run tests**: `npm test`
-5. **Push** your branch: `git push -u origin feat/your-feature-name`
-6. **Create PR** targeting `main`
-7. **Wait** for CI checks and reviewer approval
-8. **Squash-merge** after approval
+3. **Run tests**: `npm test`
+4. **Push** your branch: `git push -u origin feat/your-feature-name`
+5. **Create PR** targeting `main`
+6. **Wait** for CI checks and reviewer approval
+7. **Squash-merge** after approval
 
 ### Commit Messages
 
