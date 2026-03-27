@@ -89,7 +89,7 @@ kit scan      # Security scan
 | Component | Count | Purpose |
 |---|---|---|
 | Agents | 23 | Specialized AI agents with reputation scoring and domain routing |
-| Skills | 34 | Domain knowledge modules loaded on demand via keyword matching |
+| Skills | 35 | Domain knowledge modules loaded on demand via keyword matching |
 | Commands | 37 | Slash commands for IDE interaction (`/plan`, `/implement`, `/verify`) |
 | Workflows | 22 | Process templates with quality gates and phase enforcement |
 | Runtime Modules | 33 | Engine components (state machine, circuit breaker, plugin system) |
@@ -194,7 +194,7 @@ Devran AI Kit is designed to **never touch your project files**. All operations 
 kit/
 ├── .agent/                 # Framework directory (installed to projects)
 │   ├── agents/             # 23 specialized agent definitions
-│   ├── skills/             # 34 domain knowledge modules
+│   ├── skills/             # 35 domain knowledge modules
 │   ├── commands/           # 37 slash command definitions
 │   ├── workflows/          # 22 workflow templates
 │   ├── rules/              # 10 governance constraints
