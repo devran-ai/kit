@@ -1,6 +1,6 @@
 # Skills
 
-Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **34 skills** across 7 categories.
+Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **35 skills** across 7 categories.
 
 ---
 

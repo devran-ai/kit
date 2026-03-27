@@ -3,7 +3,7 @@ description: Systematic debugging workflow. Activates DEBUG mode for problem inv
 args: error or issue description
 version: 2.1.0
 sdlc-phase: reactive
-skills: [debugging-strategies]
+skills: [debugging-strategies, project-docs-discovery]
 commit-types: [fix]
 ---
 
@@ -21,7 +21,7 @@ commit-types: [fix]
 1. Root cause required — never fix without understanding why
 2. No guessing — form hypotheses, test systematically
 3. Prevention mandatory — every fix includes recurrence prevention
-4. Preserve evidence before changing anything
+4. Preserve evidence before changing anything — check project `ARCHITECTURE.md` for system design context
 5. Minimal changes — fix only what's broken
 
 ---

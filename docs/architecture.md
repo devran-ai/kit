@@ -1,6 +1,6 @@
 # Architecture
 
-Devran AI Kit v4.5.1 is an engineered framework with a **33-module runtime engine**, 23 agents, 34 skills, 37 commands, and 22 workflows.
+Devran AI Kit v4.5.1 is an engineered framework with a **33-module runtime engine**, 23 agents, 35 skills, 37 commands, and 22 workflows.
 
 ---
 
@@ -12,7 +12,7 @@ Devran AI Kit v4.5.1 is an engineered framework with a **33-module runtime engin
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
-│  │   23 AGENTS     │  │   37 COMMANDS   │  │   34 SKILLS     │      │
+│  │   23 AGENTS     │  │   37 COMMANDS   │  │   35 SKILLS     │      │
 │  │                 │  │                 │  │                 │      │
 │  │ • Architect     │  │ • /plan         │  │ • api-patterns  │      │
 │  │ • Mobile Dev    │  │ • /implement    │  │ • architecture  │      │
@@ -71,7 +71,7 @@ Slash commands for quick execution of common operations.
 - **Development**: /build, /fix, /debug, /refactor, /cook
 - **Quality**: /verify, /code-review, /security-scan, /perf
 
-### Skills (34)
+### Skills (35)
 
 Domain expertise modules that extend AI capabilities.
 
@@ -112,7 +112,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 .agent/
 ├── agents/               # 23 specialized agents
 ├── commands/             # 37 slash commands
-├── skills/               # 34 capability modules
+├── skills/               # 35 capability modules
 ├── workflows/            # 22 process templates
 ├── engine/               # Autonomy Engine configs
 ├── hooks/                # Event automation

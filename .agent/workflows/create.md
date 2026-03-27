@@ -3,7 +3,7 @@ description: Create new features, components, or modules from scratch.
 args: component or feature name
 version: 2.1.0
 sdlc-phase: build
-skills: [app-builder, clean-code]
+skills: [app-builder, clean-code, project-docs-discovery]
 commit-types: [feat]
 ---
 
@@ -18,7 +18,7 @@ commit-types: [feat]
 
 ## Critical Rules
 
-1. Follow existing patterns — scan codebase before writing
+1. Follow existing patterns — scan codebase and project design system docs before writing
 2. No orphan code — every file must be imported/referenced/routed
 3. Tests required for all new features
 4. Stack-agnostic detection from config files

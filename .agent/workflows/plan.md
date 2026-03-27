@@ -4,7 +4,7 @@ args: feature or task description
 version: 2.2.0
 sdlc-phase: plan
 agents: [planner]
-skills: [plan-writing, brainstorming, plan-validation]
+skills: [plan-writing, brainstorming, plan-validation, project-docs-discovery]
 commit-types: [docs]
 ---
 
@@ -37,6 +37,8 @@ commit-types: [docs]
 
 // turbo
 2. **Explore Codebase** — scan structure, identify relevant files, patterns, dependencies.
+
+2.5. **Consult Project Docs** — scan `docs/` for architecture, design system, and guidelines. Reference discovered constraints in plan sections. If no project docs found, skip.
 
 3. **Create Plan**
    - Consult mandatory rules (security, testing, coding-style, documentation, git-workflow)

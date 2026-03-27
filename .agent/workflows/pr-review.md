@@ -3,7 +3,7 @@ description: Multi-perspective PR review covering hygiene, branch strategy, code
 args: "PR #"
 version: 1.1.0
 sdlc-phase: verify
-skills: [pr-toolkit, verification-loop]
+skills: [pr-toolkit, verification-loop, project-docs-discovery]
 commit-types: []
 ---
 
@@ -91,11 +91,16 @@ gh pr checks <number> --repo <owner/repo>
 - Validate target branch per strategy rules
 - Check branch naming convention
 
+### Step 5.5: Project Docs Cross-Reference
+
+Scan `docs/` for design system, architecture, and compliance docs. In Step 6, cross-reference code changes against discovered project guidelines and constraints. If no project docs found, skip.
+
 ### Step 6: Multi-Perspective Code Review
 
 Read each changed file. For every finding include: `file:line`, quoted code, impact explanation, concrete fix.
 
 **Cross-file consistency**: verify counts, references, categorizations match across related files.
+**Project docs consistency**: verify changes align with discovered design system, architecture, and compliance docs.
 
 **6a. Code Quality** — function size (>50 lines), file size (>800 lines), nesting (>4 levels), error handling, debug artifacts, naming, immutability
 

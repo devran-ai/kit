@@ -130,7 +130,7 @@
       "directory": "commands/"
     },
     "skills": {
-      "count": 34,
+      "count": 35,
       "items": [
         {
           "name": "api-patterns",
@@ -235,6 +235,10 @@
         {
           "name": "production-readiness",
           "directory": "skills/production-readiness/"
+        },
+        {
+          "name": "project-docs-discovery",
+          "directory": "skills/project-docs-discovery/"
         },
         {
           "name": "security-practices",

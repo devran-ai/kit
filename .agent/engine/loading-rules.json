@@ -1,5 +1,13 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
+  "projectDocDiscovery": {
+    "enabled": true,
+    "maxDocs": 8,
+    "scanDepth": 3,
+    "maxFiles": 200,
+    "domainBoost": 2,
+    "description": "Auto-discovers project docs/ and includes domain-relevant docs in load plan. Zero-config."
+  },
   "defaultLoad": [
     "rules.md",
     "manifest.json",

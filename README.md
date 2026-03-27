@@ -12,10 +12,10 @@
   <a href="tests/"><img src="https://img.shields.io/badge/tests-499%20passing-brightgreen.svg" alt="Tests" /></a>
   <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" alt="Dependencies" /></a>
   <a href=".agent/agents/"><img src="https://img.shields.io/badge/AI%20Agents-23-purple.svg" alt="AI Agents" /></a>
-  <a href=".agent/skills/"><img src="https://img.shields.io/badge/Skills-34-orange.svg" alt="Skills" /></a>
+  <a href=".agent/skills/"><img src="https://img.shields.io/badge/Skills-35-orange.svg" alt="Skills" /></a>
 </p>
 
-> Trust-Grade AI Development Framework — Zero dependencies. 23 agents. 34 skills. 22 workflows. One command.
+> Trust-Grade AI Development Framework — Zero dependencies. 23 agents. 35 skills. 22 workflows. One command.
 
 ## Why Devran AI Kit?
 
