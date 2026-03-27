@@ -19,48 +19,46 @@ Thank you for your interest in contributing to **Devran AI Kit**!
    npm test
    ```
 
-## GitFlow Branching Strategy
+## GitHub Flow
 
-We use **GitFlow** with `dev` as the integration branch and `main` as the production branch.
+We use **GitHub Flow** — all changes go through pull requests to `main`.
 
 ```
-main (production — releases only)
- └── dev (integration — all features merge here)
-      ├── feat/your-feature
-      ├── fix/your-bugfix
-      └── docs/your-docs
+feature/xxx  →  PR  →  main
+                 ↑
+           CI + Review
 ```
 
 ### Branch Rules
 
 | Branch Type | Base | Target | Example |
 |:---|:---|:---|:---|
-| `feat/*` | `dev` | `dev` | `feat/add-python-agent` |
-| `fix/*` | `dev` | `dev` | `fix/cli-init-error` |
-| `refactor/*` | `dev` | `dev` | `refactor/loading-engine` |
-| `docs/*` | `dev` | `dev` | `docs/update-readme` |
-| `chore/*` | `dev` | `dev` | `chore/bump-deps` |
-| `hotfix/*` | `main` | `main` + `dev` | `hotfix/security-patch` |
+| `feat/*` | `main` | `main` | `feat/add-python-agent` |
+| `fix/*` | `main` | `main` | `fix/cli-init-error` |
+| `refactor/*` | `main` | `main` | `refactor/loading-engine` |
+| `docs/*` | `main` | `main` | `docs/update-readme` |
+| `chore/*` | `main` | `main` | `chore/bump-deps` |
 
-**Important**: Always create your branch from `dev`, not `main`. PRs should target `dev`.
+### Branch Protection
 
-### Creating a Feature Branch
-
-```bash
-git checkout dev
-git pull origin dev
-git checkout -b feat/your-feature-name
-```
+- `main` is protected: **no direct pushes**, PRs required
+- `main` cannot be deleted or force-pushed
+- Feature branches are deleted after merge
 
 ## Development Workflow
 
-1. **Create branch** from `dev` (see above)
+1. **Create a branch from `main`**:
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b feat/your-feature-name
+   ```
 2. **Make changes** and commit with conventional messages
 3. **Run tests**: `npm test`
 4. **Push** your branch: `git push -u origin feat/your-feature-name`
-5. **Create PR** targeting `dev`
+5. **Create PR** targeting `main`
 6. **Wait** for CI checks and reviewer approval
-7. **Squash-merge** into `dev`
+7. **Squash-merge** after approval
 
 ### Commit Messages
 
@@ -111,65 +109,37 @@ Before submitting a PR, ensure:
    Instructions...
    ```
 2. Add entry to `.agent/manifest.json`
-3. Update count in `README.md`, `.agent/CheatSheet.md`, `bin/kit.js`
+3. Update count in `README.md` and `bin/kit.js`
 4. Run `npm test` to verify structural integrity
 
 ### Adding a Skill
 
-1. Create `.agent/skills/your-skill/SKILL.md` with frontmatter:
-   ```markdown
-   ---
-   name: your-skill
-   description: What this skill does
-   triggers: [keyword1, keyword2]
-   ---
-   # Your Skill
-   ## Overview
-   ...
-   ```
+1. Create `.agent/skills/your-skill/SKILL.md` with frontmatter
 2. Add entry to `.agent/manifest.json`
-3. Update counts everywhere (see Adding an Agent, step 3)
+3. Update counts (see Adding an Agent, step 3)
 4. Run `npm test`
 
 ### Adding a Workflow
 
-1. Create `.agent/workflows/your-workflow.md` with frontmatter:
-   ```markdown
-   ---
-   description: What this workflow does
-   ---
-   # Steps...
-   ```
+1. Create `.agent/workflows/your-workflow.md` with frontmatter
 2. Add entry to `.agent/manifest.json`
 3. Update counts
 4. Run `npm test`
 
 ## Release Process
 
-Releases follow the GitFlow release cycle:
-
-1. All features merged into `dev` and stable
-2. Create release PR: `dev` → `main` with title `release: vX.Y.Z`
-3. CI checks pass, human review approved
-4. Merge into `main`
-5. Tag: `git tag vX.Y.Z`
-6. Publish: `npm publish`
-7. Merge `main` back into `dev`
+1. All features merged into `main` via PRs
+2. Tag: `git tag vX.Y.Z`
+3. Publish: `npm publish`
 
 ## Code Standards
 
 - **Zero dependencies** — the core kit uses only Node.js built-ins
+- **Immutable patterns** — spread, filter, map — never mutate
+- **Structured logging** — use `createLogger` in all catch blocks
 - **Strict type safety** — use JSDoc annotations for all functions
 - **Descriptive names** — no abbreviations
 - **Max file length** — 800 lines per file, 50 lines per function
-
-## Pull Request Process
-
-1. Create a PR against `dev` (not `main`)
-2. Fill in the PR template completely
-3. Ensure all CI checks pass
-4. Wait for reviewer approval (gemini-code-assist + human)
-5. Squash-merge after approval
 
 ## Questions?
 
