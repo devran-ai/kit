@@ -13,7 +13,7 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 /help commands         # All 37 slash commands with descriptions
 /help workflows        # All 22 workflows with descriptions
 /help agents           # All 23 AI agents with domains
-/help skills           # All 34 skill modules
+/help skills           # All 35 skill modules
 /help rules            # Governance rules
 /help checklists       # Quality gate checklists
 /help cli              # Terminal CLI commands (kit)
