@@ -13,7 +13,7 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 /help commands         # All 37 slash commands with descriptions
 /help workflows        # All 22 workflows with descriptions
 /help agents           # All 23 AI agents with domains
-/help skills           # All 34 skill modules
+/help skills           # All 35 skill modules
 /help rules            # Governance rules
 /help checklists       # Quality gate checklists
 /help cli              # Terminal CLI commands (kit)
@@ -24,15 +24,15 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 
 ## Quick Overview
 
-**Devran AI Kit v4.5.1** — Trust-Grade AI Development Framework
+**Devran AI Kit v4.6.0** — Trust-Grade AI Development Framework
 
 | Category | Count | Description |
 |:---------|:------|:------------|
 | ⌨️ Commands | 37 | Slash commands for every development task |
 | 🔄 Workflows | 22 | Multi-step development lifecycles |
 | 🤖 Agents | 23 | Specialized AI roles for delegation |
-| 🛠️ Skills | 34 | Domain knowledge modules |
-| ⚖️ Rules | 9 | Modular governance constraints |
+| 🛠️ Skills | 35 | Domain knowledge modules |
+| ⚖️ Rules | 10 | Modular governance constraints |
 | ✅ Checklists | 4 | Quality gate checklists |
 | ⚙️ Runtime | 33 | Engine modules (governance, reputation, self-healing) |
 
@@ -189,7 +189,7 @@ Agents are specialized AI roles. They are automatically activated based on task 
 
 ---
 
-## Skills (34)
+## Skills (35)
 
 Skills are domain knowledge modules that agents use. They are loaded automatically based on task context.
 
@@ -210,7 +210,7 @@ Skills are domain knowledge modules that agents use. They are loaded automatical
 
 ---
 
-## Rules (9)
+## Rules (10)
 
 Rules are modular governance constraints that all agents must follow.
 
@@ -225,6 +225,7 @@ Rules are modular governance constraints that all agents must follow.
 | `quality-gate` | Pre-task validation and quality standards |
 | `architecture` | System design patterns and ADR governance |
 | `agent-upgrade-policy` | Framework upgrade preservation rules |
+| `workflow-standards` | Artifact discipline, evidence standards, governance |
 
 ---
 

@@ -1,7 +1,7 @@
 # Devran AI Kit — Skills
 
 > **Purpose**: Workflow definitions and domain knowledge extensions
-> **Count**: 34 Skills (7 Operational + 4 Orchestration + 14 Domain + 9 Development)
+> **Count**: 35 Skills (8 Operational + 4 Orchestration + 14 Domain + 9 Development)
 
 ---
 

@@ -7,15 +7,15 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-4.5.1-blue.svg" alt="Version" /></a>
+  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-4.6.0-blue.svg" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" /></a>
-  <a href="tests/"><img src="https://img.shields.io/badge/tests-499%20passing-brightgreen.svg" alt="Tests" /></a>
+  <a href="tests/"><img src="https://img.shields.io/badge/tests-533%20passing-brightgreen.svg" alt="Tests" /></a>
   <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" alt="Dependencies" /></a>
   <a href=".agent/agents/"><img src="https://img.shields.io/badge/AI%20Agents-23-purple.svg" alt="AI Agents" /></a>
-  <a href=".agent/skills/"><img src="https://img.shields.io/badge/Skills-34-orange.svg" alt="Skills" /></a>
+  <a href=".agent/skills/"><img src="https://img.shields.io/badge/Skills-35-orange.svg" alt="Skills" /></a>
 </p>
 
-> Trust-Grade AI Development Framework — Zero dependencies. 23 agents. 34 skills. 22 workflows. One command.
+> Trust-Grade AI Development Framework — Zero dependencies. 23 agents. 35 skills. 22 workflows. One command.
 
 ## Why Devran AI Kit?
 
@@ -36,7 +36,7 @@
 | Cross-IDE support | Single IDE | Single IDE | 5 IDEs from one source of truth |
 | Plugin marketplace | None | None | Trust-verified skill marketplace |
 | Telegram control | None | None | Full IDE control from your phone |
-| Test suite | None | None | 499 tests with security validation |
+| Test suite | None | None | 533 tests with security validation |
 | Runtime dependencies | Varies | Varies | **Zero** |
 
 ## Quick Start
@@ -89,7 +89,7 @@ kit scan      # Security scan
 | Component | Count | Purpose |
 |---|---|---|
 | Agents | 23 | Specialized AI agents with reputation scoring and domain routing |
-| Skills | 34 | Domain knowledge modules loaded on demand via keyword matching |
+| Skills | 35 | Domain knowledge modules loaded on demand via keyword matching |
 | Commands | 37 | Slash commands for IDE interaction (`/plan`, `/implement`, `/verify`) |
 | Workflows | 22 | Process templates with quality gates and phase enforcement |
 | Runtime Modules | 33 | Engine components (state machine, circuit breaker, plugin system) |
@@ -109,7 +109,7 @@ Each phase requires explicit developer approval before transitioning. The engine
 
 See the full **[CHANGELOG](CHANGELOG.md)** for detailed release notes.
 
-**Latest (v4.5.1):** Production-grade audit — immutable state patterns across all stateful modules, structured error logging, path traversal defense, credential leak prevention, documentation consolidation.
+**Latest (v4.6.0):** Production-grade audit — immutable state patterns across all stateful modules, structured error logging, path traversal defense, credential leak prevention, documentation consolidation.
 
 ## Cross-IDE Support
 
@@ -194,7 +194,7 @@ Devran AI Kit is designed to **never touch your project files**. All operations 
 kit/
 ├── .agent/                 # Framework directory (installed to projects)
 │   ├── agents/             # 23 specialized agent definitions
-│   ├── skills/             # 34 domain knowledge modules
+│   ├── skills/             # 35 domain knowledge modules
 │   ├── commands/           # 37 slash command definitions
 │   ├── workflows/          # 22 workflow templates
 │   ├── rules/              # 10 governance constraints
@@ -207,7 +207,7 @@ kit/
 ├── create-kit-app/         # Project scaffolder
 ├── docs/                   # MkDocs documentation site
 ├── examples/               # Starter examples (minimal, full-stack)
-└── tests/                  # 499 tests (unit, structural, security)
+└── tests/                  # 533 tests (unit, structural, security)
 ```
 
 ## Security

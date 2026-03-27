@@ -20,7 +20,7 @@ npx create-kit-app my-project
 
 ```
 my-project/
-├── .agent/              # 23 AI Agents, 34 Skills, 37 Commands, 22 Workflows
+├── .agent/              # 23 AI Agents, 35 Skills, 37 Commands, 22 Workflows
 ├── .githooks/           # Secret detection pre-commit hook
 ├── .gitignore           # Sensible defaults
 ├── package.json         # Project configuration

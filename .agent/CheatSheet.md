@@ -1,6 +1,6 @@
 # Devran AI Kit — CheatSheet
 
-> **Version**: v4.5.1 | **Quick Reference** for all capabilities
+> **Version**: v4.6.0 | **Quick Reference** for all capabilities
 > **Session**: Start with `/project_status`, end with session-end checklist
 
 ---
@@ -163,7 +163,7 @@
 
 ---
 
-## 🧩 Skills (34)
+## 🧩 Skills (35)
 
 ### Operational (7)
 
@@ -271,7 +271,7 @@
 
 ---
 
-## ⚖️ Governance Rules (9)
+## ⚖️ Governance Rules (10)
 
 | Rule File | Scope |
 |:----------|:------|
@@ -356,7 +356,7 @@
 │
 ├── agents/                  # 23 specialized agents
 ├── commands/                # 37 slash commands
-├── skills/                  # 34 capability extensions
+├── skills/                  # 35 capability extensions
 ├── workflows/               # 22 slash command workflows
 ├── hooks/                   # Event-driven automation
 ├── rules/                   # 9 modular governance rules

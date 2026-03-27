@@ -3,7 +3,7 @@ description: Pre-task research and validation protocol. Market research, gap ana
 args: feature name
 version: 2.1.0
 sdlc-phase: discover
-skills: [brainstorming]
+skills: [brainstorming, project-docs-discovery]
 commit-types: [docs, chore]
 ---
 
@@ -18,7 +18,7 @@ commit-types: [docs, chore]
 
 ## Critical Rules
 
-1. No implementation without validated research
+1. No implementation without validated research — review project `ROADMAP.md` and architecture docs for alignment
 2. All claims backed by market data or competitor analysis
 3. Ethics gate — privacy, bias, automation risks evaluated
 4. Approval required before proceeding

@@ -3,7 +3,7 @@ description: Add or update features in existing application. Iterative developme
 args: feature description
 version: 2.1.0
 sdlc-phase: build
-skills: [clean-code, testing-patterns]
+skills: [clean-code, testing-patterns, project-docs-discovery]
 commit-types: [feat, refactor]
 ---
 
@@ -22,7 +22,7 @@ commit-types: [feat, refactor]
 2. Regression check mandatory after every change
 3. User approval for changes affecting >5 files
 4. Incremental approach — small, verifiable changes
-5. Follow existing conventions
+5. Follow existing conventions — consult project architecture and design system docs before modifying
 6. Document user-facing changes
 
 ---

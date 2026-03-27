@@ -1,6 +1,6 @@
 # Skills
 
-Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **34 skills** across 7 categories.
+Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **35 skills** across 7 categories.
 
 ---
 
@@ -18,6 +18,7 @@ Core runtime capabilities for AI agent operation.
 | **eval-harness**        | Performance evaluation metrics                |
 | **context-budget**      | Context window budget management              |
 | **production-readiness**| Audit domains, scoring, and preflight checks  |
+| **project-docs-discovery** | Auto-discover project documentation (design system, architecture) |
 
 ---
 
