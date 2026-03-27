@@ -4,13 +4,48 @@ We welcome contributions! Here's how to get started.
 
 ---
 
-## Development Workflow
+## Git Workflow (GitHub Flow)
+
+This project uses **GitHub Flow** — all changes go through pull requests to `main`.
+
+```
+feature/xxx  →  PR  →  main
+                 ↑
+           CI + Review
+```
+
+### For Contributors
 
 1. **Fork** the repository
-2. **Create** a feature branch
-3. **Make** your changes
-4. **Run** verification: `/verify`
-5. **Submit** a pull request
+2. **Create** a feature branch from `main`: `git checkout -b feat/my-feature`
+3. **Make** your changes (small, focused commits)
+4. **Run** verification: `npm test` and `/verify`
+5. **Push** and open a PR against `main`
+
+### For Maintainers
+
+1. **Create** a branch from `main`: `git checkout -b feat/my-feature`
+2. **Develop** with conventional commits
+3. **Push** the branch: `git push -u origin feat/my-feature`
+4. **Open PR** against `main` — CI runs automatically
+5. **Merge** via GitHub (squash or merge commit)
+6. **Delete** the feature branch after merge
+
+### Branch Naming
+
+| Type | Pattern | Example |
+|:-----|:--------|:--------|
+| Feature | `feat/description` | `feat/agent-scheduling` |
+| Bug fix | `fix/description` | `fix/circuit-breaker-reset` |
+| Refactor | `refactor/description` | `refactor/immutable-state` |
+| Docs | `docs/description` | `docs/telegram-guide` |
+| Chore | `chore/description` | `chore/update-deps` |
+
+### Branch Protection
+
+- `main` is protected: **no direct pushes**, PRs required
+- `main` cannot be deleted or force-pushed
+- Feature branches are deleted after merge
 
 ---
 
