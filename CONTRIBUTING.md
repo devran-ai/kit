@@ -45,19 +45,15 @@ feature/xxx  →  PR  →  main
 - `main` cannot be deleted or force-pushed
 - Feature branches are deleted after merge
 
-### Creating a Feature Branch
-
-```bash
-git checkout main
-git pull origin main
-git checkout -b feat/your-feature-name
-```
-
 ## Development Workflow
 
-1. **Sync `main`**: `git checkout main && git pull origin main`
-2. **Create branch**: `git checkout -b feat/your-feature-name`
-3. **Make changes** and commit with conventional messages
+1. **Create a branch from `main`**:
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b feat/your-feature-name
+   ```
+2. **Make changes** and commit with conventional messages
 4. **Run tests**: `npm test`
 5. **Push** your branch: `git push -u origin feat/your-feature-name`
 6. **Create PR** targeting `main`
@@ -94,7 +90,7 @@ Test suites:
 Before submitting a PR, ensure:
 - [ ] All tests pass (`npm test`)
 - [ ] No hardcoded secrets
-- [ ] Counts are synchronized (manifest, README, CLI)
+- [ ] Counts are synchronized (manifest, README, CheatSheet, CLI)
 - [ ] New agents/skills include YAML frontmatter
 - [ ] PR title uses conventional commit format
 

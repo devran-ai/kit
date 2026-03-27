@@ -25,13 +25,17 @@ feature/xxx  →  PR  →  main
 
 ### For Maintainers
 
-1. **Sync `main`**: `git checkout main && git pull origin main`
-2. **Create** a branch from `main`: `git checkout -b feat/my-feature`
-3. **Develop** with conventional commits
-4. **Push** the branch: `git push -u origin feat/my-feature`
-5. **Open PR** against `main` — CI runs automatically
-6. **Merge** via GitHub (squash or merge commit)
-7. **Delete** the feature branch after merge
+1. **Create** a branch from `main`:
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b feat/my-feature
+   ```
+2. **Develop** with conventional commits
+3. **Push** the branch: `git push -u origin feat/my-feature`
+4. **Open PR** against `main` — CI runs automatically
+5. **Merge** via GitHub (squash or merge commit)
+6. **Delete** the feature branch after merge
 
 ### Branch Naming
 
