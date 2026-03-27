@@ -1,6 +1,6 @@
 # Architecture
 
-Devran AI Kit v4.5.1 is an engineered framework with a **33-module runtime engine**, 23 agents, 35 skills, 37 commands, and 22 workflows.
+Devran AI Kit v4.6.0 is an engineered framework with a **33-module runtime engine**, 23 agents, 35 skills, 37 commands, and 22 workflows.
 
 ---
 
@@ -8,7 +8,7 @@ Devran AI Kit v4.5.1 is an engineered framework with a **33-module runtime engin
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      DEVRAN AI KIT v4.5.1                       │
+│                      DEVRAN AI KIT v4.6.0                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
@@ -129,7 +129,7 @@ lib/                      # Runtime Engine (33 modules)
 ├── marketplace.js        # Community skill marketplace
 └── + 16 more modules     # Identity, plugins, hooks, registry...
 
-tests/                    # 499 tests (38 files)
+tests/                    # 533 tests (39 files)
 ├── unit/                 # Module tests
 ├── structural/           # Inventory + schema validation
 ├── integration/          # Cross-module tests

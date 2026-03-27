@@ -5,6 +5,27 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.6.0] — 2026-03-28
+
+### Added
+
+- **Project Documentation Auto-Discovery** — Zero-config discovery of project-specific documentation (design system, architecture, screen specs, compliance). Workflows automatically find and reference project docs without manual prompting.
+  - New runtime module: `lib/doc-discovery.js` (300 LOC) — scans `docs/`, classifies by 14 patterns, ranks by domain relevance, budget-constrained (max 8 docs)
+  - New skill: `project-docs-discovery` — instructs LLM to scan and read relevant project docs during workflows
+  - Loading engine integration: `getLoadPlan()` returns `projectDocs[]` for CLI/tooling
+  - 6 workflows updated: `/plan`, `/pr-review`, `/create`, `/enhance`, `/debug`, `/quality-gate`
+  - Security hardened: path canonicalization (CWE-22), `realpathSync` symlink detection, 25-dir skip list, numeric input validation
+- Skills: 34 → 35 (`project-docs-discovery` added)
+- Tests: 499 → 533 (34 new doc-discovery tests, 39 test files)
+- **GitHub Flow** — Established PR-based workflow with branch protection on `main`. Documented in CONTRIBUTING.md.
+- **Telegram Menu Guard** — Fixed private chat menu overwrite. Guard now pushes to `all_private_chats` scope (not per-chat), with health check retry at +15s.
+
+### Changed
+
+- **Documentation alignment** — All 26 doc/config files synced to manifest SSOT (skills 35, tests 533, rules 10)
+
+---
+
 ## [4.5.1] — 2026-03-27
 
 ### Changed

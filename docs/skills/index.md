@@ -18,6 +18,7 @@ Core runtime capabilities for AI agent operation.
 | **eval-harness**        | Performance evaluation metrics                |
 | **context-budget**      | Context window budget management              |
 | **production-readiness**| Audit domains, scoring, and preflight checks  |
+| **project-docs-discovery** | Auto-discover project documentation (design system, architecture) |
 
 ---
 

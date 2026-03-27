@@ -1,6 +1,6 @@
 # Devran AI Kit — CheatSheet
 
-> **Version**: v4.5.1 | **Quick Reference** for all capabilities
+> **Version**: v4.6.0 | **Quick Reference** for all capabilities
 > **Session**: Start with `/project_status`, end with session-end checklist
 
 ---
@@ -271,7 +271,7 @@
 
 ---
 
-## ⚖️ Governance Rules (9)
+## ⚖️ Governance Rules (10)
 
 | Rule File | Scope |
 |:----------|:------|
