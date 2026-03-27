@@ -24,6 +24,7 @@ Every finding, recommendation, or issue MUST include `file:line` reference. Find
 
 ## Governance Template
 All workflows follow these universal rules:
+
 - STOP on any failed critical step — do not skip or continue
 - Run verification (tests, lint, type-check) after every code change
 - Never commit secrets, credentials, or PII

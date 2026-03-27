@@ -225,11 +225,13 @@ After generating code, you MUST enter **Self-Correction Mode**.
 This protocol is defined in `.agent/checklists/task-complete.md` and enforced by the `task-complete` hook event.
 
 **PROHIBITED:**
+
 - ❌ Committing or pushing without presenting the checkpoint prompt
 - ❌ Auto-selecting options without explicit developer input
 - ❌ Skipping this checkpoint for session-end commits
 
 **REQUIRED:**
+
 - ✅ Present the 8-option decision prompt after every task completion
 - ✅ Wait for explicit developer response before proceeding
 - ✅ Evaluate change scope for intelligent recommendation annotation
