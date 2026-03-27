@@ -17,19 +17,21 @@ feature/xxx  →  PR  →  main
 ### For Contributors
 
 1. **Fork** the repository
-2. **Create** a feature branch from `main`: `git checkout -b feat/my-feature`
-3. **Make** your changes (small, focused commits)
-4. **Run** verification: `npm test` and `/verify`
-5. **Push** and open a PR against `main`
+2. **Sync** your fork's `main` with upstream `devran-ai/kit`
+3. **Create** a feature branch from `main`: `git checkout -b feat/my-feature`
+4. **Make** your changes (small, focused commits)
+5. **Run** verification: `npm test` and `/verify`
+6. **Push** and open a PR against `main`
 
 ### For Maintainers
 
-1. **Create** a branch from `main`: `git checkout -b feat/my-feature`
-2. **Develop** with conventional commits
-3. **Push** the branch: `git push -u origin feat/my-feature`
-4. **Open PR** against `main` — CI runs automatically
-5. **Merge** via GitHub (squash or merge commit)
-6. **Delete** the feature branch after merge
+1. **Sync `main`**: `git checkout main && git pull origin main`
+2. **Create** a branch from `main`: `git checkout -b feat/my-feature`
+3. **Develop** with conventional commits
+4. **Push** the branch: `git push -u origin feat/my-feature`
+5. **Open PR** against `main` — CI runs automatically
+6. **Merge** via GitHub (squash or merge commit)
+7. **Delete** the feature branch after merge
 
 ### Branch Naming
 
