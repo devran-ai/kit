@@ -21,7 +21,7 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
 | ⚙️ **Runtime**    | 33    | Runtime engine modules (governance, reputation, self-healing...)       |
-| ⚖️ **Rules**      | 9     | Modular governance constraints (coding, security, testing, git, docs, sprint)  |
+| ⚖️ **Rules**      | 10    | Modular governance constraints (coding, security, testing, git, docs, sprint, workflow)  |
 
 ---
 
@@ -48,10 +48,6 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 - :arrows_counterclockwise: **[Workflows](workflows/index.md)**
 
   22 full development workflows
-
-- :repeat: **[Session Management](session-management.md)**
-
-  Never lose context between sessions
 
 - :scales: **[Governance](governance/index.md)**
 
@@ -96,31 +92,6 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 
 ---
 
-## What's New in v4.4.0
+## Release History
 
-- **Telegram menu guard** — SessionStart hook auto-restores workflow menu after Telegram plugin overwrite. Cache-based, non-blocking, zero-config after install
-- **`--guard` flag** — `kit sync-bot-commands --guard` for lightweight cache-based restore
-- **`--install-guard` flag** — One-command SessionStart hook installation
-- **Command cache** — Auto-caches synced commands with plugin base commands merged
-- **Runtime modules** — 32 → 33 (`telegram-menu-guard.js` added)
-- **492 tests** — 38 test suites across unit, structural, and security
-
-## What's New in v4.3.0
-
-- **Telegram sync** — `kit sync-bot-commands` scans `.agent/workflows/` and `.agent/commands/` frontmatter, pushes to Telegram Bot API via `setMyCommands`
-- **CLI flags** — `--dry-run`, `--token`, `--limit`, `--source`, `--scope`, `--clear` for fine-grained control
-- **Runtime modules** — 31 → 32 (added `telegram-sync.js`)
-- **434 tests** — 38 test suites across unit, structural, and security
-
-## What's New in v4.2.1
-
-- **Untrack hint** — Detects tracked `.agent/` and prints the `git rm --cached` command
-- **Documentation fixes** — Updated release notes, stale test counts corrected
-
-## What's New in v4.2.0
-
-- **Gitignore by default** — `kit init` adds `.agent/` to `.gitignore` automatically. Personal dev tooling stays local.
-- **`--shared` flag** — Opt-in for teams that want to commit `.agent/` to the repo
-- **Cross-IDE Support** — Native config generation for Claude Code, Antigravity, Cursor, OpenCode, and Codex
-- **3 Language Reviewers** — TypeScript, Python, Go specialized code review agents
-- **388 tests** — 37 test suites across unit, structural, and security
+See the full **[CHANGELOG](https://github.com/devran-ai/kit/blob/main/CHANGELOG.md)** for detailed release notes.

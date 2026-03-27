@@ -1,6 +1,6 @@
 # Extending the Kit
 
-Devran AI Kit is designed to be extensible. Add custom agents, skills, and commands to match your workflow.
+Devran AI Kit is designed to be extensible. Add custom agents, skills, commands, and workflows to match your workflow.
 
 ---
 
@@ -8,13 +8,13 @@ Devran AI Kit is designed to be extensible. Add custom agents, skills, and comma
 
 Create a new file in `.agent/agents/`:
 
-```markdown
-## <!-- .agent/agents/my-agent.md -->
+**File:** `.agent/agents/my-agent.md`
 
+````markdown
+---
 name: my-agent
 description: Custom agent description
 triggers: [keyword1, keyword2]
-
 ---
 
 # My Agent
@@ -33,7 +33,7 @@ What this agent specializes in.
 1. Step 1
 2. Step 2
 3. Step 3
-```
+````
 
 ---
 
@@ -41,13 +41,13 @@ What this agent specializes in.
 
 Create a new folder in `.agent/skills/`:
 
-```markdown
-## <!-- .agent/skills/my-skill/SKILL.md -->
+**File:** `.agent/skills/my-skill/SKILL.md`
 
+````markdown
+---
 name: my-skill
 description: What this skill does
 triggers: [context, keywords]
-
 ---
 
 # My Skill
@@ -65,7 +65,7 @@ Description and usage.
 ### Pattern 2
 
 Description and usage.
-```
+````
 
 ---
 
@@ -73,33 +73,28 @@ Description and usage.
 
 Create a new file in `.agent/commands/`:
 
-```markdown
-## <!-- .agent/commands/my-command.md -->
+**File:** `.agent/commands/my-command.md`
 
-## description: What this command does
+````markdown
+---
+description: What this command does
+---
 
 # /my-command
 
 ## Usage
-```
 
 /my-command [arguments]
 
-```
-
 ## Examples
 
-```
-
 /my-command feature-name
-
-```
 
 ## Workflow
 
 1. Step 1
 2. Step 2
-```
+````
 
 ---
 
@@ -107,10 +102,12 @@ Create a new file in `.agent/commands/`:
 
 Create a new file in `.agent/workflows/`:
 
-```markdown
-## <!-- .agent/workflows/my-workflow.md -->
+**File:** `.agent/workflows/my-workflow.md`
 
-## description: Multi-step workflow description
+````markdown
+---
+description: Multi-step workflow description
+---
 
 # My Workflow
 
@@ -127,7 +124,7 @@ What this workflow accomplishes.
 ## Verification
 
 How to verify the workflow completed successfully.
-```
+````
 
 ---
 
@@ -138,3 +135,4 @@ How to verify the workflow completed successfully.
 3. **Include examples** — Show real usage patterns
 4. **Document workflows** — Step-by-step instructions
 5. **Test locally** — Verify before committing
+6. **Update manifest** — Run `kit verify` to check consistency

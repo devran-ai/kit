@@ -19,9 +19,10 @@ We welcome contributions! Here's how to get started.
 ### Code Quality
 
 - Follow existing patterns and conventions
-- Use TypeScript strict mode
-- No `any` types
-- Document complex logic
+- Use immutable data patterns (spread, filter, map — never mutate)
+- Add structured logging to all catch blocks (`createLogger`)
+- Validate all public function parameters
+- Document complex logic with JSDoc
 
 ### Commits
 

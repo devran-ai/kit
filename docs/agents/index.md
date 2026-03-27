@@ -9,8 +9,8 @@ Agents are specialized sub-agents that handle delegated tasks with focused exper
 | Agent                                    | Role                    | Triggers                          |
 | :--------------------------------------- | :---------------------- | :-------------------------------- |
 | 📋 **[Planner](planner.md)**             | Feature planning        | plan, implementation              |
-| 🏛️ **[Architect](architect.md)**         | System design, patterns | architecture, design, scalability |
-| 🔍 **[Code Reviewer](code-reviewer.md)** | Quality assurance       | review, quality, best practices   |
+| 🏛️ **Architect**                         | System design, patterns | architecture, design, scalability |
+| 🔍 **Code Reviewer**                     | Quality assurance       | review, quality, best practices   |
 | 🧪 **TDD Specialist**                    | Test-driven development | test, tdd, coverage               |
 
 ---

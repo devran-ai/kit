@@ -8,7 +8,7 @@ Devran AI Kit v4.5.1 is an engineered framework with a **33-module runtime engin
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      DEVRAN AI KIT v4.5.0                       │
+│                      DEVRAN AI KIT v4.5.1                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
@@ -36,7 +36,7 @@ Devran AI Kit v4.5.1 is an engineered framework with a **33-module runtime engin
 │           ▼                                      ▼                   │
 │  ┌─────────────────┐                   ┌─────────────────┐          │
 │  │     RULES       │                   │     HOOKS       │          │
-│  │  (Governance)   │                   │  (7 Lifecycle)  │          │
+│  │  (Governance)   │                   │  (8 Lifecycle)  │          │
 │  └─────────────────┘                   └─────────────────┘          │
 │                                                                      │
 │  ┌─────────────────────────────────────────────────────────┐        │
@@ -101,8 +101,8 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 
 ### Rules & Hooks
 
-- **Rules** (9): Modular governance constraints (coding, security, testing, git, docs, sprint, agent-upgrade-policy + 2 architecture files)
-- **Hooks** (7): Event-driven automation (session-start, session-end, pre-commit, phase-transition, sprint-checkpoint, secret-detection, plan-complete)
+- **Rules** (10): Modular governance constraints (coding, security, testing, git, docs, sprint, workflow-standards, quality-gate, agent-upgrade-policy, architecture)
+- **Hooks** (8): Event-driven automation (session-start, session-end, pre-commit, phase-transition, sprint-checkpoint, secret-detection, plan-complete, task-complete)
 
 ---
 
@@ -113,7 +113,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 ├── agents/               # 23 specialized agents
 ├── commands/             # 37 slash commands
 ├── skills/               # 34 capability modules
-├── workflows/            # 21 process templates
+├── workflows/            # 22 process templates
 ├── engine/               # Autonomy Engine configs
 ├── hooks/                # Event automation
 ├── rules/                # Governance rules
@@ -129,8 +129,9 @@ lib/                      # Runtime Engine (33 modules)
 ├── marketplace.js        # Community skill marketplace
 └── + 16 more modules     # Identity, plugins, hooks, registry...
 
-tests/                    # 349 tests (34 files)
-├── unit/                 # 21 module tests
+tests/                    # 499 tests (38 files)
+├── unit/                 # Module tests
 ├── structural/           # Inventory + schema validation
+├── integration/          # Cross-module tests
 └── security/             # Injection scan + leakage detection
 ```

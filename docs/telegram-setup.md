@@ -243,6 +243,150 @@ After this one-time setup, your workflow menu survives every session restart.
 
 ---
 
+## Advanced Configuration
+
+### Full Permissions for Autonomous Operation
+
+For the bot to handle tasks autonomously (file edits, shell commands, web searches) without blocking on permission prompts, add the tools you need to `~/.claude/settings.json`:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit",
+      "Write",
+      "Read",
+      "WebFetch",
+      "WebSearch",
+      "Agent",
+      "Glob",
+      "Grep",
+      "TodoWrite",
+      "NotebookEdit",
+      "Skill",
+      "mcp__plugin_telegram_telegram__*"
+    ],
+    "defaultMode": "acceptEdits"
+  }
+}
+```
+
+> **Tip:** Start with a minimal set and add tools as needed. Each tool you allow lets the bot act without terminal confirmation.
+
+### Permission-Free Mode
+
+If you want zero permission prompts, start with the `--dangerously-skip-permissions` flag:
+
+**macOS / Linux:**
+
+```bash
+claude --dangerously-skip-permissions --channels plugin:telegram@claude-plugins-official
+```
+
+**Windows (PowerShell):**
+
+```powershell
+claude --dangerously-skip-permissions --channels plugin:telegram@claude-plugins-official
+```
+
+!!! warning "Security Notice"
+    `--dangerously-skip-permissions` bypasses all permission prompts. Only use this in trusted environments where you control who can message the bot.
+
+---
+
+### Quick-Launch Alias
+
+Set up a launcher function so you can start Telegram-connected sessions quickly.
+
+**macOS / Linux** — add to `~/.bashrc` or `~/.zshrc`:
+
+```bash
+claude_launch() {
+    local ROOT="$HOME/projects"
+    local CHANNEL="plugin:telegram@claude-plugins-official"
+    case "${1:-help}" in
+        start)
+            if [ -n "$2" ] && [ -d "$ROOT/$2" ]; then cd "$ROOT/$2"
+            elif [ -z "$2" ]; then cd "$ROOT"
+            else echo "Project '$2' not found"; return 1; fi
+            claude --channels "$CHANNEL"
+            ;;
+        list) ls -1 "$ROOT" ;;
+        *) echo "Usage: claude_launch start [project] | list" ;;
+    esac
+}
+```
+
+**Windows (PowerShell)** — add to your profile (`notepad $PROFILE`):
+
+```powershell
+function Start-ClaudeLaunch {
+    param(
+        [string]$Command = "help",
+        [string]$Project
+    )
+    $Root = "$HOME\projects"
+    $Channel = "plugin:telegram@claude-plugins-official"
+
+    switch ($Command) {
+        "start" {
+            if ($Project) {
+                $path = Join-Path $Root $Project
+                if (Test-Path $path) { Set-Location $path }
+                else { Write-Host "Project '$Project' not found"; return }
+            } else { Set-Location $Root }
+            claude --channels $Channel
+        }
+        "list" { Get-ChildItem $Root -Directory | ForEach-Object { $_.Name } }
+        default { Write-Host "Usage: Start-ClaudeLaunch start [project] | list" }
+    }
+}
+Set-Alias -Name claude-launch -Value Start-ClaudeLaunch
+```
+
+Usage:
+
+```bash
+claude_launch start              # Start in projects root
+claude_launch start my-app       # Start in a specific project
+claude_launch list               # List available projects
+```
+
+---
+
+### Claude Code Release Channels
+
+Claude Code has two update channels. Choose based on your stability needs:
+
+| Channel | Description | Risk |
+|:--------|:-----------|:-----|
+| **latest** | New features immediately | Higher — may have regressions |
+| **stable** | ~1 week delayed | Lower — tested releases |
+
+To switch channels:
+
+```bash
+claude /config
+# → Select "Auto-update channel" → choose "stable"
+```
+
+Or add directly to `~/.claude.json`:
+
+```json
+{
+  "autoUpdatesChannel": "stable"
+}
+```
+
+Check your current version:
+
+```bash
+claude --version
+```
+
+---
+
 ## Important notes
 
 - The bot only responds while a Claude Code session is running
@@ -250,3 +394,5 @@ After this one-time setup, your workflow menu survives every session restart.
 - Telegram limits bot file downloads to 20 MB
 - The `--channels` flag is required every session start
 - Keep your bot token secret — rotate it via [@BotFather](https://t.me/BotFather) if compromised
+- To find your Telegram ID: message [@userinfobot](https://t.me/userinfobot)
+- If the bot stops responding, check if a permission prompt is waiting in your terminal
