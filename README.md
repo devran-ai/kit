@@ -36,7 +36,7 @@
 | Cross-IDE support | Single IDE | Single IDE | 5 IDEs from one source of truth |
 | Plugin marketplace | None | None | Trust-verified skill marketplace |
 | Telegram control | None | None | Full IDE control from your phone |
-| Test suite | None | None | 492+ tests with security validation |
+| Test suite | None | None | 499 tests with security validation |
 | Runtime dependencies | Varies | Varies | **Zero** |
 
 ## Quick Start
@@ -107,49 +107,9 @@ Each phase requires explicit developer approval before transitioning. The engine
 
 ## What's New
 
-### v4.4.0
+See the full **[CHANGELOG](CHANGELOG.md)** for detailed release notes.
 
-| Change | Details |
-|---|---|
-| Telegram menu guard | SessionStart hook auto-restores workflow menu after Telegram plugin overwrite. Cache-based, non-blocking, zero-config after install |
-| `--guard` flag | `kit sync-bot-commands --guard` — lightweight restore from cache to `all_private_chats` scope |
-| `--install-guard` flag | `kit sync-bot-commands --install-guard` — one-command SessionStart hook installation |
-| Command cache | Auto-caches synced commands to `~/.claude/channels/telegram/bot-menu-cache.json` with plugin base commands merged |
-| Runtime modules | 32 → 33 (`lib/telegram-menu-guard.js` added) |
-| Tests | 434 → 492 (38 test suites) |
-
-### v4.3.0
-
-| Change | Details |
-|---|---|
-| Telegram sync | `kit sync-bot-commands` — scans `.agent/workflows/` and `.agent/commands/` frontmatter, pushes to Telegram Bot API via `setMyCommands` |
-| CLI flags | `--dry-run`, `--token`, `--limit`, `--source`, `--scope`, `--clear` for fine-grained control |
-| Runtime modules | 31 → 32 (`lib/telegram-sync.js` added) |
-| Tests | 388 → 434 (38 test suites) |
-
-### v4.2.1
-
-| Change | Details |
-|---|---|
-| Untrack hint | Detects tracked `.agent/` and prints `git rm --cached` command |
-| Documentation fixes | Updated release notes, stale test counts corrected |
-
-### v4.2.0
-
-| Change | Details |
-|---|---|
-| Gitignore by default | `kit init` adds `.agent/` to `.gitignore` — personal dev tooling |
-| `--shared` flag | Opt-in to commit `.agent/` for team sharing |
-| 388 tests | 37 test suites across unit, structural, and security |
-
-### v4.1.0
-
-| Change | Details |
-|---|---|
-| Cross-IDE support | Cursor, OpenCode, Codex, Antigravity — all from one manifest |
-| Multi-language reviewers | TypeScript, Python, Go dedicated review agents |
-| Continuous learning | Confidence scoring with time-based decay model |
-| MCP server templates | GitHub, Supabase, Vercel, PostgreSQL, Filesystem |
+**Latest (v4.5.1):** Production-grade audit — immutable state patterns across all stateful modules, structured error logging, path traversal defense, credential leak prevention, documentation consolidation.
 
 ## Cross-IDE Support
 
@@ -247,7 +207,7 @@ kit/
 ├── create-kit-app/         # Project scaffolder
 ├── docs/                   # MkDocs documentation site
 ├── examples/               # Starter examples (minimal, full-stack)
-└── tests/                  # 492 tests (unit, structural, security)
+└── tests/                  # 499 tests (unit, structural, security)
 ```
 
 ## Security

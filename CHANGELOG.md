@@ -5,6 +5,36 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.5.1] — 2026-03-27
+
+### Changed
+
+- **Immutable state patterns** — Refactored all stateful runtime modules to use `Object.freeze` + spread patterns (circuit-breaker, rate-limiter, agent-reputation, task-governance, conflict-detector, plugin-system)
+- **Structured error logging** — Added `createLogger` with contextual warnings to 15 silent `catch {}` blocks across 10 modules (agent-reputation, conflict-detector, task-model, task-governance, self-healing, error-budget, marketplace, workflow-persistence, verify, engineering-manager, plugin-system)
+- **Input validation hardening** — Path traversal defense in skill-sandbox, credential leak prevention in marketplace URL validation, parameter validation in engineering-manager
+- **Function decomposition** — Extracted `buildTransitionState()` from workflow-engine `executeTransition()` (104 → 32 lines), immutable `mergeHooks`/`unmergeHooks` in plugin-system
+- **Documentation consolidation** — Removed 4 redundant docs (agents/architect.md, agents/code-reviewer.md, governance/constraints.md, session-management.md), merged content into parent pages, replaced per-release "What's New" sections with CHANGELOG links
+- **Version alignment** — Fixed 12 stale references (rules 9→10, hooks 7→8, workflows 21→22, tests 492→499) across README, docs/index.md, architecture.md, mkdocs.yml
+- Tests: 492 → 499 (38 test suites, zero regressions)
+
+---
+
+## [4.4.0] — 2026-03-26
+
+### Added
+
+- **Telegram menu guard** — `lib/telegram-menu-guard.js` auto-restores workflow menu after Telegram plugin overwrite via SessionStart hook. Cache-based, non-blocking, zero-config after initial install
+- **`--guard` flag** — `kit sync-bot-commands --guard` for lightweight cache-based restore to `all_private_chats` scope
+- **`--install-guard` flag** — `kit sync-bot-commands --install-guard` for one-command SessionStart hook installation
+- **Command cache** — Auto-caches synced commands to `~/.claude/channels/telegram/bot-menu-cache.json` with plugin base commands merged
+
+### Changed
+
+- Runtime modules: 32 → 33 (`lib/telegram-menu-guard.js` added)
+- Tests: 434 → 492 (38 test suites)
+
+---
+
 ## [4.3.0] — 2026-03-25
 
 ### Added
@@ -509,6 +539,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Session management architecture
 - PAAL continuous learning cycle
 
+[4.5.1]: https://github.com/devran-ai/kit/compare/v4.4.0...v4.5.1
+[4.4.0]: https://github.com/devran-ai/kit/compare/v4.3.0...v4.4.0
 [4.3.0]: https://github.com/devran-ai/kit/compare/v4.2.1...v4.3.0
 [4.2.1]: https://github.com/devran-ai/kit/compare/v4.2.0...v4.2.1
 [4.2.0]: https://github.com/devran-ai/kit/compare/v4.1.0...v4.2.0

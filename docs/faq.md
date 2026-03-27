@@ -32,28 +32,6 @@ Zero production dependencies. The entire runtime (8,000+ LOC) is built with nati
 
 ---
 
-## Installation
-
-**How do I install it?**
-
-```bash
-npx @devran-ai/kit init
-```
-
-**Can I add it to an existing project?**
-
-Yes. Run `kit init` in your project root. It creates a `.agent/` directory without modifying your existing code.
-
-**How do I update?**
-
-```bash
-kit update
-```
-
-This is non-destructive — your session data, decisions, and custom rules are preserved.
-
----
-
 ## IDE Support
 
 **Which IDEs are supported?**
@@ -99,3 +77,7 @@ Run `kit update` to restore framework files without overwriting your customizati
 **Tests are failing after update**
 
 Run `npm test` to identify the specific failures. If structural tests fail, check that manifest.json counts match the actual file count.
+
+---
+
+For installation instructions, see **[Getting Started](getting-started.md)**.

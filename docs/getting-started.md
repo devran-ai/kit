@@ -140,11 +140,27 @@ Runs all quality gates: build, lint, test, coverage.
 
 ---
 
+## Session Management
+
+Devran AI Kit includes a **Session Management Architecture** that ensures continuity across work sessions.
+
+| Component                   | Purpose                       | Location                             |
+| :-------------------------- | :---------------------------- | :----------------------------------- |
+| **Session Context**         | Live session state, resumable | `.agent/session-context.md`          |
+| **Session Start Checklist** | Pre-flight verification       | `.agent/checklists/session-start.md` |
+| **Session End Checklist**   | Wrap-up and handoff           | `.agent/checklists/session-end.md`   |
+| **Pre-Commit Checklist**    | Quality gate before commits   | `.agent/checklists/pre-commit.md`    |
+
+**Starting a session**: Follow the session-start checklist. The AI loads previous context, verifies git status, checks dependencies, and resumes from the last open task.
+
+**Ending a session**: Follow the session-end checklist. The AI updates session-context.md, documents open items, commits changes, and creates handoff notes.
+
+---
+
 ## Next Steps
 
 - **[Agents](agents/index.md)** — 23 specialized AI agents
 - **[Commands](commands/index.md)** — 37 slash commands
 - **[Skills](skills/index.md)** — 34 domain expertise modules
 - **[Workflows](workflows/index.md)** — 22 development workflows
-- **[Session Management](session-management.md)** — Never lose context
 - **[Governance](governance/index.md)** — Operating constraints
