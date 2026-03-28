@@ -13,11 +13,8 @@
     height: 630px;
     overflow: hidden;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #0a0a0f;
+    background: #08080e;
     color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .container {
@@ -27,34 +24,47 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(120, 60, 200, 0.25) 0%, rgba(80, 40, 160, 0.12) 40%, transparent 70%),
-                radial-gradient(ellipse 60% 50% at 30% 60%, rgba(100, 40, 180, 0.1) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 70% 60%, rgba(140, 60, 220, 0.08) 0%, transparent 60%),
-                linear-gradient(180deg, #0d0d14 0%, #0a0a12 50%, #08080e 100%);
+    /* P1-FIX: Optical center — content sits slightly above true center */
+    padding-top: 68px;
+    padding-bottom: 52px;
+    justify-content: space-between;
+    gap: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 38%, rgba(120, 60, 200, 0.28) 0%, rgba(80, 40, 160, 0.10) 45%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 25% 55%, rgba(100, 40, 180, 0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 75% 55%, rgba(140, 60, 220, 0.06) 0%, transparent 55%),
+      linear-gradient(180deg, #0c0c16 0%, #0a0a12 45%, #08080e 100%);
     overflow: hidden;
   }
 
-  /* Subtle noise texture overlay */
+  /* Subtle grain overlay — Netflix/Vercel texture technique */
   .container::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 1;
   }
 
-  /* Top ambient glow line */
+  /* P3-FIX: Top glow line — 3px, wider spread, stronger bloom */
   .glow-line {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent 0%, rgba(160, 100, 255, 0.5) 30%, rgba(200, 140, 255, 0.7) 50%, rgba(160, 100, 255, 0.5) 70%, transparent 100%);
-    z-index: 2;
+    width: 700px;
+    height: 3px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(140, 90, 235, 0.3) 15%,
+      rgba(170, 120, 255, 0.6) 35%,
+      rgba(200, 150, 255, 0.8) 50%,
+      rgba(170, 120, 255, 0.6) 65%,
+      rgba(140, 90, 235, 0.3) 85%,
+      transparent 100%
+    );
+    z-index: 4;
   }
 
   .glow-line::after {
@@ -63,52 +73,65 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 400px;
-    height: 40px;
-    background: radial-gradient(ellipse at center top, rgba(160, 100, 255, 0.15) 0%, transparent 100%);
+    width: 500px;
+    height: 60px;
+    background: radial-gradient(ellipse at center top, rgba(160, 100, 255, 0.18) 0%, transparent 100%);
   }
 
+  /* Main content stack */
   .content {
     position: relative;
     z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
-    padding: 0 60px;
+    gap: 0;
   }
 
+  /* Hero title */
   .title {
-    font-size: 72px;
+    font-size: 76px;
     font-weight: 900;
-    letter-spacing: -2px;
+    letter-spacing: -2.5px;
     line-height: 1;
-    background: linear-gradient(180deg, #ffffff 0%, #e0d4f0 60%, #c4b0e0 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #ece2f8 50%, #c9b4e2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  /* P0-FIX: Trust-Grade subtitle — USP visible in first 3 seconds */
+  .subtitle {
+    margin-top: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(170, 140, 220, 0.55);
+  }
+
+  /* Tagline */
   .tagline {
-    font-size: 22px;
+    margin-top: 20px;
+    font-size: 21px;
     font-weight: 400;
-    color: rgba(220, 210, 240, 0.75);
-    letter-spacing: 0.2px;
+    color: rgba(220, 210, 240, 0.70);
+    letter-spacing: 0.15px;
     text-align: center;
-    max-width: 700px;
-    line-height: 1.4;
+    max-width: 680px;
+    line-height: 1.45;
   }
 
   .tagline strong {
-    color: #fff;
+    color: rgba(255, 255, 255, 0.95);
     font-weight: 700;
   }
 
   /* Feature pills row */
   .features {
     display: flex;
-    gap: 16px;
-    margin-top: 12px;
+    gap: 14px;
+    margin-top: 28px;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -117,66 +140,90 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 24px;
+    padding: 11px 22px;
     border-radius: 100px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 15px;
+    /* P2-FIX: Increased contrast — bg 0.04→0.06, border 0.08→0.12 */
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 14.5px;
     font-weight: 500;
-    color: rgba(230, 220, 245, 0.85);
-    letter-spacing: 0.3px;
-    backdrop-filter: blur(8px);
+    color: rgba(230, 220, 245, 0.88);
+    letter-spacing: 0.2px;
   }
 
   .feature .dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     flex-shrink: 0;
   }
 
-  .dot.purple { background: #a06eff; box-shadow: 0 0 8px rgba(160, 110, 255, 0.5); }
-  .dot.blue   { background: #6ea0ff; box-shadow: 0 0 8px rgba(110, 160, 255, 0.5); }
-  .dot.green  { background: #6effa0; box-shadow: 0 0 8px rgba(110, 255, 160, 0.5); }
-  .dot.amber  { background: #ffc46e; box-shadow: 0 0 8px rgba(255, 196, 110, 0.5); }
+  .dot.purple { background: #a06eff; box-shadow: 0 0 6px rgba(160, 110, 255, 0.4); }
+  .dot.blue   { background: #6ea0ff; box-shadow: 0 0 6px rgba(110, 160, 255, 0.4); }
+  .dot.green  { background: #6effa0; box-shadow: 0 0 6px rgba(110, 255, 160, 0.4); }
+  .dot.amber  { background: #ffc46e; box-shadow: 0 0 6px rgba(255, 196, 110, 0.4); }
 
-  /* Bottom feature highlights — qualitative, no numbers */
-  .highlights {
+  /* P0+P1-FIX: Capability row — unified pill design, monochrome SVG icons */
+  .capabilities {
+    position: relative;
+    z-index: 3;
     display: flex;
-    gap: 40px;
-    margin-top: 8px;
+    gap: 12px;
+    margin-bottom: 4px;
   }
 
-  .highlight {
+  .cap {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 100px;
+    /* Same design language as feature pills — cohesive system */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  .highlight-icon {
-    font-size: 28px;
-    line-height: 1;
+  .cap svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
   }
 
-  .highlight-label {
-    font-size: 13px;
+  .cap-label {
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: rgba(200, 185, 225, 0.6);
+    letter-spacing: 1.2px;
+    color: rgba(190, 175, 220, 0.55);
   }
 
-  /* Bottom border glow */
+  /* Bottom border glow — wider, matches top glow language */
   .bottom-glow {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 800px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(120, 80, 200, 0.2) 30%, rgba(140, 100, 220, 0.3) 50%, rgba(120, 80, 200, 0.2) 70%, transparent 100%);
+    width: 700px;
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(120, 80, 200, 0.15) 20%,
+      rgba(140, 100, 220, 0.25) 50%,
+      rgba(120, 80, 200, 0.15) 80%,
+      transparent 100%
+    );
     z-index: 2;
+  }
+
+  .bottom-glow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 30px;
+    background: radial-gradient(ellipse at center bottom, rgba(140, 100, 220, 0.08) 0%, transparent 100%);
   }
 </style>
 </head>
@@ -186,6 +233,7 @@
 
     <div class="content">
       <div class="title">Devran AI Kit</div>
+      <div class="subtitle">Trust-Grade AI Development Framework</div>
 
       <div class="tagline">
         Ship <strong>production-grade code</strong> with AI agents you can trust — from your IDE or your phone.
@@ -193,44 +241,56 @@
 
       <div class="features">
         <div class="feature">
-          <span class="dot purple"></span>
-          Multi-Agent Orchestration
-        </div>
-        <div class="feature">
-          <span class="dot blue"></span>
-          Trust-Grade Governance
-        </div>
-        <div class="feature">
           <span class="dot green"></span>
-          Cross-IDE Support
+          Claude Code Channels Support
+        </div>
+        <div class="feature">
+          <span class="dot purple"></span>
+          Telegram · Discord · iMessage
         </div>
         <div class="feature">
           <span class="dot amber"></span>
-          Telegram Control
+          Full Remote Development
         </div>
       </div>
+    </div>
 
-      <div class="highlights">
-        <div class="highlight">
-          <span class="highlight-icon">🤖</span>
-          <span class="highlight-label">Agents</span>
-        </div>
-        <div class="highlight">
-          <span class="highlight-icon">📚</span>
-          <span class="highlight-label">Skills</span>
-        </div>
-        <div class="highlight">
-          <span class="highlight-icon">⚡</span>
-          <span class="highlight-label">Commands</span>
-        </div>
-        <div class="highlight">
-          <span class="highlight-icon">🔄</span>
-          <span class="highlight-label">Workflows</span>
-        </div>
-        <div class="highlight">
-          <span class="highlight-icon">🛡️</span>
-          <span class="highlight-label">Rules</span>
-        </div>
+    <!-- P0: Monochrome SVG icons (Lucide-inspired) — cross-platform consistent -->
+    <div class="capabilities">
+      <div class="cap">
+        <!-- Bot/Agent icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(170,145,215,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16.01"/><line x1="16" y1="16" x2="16" y2="16.01"/>
+        </svg>
+        <span class="cap-label">Agents</span>
+      </div>
+      <div class="cap">
+        <!-- BookOpen/Skills icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(170,145,215,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+        </svg>
+        <span class="cap-label">Skills</span>
+      </div>
+      <div class="cap">
+        <!-- Terminal/Commands icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(170,145,215,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+        </svg>
+        <span class="cap-label">Commands</span>
+      </div>
+      <div class="cap">
+        <!-- GitBranch/Workflows icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(170,145,215,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>
+        </svg>
+        <span class="cap-label">Workflows</span>
+      </div>
+      <div class="cap">
+        <!-- Shield/Rules icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(170,145,215,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+        </svg>
+        <span class="cap-label">Rules</span>
       </div>
     </div>
 

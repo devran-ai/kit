@@ -100,7 +100,7 @@ describe('Version Synchronization — Single Source of Truth', () => {
     const manifest = JSON.parse(readFile('.agent/manifest.json'));
     const count = manifest.capabilities.agents.count;
     expect(readme, `AI Agents badge should show ${count}`).toMatch(
-      new RegExp(`AI%20Agents-${count}-purple`)
+      new RegExp(`AI%20Agents-${count}-\\w+`)
     );
   });
 
@@ -109,7 +109,7 @@ describe('Version Synchronization — Single Source of Truth', () => {
     const manifest = JSON.parse(readFile('.agent/manifest.json'));
     const count = manifest.capabilities.skills.count;
     expect(readme, `Skills badge should show ${count}`).toMatch(
-      new RegExp(`Skills-${count}-orange`)
+      new RegExp(`Skills-${count}-\\w+`)
     );
   });
 
@@ -118,7 +118,7 @@ describe('Version Synchronization — Single Source of Truth', () => {
     const manifest = JSON.parse(readFile('.agent/manifest.json'));
     const count = manifest.capabilities.commands.count;
     expect(readme, `Commands badge should show ${count}`).toMatch(
-      new RegExp(`Commands-${count}-blue`)
+      new RegExp(`Commands-${count}-\\w+`)
     );
   });
 
@@ -127,7 +127,7 @@ describe('Version Synchronization — Single Source of Truth', () => {
     const manifest = JSON.parse(readFile('.agent/manifest.json'));
     const count = manifest.capabilities.workflows.count;
     expect(readme, `Workflows badge should show ${count}`).toMatch(
-      new RegExp(`Workflows-${count}-blueviolet`)
+      new RegExp(`Workflows-${count}-\\w+`)
     );
   });
 
@@ -136,7 +136,7 @@ describe('Version Synchronization — Single Source of Truth', () => {
     const manifest = JSON.parse(readFile('.agent/manifest.json'));
     const count = manifest.capabilities.rules.count;
     expect(readme, `Rules badge should show ${count}`).toMatch(
-      new RegExp(`Rules-${count}-red`)
+      new RegExp(`Rules-${count}-\\w+`)
     );
   });
 

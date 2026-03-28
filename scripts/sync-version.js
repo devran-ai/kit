@@ -57,12 +57,12 @@ const SYNC_TARGETS = [
     pattern: /badge\/version-[\d.]+-/,
     replacer: (content, version) => {
       let updated = content.replace(/badge\/version-[\d.]+-/, `badge/version-${version}-`);
-      // Sync capability badge counts from manifest
-      updated = updated.replace(/AI%20Agents-\d+-purple/, `AI%20Agents-${CAP.agents}-purple`);
-      updated = updated.replace(/Skills-\d+-orange/, `Skills-${CAP.skills}-orange`);
-      updated = updated.replace(/Commands-\d+-blue/, `Commands-${CAP.commands}-blue`);
-      updated = updated.replace(/Workflows-\d+-blueviolet/, `Workflows-${CAP.workflows}-blueviolet`);
-      updated = updated.replace(/Rules-\d+-red/, `Rules-${CAP.rules}-red`);
+      // Sync capability badge counts from manifest (color-agnostic regex)
+      updated = updated.replace(/(AI%20Agents-)\d+(-[\w]+)/, `$1${CAP.agents}$2`);
+      updated = updated.replace(/(Skills-)\d+(-[\w]+)/, `$1${CAP.skills}$2`);
+      updated = updated.replace(/(Commands-)\d+(-[\w]+)/, `$1${CAP.commands}$2`);
+      updated = updated.replace(/(Workflows-)\d+(-[\w]+)/, `$1${CAP.workflows}$2`);
+      updated = updated.replace(/(Rules-)\d+(-[\w]+)/, `$1${CAP.rules}$2`);
       return updated;
     },
   },
