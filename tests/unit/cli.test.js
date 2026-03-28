@@ -29,16 +29,30 @@ describe('kit CLI', () => {
 
   it('should init into a clean directory', () => {
     const tmpDir = path.join(ROOT, 'tests', '.tmp-init-test');
-    
-    // Clean up if exists from previous run
-    if (fs.existsSync(tmpDir)) {
-      fs.rmSync(tmpDir, { recursive: true });
-    }
+
+    // Retry helper for Windows EPERM (antivirus/indexer file locks)
+    const rmWithRetry = (dir, retries = 3) => {
+      for (let i = 0; i < retries; i++) {
+        try {
+          if (fs.existsSync(dir)) {
+            fs.rmSync(dir, { recursive: true, force: true });
+          }
+          return;
+        } catch {
+          if (i < retries - 1) {
+            const { execSync: es } = require('child_process');
+            es('sleep 1 || timeout /t 1 >nul 2>&1', { stdio: 'ignore' });
+          }
+        }
+      }
+    };
+
+    rmWithRetry(tmpDir);
     fs.mkdirSync(tmpDir, { recursive: true });
 
     try {
       execSync(`node "${CLI_PATH}" init`, { cwd: tmpDir, encoding: 'utf-8' });
-      
+
       const agentDir = path.join(tmpDir, '.agent');
       expect(fs.existsSync(agentDir)).toBe(true);
       expect(fs.existsSync(path.join(agentDir, 'agents'))).toBe(true);
@@ -48,10 +62,7 @@ describe('kit CLI', () => {
       expect(fs.existsSync(path.join(agentDir, 'rules.md'))).toBe(true);
       expect(fs.existsSync(path.join(agentDir, 'manifest.json'))).toBe(true);
     } finally {
-      // Cleanup
-      if (fs.existsSync(tmpDir)) {
-        fs.rmSync(tmpDir, { recursive: true });
-      }
+      rmWithRetry(tmpDir);
     }
   });
 

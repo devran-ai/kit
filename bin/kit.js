@@ -264,8 +264,24 @@ function initCommand(options) {
     if (fs.existsSync(agentPath)) {
       fs.rmSync(agentPath, { recursive: true, force: true });
     }
-    // Atomic rename: move temp to final
-    fs.renameSync(tempPath, agentPath);
+    // Atomic rename: move temp to final (retry for Windows EPERM file locks)
+    let renameAttempts = 0;
+    const maxRenameAttempts = 3;
+    while (renameAttempts < maxRenameAttempts) {
+      try {
+        fs.renameSync(tempPath, agentPath);
+        break;
+      } catch (renameErr) {
+        renameAttempts++;
+        if (renameAttempts >= maxRenameAttempts) {
+          throw renameErr;
+        }
+        // Wait briefly for file lock release (antivirus, indexer)
+        const waitMs = renameAttempts * 500;
+        const start = Date.now();
+        while (Date.now() - start < waitMs) { /* busy wait */ }
+      }
+    }
     log('   ✓ Copied successfully', 'green');
   } catch (err) {
     // Cleanup temp directory on failure
