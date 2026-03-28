@@ -23,6 +23,14 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const VERSION = require(path.join(ROOT, 'package.json')).version;
+const MANIFEST = require(path.join(ROOT, '.agent/manifest.json'));
+const CAP = {
+  agents: MANIFEST.capabilities.agents.count,
+  skills: MANIFEST.capabilities.skills.count,
+  commands: MANIFEST.capabilities.commands.count,
+  workflows: MANIFEST.capabilities.workflows.count,
+  rules: MANIFEST.capabilities.rules.count,
+};
 
 /**
  * @typedef {object} SyncTarget
@@ -47,8 +55,16 @@ const SYNC_TARGETS = [
     file: 'README.md',
     type: 'regex',
     pattern: /badge\/version-[\d.]+-/,
-    replacer: (content, version) =>
-      content.replace(/badge\/version-[\d.]+-/, `badge/version-${version}-`),
+    replacer: (content, version) => {
+      let updated = content.replace(/badge\/version-[\d.]+-/, `badge/version-${version}-`);
+      // Sync capability badge counts from manifest
+      updated = updated.replace(/AI%20Agents-\d+-purple/, `AI%20Agents-${CAP.agents}-purple`);
+      updated = updated.replace(/Skills-\d+-orange/, `Skills-${CAP.skills}-orange`);
+      updated = updated.replace(/Commands-\d+-blue/, `Commands-${CAP.commands}-blue`);
+      updated = updated.replace(/Workflows-\d+-blueviolet/, `Workflows-${CAP.workflows}-blueviolet`);
+      updated = updated.replace(/Rules-\d+-red/, `Rules-${CAP.rules}-red`);
+      return updated;
+    },
   },
   {
     file: 'docs/architecture.md',

@@ -93,6 +93,53 @@ describe('Version Synchronization — Single Source of Truth', () => {
   // (.agent/rules/agent-upgrade-policy.md § 1) and must not be
   // modified during upgrades. No version-sync tests needed.
 
+  // --- Capability Badge Sync (manifest → README badges) ---
+
+  it('should have README.md AI Agents badge matching manifest', () => {
+    const readme = readFile('README.md');
+    const manifest = JSON.parse(readFile('.agent/manifest.json'));
+    const count = manifest.capabilities.agents.count;
+    expect(readme, `AI Agents badge should show ${count}`).toMatch(
+      new RegExp(`AI%20Agents-${count}-purple`)
+    );
+  });
+
+  it('should have README.md Skills badge matching manifest', () => {
+    const readme = readFile('README.md');
+    const manifest = JSON.parse(readFile('.agent/manifest.json'));
+    const count = manifest.capabilities.skills.count;
+    expect(readme, `Skills badge should show ${count}`).toMatch(
+      new RegExp(`Skills-${count}-orange`)
+    );
+  });
+
+  it('should have README.md Commands badge matching manifest', () => {
+    const readme = readFile('README.md');
+    const manifest = JSON.parse(readFile('.agent/manifest.json'));
+    const count = manifest.capabilities.commands.count;
+    expect(readme, `Commands badge should show ${count}`).toMatch(
+      new RegExp(`Commands-${count}-blue`)
+    );
+  });
+
+  it('should have README.md Workflows badge matching manifest', () => {
+    const readme = readFile('README.md');
+    const manifest = JSON.parse(readFile('.agent/manifest.json'));
+    const count = manifest.capabilities.workflows.count;
+    expect(readme, `Workflows badge should show ${count}`).toMatch(
+      new RegExp(`Workflows-${count}-blueviolet`)
+    );
+  });
+
+  it('should have README.md Rules badge matching manifest', () => {
+    const readme = readFile('README.md');
+    const manifest = JSON.parse(readFile('.agent/manifest.json'));
+    const count = manifest.capabilities.rules.count;
+    expect(readme, `Rules badge should show ${count}`).toMatch(
+      new RegExp(`Rules-${count}-red`)
+    );
+  });
+
   // --- Cross-Check ---
 
   it('should have all versioned files in sync (no drift)', () => {

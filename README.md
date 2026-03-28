@@ -7,12 +7,17 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.0.0-blue.svg" alt="Version" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" /></a>
-  <a href="tests/"><img src="https://img.shields.io/badge/tests-568%20passing-brightgreen.svg" alt="Tests" /></a>
-  <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" alt="Dependencies" /></a>
-  <a href=".agent/agents/"><img src="https://img.shields.io/badge/AI%20Agents-23-purple.svg" alt="AI Agents" /></a>
-  <a href=".agent/skills/"><img src="https://img.shields.io/badge/Skills-36-orange.svg" alt="Skills" /></a>
+  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.0.0-blue?style=for-the-badge" alt="Version" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="License" /></a>
+  <a href="tests/"><img src="https://img.shields.io/badge/tests-568%20passing-brightgreen?style=for-the-badge" alt="Tests" /></a>
+  <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=for-the-badge" alt="Dependencies" /></a>
+</p>
+<p align="center">
+  <a href=".agent/agents/"><img src="https://img.shields.io/badge/AI%20Agents-23-purple?style=for-the-badge" alt="AI Agents" /></a>
+  <a href=".agent/skills/"><img src="https://img.shields.io/badge/Skills-36-orange?style=for-the-badge" alt="Skills" /></a>
+  <a href=".agent/commands/"><img src="https://img.shields.io/badge/Commands-37-blue?style=for-the-badge" alt="Commands" /></a>
+  <a href=".agent/workflows/"><img src="https://img.shields.io/badge/Workflows-23-blueviolet?style=for-the-badge" alt="Workflows" /></a>
+  <a href=".agent/rules/"><img src="https://img.shields.io/badge/Rules-13-red?style=for-the-badge" alt="Rules" /></a>
 </p>
 
 > Trust-Grade AI Development Framework — Zero dependencies. 23 agents. 36 skills. 23 workflows. 13 rules. One command.
