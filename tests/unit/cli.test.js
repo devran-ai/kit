@@ -38,11 +38,9 @@ describe('kit CLI', () => {
             fs.rmSync(dir, { recursive: true, force: true });
           }
           return;
-        } catch {
-          if (i < retries - 1) {
-            const { execSync: es } = require('child_process');
-            es('sleep 1 || timeout /t 1 >nul 2>&1', { stdio: 'ignore' });
-          }
+        } catch (e) {
+          if (i >= retries - 1) throw e;
+          Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1000);
         }
       }
     };

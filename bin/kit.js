@@ -17,6 +17,7 @@ const path = require('path');
 const VERSION = require('../package.json').version;
 const AGENT_FOLDER = '.agent';
 const { safeCopyDirSync, readJsonSafe } = require('../lib/io');
+const { TRANSIENT_FS_ERRORS } = require('../lib/constants');
 const { USER_DATA_FILES, USER_DATA_DIRS } = require('../lib/updater');
 
 // ANSI colors
@@ -264,7 +265,7 @@ function initCommand(options) {
     if (fs.existsSync(agentPath)) {
       fs.rmSync(agentPath, { recursive: true, force: true });
     }
-    // Atomic rename: move temp to final (retry for Windows EPERM file locks)
+    // Atomic rename: move temp to final (retry for Windows transient file locks)
     let renameAttempts = 0;
     const maxRenameAttempts = 3;
     while (renameAttempts < maxRenameAttempts) {
@@ -272,14 +273,14 @@ function initCommand(options) {
         fs.renameSync(tempPath, agentPath);
         break;
       } catch (renameErr) {
+        const isTransient = TRANSIENT_FS_ERRORS.has(renameErr.code);
         renameAttempts++;
-        if (renameAttempts >= maxRenameAttempts) {
+        if (!isTransient || renameAttempts >= maxRenameAttempts) {
           throw renameErr;
         }
-        // Wait briefly for file lock release (antivirus, indexer)
+        log(`   ⚠ File locked (${renameErr.code}), retrying... (${renameAttempts}/${maxRenameAttempts})`, 'yellow');
         const waitMs = renameAttempts * 500;
-        const start = Date.now();
-        while (Date.now() - start < waitMs) { /* busy wait */ }
+        Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, waitMs);
       }
     }
     log('   ✓ Copied successfully', 'green');
