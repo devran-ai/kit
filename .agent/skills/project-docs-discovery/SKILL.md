@@ -2,7 +2,7 @@
 name: project-docs-discovery
 description: Auto-discover and consult project-specific documentation before development tasks.
 version: 1.0.0
-triggers: [plan, create, enhance, debug, pr-review, pr-fix, pr, pr-split, test, preflight, brainstorm, orchestrate, ui-ux, retrospective, quality-gate, design, architecture, compliance, screen, component]
+triggers: [architecture, brainstorm, compliance, component, create, debug, design, enhance, orchestrate, plan, pr, pr-fix, pr-review, pr-split, preflight, quality-gate, retrospective, screen, test, ui-ux-pro-max]
 ---
 
 # Project Docs Discovery
