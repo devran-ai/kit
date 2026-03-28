@@ -3,7 +3,7 @@ description: Structured brainstorming. Explore options before committing to impl
 args: topic
 version: 2.1.0
 sdlc-phase: discover
-skills: [brainstorming]
+skills: [brainstorming, project-docs-discovery]
 commit-types: [docs]
 ---
 

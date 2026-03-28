@@ -4,7 +4,7 @@ args: task description
 version: 2.1.0
 sdlc-phase: reactive
 agents: [planner, explorer-agent]
-skills: [parallel-agents, intelligent-routing]
+skills: [parallel-agents, intelligent-routing, project-docs-discovery]
 commit-types: [feat, refactor, fix]
 ---
 
