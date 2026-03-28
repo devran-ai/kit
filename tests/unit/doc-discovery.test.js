@@ -328,6 +328,16 @@ describe('discoverProjectDocs', () => {
     expect(Object.isFrozen(inventory)).toBe(true);
   });
 
+  it('should use defaults when maxDocs is Infinity (CWE-400)', () => {
+    const root = createTmpProject({
+      'docs/ARCHITECTURE.md': '# Arch',
+      'docs/README.md': '# Readme',
+    });
+    const inv = discoverProjectDocs(root, { maxDocs: Infinity, maxDepth: Infinity, maxFiles: Infinity });
+    expect(inv.docs.length).toBeGreaterThan(0);
+    expect(inv.docs.length).toBeLessThanOrEqual(8); // DEFAULT_MAX_DOCS
+  });
+
   it('should use defaults when maxDocs is 0 or negative', () => {
     const root = createTmpProject({
       'docs/ARCHITECTURE.md': '# Arch',
