@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200, height=630">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0a0f;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    width: 1200px;
+    height: 630px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(120, 60, 200, 0.25) 0%, rgba(80, 40, 160, 0.12) 40%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 30% 60%, rgba(100, 40, 180, 0.1) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 70% 60%, rgba(140, 60, 220, 0.08) 0%, transparent 60%),
+                linear-gradient(180deg, #0d0d14 0%, #0a0a12 50%, #08080e 100%);
+    overflow: hidden;
+  }
+
+  /* Subtle noise texture overlay */
+  .container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Top ambient glow line */
+  .glow-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(160, 100, 255, 0.5) 30%, rgba(200, 140, 255, 0.7) 50%, rgba(160, 100, 255, 0.5) 70%, transparent 100%);
+    z-index: 2;
+  }
+
+  .glow-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 40px;
+    background: radial-gradient(ellipse at center top, rgba(160, 100, 255, 0.15) 0%, transparent 100%);
+  }
+
+  .content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding: 0 60px;
+  }
+
+  .title {
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1;
+    background: linear-gradient(180deg, #ffffff 0%, #e0d4f0 60%, #c4b0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: 22px;
+    font-weight: 400;
+    color: rgba(220, 210, 240, 0.75);
+    letter-spacing: 0.2px;
+    text-align: center;
+    max-width: 700px;
+    line-height: 1.4;
+  }
+
+  .tagline strong {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  /* Feature pills row */
+  .features {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(230, 220, 245, 0.85);
+    letter-spacing: 0.3px;
+    backdrop-filter: blur(8px);
+  }
+
+  .feature .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot.purple { background: #a06eff; box-shadow: 0 0 8px rgba(160, 110, 255, 0.5); }
+  .dot.blue   { background: #6ea0ff; box-shadow: 0 0 8px rgba(110, 160, 255, 0.5); }
+  .dot.green  { background: #6effa0; box-shadow: 0 0 8px rgba(110, 255, 160, 0.5); }
+  .dot.amber  { background: #ffc46e; box-shadow: 0 0 8px rgba(255, 196, 110, 0.5); }
+
+  /* Bottom feature highlights — qualitative, no numbers */
+  .highlights {
+    display: flex;
+    gap: 40px;
+    margin-top: 8px;
+  }
+
+  .highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .highlight-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .highlight-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(200, 185, 225, 0.6);
+  }
+
+  /* Bottom border glow */
+  .bottom-glow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(120, 80, 200, 0.2) 30%, rgba(140, 100, 220, 0.3) 50%, rgba(120, 80, 200, 0.2) 70%, transparent 100%);
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="glow-line"></div>
+
+    <div class="content">
+      <div class="title">Devran AI Kit</div>
+
+      <div class="tagline">
+        Ship <strong>production-grade code</strong> with AI agents you can trust — from your IDE or your phone.
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <span class="dot purple"></span>
+          Multi-Agent Orchestration
+        </div>
+        <div class="feature">
+          <span class="dot blue"></span>
+          Trust-Grade Governance
+        </div>
+        <div class="feature">
+          <span class="dot green"></span>
+          Cross-IDE Support
+        </div>
+        <div class="feature">
+          <span class="dot amber"></span>
+          Telegram Control
+        </div>
+      </div>
+
+      <div class="highlights">
+        <div class="highlight">
+          <span class="highlight-icon">🤖</span>
+          <span class="highlight-label">Agents</span>
+        </div>
+        <div class="highlight">
+          <span class="highlight-icon">📚</span>
+          <span class="highlight-label">Skills</span>
+        </div>
+        <div class="highlight">
+          <span class="highlight-icon">⚡</span>
+          <span class="highlight-label">Commands</span>
+        </div>
+        <div class="highlight">
+          <span class="highlight-icon">🔄</span>
+          <span class="highlight-label">Workflows</span>
+        </div>
+        <div class="highlight">
+          <span class="highlight-icon">🛡️</span>
+          <span class="highlight-label">Rules</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-glow"></div>
+  </div>
+</body>
+</html>
