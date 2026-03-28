@@ -6,6 +6,21 @@ import path from 'path';
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const CLI_PATH = path.join(ROOT, 'bin', 'kit.js');
 
+// Retry helper for Windows EPERM/EACCES/EBUSY (antivirus/indexer file locks)
+const rmWithRetry = (dir, retries = 3) => {
+  for (let i = 0; i < retries; i++) {
+    try {
+      if (fs.existsSync(dir)) {
+        fs.rmSync(dir, { recursive: true, force: true });
+      }
+      return;
+    } catch (e) {
+      if (!['EPERM', 'EACCES', 'EBUSY'].includes(e.code) || i >= retries - 1) throw e;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1000);
+    }
+  }
+};
+
 describe('kit CLI', () => {
   it('should display version with --version flag', () => {
     const output = execSync(`node "${CLI_PATH}" --version`, { cwd: ROOT, encoding: 'utf-8' });
@@ -29,16 +44,13 @@ describe('kit CLI', () => {
 
   it('should init into a clean directory', () => {
     const tmpDir = path.join(ROOT, 'tests', '.tmp-init-test');
-    
-    // Clean up if exists from previous run
-    if (fs.existsSync(tmpDir)) {
-      fs.rmSync(tmpDir, { recursive: true });
-    }
+
+    rmWithRetry(tmpDir);
     fs.mkdirSync(tmpDir, { recursive: true });
 
     try {
       execSync(`node "${CLI_PATH}" init`, { cwd: tmpDir, encoding: 'utf-8' });
-      
+
       const agentDir = path.join(tmpDir, '.agent');
       expect(fs.existsSync(agentDir)).toBe(true);
       expect(fs.existsSync(path.join(agentDir, 'agents'))).toBe(true);
@@ -48,10 +60,7 @@ describe('kit CLI', () => {
       expect(fs.existsSync(path.join(agentDir, 'rules.md'))).toBe(true);
       expect(fs.existsSync(path.join(agentDir, 'manifest.json'))).toBe(true);
     } finally {
-      // Cleanup
-      if (fs.existsSync(tmpDir)) {
-        fs.rmSync(tmpDir, { recursive: true });
-      }
+      rmWithRetry(tmpDir);
     }
   });
 
@@ -75,18 +84,14 @@ describe('kit CLI', () => {
 
   it('should run heal command with no CI output gracefully', () => {
     const tmpDir = path.join(ROOT, 'tests', '.tmp-heal-test');
-    if (fs.existsSync(tmpDir)) {
-      fs.rmSync(tmpDir, { recursive: true });
-    }
+    rmWithRetry(tmpDir);
     fs.mkdirSync(tmpDir, { recursive: true });
 
     try {
       const output = execSync(`node "${CLI_PATH}" heal`, { cwd: tmpDir, encoding: 'utf-8' });
       expect(output).toContain('No CI output found');
     } finally {
-      if (fs.existsSync(tmpDir)) {
-        fs.rmSync(tmpDir, { recursive: true });
-      }
+      rmWithRetry(tmpDir);
     }
   });
 
@@ -108,10 +113,8 @@ describe('kit CLI', () => {
 
   it('should refuse init when .agent/ already exists without --force', () => {
     const tmpDir = path.join(ROOT, 'tests', '.tmp-exists-test');
-    
-    if (fs.existsSync(tmpDir)) {
-      fs.rmSync(tmpDir, { recursive: true });
-    }
+
+    rmWithRetry(tmpDir);
     fs.mkdirSync(path.join(tmpDir, '.agent'), { recursive: true });
 
     try {
@@ -123,9 +126,7 @@ describe('kit CLI', () => {
       }
       expect(output).toContain('already exists');
     } finally {
-      if (fs.existsSync(tmpDir)) {
-        fs.rmSync(tmpDir, { recursive: true });
-      }
+      rmWithRetry(tmpDir);
     }
   });
 });
