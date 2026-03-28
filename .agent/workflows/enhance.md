@@ -35,6 +35,9 @@ commit-types: [feat, refactor]
 // turbo
 2. **Impact Analysis** — affected files, dependencies, regression risk, breaking changes
 
+// turbo
+2.5. **Consult Project Docs** — scan `docs/` for architecture and design system docs. Reference constraints before modifying existing code.
+
 3. **Present Plan** (for >5 files) — show scope, affected areas, risk level. Wait for approval.
 
 4. **Implement** — follow existing patterns, apply incrementally

@@ -29,13 +29,14 @@ If no results found — **skip remaining steps silently**. Do not mention missin
 
 ### Step 2: Classify by relevance to current task
 
-| Task Domain | Priority Docs | Why |
+| Task Domain | Priority Docs (any of these names) | Why |
 |---|---|---|
-| Frontend/UI | `docs/design-system/`, `docs/screens/`, `SCREENS-INVENTORY.md` | Component consistency, token compliance |
-| Security | `COMPLIANCE.md`, `docs/design-system/accessibility.md` | Regulatory and a11y requirements |
-| Planning | `docs/epics/`, `ROADMAP.md`, `SPRINT*.md` | Feature scope and priorities |
-| Backend/API | `docs/api-docs/`, `ARCHITECTURE.md` | API contracts and system design |
-| Architecture | `ARCHITECTURE.md`, `docs/architecture/` | System design decisions |
+| Frontend/UI | `design-system/`, `style-guide/`, `ui-kit/`, `theme/`, `styles/`, `screens/`, `views/`, `pages/`, `layouts/`, `wireframes/`, `mockups/` | Component consistency, token compliance |
+| Security | `COMPLIANCE.md`, `SECURITY.md`, `accessibility.md`, `a11y.md` | Regulatory and a11y requirements |
+| Planning | `epics/`, `features/`, `stories/`, `specs/`, `requirements/`, `ROADMAP.md`, `SPRINT*.md` | Feature scope and priorities |
+| Backend/API | `api-docs/`, `endpoints/`, `swagger/`, `graphql/`, `API.md`, `openapi*` | API contracts and system design |
+| Architecture | `ARCHITECTURE.md`, `architecture/`, `system-design/`, `infra/`, `tech-design/` | System design decisions |
+| Guidelines | `guidelines/`, `standards/`, `conventions/` | Project-specific rules and practices |
 | Any task | `ARCHITECTURE.md` | Always relevant for system context |
 
 ### Step 3: Read top 3-5 most relevant docs (context-aware)
