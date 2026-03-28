@@ -20,8 +20,6 @@ allowed-tools: Read, Grep, Bash
 
 ---
 
----
-
 ## 1. Branch Strategy Detection
 
 Detect branching model before any PR operation.

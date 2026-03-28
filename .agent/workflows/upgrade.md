@@ -69,7 +69,7 @@ commit-types: [chore]
 ### New Capabilities
 | Type | Added | Details |
 
-**Next**: `/project_status` for health check.
+**Next**: `/project-status` for health check.
 ```
 
 ---

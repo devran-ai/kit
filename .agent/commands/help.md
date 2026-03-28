@@ -39,7 +39,7 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 ### Getting Started
 
 ```
-/project_status   → Check your session and project health
+/project-status   → Check your session and project health
 /plan             → Create an implementation plan
 /create           → Build a new feature from scratch
 /review           → Run quality gates before committing
@@ -62,7 +62,7 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 | `/plan` | Create structured implementation plan with task breakdown |
 | `/implement` | Execute an approved plan step by step |
 | `/verify` | Run all quality gates (lint, types, tests, security, build) |
-| `/project_status` | Check project health, session state, and capabilities |
+| `/project-status` | Check project health, session state, and capabilities |
 
 ### Feature Development
 
@@ -152,8 +152,8 @@ Workflows are multi-step development lifecycles. Use them with the `/` prefix.
 | `/quality-gate` | Pre-task validation protocol | Market research → gap analysis → ethics review |
 | `/retrospective` | Sprint audit and review | Metrics → findings → action items |
 | `/review` | Quality gate pipeline | Lint → types → tests → security → build |
-| `/project_status` | Project state overview | Session → git → health → capabilities |
-| `/help_kit` | Devran AI Kit quick reference | Capabilities → workflows → usage |
+| `/project-status` | Project state overview | Session → git → health → capabilities |
+| `/help-kit` | Devran AI Kit quick reference | Capabilities → workflows → usage |
 | `/test` | Systematic test writing | Strategy → write → run → coverage |
 | `/ui-ux-pro-max` | Premium UI/UX design | Style → palette → typography → implement |
 | `/upgrade` | Non-destructive framework updates | Backup → update → verify → preserve |
@@ -267,7 +267,7 @@ Terminal commands available after installing the kit:
 ## Quick Reference Card
 
 ```
-Start here:        /project_status → /plan → /create → /review
+Start here:        /project-status → /plan → /create → /review
 Debug issues:      /debug → /fix → /verify
 Write tests:       /tdd → /test → /verify
 Deploy:            /review → /deploy

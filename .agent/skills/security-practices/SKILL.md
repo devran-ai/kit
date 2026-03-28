@@ -16,8 +16,6 @@ triggers: [context, security, auth, vulnerability]
 
 ---
 
----
-
 ## Core Security Checklist
 
 Apply OWASP Top 10 mitigations on every project: parameterized queries (injection), strong auth + MFA + rate limiting (broken auth), encryption at rest/transit (sensitive data), disable XML external entities (XXE), verify permissions every request (broken access), security headers + remove defaults (misconfig), sanitize output + CSP (XSS), validate input types (insecure deserialization), keep deps updated (components), log security events (logging).

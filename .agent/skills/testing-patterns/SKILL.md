@@ -16,8 +16,6 @@ triggers: [context, test, tdd, jest, vitest]
 
 ---
 
----
-
 ## Overview
 
 This skill provides comprehensive testing patterns for unit, integration, and end-to-end testing.

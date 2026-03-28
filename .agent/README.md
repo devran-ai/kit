@@ -10,7 +10,7 @@
 Every new AI session, run:
 
 ```
-/project_status
+/project-status
 ```
 
 This loads your session context and activates the orchestrator.
@@ -44,7 +44,7 @@ This loads your session context and activates the orchestrator.
 
 | Command        | Purpose                    |
 | :------------- | :------------------------- |
-| `/project_status` | Current session status  |
+| `/project-status` | Current session status  |
 | `/plan`        | Create implementation plan |
 | `/tdd`         | Test-driven development    |
 | `/verify`      | Full verification loop     |
