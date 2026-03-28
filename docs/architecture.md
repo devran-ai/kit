@@ -1,6 +1,6 @@
 # Architecture
 
-Devran AI Kit v4.6.1 is an engineered framework with a **34-module runtime engine**, 23 agents, 35 skills, 37 commands, and 22 workflows.
+Devran AI Kit v5.0.0 is an engineered framework with a **34-module runtime engine**, 23 agents, 36 skills, 37 commands, 23 workflows, and 13 governance rules.
 
 ---
 
@@ -12,7 +12,7 @@ Devran AI Kit v4.6.1 is an engineered framework with a **34-module runtime engin
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
-│  │   23 AGENTS     │  │   37 COMMANDS   │  │   35 SKILLS     │      │
+│  │   23 AGENTS     │  │   37 COMMANDS   │  │   36 SKILLS     │      │
 │  │                 │  │                 │  │                 │      │
 │  │ • Architect     │  │ • /plan         │  │ • api-patterns  │      │
 │  │ • Mobile Dev    │  │ • /implement    │  │ • architecture  │      │
@@ -25,11 +25,11 @@ Devran AI Kit v4.6.1 is an engineered framework with a **34-module runtime engin
 │           ┌──────────────────┴──────────────────┐                   │
 │           ▼                                      ▼                   │
 │  ┌─────────────────────────────────────────────────────────┐        │
-│  │                    22 WORKFLOWS                          │        │
+│  │                    23 WORKFLOWS                          │        │
 │  │  /brainstorm • /create • /debug • /deploy • /enhance    │        │
-│  │  /orchestrate • /plan • /pr • /preflight • /preview      │        │
-│  │  /quality-gate • /retrospective • /review • /project-status │      │
-│  │  /test • /ui-ux-pro-max • /upgrade                       │        │
+│  │  /implement • /orchestrate • /plan • /pr • /preflight    │        │
+│  │  /preview • /quality-gate • /retrospective • /review     │        │
+│  │  /project-status • /test • /ui-ux-pro-max • /upgrade     │        │
 │  └─────────────────────────────────────────────────────────┘        │
 │                              │                                       │
 │           ┌──────────────────┴──────────────────┐                   │
@@ -71,24 +71,26 @@ Slash commands for quick execution of common operations.
 - **Development**: /build, /fix, /debug, /refactor, /cook
 - **Quality**: /verify, /code-review, /security-scan, /perf
 
-### Skills (35)
+### Skills (36)
 
 Domain expertise modules that extend AI capabilities.
 
-- **Operational**: verification-loop, continuous-learning, strategic-compact, eval-harness, context-budget, production-readiness
+- **Operational**: verification-loop, continuous-learning, strategic-compact, eval-harness, context-budget, production-readiness, project-docs-discovery
 - **Orchestration**: intelligent-routing, parallel-agents, behavioral-modes, mcp-integration
-- **Planning**: plan-writing (tiered quality schema), plan-validation (completeness scoring), brainstorming
-- **Domain**: api-patterns, architecture, clean-code, database-design, testing-patterns, pr-toolkit, and 15 more
+- **Planning**: plan-writing (tiered quality schema), plan-validation (completeness scoring), brainstorming, **research-methodology** (multi-source evidence protocol, competitive analysis)
+- **Domain**: api-patterns, architecture, clean-code, database-design, testing-patterns, pr-toolkit, security-practices, and 14 more
 
-### Workflows (22)
+### Workflows (23)
 
 Complete development lifecycles for multi-step processes.
 
-- /brainstorm, /create, /debug, /deploy, /enhance, /orchestrate
+- /brainstorm, /create, /debug, /deploy, /enhance, /implement, /orchestrate
 - /plan, /pr, /pr-review, /pr-fix, /pr-merge, /pr-split, /preflight, /preview, /quality-gate, /retrospective, /review
 - /project-status, /help-kit, /test, /ui-ux-pro-max, /upgrade
 
-### Runtime Engine (33 Modules)
+All 23 workflows include Scope Filter tables, Argument Parsing, Failure Output templates, and measurable Completion Criteria.
+
+### Runtime Engine (34 Modules)
 
 Node.js runtime modules that enforce governance, manage state, and provide platform features.
 
@@ -101,7 +103,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 
 ### Rules & Hooks
 
-- **Rules** (10): Modular governance constraints (coding, security, testing, git, docs, sprint, workflow-standards, quality-gate, agent-upgrade-policy, architecture)
+- **Rules** (13): Governance constraints — security, coding-style, testing, git-workflow, documentation, architecture, performance, accessibility, data-privacy, sprint-tracking, workflow-standards, quality-gate, agent-upgrade-policy
 - **Hooks** (8): Event-driven automation (session-start, session-end, pre-commit, phase-transition, sprint-checkpoint, secret-detection, plan-complete, task-complete)
 
 ---
@@ -112,8 +114,8 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 .agent/
 ├── agents/               # 23 specialized agents
 ├── commands/             # 37 slash commands
-├── skills/               # 35 capability modules
-├── workflows/            # 22 process templates
+├── skills/               # 36 capability modules
+├── workflows/            # 23 process templates
 ├── engine/               # Autonomy Engine configs
 ├── hooks/                # Event automation
 ├── rules/                # Governance rules

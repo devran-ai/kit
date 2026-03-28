@@ -53,7 +53,7 @@ Group changed files by concern: Feature Code, Tests, Configuration, Dependencies
 
 ### Step 3: Propose Split Plan
 // turbo
-Generate plan with merge ordering. Present for user approval. If `--dry-run` → **STOP**.
+Generate plan with merge ordering. Present for user approval — **wait for explicit "yes" or `/pr-split --approve` before proceeding**. If `--dry-run` → **STOP**.
 
 ```markdown
 | # | Sub-PR | Branch | Files | Type | Depends On |
@@ -78,7 +78,7 @@ Post comment linking all sub-PRs with merge order.
 ## Output Template
 
 ```markdown
-## PR Split Complete
+## ✂️ PR Split Complete
 
 | Field | Value |
 | :--- | :--- |

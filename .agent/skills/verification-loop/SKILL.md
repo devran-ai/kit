@@ -8,6 +8,14 @@ triggers: [manual, pre-commit]
 
 > **Purpose**: Continuous quality assurance through automated verification
 
+## Sub-Resources
+
+| File | Purpose |
+| :--- | :--- |
+| `gate-config.md` | Gate definitions, thresholds, skip conditions, rigor profile integration |
+
+---
+
 ---
 
 ## Overview

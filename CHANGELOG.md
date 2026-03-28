@@ -5,6 +5,98 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0] — 2026-03-28
+
+### Added
+
+**Workflow Governance — Tier-1 Production Quality**
+- Scope Filter tables in all 23 workflows — commit-type (feat/fix/refactor/docs/chore) → Required / Conditional / Skip with rationale
+- Argument Parsing tables in 14 workflows — bare command, `[args]`, and `--flag` variant behavior
+- Failure Output / Failure Template sections in all 23 workflows — blocked paths, partial completion, escalation procedures
+- New workflow: `/implement` — execute implementation from approved plan with incremental verification, atomic commits, and progress table
+- Extended Completion Criteria: 4 → 8 binary, measurable items in all 9 critical workflows
+- Ethics/Safety gate in `quality-gate.md` and `retrospective.md` — AI bias assessment, GDPR compliance, automation transparency, human-in-the-loop verification
+- Rejection Triggers section in `quality-gate.md` — 5 explicit auto-reject conditions (harmful patterns, missing research, deceptive UX, privacy violation, accessibility failure)
+- Enhancement Strategy dimensions in `quality-gate.md` — transparency, ethics, user-centric, data-sovereign, accurate
+
+**New Governance Rules (10 → 13)**
+- `rules/performance.md` — JS bundle ≤ 200KB gz, API p95 ≤ 300ms, LCP ≤ 2.5s, CLS ≤ 0.1; N+1 prevention; memory leak detection; regression CI gate
+- `rules/accessibility.md` — WCAG 2.1 AA minimum; semantic HTML; ARIA roles; keyboard nav; color contrast 4.5:1/3:1; touch targets 44×44px; screen reader testing
+- `rules/data-privacy.md` — PII never logged, encrypted at rest, minimized at collection; data classification (4 levels); GDPR core; AI pipeline anonymization
+
+**Skill Sub-Files — Deep Specialization (8 new files)**
+- `pr-toolkit/review-template.md` — 6-perspective review output template
+- `pr-toolkit/fix-template.md` — fix plan table + resolution summary with before/after diffs
+- `pr-toolkit/bot-parsers.md` — Gemini/CodeRabbit/SonarCloud/Dependabot/GitHub Actions parsing rules
+- `verification-loop/gate-config.md` — gate definitions, thresholds, skip conditions, rigor profile integration
+- `production-readiness/scorecard-template.md` — 10-domain scorecard, delta comparison, executive summary
+- `intelligent-routing/multi-agent-protocols.md` — sequential/parallel/consensus patterns, conflict resolution
+- `security-practices/owasp-checklist.md` — OWASP Top 10 with detection commands, code patterns, fix patterns
+- `testing-patterns/test-matrix.md` — test type selection matrix, coverage strategy, edge case catalog
+
+**New Skill: research-methodology (35 → 36)**
+- T1-T5 evidence hierarchy with validity levels
+- Multi-source evidence protocol (project docs → code → web → community)
+- Competitive analysis framework (5+ comparisons, weighted evaluation matrix)
+- Technology evaluation matrix template
+- Quality rules: source attribution, freshness (≤12 months), cross-reference, bias mitigation, confidence scoring
+
+**Instinct System — Living Pattern Memory**
+- `contexts/instincts.md` — confidence-scored pattern database (0-100); auto-applied at ≥70 confidence
+- 5 seed instincts: parameterized queries (100), test before/after refactor (95), JWT validation (95), service abstraction (90), bug-first edge case testing (85)
+- Decay policy: confidence -10 per 6 months unused; archived at <30
+- Planner reads instincts.md at Step 1 and applies all patterns ≥70 confidence automatically
+
+**Rigor Profiles**
+- Three enforcement tiers in `rules/workflow-standards.md`: strict (production, all gates, 80%+ enforced), standard (default), minimal (prototyping, lint+build only)
+- Auto-elevation to strict: merging to main/master, running `/preflight`, or touching auth/payment/PII files
+
+**Agent Enrichment — Before/After Anti-Pattern Examples**
+- `tdd-guide.md` — test type decision tree (unit/integration/E2E), edge case catalog (null, empty, boundary, invalid, concurrent, failure), before/after examples
+- `code-reviewer.md` — severity calibration examples (CRITICAL SQL injection, HIGH error handling), 3-role QA architecture
+- `typescript-reviewer.md` — 5 anti-patterns with before/after: `as any`, `@ts-ignore`, bare `enum`, non-null `!`, `Function` type
+- `python-reviewer.md` — 5 anti-patterns with before/after: bare `except:`, mutable defaults, missing type hints, `import *`, global mutable state
+- `go-reviewer.md` — 5 anti-patterns with before/after: `panic` in library code, naked goroutines, ignored errors `_`, missing `context.Context`, direct error assertion
+
+**Planner Rule Consultation**
+- Rule Consultation table in `planner.md` with all 8 mandatory rules and precise domain triggers
+- Loading engine `alwaysLoadRules`: all 8 rules active for every `/plan`
+- Domain-specific loading: database+devops → data-privacy; frontend → accessibility; performance domain → performance rule
+
+**Command Dependency Declarations**
+- All 37 commands now declare `workflow:`, `invokes:`, or `uses:` frontmatter — enabling automated agent routing and dependency graph validation
+- PR family: pr.md (workflow: pr), pr-review.md (+invokes: pr-reviewer), pr-fix/pr-merge/pr-split all wired to workflows
+- Utility commands: security-scan (invokes: security-reviewer), scout (invokes: explorer-agent), research (invokes: knowledge-agent), learn (invokes: knowledge-agent), and 12 more
+
+**Session Context Bootstrap Fix**
+- `contexts/session-context.md` — created file that session-start hook required (`severity=critical, onFailure=block`)
+- Resolves bootstrap failure where framework blocked every session on missing file
+
+**Checklist Enhancements**
+- `pre-commit.md` — lockfile consistency check, test coverage threshold validation, `npm audit fix` remediation
+- `task-complete.md` — prerequisite gate matrix: `/pr` requires tests+review; `/deploy` requires PR merged+CI; `/review` requires build
+
+**Command Output Preview**
+- `commands/adr.md` — added Output Preview with full ADR example (status, date, context, decision, consequences, alternatives)
+
+### Changed
+
+- All 23 workflows enriched: Scope Filters, Argument Parsing (where applicable), Failure Output templates, Governance sections, measurable Completion Criteria
+- `workflows/plan.md` — commit-types corrected: `[docs]` → `[feat, fix, refactor, docs]`; Scope Filter added
+- `workflows/help-kit.md` — all 7 command names fixed: `/pr_review` → `/pr-review`, `/project_status` → `/project-status`, `/quality_gate` → `/quality-gate`, `/ui_ux_pro_max` → `/ui-ux-pro-max`
+- `workflows/preview.md` — completion criteria: 1 subjective criterion replaced with 5 binary, measurable gates (type detected, status confirmed, port available, no orphaned processes, health check HTTP 2xx)
+- `workflows/upgrade.md` — Preservation Contract defined with explicit list: rules/, checklists/, contexts/, engine/identity.json, engine/session-state.json, decisions/, custom agents/skills
+- `workflows/deploy.md` — health check thresholds quantified: error rate ≤ baseline + 0.1% (warn >0.1%, critical >1%); p95 latency ≤ baseline + 20ms (warn p99 >200ms, critical >500ms)
+- `workflows/pr-split.md` — user approval mechanism defined: explicit 'yes' or `--approve` flag required
+- `workflows/project-status.md` — command names fixed (underscore → hyphen); completion criteria: 4 binary gates with data sources
+- `workflows/retrospective.md` — duplicate Step 8 (ethics review) removed; merged into enriched Step 5
+- `workflows/review.md` — cache rule: "immediately before" defined as "same session, no file changes since"
+- `skills/strategic-compact/SKILL.md` — instincts.md preservation note: never compact away patterns ≥70 confidence
+- `commands/cook.md` — added missing YAML frontmatter (sdlc-phase, invokes, commit-types)
+- Manifest: rules.count 10 → 13, skills.count 35 → 36, workflows.count 22 → 23
+
+---
+
 ## [4.6.0] — 2026-03-28
 
 ### Added

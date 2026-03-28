@@ -30,6 +30,29 @@ commit-types: [feat, refactor]
 
 ---
 
+## Scope Filter
+
+| Commit Type | Applicability | Rationale |
+| :--- | :--- | :--- |
+| `feat` | Required | New UI features need full premium design workflow |
+| `refactor` | Required | UI refactors must preserve accessibility and quality standards |
+| `fix` | Optional | Only for visual regressions or WCAG accessibility violations |
+| `docs` | Skip | Documentation doesn't need UI/UX workflow |
+| `chore` | Skip | Tooling changes are out of scope |
+
+---
+
+## Argument Parsing
+
+| Command | Action |
+| :--- | :--- |
+| `/ui-ux-pro-max [description]` | Full premium design workflow for component or page |
+| `/ui-ux-pro-max [description] --responsive-only` | Responsive testing and breakpoint fixes only |
+| `/ui-ux-pro-max [description] --a11y-only` | Accessibility audit and WCAG 2.1 AA fixes only |
+| `/ui-ux-pro-max [description] --dark-mode` | Include dark mode palette and token variant |
+
+---
+
 ## Steps
 
 // turbo
@@ -38,11 +61,29 @@ commit-types: [feat, refactor]
 // turbo
 2. **Requirements** — what's being designed, target mood/aesthetic, brand guidelines
 
-3. **Implementation** — semantic HTML, palette + typography, spacing + hierarchy, responsive breakpoints
+3. **Design System Compliance Check** — before writing any CSS/components:
+   - Identify existing design tokens (colors, spacing, typography, radii, shadows)
+   - Use tokens exclusively — never hardcode values present in design system
+   - If tokens don't exist for needed style: create new tokens in design system file, then use them
 
-4. **Polish** — hover/focus states, transitions, loading/skeleton states, 60fps animations
+4. **Implementation** — semantic HTML, palette + typography, spacing + hierarchy, responsive breakpoints
 
-5. **Accessibility** — contrast (>=4.5:1 text, >=3:1 large), keyboard nav, ARIA, `prefers-reduced-motion`
+5. **Responsive Testing** — verify at all 4 breakpoints:
+   | Breakpoint | Width | Target Device |
+   | :--- | :--- | :--- |
+   | Mobile | 375px | iPhone SE / small Android |
+   | Tablet | 768px | iPad portrait |
+   | Desktop | 1024px | Laptop |
+   | Wide | 1280px+ | Desktop monitor |
+
+6. **Polish** — hover/focus states, transitions, loading/skeleton states, 60fps animations
+
+7. **Accessibility Verification** — WCAG 2.1 AA mandatory:
+   - Color contrast: ≥4.5:1 for body text, ≥3:1 for large text (18pt+ or 14pt bold)
+   - Keyboard navigation: all interactive elements reachable and operable
+   - ARIA attributes: semantic roles, labels, live regions for dynamic content
+   - `prefers-reduced-motion`: animations respect user preference
+   - Focus indicators: visible on all interactive elements (no `outline: none` without replacement)
 
 ---
 
@@ -60,7 +101,7 @@ commit-types: [feat, refactor]
 ## Output Template
 
 ```markdown
-## UI/UX: [Component/Page]
+## 🎨 UI/UX: [Component/Page]
 
 - **Palette/Typography/Style**: [details]
 - **Files**: [created/modified]
@@ -82,9 +123,41 @@ commit-types: [feat, refactor]
 
 ## Completion Criteria
 
-- [ ] Design system audited
-- [ ] Premium implementation with accessibility
-- [ ] Responsive across breakpoints
+- [ ] Design system audited — existing tokens identified
+- [ ] Design system compliance checked — no hardcoded values that duplicate tokens
+- [ ] Premium implementation: curated palette, modern typography, micro-animations
+- [ ] Responsive verified at 375/768/1024/1280px breakpoints
+- [ ] Accessibility verified: WCAG 2.1 AA contrast ratios, keyboard nav, ARIA, `prefers-reduced-motion`
+- [ ] No generic/template patterns — "anti-AI-slop" standard met
+
+---
+
+## Failure Output
+
+> Use when: WCAG failures detected, design system tokens missing, or accessibility violations block merge.
+
+```markdown
+## UI/UX — ACCESSIBILITY VIOLATIONS
+
+**Status**: BLOCKED
+**Reason**: [WCAG 2.1 AA failures / missing design tokens / responsive breakpoint failures]
+
+### Violations
+
+| Check | Requirement | Current | Issue |
+| :---- | :---------- | :------ | :---- |
+| Color contrast | 4.5:1 (normal) / 3:1 (large) | [ratio] | [element] |
+| Touch target | 44×44px minimum | [size] | [element] |
+| Keyboard nav | All interactive elements focusable | Missing | [element] |
+| ARIA | Roles present on custom widgets | Missing | [element] |
+
+### Required Fixes
+
+1. [Fix 1 — with file:line reference]
+2. [Fix 2]
+
+**Must pass all WCAG 2.1 AA checks before `/test`.**
+```
 
 ---
 

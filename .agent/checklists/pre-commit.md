@@ -54,7 +54,16 @@
   - No tokens
 - [ ] **Dependencies secure**
   ```bash
-  npm audit
+  npm audit          # zero critical/high vulnerabilities
+  npm audit fix      # auto-fix safe upgrades if audit found issues
+  ```
+- [ ] **Lockfile consistent** — `package-lock.json` / `yarn.lock` committed and matches `package.json`
+  ```bash
+  git diff HEAD -- package-lock.json yarn.lock  # should be committed with code changes
+  ```
+- [ ] **Test coverage maintained** — coverage must not drop below project threshold (default 80%)
+  ```bash
+  npm test -- --coverage  # verify threshold not breached
   ```
 
 ---

@@ -43,7 +43,7 @@ git clone https://github.com/devran-ai/kit.git
 cp -r kit/.agent/ your-project/.agent/
 
 # 3. Start your session
-/project_status
+/project-status
 ```
 
 ---
@@ -96,7 +96,7 @@ Devran AI Kit **only** operates within the `.agent/` directory. Your project fil
 2. Run the status command:
 
 ```
-/project_status
+/project-status
 ```
 
 You should see:
@@ -161,6 +161,6 @@ Devran AI Kit includes a **Session Management Architecture** that ensures contin
 
 - **[Agents](agents/index.md)** — 23 specialized AI agents
 - **[Commands](commands/index.md)** — 37 slash commands
-- **[Skills](skills/index.md)** — 35 domain expertise modules
-- **[Workflows](workflows/index.md)** — 22 development workflows
+- **[Skills](skills/index.md)** — 36 domain expertise modules
+- **[Workflows](workflows/index.md)** — 23 development workflows
 - **[Governance](governance/index.md)** — Operating constraints

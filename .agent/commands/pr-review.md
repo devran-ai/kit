@@ -1,5 +1,7 @@
 ---
 description: Review a pull request with Senior Staff Engineer expertise
+workflow: pr-review
+invokes: [pr-reviewer]
 ---
 
 # /pr-review Command

@@ -21,12 +21,14 @@ commit-types: [fix]
 
 ## Critical Rules
 
+0. **NO ARTIFACT FILES** — never create `.md` notes, fix summaries, or scratch files in the repository. Post summaries as PR comments only.
 1. **REVIEWER ATTRIBUTION** — every fix MUST credit the reviewer who flagged it (stated once, applies to all steps and output)
 2. Fetch ALL review comments (humans AND bots) before implementing any fix
 3. Prioritize fixes: CRITICAL → HIGH → MEDIUM → LOW — never skip severity levels
 4. Run `/review` pipeline after all fixes before pushing — never push broken code
 5. Never modify code unrelated to review findings — stay scoped
 6. Atomic commits — one fix per commit referencing the finding (exception: related doc fixes in same file)
+7. **EVIDENCE MANDATE** — every fix comment must include: before state (file:line + content), after state (file:line + content), and which reviewer's concern it addresses
 
 ---
 
@@ -60,7 +62,12 @@ gh pr diff <number> --repo <owner/repo>
 
 For each comment extract: **Reviewer**, **Type** (inline/general), **Finding**, **Severity**, **Suggested fix**, **Status**. Skip resolved/outdated comments.
 
-**Bot parsing**: Gemini → `Medium/High Priority` labels + `Suggested change` blocks. CodeRabbit → severity badges. SonarCloud → quality gate issues.
+**Bot parsing** (see `.agent/skills/pr-toolkit/bot-parsers.md` for detailed patterns):
+- **Gemini Code Assist**: Extract `Medium/High Priority` labels + `Suggested change` code blocks
+- **CodeRabbit**: Extract severity badges (🔴 Critical, 🟠 Major, 🟡 Minor) + nitpick tags
+- **SonarCloud**: Quality gate failures → map to CRITICAL/HIGH; code smells → MEDIUM/LOW
+- **Dependabot**: Security advisories → always CRITICAL; version bumps → LOW
+- **GitHub Actions**: Failed checks → extract job name, step, error message → P0/P1
 
 ### Step 3: Categorize and Prioritize
 
@@ -71,7 +78,15 @@ For each comment extract: **Reviewer**, **Type** (inline/general), **Finding**, 
 | P2 | MEDIUM | Doc inconsistencies, naming |
 | P3 | LOW/NIT | Suggestions, preferences |
 
-Generate fix plan table: `# | Priority | Reviewer | File:Line | Finding | Planned Fix`
+Generate fix plan as markdown table:
+
+```markdown
+## Fix Plan — PR #<number>
+| # | Priority | Reviewer | File:Line | Finding | Planned Fix |
+| :- | :--- | :--- | :--- | :--- | :--- |
+| 1 | P0 CRITICAL | @alice | src/auth.ts:42 | SQL injection risk | Parameterized query |
+| 2 | P1 HIGH | CodeRabbit 🟠 | src/api.ts:15 | Missing error handler | Add try/catch |
+```
 
 If `--dry-run` → display plan and **STOP**. If `--critical-only` → filter to P0.
 
@@ -98,7 +113,17 @@ Addresses @<reviewer>'s finding at <file>:<line>"
 
 ### Step 6: Run Verification
 
-Run `/review` pipeline (lint → type-check → tests → security → build). Record per-gate status. Max 3 retry cycles on failure.
+Run `/review` pipeline. Record per-gate result:
+
+| Gate | Command | Pass Condition | On Fail |
+| :--- | :--- | :--- | :--- |
+| Lint | `eslint`/`ruff`/`golangci-lint` | Zero errors | Fix then retry (max 3) |
+| Type Check | `tsc --noEmit` / `mypy` | Zero type errors | Fix then retry |
+| Tests | `jest`/`pytest`/`go test` | All pass, coverage ≥ pre-PR | Fix then retry |
+| Security | `npm audit`/`trivy` | No new CRITICAL/HIGH | Fix then retry |
+| Build | `npm run build` / stack-specific | Clean exit code 0 | Fix then retry |
+
+Max 3 retry cycles per gate. If any gate still fails after 3 retries → STOP, report blocker to user.
 
 ### Step 7: Push Fixes
 
@@ -108,14 +133,66 @@ git push origin <head-branch>
 
 ### Step 8: Post Resolution Summary
 
-Post comment on PR with fixes table, before/after diffs, verification results, and disposition. Re-request review from human reviewers via `gh pr edit --add-reviewer`.
+Post comment on PR using `gh pr comment #<number> --body "..."` with full resolution summary. Re-request review from human reviewers via `gh pr edit --add-reviewer`.
+
+Resolution summary format:
+```markdown
+## 🔧 ✅ PR Fix Complete
+
+**Findings addressed:** {count} ({n} human · {n} bot)
+**Commits:** {count} · **Verification:** All gates passed
+
+### Fix Summary
+| # | Priority | Reviewer | File:Line | Finding | Fix Applied | Commit |
+| :- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 | P0 | @alice | auth.ts:42 | SQL injection | Parameterized query | abc1234 |
+
+### Diffs (Critical/High findings)
+**Fix #1 — auth.ts:42** (@alice: "SQL injection risk")
+```diff
+- const query = `SELECT * FROM users WHERE id = ${userId}`
++ const query = `SELECT * FROM users WHERE id = $1`
++ db.query(query, [userId])
+```
+
+### Verification
+| Gate | Status |
+| :--- | :--- |
+| Lint | ✅ Pass |
+| Type Check | ✅ Pass |
+| Tests | ✅ Pass (coverage: 84%) |
+| Security | ✅ Pass |
+| Build | ✅ Pass |
+
+@alice @bob — ready for re-review.
+```
+
+---
+
+## Failure Output Template
+
+```markdown
+## ⚠️ PR Fix Blocked — #{number}
+
+**Completed:** {n}/{total} fixes
+**Blocked at:** [Gate name / Step name]
+**Reason:** [exact error or blocker]
+
+### Completed Fixes
+| # | Priority | Reviewer | Fix Applied | Commit |
+
+### Blocked Findings
+| # | Priority | Finding | Blocker | Action Needed |
+
+**Recommended next step:** [user action required]
+```
 
 ---
 
 ## Output Template
 
 ```markdown
-## PR Fix Complete: #{number} — {title}
+## 🔧 PR Fix Complete: #{number} — {title}
 
 | Field | Value |
 | :--- | :--- |
@@ -147,12 +224,17 @@ Post comment on PR with fixes table, before/after diffs, verification results, a
 
 ## Completion Criteria
 
-- [ ] All review comments fetched and attributed
-- [ ] Fix plan generated with priority ordering
-- [ ] Fixes implemented with before/after evidence
-- [ ] Verification pipeline passed
-- [ ] Summary comment posted with attribution and diffs
-- [ ] Re-review requested
+- [ ] PR reference validated — PR is open and accessible
+- [ ] All review comments fetched: human reviewers AND all bots (Gemini, CodeRabbit, SonarCloud, Dependabot, Actions)
+- [ ] Each comment attributed to reviewer with severity classification
+- [ ] Fix plan generated with P0→P3 ordering and presented (or `--dry-run` output presented and stopped)
+- [ ] PR branch checked out and up to date
+- [ ] All fixes implemented in priority order with atomic commits
+- [ ] Every commit includes reviewer attribution in message
+- [ ] Evidence recorded: before/after state for each fix
+- [ ] Verification pipeline passed: all 5 gates (lint, type-check, tests, security, build)
+- [ ] Resolution summary posted as PR comment with diffs
+- [ ] Human reviewers re-requested for review
 
 ---
 

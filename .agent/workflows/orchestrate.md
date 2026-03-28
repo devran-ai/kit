@@ -20,6 +20,29 @@ commit-types: [feat, refactor, fix]
 
 ---
 
+## Scope Filter
+
+| Commit Type | Applicability | Rationale |
+| :--- | :--- | :--- |
+| `feat` | Required | New features spanning multiple domains need orchestrated delivery |
+| `refactor` | Required | Cross-cutting refactors risk agent conflicts without coordination |
+| `fix` | Optional | Only when bug spans multiple domains (auth + DB + API) |
+| `docs` | Skip | Documentation doesn't need multi-agent orchestration |
+| `chore` | Skip | Tooling changes are single-domain |
+
+---
+
+## Argument Parsing
+
+| Command | Action |
+| :--- | :--- |
+| `/orchestrate [task description]` | Full orchestration — Phase 1 planning + Phase 2 implementation |
+| `/orchestrate [task] --plan-only` | Phase 1 planning only — stop after user approval gate |
+| `/orchestrate [task] --agents [list]` | Override auto-selected agents with explicit comma-separated list |
+| `/orchestrate [task] --dry-run` | Show orchestration plan without invoking any agents |
+
+---
+
 ## Critical Rules
 
 1. **2-Phase protocol** — always plan before implementing
@@ -44,9 +67,22 @@ commit-types: [feat, refactor, fix]
 
 ### PHASE 2: Implementation (After Approval)
 
-4. **Execute in Groups** — Foundation (data, security) → Core (app logic) → Quality (tests) → Operations (infra)
+4. **Execute in Groups** — Run agents in dependency order:
+   - **Foundation** (data models, security setup) — must complete before Core
+   - **Core** (application logic, API endpoints) — depends on Foundation
+   - **Quality** (tests, coverage, lint) — depends on Core output
+   - **Operations** (infra, CI/CD, deployment config) — can run in parallel with Quality
+   - Rule: no two agents modify the same file without explicit sequential ordering
 
-5. **Context Passing** — every subagent gets: original request, decisions, prior agent work, plan state
+5. **Context Passing** — every subagent receives a structured brief:
+   ```
+   original_request: [verbatim user request]
+   plan_phase: [current phase name]
+   decisions_made: [list of architectural/design decisions from Phase 1]
+   prior_agent_output: [summary of changes made by previous agents]
+   your_scope: [exact files/domains this agent owns]
+   do_not_touch: [files owned by other agents]
+   ```
 
 // turbo
 6. **Verification** — tests, lint, type-check, build
@@ -55,33 +91,59 @@ commit-types: [feat, refactor, fix]
 
 ## Agent Selection
 
-| Domain | Agent(s) |
+| Domain | Agent(s) | When Needed |
+| :--- | :--- | :--- |
+| Architecture | `architect`, `planner` | System design changes, cross-domain impact analysis |
+| Backend/DB | `backend-specialist`, `database-architect` | API changes, schema migrations, query optimization |
+| Frontend | `frontend-specialist` | UI components, state management, React/Next.js |
+| Mobile | `mobile-developer` | React Native, Expo, native integrations |
+| Security | `security-reviewer` | Auth changes, data handling, external APIs |
+| Testing | `tdd-guide`, `e2e-runner` | New features, regression prevention, E2E flows |
+| DevOps | `devops-engineer` | CI/CD pipelines, Docker, environment configuration |
+| Performance | `performance-optimizer` | Core Web Vitals, API latency, bundle size |
+| Code Quality | `refactor-cleaner`, `code-reviewer` | Dead code, complexity reduction, review gate |
+
+---
+
+## Failure Handling
+
+| Scenario | Action |
 | :--- | :--- |
-| Architecture | `architect`, `planner` |
-| Backend/DB | `backend-specialist`, `database-architect` |
-| Frontend | `frontend-specialist` |
-| Mobile | `mobile-developer` |
-| Security | `security-reviewer` |
-| Testing | `tdd-guide`, `e2e-runner` |
-| DevOps | `devops-engineer` |
-| Performance | `performance-optimizer` |
-| Code Quality | `refactor-cleaner`, `code-reviewer` |
+| One agent fails mid-group | Isolate failure, complete remaining agents in group, report partial results |
+| Agent conflict detected (same file) | Stop both agents, re-sequence with explicit ordering, resume |
+| Verification fails after all agents | Identify which agent's output caused failure, re-run that agent only |
+| User cancels mid-orchestration | Commit completed work as WIP, document rollback instructions |
 
 ---
 
 ## Output Template
 
+**Success:**
 ```markdown
-## Orchestration Complete
+## 🎭 Orchestration Complete
 
 ### Agents Invoked
-| Agent | Domain | Summary |
+| Agent | Domain | Status | Summary |
 
 ### Deliverables
 | Action | File | Agent |
 
 ### Verification
-Tests / Build / Lint: status
+Tests: ✅ | Build: ✅ | Lint: ✅ | Type-check: ✅
+```
+
+**Partial Completion:**
+```markdown
+## 🎭 Orchestration Partial — [reason]
+
+### Completed
+| Agent | Domain | Output |
+
+### Blocked
+| Agent | Reason | Next Step |
+
+### Rollback Instructions
+[Steps to revert completed work if needed]
 ```
 
 ---
@@ -96,9 +158,13 @@ Tests / Build / Lint: status
 
 ## Completion Criteria
 
-- [ ] Domains analyzed, plan approved
-- [ ] Agents executed with context
-- [ ] Verification passed
+- [ ] Scope Filter evaluated — orchestration is appropriate for this commit type
+- [ ] All domains identified and mapped to specific agents
+- [ ] Phase 1 plan presented with execution groups and dependency order
+- [ ] User explicit approval received before Phase 2
+- [ ] All agents executed with full structured context brief
+- [ ] No file ownership conflicts — each file assigned to exactly one agent
+- [ ] Verification passed (tests, lint, type-check, build) after all agents complete
 
 ---
 

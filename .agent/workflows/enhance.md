@@ -16,6 +16,16 @@ commit-types: [feat, refactor]
 
 ---
 
+## Argument Parsing
+
+| Command | Action |
+| :--- | :--- |
+| `/enhance` | Interactive — ask for enhancement description |
+| `/enhance [description]` | Enhance based on description |
+| `/enhance --dry-run [description]` | Show impact analysis only, no changes |
+
+---
+
 ## Critical Rules
 
 1. Preserve existing functionality — never break what works
@@ -27,13 +37,33 @@ commit-types: [feat, refactor]
 
 ---
 
+## Scope Filter
+
+| Commit Type | Applicability | Rationale |
+| :--- | :--- | :--- |
+| `feat` | Required | Iterative feature development uses the enhancement workflow |
+| `refactor` | Required | Structural improvements are a class of enhancement |
+| `fix` | Optional | Only when fix extends or modifies feature behavior |
+| `docs` | Skip | Documentation updates don't use enhancement workflow |
+| `chore` | Skip | Tooling changes are out of scope |
+
+---
+
 ## Steps
 
 // turbo
 1. **Understand State** — explore structure, review features/stack/conventions, identify relevant files
 
 // turbo
-2. **Impact Analysis** — affected files, dependencies, regression risk, breaking changes
+2. **Impact Analysis** — produce 4-point assessment:
+   | Dimension | Assessment |
+   | :--- | :--- |
+   | Affected Files | [list each file and why it's touched] |
+   | Dependencies | [upstream consumers that may break] |
+   | Regression Risk | Low / Medium / High with rationale |
+   | Breaking Changes | Yes/No — if yes, list what breaks and migration path |
+
+   If `--dry-run` → present this table and **STOP**.
 
 // turbo
 2.5. **Consult Project Docs** — scan `docs/` for architecture and design system docs. Reference constraints before modifying existing code.
@@ -52,14 +82,14 @@ commit-types: [feat, refactor]
 ## Output Template
 
 ```markdown
-## Enhancement: [Feature]
+## 🔧 Enhancement: [Feature]
 
-| Action | File | Description |
-| :--- | :--- | :--- |
-| Modified/Created | `path` | [what] |
+| Action | File | Description | Risk Level |
+| :--- | :--- | :--- | :--- |
+| Modified/Created | `path` | [what changed] | Low/Med/High |
 
-- **Risk**: Low/Medium/High
-- **Regression**: tests/build/lint passing
+**Breaking Changes**: [Yes — migration path / No]
+**Regression**: tests ✅ · build ✅ · lint ✅ · type-check ✅
 
 **Next**: `/test` or `/preview`
 ```
@@ -76,10 +106,37 @@ commit-types: [feat, refactor]
 
 ## Completion Criteria
 
-- [ ] Impact analysis complete
-- [ ] Changes implemented following patterns
-- [ ] Regression check passed
-- [ ] Documentation updated
+- [ ] Impact analysis complete: affected files, dependencies, regression risk, breaking changes
+- [ ] Breaking changes identified with migration path (or confirmed none)
+- [ ] User approval received if >5 files affected
+- [ ] Changes implemented following existing patterns
+- [ ] Regression check passed: tests, build, lint, type-check
+- [ ] Documentation updated for user-facing and API changes
+
+---
+
+## Failure Output
+
+> Use when: high regression risk detected, breaking changes unresolved, or plan rejected.
+
+```markdown
+## Enhance — BLOCKED
+
+**Status**: BLOCKED
+**Reason**: [High regression risk / breaking changes without migration / plan rejected]
+
+### Risk Assessment
+
+| Change | Risk Level | Issue | Required Action |
+| :----- | :--------- | :---- | :-------------- |
+| [change] | HIGH | [issue] | [action] |
+
+### Breaking Changes Requiring Resolution
+
+[List any breaking changes with proposed migration path]
+
+**Do not implement until risk assessment approved.**
+```
 
 ---
 

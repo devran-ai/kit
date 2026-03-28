@@ -1,6 +1,6 @@
 # Skills
 
-Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **35 skills** across 7 categories.
+Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **36 skills** across 7 categories.
 
 ---
 
@@ -83,13 +83,14 @@ DevOps, deployment, and performance.
 
 Architecture, design, and planning.
 
-| Skill              | Purpose                                            |
-| :----------------- | :------------------------------------------------- |
-| **architecture**   | System design patterns (SOLID, Clean Architecture) |
-| **mobile-design**  | Mobile UI/UX patterns for iOS/Android              |
-| **brainstorming**  | Socratic discovery protocol                        |
-| **plan-writing**   | Structured task breakdown                          |
-| **ui-ux-pro-max**  | Design intelligence with searchable style database |
+| Skill                      | Purpose                                                          |
+| :------------------------- | :--------------------------------------------------------------- |
+| **architecture**           | System design patterns (SOLID, Clean Architecture)               |
+| **mobile-design**          | Mobile UI/UX patterns for iOS/Android                            |
+| **brainstorming**          | Socratic discovery protocol                                      |
+| **plan-writing**           | Structured task breakdown                                        |
+| **ui-ux-pro-max**          | Design intelligence with searchable style database               |
+| **research-methodology**   | Multi-source evidence protocol, competitive analysis, tech evaluation matrix |
 
 ---
 

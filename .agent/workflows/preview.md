@@ -65,7 +65,7 @@ commit-types: [chore]
 ## Output Template
 
 ```markdown
-## Preview Server
+## 👁️ Preview Server
 
 - **Type**: [framework]
 - **URL**: http://localhost:[port]
@@ -86,7 +86,11 @@ Stop: `/preview stop` · Restart: `/preview restart`
 
 ## Completion Criteria
 
-- [ ] Project detected, server managed correctly
+- [ ] Project type detected (Next.js / Vite / Expo / NestJS / Django / FastAPI)
+- [ ] Server status confirmed (running / stopped / restarted)
+- [ ] Port available or conflict resolved with alternate port offered
+- [ ] No orphaned processes — stop command provided
+- [ ] Health check passed: `curl -s localhost:[port]` returns HTTP 2xx
 
 ---
 

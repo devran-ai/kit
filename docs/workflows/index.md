@@ -1,6 +1,6 @@
 # Workflows
 
-Workflows are complete development lifecycles that guide you through multi-step processes. **22 workflows** for every development scenario.
+Workflows are complete development lifecycles that guide you through multi-step processes. **23 workflows** for every development scenario.
 
 ---
 
@@ -13,6 +13,7 @@ Workflows are complete development lifecycles that guide you through multi-step 
 | 🐛 `/debug`         | Systematic debugging           | Investigating complex bugs                   |
 | 🚀 `/deploy`        | Production deployment          | Deploying with pre-flight checks             |
 | 🔧 `/enhance`       | Iterative development          | Adding/updating features                     |
+| ⚙️ `/implement`     | Execute approved plan          | Incremental implementation with verification |
 | 🎭 `/orchestrate`   | Multi-agent orchestration      | Complex tasks requiring specialists          |
 | 📋 `/plan`          | Implementation planning        | Creating structured task breakdowns          |
 | 🔀 `/pr`            | Production-grade PR creation   | Creating PRs with branch validation and CI   |
@@ -25,8 +26,8 @@ Workflows are complete development lifecycles that guide you through multi-step 
 | 🔬 `/quality-gate`  | Pre-task research & validation | Market research and ethics review            |
 | 📊 `/retrospective` | Sprint-end quality audit       | Tier-1 compliance review after milestones    |
 | 🔍 `/review`        | Code review pipeline           | Sequential lint/test/security/build gates    |
-| 📈 `/project_status` | Project status overview       | Checking current state and progress          |
-| 📖 `/help_kit`       | Kit quick reference           | Framework overview and workflow guide        |
+| 📈 `/project-status` | Project status overview       | Checking current state and progress          |
+| 📖 `/help-kit`       | Kit quick reference           | Framework overview and workflow guide        |
 | 🧪 `/test`          | Systematic test writing        | Writing comprehensive tests                  |
 | 🎨 `/ui-ux-pro-max` | Premium UI/UX design           | Creating stunning interfaces                 |
 | 🔄 `/upgrade`       | Non-destructive framework updates | Updating Devran AI Kit safely        |

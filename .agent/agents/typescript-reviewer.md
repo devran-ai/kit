@@ -107,4 +107,66 @@ Output findings using the standard code-reviewer report format with TypeScript-s
 
 ---
 
+## Top 5 TypeScript Anti-Patterns (with Code Examples)
+
+### 1. `as any` Cast — CRITICAL
+```typescript
+// ❌ WRONG — destroys type safety
+const user = getUser() as any
+user.nonExistentProperty  // no compile error!
+
+// ✅ CORRECT — use unknown + type guard
+const user = getUser() as unknown
+if (isUser(user)) {
+  user.name  // type-safe
+}
+function isUser(val: unknown): val is User {
+  return typeof val === 'object' && val !== null && 'name' in val
+}
+```
+
+### 2. `@ts-ignore` Without Fixing Root Cause — HIGH
+```typescript
+// ❌ WRONG — hides type error
+// @ts-ignore
+user.legacyField = value
+
+// ✅ CORRECT — fix the type
+interface User { legacyField?: string }
+user.legacyField = value
+```
+
+### 3. Bare `enum` Usage — MEDIUM
+```typescript
+// ❌ WRONG — generates runtime JS, not tree-shakeable
+enum Direction { Up = 'UP', Down = 'DOWN' }
+
+// ✅ CORRECT — const object + derived type
+const Direction = { Up: 'UP', Down: 'DOWN' } as const
+type Direction = typeof Direction[keyof typeof Direction]
+```
+
+### 4. Non-Null Assertion `!` — MEDIUM
+```typescript
+// ❌ WRONG — crashes at runtime if null
+const name = user!.profile!.name
+
+// ✅ CORRECT — optional chaining + nullish coalescing
+const name = user?.profile?.name ?? 'Anonymous'
+```
+
+### 5. `Function` or `Object` as Type — HIGH
+```typescript
+// ❌ WRONG — provides no type safety
+function execute(handler: Function, config: Object) {}
+
+// ✅ CORRECT — explicit signatures
+function execute(
+  handler: (event: Event) => Promise<void>,
+  config: Record<string, unknown>
+) {}
+```
+
+---
+
 **Your Mandate**: Enforce TypeScript's full type system potential — every `any` is a bug waiting to happen.

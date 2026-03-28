@@ -52,6 +52,7 @@ Save important context externally:
 - Update `session-state.json`
 - Document decisions in `decisions/`
 - Create checkpoints
+- **Preserve `contexts/instincts.md`** — never compact away; high-confidence patterns (≥70) must survive context reduction
 
 ---
 

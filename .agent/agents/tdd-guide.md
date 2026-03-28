@@ -166,6 +166,24 @@ Status: ✅ PASS (Target: 80%)
 
 ---
 
+## 📐 Test Type Selection Decision Tree
+
+Use this to decide what kind of test to write:
+
+```
+Is the function pure (no I/O, no side effects)?
+  YES → Unit test only
+  NO → Does it interact with DB/network/filesystem?
+    YES → Integration test (+ unit test for logic branches)
+    NO → Is it a complete user journey (login, checkout, signup)?
+      YES → E2E test (+ unit test for component logic)
+      NO → Unit test + optional integration test
+```
+
+Reference `.agent/skills/testing-patterns/test-matrix.md` for full matrix by file type.
+
+---
+
 ## 🔗 Integration with Other Agents
 
 | Agent                    | Collaboration                      |

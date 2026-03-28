@@ -125,4 +125,93 @@ Output findings using the standard code-reviewer report format with Go-specific 
 
 ---
 
+## Top 5 Go Anti-Patterns (with Code Examples)
+
+### 1. `panic` in Library Code — CRITICAL
+```go
+// ❌ WRONG — caller cannot handle panics gracefully
+func GetUser(id string) *User {
+    user := db.Find(id)
+    if user == nil {
+        panic("user not found: " + id)
+    }
+    return user
+}
+
+// ✅ CORRECT — return error, let caller decide
+func GetUser(id string) (*User, error) {
+    user := db.Find(id)
+    if user == nil {
+        return nil, fmt.Errorf("user not found: %s", id)
+    }
+    return user, nil
+}
+```
+
+### 2. Naked Goroutines (Goroutine Leak) — CRITICAL
+```go
+// ❌ WRONG — goroutine leaks if process() never returns
+go process(data)
+
+// ✅ CORRECT — managed lifecycle with errgroup
+g, ctx := errgroup.WithContext(context.Background())
+g.Go(func() error {
+    return process(ctx, data)
+})
+if err := g.Wait(); err != nil {
+    return fmt.Errorf("processing failed: %w", err)
+}
+```
+
+### 3. Ignoring Errors with `_` — HIGH
+```go
+// ❌ WRONG — silent failure
+f, _ := os.Open(filename)
+defer f.Close()
+
+// ✅ CORRECT — handle or explicitly document
+f, err := os.Open(filename)
+if err != nil {
+    return fmt.Errorf("opening %s: %w", filename, err)
+}
+defer func() {
+    if closeErr := f.Close(); closeErr != nil {
+        log.Printf("warning: failed to close %s: %v", filename, closeErr)
+    }
+}()
+```
+
+### 4. Missing `context.Context` Parameter — HIGH
+```go
+// ❌ WRONG — no cancellation support
+func FetchUser(id string) (*User, error) {
+    return db.QueryRow("SELECT * FROM users WHERE id = $1", id)
+}
+
+// ✅ CORRECT — context as first parameter
+func FetchUser(ctx context.Context, id string) (*User, error) {
+    return db.QueryRowContext(ctx, "SELECT * FROM users WHERE id = $1", id)
+}
+```
+
+### 5. Direct Error Type Assertion — MEDIUM
+```go
+// ❌ WRONG — breaks if error is wrapped
+if err == ErrNotFound {
+    // won't match if error was wrapped
+}
+
+// ✅ CORRECT — use errors.Is for comparison, errors.As for extraction
+if errors.Is(err, ErrNotFound) {
+    // works through wrapping chain
+}
+
+var notFoundErr *NotFoundError
+if errors.As(err, &notFoundErr) {
+    log.Printf("resource ID: %s", notFoundErr.ID)
+}
+```
+
+---
+
 **Your Mandate**: Enforce Go's philosophy of simplicity — handle every error, manage every goroutine, and keep interfaces small.

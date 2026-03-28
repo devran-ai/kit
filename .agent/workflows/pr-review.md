@@ -43,6 +43,19 @@ commit-types: []
 
 ---
 
+## Scope Filter
+
+| Commit Type | Applicability | Rationale |
+| :--- | :--- | :--- |
+| `feat` | Required | New features need full multi-perspective review |
+| `fix` | Required | Bug fixes must not introduce regressions or new issues |
+| `refactor` | Required | Structural changes need architecture + security review |
+| `perf` | Required | Performance changes need regression and security checks |
+| `docs` | Optional | Only for significant documentation PRs |
+| `chore` | Optional | Dependency upgrades need security perspective |
+
+---
+
 ## Steps
 
 ### Step 1: Parse PR Reference
@@ -128,7 +141,7 @@ Skip if `--local`. Post via `gh pr review` with verdict. Post inline findings vi
 ## Output Template
 
 ```markdown
-## PR #{number} Review — {summary}
+## 👀 PR #{number} Review — {summary}
 
 | Field | Value |
 | :--- | :--- |
@@ -168,12 +181,44 @@ Skip if `--local`. Post via `gh pr review` with verdict. Post inline findings vi
 
 ## Completion Criteria
 
-- [ ] PR data, diff, and all existing comments fetched
-- [ ] Review round detected; existing comments analyzed
-- [ ] All 6 perspectives reviewed with file:line evidence
-- [ ] Findings grouped by severity with fix suggestions
-- [ ] "What's Good" section with 3+ observations
-- [ ] Verdict rendered and review posted (unless `--local`)
+- [ ] PR data, diff, and all existing comments fetched (humans + bots)
+- [ ] Review round detected; prior findings cross-referenced if Round 2+
+- [ ] All existing reviewer comments engaged: agreed / acknowledged / challenged (with attribution)
+- [ ] All 6 perspectives reviewed with file:line evidence (Hygiene, Branch, Quality, Security, Testing, Architecture)
+- [ ] Cross-file consistency verified: counts/references/categories match across related files
+- [ ] Findings grouped by severity (CRITICAL → NIT), not by perspective
+- [ ] "What's Good" section with 3+ specific positive observations with file paths
+- [ ] Verdict rendered per decision table
+- [ ] Review posted to GitHub with inline findings (unless `--local`)
+
+---
+
+## Failure Output
+
+> Use when: PR is inaccessible, review cannot be completed, or PR has unfixable blockers.
+
+```markdown
+## PR Review — INCOMPLETE
+
+**Status**: [BLOCKED / UNABLE TO FETCH]
+**Reason**: [PR not found / insufficient access / unresolvable conflict]
+
+### Partial Findings (if any)
+
+| Finding | Severity | File | Status |
+| :------ | :------- | :--- | :----- |
+| [finding] | CRITICAL/HIGH | [file:line] | Unresolved |
+
+### What Could Not Be Reviewed
+
+- [Section/file/aspect that couldn't be assessed and why]
+
+### Required Before Re-Review
+
+1. [Action needed to unblock — e.g., fix access, resolve conflict, add context]
+
+**Notify PR author and re-run `/pr-review` after blockers resolved.**
+```
 
 ---
 

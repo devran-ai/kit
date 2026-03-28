@@ -37,8 +37,8 @@ Invoke them using slash commands (e.g., `/brainstorm authentication system`).
 | **debug** | `/debug` | Reactive | Systematic problem investigation |
 | **orchestrate** | `/orchestrate` | Reactive | Multi-agent coordination for complex tasks |
 | **retrospective** | `/retrospective` | Evaluate | Tier-1 quality audit against market standards |
-| **help-kit** | `/help_kit` | Cross-cutting | Devran AI Kit quick reference and guide |
-| **project-status** | `/project_status` | Cross-cutting | Project status overview and health check |
+| **help-kit** | `/help-kit` | Cross-cutting | Devran AI Kit quick reference and guide |
+| **project-status** | `/project-status` | Cross-cutting | Project status overview and health check |
 | **upgrade** | `/upgrade` | Maintenance | Formal protocol for non-destructive framework upgrades |
 
 ---
@@ -58,8 +58,8 @@ Discover ──► Plan ──► Build ──► Verify ──► Ship ──�
 
     Reactive (any phase)          Cross-cutting (any phase)
     ────────────────────          ────────────────────────
-    /debug                        /help_kit
-    /orchestrate                  /project_status
+    /debug                        /help-kit
+    /orchestrate                  /project-status
                                   /upgrade
 ```
 

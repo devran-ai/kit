@@ -21,7 +21,7 @@ commit-types: [chore]
 ## Critical Rules
 
 1. Non-destructive only — use `kit update`, never `init --force`
-2. Preservation Contract — user state (rules, checklists, sessions, decisions, contexts, identity) must survive
+2. **Preservation Contract** — these directories and files MUST survive: `rules/`, `checklists/`, `contexts/`, `engine/identity.json`, `engine/session-state.json`, `decisions/`, any file in `agents/` or `skills/` not in the kit baseline
 3. Always run `kit verify` post-upgrade
 4. Human confirmation required before executing upgrade
 
@@ -58,7 +58,7 @@ commit-types: [chore]
 ## Output Template
 
 ```markdown
-## Upgrade Complete
+## 🔄 Upgrade Complete
 
 | Field | Value |
 | :--- | :--- |
@@ -69,7 +69,7 @@ commit-types: [chore]
 ### New Capabilities
 | Type | Added | Details |
 
-**Next**: `/project_status` for health check.
+**Next**: `/project-status` for health check.
 ```
 
 ---
@@ -94,4 +94,4 @@ commit-types: [chore]
 ## Related Resources
 
 - **Rule**: `.agent/rules/agent-upgrade-policy.md`
-- **Next**: `/status`
+- **Next**: `/project-status` for post-upgrade health check

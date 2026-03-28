@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200, height=630">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #08080e;
+    color: #fff;
+  }
+
+  .canvas {
+    width: 1200px;
+    height: 630px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(ellipse 65% 50% at 50% 42%, rgba(120, 60, 200, 0.28) 0%, rgba(80, 40, 160, 0.10) 50%, transparent 72%),
+      radial-gradient(ellipse 45% 35% at 22% 58%, rgba(100, 40, 180, 0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 45% 35% at 78% 58%, rgba(140, 60, 220, 0.05) 0%, transparent 55%),
+      linear-gradient(180deg, #0c0c16 0%, #09090f 100%);
+    overflow: hidden;
+  }
+
+  /* Grain — Netflix/Vercel signature texture */
+  .canvas::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Top glow — 3px, wide bloom */
+  .top-glow {
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 3px;
+    background: linear-gradient(90deg, transparent 0%, rgba(140,90,235,0.3) 15%, rgba(170,120,255,0.6) 35%, rgba(200,150,255,0.8) 50%, rgba(170,120,255,0.6) 65%, rgba(140,90,235,0.3) 85%, transparent 100%);
+    z-index: 4;
+  }
+  .top-glow::after {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 60px;
+    background: radial-gradient(ellipse at center top, rgba(160,100,255,0.18) 0%, transparent 100%);
+  }
+
+  /* Bottom glow */
+  .bottom-glow {
+    position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(120,80,200,0.15) 25%, rgba(140,100,220,0.25) 50%, rgba(120,80,200,0.15) 75%, transparent 100%);
+    z-index: 2;
+  }
+
+  /* ===== CONTENT STACK — single tight block ===== */
+  .stack {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* P1-FIX: Nudge down for top breathing room (safe zone for social crop) */
+    margin-top: 6px;
+  }
+
+  .title {
+    font-size: 78px;
+    font-weight: 900;
+    letter-spacing: -2.5px;
+    line-height: 1;
+    background: linear-gradient(180deg, #ffffff 0%, #ece2f8 50%, #c9b4e2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    margin-top: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 4.5px;
+    text-transform: uppercase;
+    color: rgba(165, 135, 215, 0.50);
+  }
+
+  .tagline {
+    margin-top: 22px;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(215, 205, 235, 0.65);
+    letter-spacing: 0.15px;
+    text-align: center;
+    max-width: 660px;
+    line-height: 1.5;
+  }
+  .tagline strong {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 700;
+  }
+
+  /* Channel labels — 3 pills */
+  .channels {
+    display: flex;
+    gap: 14px;
+    margin-top: 30px;
+  }
+
+  .channel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.055);
+    border: 1px solid rgba(255,255,255,0.12);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(225, 215, 242, 0.88);
+    letter-spacing: 0.2px;
+  }
+
+  .channel .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-green  { background: #4ade80; box-shadow: 0 0 6px rgba(74,222,128,0.45); }
+  .dot-purple { background: #a78bfa; box-shadow: 0 0 6px rgba(167,139,250,0.45); }
+  .dot-amber  { background: #fbbf24; box-shadow: 0 0 6px rgba(251,191,36,0.45); }
+
+  /* Capability row — unified pill design */
+  .caps {
+    display: flex;
+    gap: 10px;
+    /* P0-FIX: Tighter gap to channel pills (was 24px → 18px) */
+    margin-top: 18px;
+  }
+
+  .cap {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 16px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.09);
+  }
+
+  .cap svg {
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+    /* P2-FIX: Increased visibility (was 0.45 → removed, using stroke directly) */
+  }
+
+  .cap-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    /* P2-FIX: More readable (was 0.48 → 0.58) */
+    color: rgba(185, 170, 215, 0.58);
+  }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="top-glow"></div>
+
+    <div class="stack">
+      <div class="title">Devran AI Kit</div>
+      <div class="subtitle">Trust-Grade AI Development Framework</div>
+
+      <div class="tagline">
+        Ship <strong>production-grade code</strong> with AI agents you can trust — from your IDE or your phone.
+      </div>
+
+      <div class="channels">
+        <div class="channel">
+          <span class="dot dot-green"></span>
+          Claude Code Channels Support
+        </div>
+        <div class="channel">
+          <span class="dot dot-purple"></span>
+          Telegram · Discord · iMessage
+        </div>
+        <div class="channel">
+          <span class="dot dot-amber"></span>
+          Full Remote Development
+        </div>
+      </div>
+
+      <div class="caps">
+        <div class="cap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(175,155,220,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16.01"/><line x1="16" y1="16" x2="16" y2="16.01"/>
+          </svg>
+          <span class="cap-label">Agents</span>
+        </div>
+        <div class="cap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(175,155,220,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+          <span class="cap-label">Skills</span>
+        </div>
+        <div class="cap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(175,155,220,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+          </svg>
+          <span class="cap-label">Commands</span>
+        </div>
+        <div class="cap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(175,155,220,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>
+          </svg>
+          <span class="cap-label">Workflows</span>
+        </div>
+        <div class="cap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(175,155,220,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <span class="cap-label">Rules</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-glow"></div>
+  </div>
+</body>
+</html>

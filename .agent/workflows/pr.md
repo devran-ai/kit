@@ -138,7 +138,7 @@ Poll CI status via `gh pr checks`. Report each check. Note draft PRs may not tri
 ## Output Template
 
 ```markdown
-## PR Created Successfully
+## 🔀 PR Created Successfully
 
 | Field | Value |
 | :--- | :--- |
@@ -182,4 +182,4 @@ Poll CI status via `gh pr checks`. Report each check. Note draft PRs may not tri
 - **Previous**: `/preflight` · `/review`
 - **Next**: `/deploy`
 - **Skills**: `.agent/skills/pr-toolkit/SKILL.md` · `.agent/skills/git-workflow/SKILL.md`
-- **Related**: `/pr-review` · `/pr-fix` · `/project_status`
+- **Related**: `/pr-review` · `/pr-fix` · `/project-status`
