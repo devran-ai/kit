@@ -327,4 +327,83 @@ describe('discoverProjectDocs', () => {
     const inventory = discoverProjectDocs(root);
     expect(Object.isFrozen(inventory)).toBe(true);
   });
+
+  it('should use defaults when maxDocs is 0 or negative', () => {
+    const root = createTmpProject({
+      'docs/ARCHITECTURE.md': '# Arch',
+      'docs/README.md': '# Readme',
+    });
+
+    const inv0 = discoverProjectDocs(root, { maxDocs: 0 });
+    expect(inv0.docs.length).toBeGreaterThan(0);
+
+    const invNeg = discoverProjectDocs(root, { maxDocs: -1 });
+    expect(invNeg.docs.length).toBeGreaterThan(0);
+  });
+
+  it('should prevent path traversal via relative path check', () => {
+    const root = createTmpProject({ 'docs/README.md': '# Safe' });
+    const inventory = discoverProjectDocs(root);
+    for (const doc of inventory.docs) {
+      expect(doc.relativePath.startsWith('..')).toBe(false);
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Alternative naming patterns
+// ---------------------------------------------------------------------------
+
+describe('alternative naming patterns', () => {
+  it('should classify style-guide/ as design-system', () => {
+    expect(classifyDoc('docs/style-guide/tokens.md').category).toBe('design-system');
+  });
+
+  it('should classify ui-kit/ as design-system', () => {
+    expect(classifyDoc('docs/ui-kit/buttons.md').category).toBe('design-system');
+  });
+
+  it('should classify views/ as screen-spec', () => {
+    expect(classifyDoc('docs/views/login.md').category).toBe('screen-spec');
+  });
+
+  it('should classify pages/ as screen-spec', () => {
+    expect(classifyDoc('docs/pages/dashboard.md').category).toBe('screen-spec');
+  });
+
+  it('should classify features/ as epic', () => {
+    expect(classifyDoc('docs/features/auth.md').category).toBe('epic');
+  });
+
+  it('should classify specs/ as epic', () => {
+    expect(classifyDoc('docs/specs/api-v2.md').category).toBe('epic');
+  });
+
+  it('should classify endpoints/ as api-spec', () => {
+    expect(classifyDoc('docs/endpoints/users.md').category).toBe('api-spec');
+  });
+
+  it('should classify guidelines/ as guide with priority 1', () => {
+    const result = classifyDoc('docs/guidelines/naming.md');
+    expect(result.category).toBe('guide');
+    expect(result.priority).toBe(1);
+  });
+
+  it('should classify system-design/ as architecture', () => {
+    expect(classifyDoc('docs/system-design/overview.md').category).toBe('architecture');
+  });
+
+  it('should classify theme/ as design-system', () => {
+    expect(classifyDoc('docs/theme/dark-mode.md').category).toBe('design-system');
+  });
+
+  it('should classify swagger/ as api-spec', () => {
+    expect(classifyDoc('docs/swagger/pets.md').category).toBe('api-spec');
+  });
+
+  it('should classify playbooks/ as guide/devops', () => {
+    const result = classifyDoc('docs/playbooks/incident.md');
+    expect(result.category).toBe('guide');
+    expect(result.domains).toContain('devops');
+  });
 });

@@ -38,6 +38,9 @@ commit-types: [feat]
 // turbo
 3. **Analyze Patterns** — find similar modules, naming conventions, import patterns, reusable utils
 
+// turbo
+3.5. **Consult Project Docs** — scan `docs/` for design system, architecture, and guidelines. Reference discovered constraints (tokens, components, screen specs) when scaffolding.
+
 4. **Present Plan** (for >5 files) — show file structure, integration points. Wait for approval.
 
 5. **Implement** — follow detected conventions, SOLID principles, wire up imports/routes
