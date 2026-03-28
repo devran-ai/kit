@@ -1,6 +1,6 @@
 site_name: Devran AI Kit
 site_url: https://devran-ai.github.io/kit/
-site_description: Trust-Grade AI Development Framework with 33-Module Runtime Engine, 23 Agents, 35 Skills, 37 Commands, 22 Workflows, 533 Tests
+site_description: Trust-Grade AI Development Framework with 34-Module Runtime Engine, 23 Agents, 35 Skills, 37 Commands, 22 Workflows, 568 Tests
 site_author: Emre Dursun
 
 repo_name: devran-ai/kit
@@ -94,7 +94,7 @@ extra:
     - property: og:title
       content: Devran AI Kit — Trust-Grade AI Framework
     - property: og:description
-      content: Trust-Grade AI Development Framework with a 33-module runtime engine, 23 agents, 35 skills, 37 commands, and 22 workflows
+      content: Trust-Grade AI Development Framework with a 34-module runtime engine, 23 agents, 35 skills, 37 commands, and 22 workflows
     - property: og:url
       content: https://devran-ai.github.io/kit/
     - property: og:image
@@ -104,7 +104,7 @@ extra:
     - name: twitter:title
       content: Devran AI Kit
     - name: twitter:description
-      content: Trust-Grade AI Development Framework — 33-Module Runtime Engine, 23 Agents, 35 Skills, 37 Commands, 22 Workflows
+      content: Trust-Grade AI Development Framework — 34-Module Runtime Engine, 23 Agents, 35 Skills, 37 Commands, 22 Workflows
     - name: twitter:image
       content: https://devran-ai.github.io/kit/assets/og-image.png
 

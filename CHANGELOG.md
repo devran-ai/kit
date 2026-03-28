@@ -10,19 +10,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **Project Documentation Auto-Discovery** — Zero-config discovery of project-specific documentation (design system, architecture, screen specs, compliance). Workflows automatically find and reference project docs without manual prompting.
-  - New runtime module: `lib/doc-discovery.js` (300 LOC) — scans `docs/`, classifies by 14 patterns, ranks by domain relevance, budget-constrained (max 8 docs)
+  - New runtime module: `lib/doc-discovery.js` (450 LOC) — scans `docs/`, classifies by 55 patterns (including naming alternatives), ranks by domain relevance, budget-constrained (max 8 docs)
   - New skill: `project-docs-discovery` — instructs LLM to scan and read relevant project docs during workflows
   - Loading engine integration: `getLoadPlan()` returns `projectDocs[]` for CLI/tooling
   - 6 workflows updated: `/plan`, `/pr-review`, `/create`, `/enhance`, `/debug`, `/quality-gate`
-  - Security hardened: path canonicalization (CWE-22), `realpathSync` symlink detection, 25-dir skip list, numeric input validation
+  - 55 classification patterns covering naming alternatives: `style-guide/`, `ui-kit/`, `views/`, `pages/`, `features/`, `specs/`, `endpoints/`, `swagger/`, `guidelines/`, `standards/`, `playbooks/`, `sre/`, etc.
+  - Ambiguous patterns (`pages/`, `styles/`, `views/`, `features/`, `theme/`) scoped to `docs/` prefix to prevent false positives on source dirs
+  - Security hardened: `Number.isFinite()` guards (CWE-400), `realpathSync` symlink detection (CWE-59), path escape prevention (CWE-22), 27-dir skip list
 - Skills: 34 → 35 (`project-docs-discovery` added)
-- Tests: 499 → 533 (34 new doc-discovery tests, 39 test files)
+- Runtime: 33 → 34 modules (`doc-discovery.js` added)
+- Tests: 499 → 568 (69 new tests across doc-discovery + security, 39 test files)
 - **GitHub Flow** — Established PR-based workflow with branch protection on `main`. Documented in CONTRIBUTING.md.
 - **Telegram Menu Guard** — Fixed private chat menu overwrite. Guard now pushes to `all_private_chats` scope (not per-chat), with health check retry at +15s.
 
 ### Changed
 
-- **Documentation alignment** — All 26 doc/config files synced to manifest SSOT (skills 35, tests 533, rules 10)
+- **Documentation alignment** — All 26 doc/config files synced to manifest SSOT (skills 35, runtime 34, tests 568, rules 10)
+- **Nullish coalescing** — Loading engine config passthrough changed from `||` to `??` to prevent 0-as-falsy bugs
+- **DOCS_DIR constant** — Added to `lib/constants.js` and wired into `doc-discovery.js`
 
 ---
 

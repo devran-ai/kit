@@ -1,6 +1,6 @@
 # Architecture
 
-Devran AI Kit v4.6.0 is an engineered framework with a **33-module runtime engine**, 23 agents, 35 skills, 37 commands, and 22 workflows.
+Devran AI Kit v4.6.0 is an engineered framework with a **34-module runtime engine**, 23 agents, 35 skills, 37 commands, and 22 workflows.
 
 ---
 
@@ -40,7 +40,7 @@ Devran AI Kit v4.6.0 is an engineered framework with a **33-module runtime engin
 │  └─────────────────┘                   └─────────────────┘          │
 │                                                                      │
 │  ┌─────────────────────────────────────────────────────────┐        │
-│  │              RUNTIME ENGINE (33 modules)                 │        │
+│  │              RUNTIME ENGINE (34 modules)                 │        │
 │  │  workflow-engine • session-manager • task-governance      │        │
 │  │  agent-reputation • self-healing • marketplace            │        │
 │  │  plugin-system • identity • conflict-detector • + 12      │        │
@@ -121,15 +121,15 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 ├── templates/            # Feature templates
 └── decisions/            # ADR system
 
-lib/                      # Runtime Engine (33 modules)
+lib/                      # Runtime Engine (34 modules)
 ├── workflow-engine.js    # State machine enforcement
 ├── task-governance.js    # Locking, audit trail, decision timeline
 ├── agent-reputation.js   # Score tracking & rankings
 ├── self-healing.js       # CI failure detection & patch generation
 ├── marketplace.js        # Community skill marketplace
-└── + 16 more modules     # Identity, plugins, hooks, registry...
+└── + 17 more modules     # Identity, plugins, hooks, registry...
 
-tests/                    # 533 tests (39 files)
+tests/                    # 568 tests (39 files)
 ├── unit/                 # Module tests
 ├── structural/           # Inventory + schema validation
 ├── integration/          # Cross-module tests

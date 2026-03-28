@@ -19,7 +19,7 @@
 
 ## Why Devran AI Kit?
 
-- **Not a prompt collection** — 33-module zero-dependency runtime engine with workflow state machine, circuit breaker, error budget, and self-healing CI
+- **Not a prompt collection** — 34-module zero-dependency runtime engine with workflow state machine, circuit breaker, error budget, and self-healing CI
 - **Trust-grade governance** — Immutable operating constraints enforced through a 7-phase SDLC (IDLE > EXPLORE > PLAN > IMPLEMENT > VERIFY > CHECKPOINT > REVIEW > DEPLOY)
 - **Intelligent agent system** — 23 specialized agents with reputation scoring, domain-aware routing, and on-demand loading via keyword matching
 - **Telegram integration** — Control your Claude Code session from your phone. Trigger workflows, review PRs, and deploy — all from a Telegram chat
@@ -36,7 +36,7 @@
 | Cross-IDE support | Single IDE | Single IDE | 5 IDEs from one source of truth |
 | Plugin marketplace | None | None | Trust-verified skill marketplace |
 | Telegram control | None | None | Full IDE control from your phone |
-| Test suite | None | None | 533 tests with security validation |
+| Test suite | None | None | 568 tests with security validation |
 | Runtime dependencies | Varies | Varies | **Zero** |
 
 ## Quick Start
@@ -207,7 +207,7 @@ kit/
 ├── create-kit-app/         # Project scaffolder
 ├── docs/                   # MkDocs documentation site
 ├── examples/               # Starter examples (minimal, full-stack)
-└── tests/                  # 533 tests (unit, structural, security)
+└── tests/                  # 568 tests (unit, structural, security)
 ```
 
 ## Security

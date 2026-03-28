@@ -20,7 +20,7 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 | 🔄 **Workflows**  | 22    | Process templates (/create, /debug, /deploy, /pr, /pr-merge...)        |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
-| ⚙️ **Runtime**    | 33    | Runtime engine modules (governance, reputation, self-healing...)       |
+| ⚙️ **Runtime**    | 34    | Runtime engine modules (governance, reputation, self-healing...)       |
 | ⚖️ **Rules**      | 10    | Modular governance constraints (coding, security, testing, git, docs, sprint, workflow)  |
 
 ---
@@ -55,7 +55,7 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :gear: **[Runtime Engine](#runtime-engine)**
 
-  33 modules powering the runtime
+  34 modules powering the runtime
 
 - :speech_balloon: **[Telegram Setup](telegram-setup.md)**
 
@@ -85,7 +85,7 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 
 - **🔒 Trust-Grade Governance** — `/explore → /plan → /work → /review` — Each iteration builds context
 - **🤖 Multi-Agent System** — 23 specialized agents that collaborate (Mobile Developer, DevOps, PR Reviewer...)
-- **⚙️ Runtime Engine** — 33 modules enforcing workflow transitions, task governance, agent reputation, and self-healing
+- **⚙️ Runtime Engine** — 34 modules enforcing workflow transitions, task governance, agent reputation, and self-healing
 - **📦 Context as Artifact** — Persistent markdown files for plans, specs, and decisions
 - **🔄 Continuous Learning** — PAAL cycle extracts patterns from every session
 - **🛡️ Security First** — Built-in secret detection, vulnerability scanning, and compliance checks
