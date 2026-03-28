@@ -1,6 +1,6 @@
 # Architecture
 
-Devran AI Kit v4.6.0 is an engineered framework with a **34-module runtime engine**, 23 agents, 35 skills, 37 commands, and 22 workflows.
+Devran AI Kit v4.6.1 is an engineered framework with a **34-module runtime engine**, 23 agents, 35 skills, 37 commands, and 22 workflows.
 
 ---
 
