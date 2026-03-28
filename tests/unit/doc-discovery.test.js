@@ -2,7 +2,7 @@
  * Tests for lib/doc-discovery.js — Project Documentation Discovery
  */
 
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, afterEach } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
@@ -355,6 +355,7 @@ describe('discoverProjectDocs', () => {
 // ---------------------------------------------------------------------------
 
 describe('alternative naming patterns', () => {
+  // Design system alternatives
   it('should classify style-guide/ as design-system', () => {
     expect(classifyDoc('docs/style-guide/tokens.md').category).toBe('design-system');
   });
@@ -363,46 +364,140 @@ describe('alternative naming patterns', () => {
     expect(classifyDoc('docs/ui-kit/buttons.md').category).toBe('design-system');
   });
 
-  it('should classify views/ as screen-spec', () => {
+  it('should classify docs/theme/ as design-system (scoped to docs)', () => {
+    expect(classifyDoc('docs/theme/dark-mode.md').category).toBe('design-system');
+  });
+
+  it('should classify docs/styles/ as design-system (scoped to docs)', () => {
+    expect(classifyDoc('docs/styles/colors.md').category).toBe('design-system');
+  });
+
+  it('should NOT classify src/styles/ as design-system (ambiguous path)', () => {
+    expect(classifyDoc('src/styles/theme.ts').category).toBe('general');
+  });
+
+  it('should classify typography.md as design-system', () => {
+    expect(classifyDoc('docs/typography.md').category).toBe('design-system');
+  });
+
+  it('should classify colors.md as design-system', () => {
+    expect(classifyDoc('docs/colors.md').category).toBe('design-system');
+  });
+
+  // Screen spec alternatives (scoped to docs)
+  it('should classify docs/views/ as screen-spec (scoped to docs)', () => {
     expect(classifyDoc('docs/views/login.md').category).toBe('screen-spec');
   });
 
-  it('should classify pages/ as screen-spec', () => {
+  it('should classify docs/pages/ as screen-spec (scoped to docs)', () => {
     expect(classifyDoc('docs/pages/dashboard.md').category).toBe('screen-spec');
   });
 
-  it('should classify features/ as epic', () => {
+  it('should classify docs/layouts/ as screen-spec (scoped to docs)', () => {
+    expect(classifyDoc('docs/layouts/sidebar.md').category).toBe('screen-spec');
+  });
+
+  it('should NOT classify src/pages/ as screen-spec (ambiguous path)', () => {
+    expect(classifyDoc('src/pages/index.tsx').category).toBe('general');
+  });
+
+  it('should classify wireframes/ as screen-spec', () => {
+    expect(classifyDoc('docs/wireframes/checkout.md').category).toBe('screen-spec');
+  });
+
+  it('should classify mockups/ as screen-spec', () => {
+    expect(classifyDoc('docs/mockups/homepage.md').category).toBe('screen-spec');
+  });
+
+  // Epic/spec alternatives
+  it('should classify docs/features/ as epic (scoped to docs)', () => {
     expect(classifyDoc('docs/features/auth.md').category).toBe('epic');
+  });
+
+  it('should NOT classify src/features/ as epic (ambiguous path)', () => {
+    expect(classifyDoc('src/features/auth/index.ts').category).toBe('general');
   });
 
   it('should classify specs/ as epic', () => {
     expect(classifyDoc('docs/specs/api-v2.md').category).toBe('epic');
   });
 
+  it('should classify stories/ as epic', () => {
+    expect(classifyDoc('docs/stories/user-onboarding.md').category).toBe('epic');
+  });
+
+  it('should classify requirements/ as epic', () => {
+    expect(classifyDoc('docs/requirements/phase-2.md').category).toBe('epic');
+  });
+
+  // API alternatives
   it('should classify endpoints/ as api-spec', () => {
     expect(classifyDoc('docs/endpoints/users.md').category).toBe('api-spec');
-  });
-
-  it('should classify guidelines/ as guide with priority 1', () => {
-    const result = classifyDoc('docs/guidelines/naming.md');
-    expect(result.category).toBe('guide');
-    expect(result.priority).toBe(1);
-  });
-
-  it('should classify system-design/ as architecture', () => {
-    expect(classifyDoc('docs/system-design/overview.md').category).toBe('architecture');
-  });
-
-  it('should classify theme/ as design-system', () => {
-    expect(classifyDoc('docs/theme/dark-mode.md').category).toBe('design-system');
   });
 
   it('should classify swagger/ as api-spec', () => {
     expect(classifyDoc('docs/swagger/pets.md').category).toBe('api-spec');
   });
 
+  it('should classify graphql/ as api-spec', () => {
+    expect(classifyDoc('docs/graphql/schema.md').category).toBe('api-spec');
+  });
+
+  // Architecture alternatives
+  it('should classify system-design/ as architecture', () => {
+    expect(classifyDoc('docs/system-design/overview.md').category).toBe('architecture');
+  });
+
+  it('should classify infra/ as architecture', () => {
+    expect(classifyDoc('docs/infra/networking.md').category).toBe('architecture');
+  });
+
+  it('should classify tech-design/ as architecture', () => {
+    expect(classifyDoc('docs/tech-design/caching.md').category).toBe('architecture');
+  });
+
+  // Guidelines (priority 1)
+  it('should classify guidelines/ as guide with priority 1', () => {
+    const result = classifyDoc('docs/guidelines/naming.md');
+    expect(result.category).toBe('guide');
+    expect(result.priority).toBe(1);
+  });
+
+  it('should classify standards/ as guide with priority 1', () => {
+    const result = classifyDoc('docs/standards/code-style.md');
+    expect(result.category).toBe('guide');
+    expect(result.priority).toBe(1);
+  });
+
+  it('should classify conventions/ as guide with priority 1', () => {
+    const result = classifyDoc('docs/conventions/git.md');
+    expect(result.category).toBe('guide');
+    expect(result.priority).toBe(1);
+  });
+
+  // Runbook/ops alternatives
   it('should classify playbooks/ as guide/devops', () => {
     const result = classifyDoc('docs/playbooks/incident.md');
+    expect(result.category).toBe('guide');
+    expect(result.domains).toContain('devops');
+  });
+
+  it('should classify tutorials/ as guide', () => {
+    expect(classifyDoc('docs/tutorials/getting-started.md').category).toBe('guide');
+  });
+
+  it('should classify how-to/ as guide', () => {
+    expect(classifyDoc('docs/how-to/deploy.md').category).toBe('guide');
+  });
+
+  it('should classify operations/ as guide/devops', () => {
+    const result = classifyDoc('docs/operations/runbook.md');
+    expect(result.category).toBe('guide');
+    expect(result.domains).toContain('devops');
+  });
+
+  it('should classify sre/ as guide/devops', () => {
+    const result = classifyDoc('docs/sre/alerts.md');
     expect(result.category).toBe('guide');
     expect(result.domains).toContain('devops');
   });
