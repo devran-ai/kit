@@ -46,7 +46,8 @@
       "keywords": ["react", "next.js", "vue", "component", "css", "styling", "responsive", "a11y", "accessibility", "ui", "ux"],
       "implicitTriggers": ["button", "modal", "form field", "dropdown", "navigation bar", "sidebar", "theme", "dark mode", "animation", "transition", "layout", "grid", "flexbox", "tailwind", "styled"],
       "loadAgents": ["frontend-specialist"],
-      "loadSkills": ["frontend-patterns", "mobile-design"]
+      "loadSkills": ["frontend-patterns", "mobile-design"],
+      "loadRules": ["accessibility"]
     },
     {
       "domain": "backend",
@@ -60,20 +61,23 @@
       "keywords": ["database", "sql", "postgresql", "prisma", "migration", "schema", "query", "orm", "redis"],
       "implicitTriggers": ["table", "column", "index", "foreign key", "transaction", "connection pool", "backup", "replica", "sharding", "partition"],
       "loadAgents": ["database-architect"],
-      "loadSkills": ["database-design"]
+      "loadSkills": ["database-design"],
+      "loadRules": ["data-privacy"]
     },
     {
       "domain": "devops",
       "keywords": ["deploy", "ci", "cd", "docker", "kubernetes", "railway", "vercel", "github actions", "pipeline", "terraform", "gitops", "canary", "helm"],
       "implicitTriggers": ["environment variable", "container", "image", "registry", "rollback", "blue-green", "feature flag", "infrastructure"],
       "loadAgents": ["devops-engineer"],
-      "loadSkills": ["docker-patterns", "deployment-procedures"]
+      "loadSkills": ["docker-patterns", "deployment-procedures"],
+      "loadRules": ["data-privacy"]
     },
     {
       "domain": "performance",
       "keywords": ["slow", "optimize", "speed", "bundle", "lighthouse", "web vitals", "lcp", "cls", "fid", "cache", "cdn", "latency", "p99", "tracing"],
       "loadAgents": ["performance-optimizer"],
-      "loadSkills": ["performance-profiling"]
+      "loadSkills": ["performance-profiling"],
+      "loadRules": ["performance"]
     },
     {
       "domain": "reliability",
@@ -172,7 +176,7 @@
   ],
   "planningMandates": {
     "description": "Mandatory resources loaded for every /plan invocation regardless of keyword matching. Ensures cross-cutting concerns are never omitted.",
-    "alwaysLoadRules": ["security", "testing", "coding-style", "documentation", "architecture"],
+    "alwaysLoadRules": ["security", "testing", "coding-style", "documentation", "architecture", "performance", "accessibility", "data-privacy"],
     "alwaysLoadSkills": ["security-practices", "testing-patterns"],
     "crossCuttingSections": [
       "security-considerations",

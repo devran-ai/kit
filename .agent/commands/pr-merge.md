@@ -1,5 +1,7 @@
 ---
 description: Merge a pull request safely with dependency validation and post-merge checks
+workflow: pr-merge
+uses: [pr-toolkit, verification-loop]
 ---
 
 # /pr-merge Command

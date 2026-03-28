@@ -5,9 +5,9 @@ sdlc-phase: cross-cutting
 commit-types: [chore]
 ---
 
-# /help_kit — Devran AI Kit Quick Reference
+# /help-kit — Devran AI Kit Quick Reference
 
-> **Trigger**: `/help_kit`
+> **Trigger**: `/help-kit`
 > **Lifecycle**: Cross-cutting — any SDLC phase
 
 ---
@@ -25,7 +25,7 @@ commit-types: [chore]
 ## Output Template
 
 ```markdown
-## Devran AI Kit
+## 📖 Devran AI Kit
 
 Trust-Grade AI Development Framework — zero dependencies.
 
@@ -48,18 +48,18 @@ Trust-Grade AI Development Framework — zero dependencies.
 | `/test`  | Write and run tests (TDD workflow) |
 | `/review` | Code review — lint, type-check, test, security |
 | `/pr`    | Production-grade PR creation with pre-flight checks |
-| `/pr_review` | Multi-perspective PR review |
-| `/pr_fix` | Fix PR issues from review comments |
-| `/pr_merge` | Safe merge with CI verification |
+| `/pr-review` | Multi-perspective PR review |
+| `/pr-fix` | Fix PR issues from review comments |
+| `/pr-merge` | Safe merge with CI verification |
 | `/deploy` | Production deployment with pre-flight checks |
 | `/enhance` | Add or update features iteratively |
 | `/brainstorm` | Structured brainstorming before implementation |
 | `/orchestrate` | Multi-agent orchestration for complex tasks |
-| `/project_status` | Project and progress overview |
+| `/project-status` | Project and progress overview |
 | `/preflight` | Production readiness assessment |
 | `/retrospective` | Full product and architecture audit |
-| `/quality_gate` | Research and validation before implementation |
-| `/ui_ux_pro_max` | Premium UI/UX design workflow |
+| `/quality-gate` | Research and validation before implementation |
+| `/ui-ux-pro-max` | Premium UI/UX design workflow |
 | `/preview` | Dev server management |
 | `/upgrade` | Non-destructive framework upgrade |
 

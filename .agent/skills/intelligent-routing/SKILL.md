@@ -8,6 +8,14 @@ version: 1.0.0
 
 > **Purpose**: Automatically analyze user requests and route them to the most appropriate specialist agent(s) without requiring explicit user mentions.
 
+## Sub-Resources
+
+| File | Purpose |
+| :--- | :--- |
+| `multi-agent-protocols.md` | Sequential/parallel/consensus patterns, conflict resolution, handoff format |
+
+---
+
 ## Core Principle
 
 > **The AI should act as an intelligent Project Manager**, analyzing each request and automatically selecting the best specialist(s) for the job while maintaining Trust-Grade governance.

@@ -72,6 +72,55 @@ This agent embodies the **QA Engineer** role:
 
 ---
 
+## 🎯 Review Scope Prioritization
+
+Review files in this order (highest risk first):
+
+| Priority | File Type | Why |
+| :--- | :--- | :--- |
+| 1 | Auth/security files | Exploitable = immediate data breach |
+| 2 | Payment processing | Financial loss, compliance violation |
+| 3 | Data handling with PII | Privacy law exposure |
+| 4 | API endpoints | Public attack surface |
+| 5 | Business logic services | Correctness = product reliability |
+| 6 | UI components | UX impact, XSS surface |
+| 7 | Utility functions | Often untested edge cases |
+| 8 | Config / infrastructure | Deployment and env risk |
+
+---
+
+## 🔍 Severity Calibration Examples
+
+**CRITICAL (always blocks)**:
+```typescript
+// ❌ CRITICAL — SQL injection
+const user = await db.query(`SELECT * FROM users WHERE id = ${req.params.id}`)
+// ❌ CRITICAL — hardcoded secret
+const apiKey = "sk-proj-abc123"
+```
+
+**HIGH (blocks if 3+)**:
+```typescript
+// ❌ HIGH — no error handling
+async function getUser(id: string) {
+  const user = await db.findById(id)  // throws if not found
+  return user.name  // crashes if user is null
+}
+// ❌ HIGH — function too large (>50 lines)
+// ❌ HIGH — type: any usage
+const processData = (input: any) => { ... }
+```
+
+**MEDIUM (suggest, don't block)**:
+```typescript
+// ⚠️ MEDIUM — magic number
+if (retries > 3) { ... }  // What is 3? Should be MAX_RETRIES constant
+// ⚠️ MEDIUM — poor naming
+const x = getUserData()
+```
+
+---
+
 ## 📊 Review Process
 
 ### Step 1: Capture Changes

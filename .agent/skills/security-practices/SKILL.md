@@ -8,6 +8,14 @@ triggers: [context, security, auth, vulnerability]
 
 > **Purpose**: Apply security best practices to protect applications
 
+## Sub-Resources
+
+| File | Purpose |
+| :--- | :--- |
+| `owasp-checklist.md` | OWASP Top 10 with detection commands, vulnerable code patterns, fix patterns per item |
+
+---
+
 ---
 
 ## Core Security Checklist

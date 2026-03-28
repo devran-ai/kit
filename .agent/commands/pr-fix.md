@@ -1,5 +1,7 @@
 ---
 description: Fix pull request issues based on review comments
+workflow: pr-fix
+uses: [pr-toolkit, verification-loop]
 ---
 
 # /pr-fix Command

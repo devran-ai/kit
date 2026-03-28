@@ -154,3 +154,9 @@ Before deploy: tests pass, build succeeds, no critical vulns, lint/type clean, S
 - `security-reviewer`: vulnerability assessment, security incidents
 - `performance-optimizer`: latency tuning, load testing
 - `architect`: system design affecting reliability
+
+---
+
+## Templates
+
+- **Incident Response**: `.agent/templates/incident-response.md` — use for P1/P2 post-incident reports with blameless RCA, 5 Whys, action items, and lessons learned

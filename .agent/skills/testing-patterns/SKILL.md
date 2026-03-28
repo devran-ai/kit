@@ -8,6 +8,14 @@ triggers: [context, test, tdd, jest, vitest]
 
 > **Purpose**: Apply professional testing strategies for quality assurance
 
+## Sub-Resources
+
+| File | Purpose |
+| :--- | :--- |
+| `test-matrix.md` | Test type selection matrix, coverage strategy by file type, edge case catalog by domain |
+
+---
+
 ---
 
 ## Overview

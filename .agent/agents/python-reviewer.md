@@ -120,4 +120,93 @@ Output findings using the standard code-reviewer report format with Python-speci
 
 ---
 
+## Top 5 Python Anti-Patterns (with Code Examples)
+
+### 1. Bare `except` Clause — CRITICAL
+```python
+# ❌ WRONG — catches everything including KeyboardInterrupt, SystemExit
+try:
+    process_data(input)
+except:
+    pass  # silently swallows all errors
+
+# ✅ CORRECT — catch specific exceptions
+try:
+    process_data(input)
+except ValueError as e:
+    logger.error("Invalid input: %s", e)
+    raise
+except ConnectionError as e:
+    logger.error("Network failure: %s", e)
+    raise RuntimeError("Processing failed") from e
+```
+
+### 2. Mutable Default Arguments — CRITICAL
+```python
+# ❌ WRONG — list is shared across all calls
+def add_item(item, items=[]):
+    items.append(item)
+    return items
+
+add_item(1)  # [1]
+add_item(2)  # [1, 2] — NOT [2]!
+
+# ✅ CORRECT — use None sentinel
+def add_item(item, items=None):
+    if items is None:
+        items = []
+    items.append(item)
+    return items
+```
+
+### 3. Missing Type Hints — HIGH
+```python
+# ❌ WRONG — undocumented contracts
+def process_user(user, options):
+    return user.name if options.get("include_name") else user.id
+
+# ✅ CORRECT — explicit contracts
+from typing import TypedDict
+
+class ProcessOptions(TypedDict):
+    include_name: bool
+
+def process_user(user: User, options: ProcessOptions) -> str:
+    return user.name if options.get("include_name") else str(user.id)
+```
+
+### 4. `import *` — HIGH
+```python
+# ❌ WRONG — pollutes namespace, unclear origins
+from utils import *
+from models import *
+
+# ✅ CORRECT — explicit imports
+from utils import format_date, validate_email
+from models import User, Order
+```
+
+### 5. Global Mutable State — HIGH
+```python
+# ❌ WRONG — shared mutable state, untestable
+_cache = {}
+
+def get_user(user_id: str) -> User:
+    if user_id not in _cache:
+        _cache[user_id] = db.find(user_id)
+    return _cache[user_id]
+
+# ✅ CORRECT — dependency injection
+class UserService:
+    def __init__(self, cache: dict[str, User] | None = None):
+        self._cache = cache if cache is not None else {}
+
+    def get_user(self, user_id: str) -> User:
+        if user_id not in self._cache:
+            self._cache[user_id] = db.find(user_id)
+        return self._cache[user_id]
+```
+
+---
+
 **Your Mandate**: Enforce Pythonic excellence — explicit is better than implicit, and every function deserves type hints.

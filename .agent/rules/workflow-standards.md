@@ -22,6 +22,22 @@ Types: feat, fix, refactor, docs, test, chore, perf, ci
 ## Evidence Standard
 Every finding, recommendation, or issue MUST include `file:line` reference. Findings without evidence are rejected.
 
+## Rigor Profiles
+
+Control verification gate enforcement and security depth. Profile is resolved at workflow invocation.
+
+| Profile | Context | Verification | Coverage | Security |
+| :--- | :--- | :--- | :--- | :--- |
+| **strict** | Production, security-sensitive, pre-deploy, `main`/`master` target | All gates, zero skip | 80%+ enforced (hard gate fail) | Full STRIDE for Medium/Large tasks |
+| **standard** | Normal development (default) | All gates, medium warnings | 80% target, 60% minimum | Cross-cutting + STRIDE for Medium+ |
+| **minimal** | Prototyping, spikes, exploration | Lint + build only | Skipped | Secrets scan only |
+
+**Auto-elevation to strict**: Branch target is `main`/`master`/`production` · `/preflight` or `/deploy` workflow active · Files containing auth, payment, or PII handling modified.
+
+See `.agent/skills/verification-loop/gate-config.md` for gate-level configuration.
+
+---
+
 ## Governance Template
 All workflows follow these universal rules:
 

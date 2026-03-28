@@ -1,5 +1,6 @@
 ---
 description: Triage pull requests with CI status, staleness detection, and dependency readiness
+uses: [pr-toolkit]
 ---
 
 # /pr-status Command

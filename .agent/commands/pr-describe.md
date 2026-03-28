@@ -1,5 +1,6 @@
 ---
 description: Auto-generate PR title, summary, and labels from diff analysis
+uses: [pr-toolkit]
 ---
 
 # /pr-describe Command

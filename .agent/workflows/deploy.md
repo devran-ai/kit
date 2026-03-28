@@ -31,7 +31,16 @@ commit-types: [chore, fix]
 
 ## Scope Filter
 
-Deploy only production-impacting changes: `apps/`, `docker/`, infra config. Never deploy docs-only or `.agent/` changes.
+| Commit Type | Applicability | Rationale |
+| :--- | :--- | :--- |
+| `feat` | Required | New features need deployment to reach users |
+| `fix` | Required | Bug fixes must be deployed to resolve issues |
+| `perf` | Required | Performance improvements need production validation |
+| `refactor` | Optional | Only if refactor changes runtime behavior |
+| `chore` | Optional | Only for dependency updates affecting production build |
+| `docs` | Skip | Documentation changes don't need deployment |
+
+> Never deploy `.agent/` directory changes — they are development-only artifacts.
 
 ---
 
@@ -60,9 +69,19 @@ Deploy only production-impacting changes: `apps/`, `docker/`, infra config. Neve
 4. **Deploy** — build, deploy to target, monitor progress
 
 // turbo
-5. **Health Check** — API responding, database connected, services healthy, no error spikes
+5. **Health Check** — verify all critical signals within 5 minutes of deploy:
+   - API: key endpoint returns HTTP 200
+   - Database: connection pool healthy, no timeout errors
+   - Services: all background workers running
+   - Errors: error rate ≤ pre-deploy baseline + 0.1% (warn >0.1%, critical >1%)
+   - Performance: p95 latency ≤ pre-deploy baseline + 20ms (warn if p99 >200ms, critical if >500ms)
 
-6. **Post-Deploy** — document version/SHA, update tracking, notify stakeholders
+6. **Post-Deploy Monitoring** — 15-minute observation window:
+   - Watch error tracking dashboard for spike
+   - Confirm no latency regression
+   - If metrics degrade: trigger rollback immediately (don't wait)
+
+7. **Completion** — document version/SHA, update tracking, notify stakeholders
 
 ---
 
@@ -78,15 +97,33 @@ Deploy only production-impacting changes: `apps/`, `docker/`, infra config. Neve
 
 ## Output Template
 
+**Success:**
 ```markdown
-## Deployment Complete
+## 🚀 Deployment Complete ✅
 
-- **Version**: [SHA/tag]
-- **Environment**: [target]
-- **Health**: All checks passing
-- **Rollback**: `/deploy rollback` to [previous]
+| Field | Value |
+| :--- | :--- |
+| Version | [SHA/tag] |
+| Environment | [target] |
+| Platform | [Vercel / Railway / EAS] |
+| Health Check | ✅ All passing |
+| Rollback | `/deploy rollback` → [previous SHA] |
 
-**Next**: `/project_status` for monitoring.
+**Monitoring**: 15-minute window active.
+**Next**: `/project-status` for ongoing monitoring.
+```
+
+**Failure / Rollback:**
+```markdown
+## 🚀 Deployment Failed ⚠️ — Rollback Initiated
+
+| Field | Value |
+| :--- | :--- |
+| Failed Step | [step name] |
+| Error | [error message] |
+| Action Taken | [rolled back to SHA / manual intervention required] |
+
+**Immediate action required**: [specific next step]
 ```
 
 ---
@@ -101,10 +138,14 @@ Deploy only production-impacting changes: `apps/`, `docker/`, infra config. Neve
 
 ## Completion Criteria
 
-- [ ] Pre-flight passed, scope verified
-- [ ] Rollback plan documented
-- [ ] Deployed, health check passed
-- [ ] Version documented
+- [ ] Scope Filter evaluated — change requires deployment
+- [ ] Pre-flight checks passed (tsc, lint, tests, security, build)
+- [ ] Scope verified: no docs-only or `.agent/` changes being deployed
+- [ ] Rollback plan documented with exact rollback command and previous version SHA
+- [ ] Deployment executed on correct target (preview vs production)
+- [ ] Health checks passed: API, database, services, error rate, latency
+- [ ] 15-minute post-deploy monitoring window observed without degradation
+- [ ] Version/SHA and deployment timestamp documented
 
 ---
 

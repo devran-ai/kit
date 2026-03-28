@@ -54,6 +54,21 @@ How should we proceed?
 
 ---
 
+## ✅ Prerequisite Gate
+
+Verify before offering downstream options:
+
+| Option | Prerequisite | Check |
+| :----- | :----------- | :---- |
+| `/pr` | Tests passing + review approved | `git status` clean, last test run green |
+| `/deploy` | PR merged + CI passing | Check GitHub Actions status |
+| `/review` | Build succeeds | `npm run build` exit 0 |
+| `/retrospective` | Sprint boundary reached | Check ROADMAP.md sprint dates |
+
+> If prerequisite not met — show ⚠️ warning next to option, do not disable it.
+
+---
+
 ## 🧠 Recommendation Intelligence
 
 Dynamically adjust recommendations based on:

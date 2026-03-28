@@ -9,6 +9,14 @@ allowed-tools: Read, Grep, Bash
 # Production Readiness
 
 > **Purpose**: Assess project readiness for production across 10 audit domains
+
+## Sub-Resources
+
+| File | Purpose |
+| :--- | :--- |
+| `scorecard-template.md` | 10-domain scorecard output template, delta comparison, executive summary, evidence types |
+
+---
 > **Invoked by**: `/preflight` | **Reusable by**: `/retrospective`, `/deploy`
 
 ---

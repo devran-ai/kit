@@ -10,6 +10,16 @@ allowed-tools: Read, Grep, Bash
 
 > **Purpose**: Domain knowledge for complete PR lifecycle — creation, review, remediation, merge, split, describe, analytics, and dependency management.
 
+## Sub-Resources
+
+| File | Purpose |
+| :--- | :--- |
+| `bot-parsers.md` | Per-bot parsing rules (Gemini, CodeRabbit, SonarCloud, Dependabot, GitHub Actions) |
+| `review-template.md` | Full 6-perspective review output template with finding format rules |
+| `fix-template.md` | Fix plan, resolution summary, and failure output templates |
+
+---
+
 ---
 
 ## 1. Branch Strategy Detection

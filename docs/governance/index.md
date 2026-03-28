@@ -75,9 +75,38 @@ Every interaction embodies three expert personas:
 - Cross-reference integrity enforced
 - No silent deletion of content
 
+### Performance Rules
+
+- JS bundle ≤ 200KB gzipped; API p95 ≤ 300ms; LCP ≤ 2.5s; CLS ≤ 0.1
+- Regression-prevention CI gate; profiling-before-optimizing mandate
+- N+1 query prevention; no memory leaks; no premature optimization
+
+### Accessibility Rules
+
+- WCAG 2.1 AA minimum on all UI output
+- Semantic HTML, ARIA roles, keyboard navigation, focus indicators
+- Color contrast ≥ 4.5:1 (normal text) / ≥ 3:1 (large text); touch targets 44×44px
+
+### Data Privacy Rules
+
+- PII never logged; encrypted at rest; minimized at collection
+- Data classification: Public / Internal / Confidential / Restricted
+- GDPR core: lawful basis, consent, erasure, portability, 72-hour breach notification
+- AI pipeline: anonymize PII before model input; no retention of raw PII
+
 ### Sprint Tracking Rules
 
 - ROADMAP.md is the only task tracker
 - Session start/end sync protocols
 - Reject duplicate status tracking
 - Sprint lifecycle states: `[ ]` → `[/]` → `[x]` / `[-]`
+
+### Rigor Profiles
+
+| Profile | Context | Gates | Coverage | Security |
+| :------- | :------ | :---- | :------- | :------- |
+| **strict** | Production, security-sensitive, pre-deploy | All — zero skip | 80%+ enforced | Full STRIDE |
+| **standard** | Normal development (default) | All — medium warnings | 80% target / 60% min | Cross-cutting + STRIDE for Medium+ |
+| **minimal** | Prototyping, spikes | Lint + build only | Skipped | Secrets scan only |
+
+Auto-elevated to `strict` when: merging to main/master, running `/preflight`, or touching auth/payment/PII files.

@@ -75,7 +75,7 @@ gh pr merge <number> --repo <owner/repo> --{squash|merge|rebase} --delete-branch
 ## Output Template
 
 ```markdown
-## PR Merged: #{number}
+## 🔗 PR Merged: #{number}
 
 | Field | Value |
 | :--- | :--- |
@@ -108,6 +108,34 @@ gh pr merge <number> --repo <owner/repo> --{squash|merge|rebase} --delete-branch
 - [ ] Dependencies verified, strategy compliance checked
 - [ ] Merged with appropriate strategy, branch deleted
 - [ ] Post-merge CI checked, dependent PRs notified
+
+---
+
+## Failure Output
+
+> Use when: merge is blocked by failing prerequisites or post-merge validation failure.
+
+```markdown
+## PR Merge — BLOCKED
+
+**PR**: #{number} — {title}
+**Reason**: {failing prerequisite / post-merge failure}
+
+### Prerequisite Check Results
+
+| Prerequisite | Required | Status | Action |
+| :----------- | :------- | :----- | :----- |
+| CI checks passing | All green | {status} | {fix action} |
+| Review approval | ≥1 approval | {status} | {request review} |
+| Dependencies merged | All `Depends-On` merged | {status} | {merge deps first} |
+| Branch strategy valid | Target = {expected} | {status} | {correct target} |
+
+### Post-Merge Failure (if applicable)
+
+{CI failure details on target branch after merge — rollback instructions if needed}
+
+**Do NOT proceed to `/deploy` until target branch CI is green.**
+```
 
 ---
 

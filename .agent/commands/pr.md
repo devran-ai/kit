@@ -1,5 +1,6 @@
 ---
 description: Create production-grade pull requests with branch validation, size guards, and CI verification
+workflow: pr
 ---
 
 # /pr Command

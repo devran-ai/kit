@@ -6,9 +6,9 @@ skills: [verification-loop]
 commit-types: [chore]
 ---
 
-# /project_status — Project Status Overview
+# /project-status — Project Status Overview
 
-> **Trigger**: `/project_status [sub-command]`
+> **Trigger**: `/project-status [sub-command]`
 > **Lifecycle**: Cross-cutting — any SDLC phase
 
 > Standards: See `rules/workflow-standards.md`
@@ -30,10 +30,10 @@ commit-types: [chore]
 
 | Command | Action |
 | :--- | :--- |
-| `/project_status` | Full report |
-| `/project_status brief` | One-line summary |
-| `/project_status health` | Build, tests, server only |
-| `/project_status git` | Branch, changes, commits only |
+| `/project-status` | Full report |
+| `/project-status brief` | One-line summary |
+| `/project-status health` | Build, tests, server only |
+| `/project-status git` | Branch, changes, commits only |
 
 ---
 
@@ -59,7 +59,7 @@ commit-types: [chore]
 ## Output Template
 
 ```markdown
-## Project Status
+## 📈 Project Status
 
 - **Project**: [name] · [stack]
 - **Branch**: [name] · [changes]
@@ -79,7 +79,11 @@ commit-types: [chore]
 
 ## Completion Criteria
 
-- [ ] Project, git, health, progress reported accurately
+- [ ] Project type and stack identified (source: config files — `package.json`, `Cargo.toml`, etc.)
+- [ ] Git state captured: branch name, HEAD commit SHA, uncommitted file count, ahead/behind remote (source: `git status`, `git log`)
+- [ ] Health checks executed: build exit code, test pass/fail, server reachable (source: live commands — never cached)
+- [ ] Task progress counted: completed/in-progress/pending with totals (source: ROADMAP.md or task tracking file)
+- [ ] Statistics gathered: files created/modified in current branch (source: `git diff --stat`)
 
 ---
 

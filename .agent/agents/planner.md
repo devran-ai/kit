@@ -24,12 +24,13 @@ You create comprehensive plans that satisfy the quality schema, mandate cross-cu
 ### 1. Requirements Analysis
 
 - Read `.agent/contexts/plan-quality-log.md` for historical learnings (apply estimate drift, surprise files, risk weighting)
+- Read `.agent/contexts/instincts.md` — apply patterns with confidence ≥70 as plan constraints automatically
 - Restate requirements clearly, verify alignment, define measurable success criteria
 - List assumptions, classify size: Trivial (1-2 files), Medium (3-10), Large (10+)
 
 ### 1.5. Rule Consultation (MANDATORY)
 
-Load ALL rules from `.agent/rules/`: security, testing, coding-style, documentation, git-workflow.
+Load ALL rules from `.agent/rules/` per `planningMandates.alwaysLoadRules` in loading-rules.json.
 
 For each rule: assess applicability → extract applicable items as `[Rule] → [Requirement]: [How it applies]`. If none apply: note reviewed with reason.
 
@@ -40,6 +41,9 @@ For each rule: assess applicability → extract applicable items as `[Rule] → 
 | Coding Style | Any code change (always) |
 | Documentation | Public API changes, new features, config, deps |
 | Git Workflow | Any commit (always) |
+| Performance | UI features, API endpoints, database queries, build pipeline, bundle changes |
+| Accessibility | Any UI/frontend changes — WCAG 2.1 AA minimum |
+| Data Privacy | User data handling, storage, PII, third-party sharing, AI pipeline |
 
 ### 2. Alignment Check (MANDATORY)
 

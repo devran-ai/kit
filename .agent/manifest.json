@@ -130,7 +130,7 @@
       "directory": "commands/"
     },
     "skills": {
-      "count": 35,
+      "count": 36,
       "items": [
         {
           "name": "api-patterns",
@@ -241,6 +241,10 @@
           "directory": "skills/project-docs-discovery/"
         },
         {
+          "name": "research-methodology",
+          "directory": "skills/research-methodology/"
+        },
+        {
           "name": "security-practices",
           "directory": "skills/security-practices/"
         },
@@ -275,7 +279,7 @@
       ]
     },
     "workflows": {
-      "count": 22,
+      "count": 23,
       "items": [
         {
           "name": "brainstorm",
@@ -296,6 +300,10 @@
         {
           "name": "enhance",
           "file": "workflows/enhance.md"
+        },
+        {
+          "name": "implement",
+          "file": "workflows/implement.md"
         },
         {
           "name": "orchestrate",
@@ -368,8 +376,12 @@
       ]
     },
     "rules": {
-      "count": 10,
+      "count": 13,
       "items": [
+        {
+          "name": "accessibility",
+          "file": "rules/accessibility.md"
+        },
         {
           "name": "agent-upgrade-policy",
           "file": "rules/agent-upgrade-policy.md"
@@ -383,12 +395,20 @@
           "file": "rules/coding-style.md"
         },
         {
+          "name": "data-privacy",
+          "file": "rules/data-privacy.md"
+        },
+        {
           "name": "documentation",
           "file": "rules/documentation.md"
         },
         {
           "name": "git-workflow",
           "file": "rules/git-workflow.md"
+        },
+        {
+          "name": "performance",
+          "file": "rules/performance.md"
         },
         {
           "name": "quality-gate",

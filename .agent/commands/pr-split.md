@@ -1,5 +1,7 @@
 ---
 description: Split oversized PRs into focused sub-PRs by concern category
+workflow: pr-split
+uses: [pr-toolkit, git-workflow]
 ---
 
 # /pr-split Command

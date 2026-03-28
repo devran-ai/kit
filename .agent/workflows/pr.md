@@ -138,7 +138,7 @@ Poll CI status via `gh pr checks`. Report each check. Note draft PRs may not tri
 ## Output Template
 
 ```markdown
-## PR Created Successfully
+## 🔀 PR Created Successfully
 
 | Field | Value |
 | :--- | :--- |

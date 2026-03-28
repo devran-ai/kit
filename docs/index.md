@@ -15,13 +15,13 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 | Feature           | Count | Description                                                            |
 | :---------------- | :---- | :--------------------------------------------------------------------- |
 | 🤖 **AI Agents**  | 23    | Specialized roles (Mobile, DevOps, Database, Security, PR Review...)   |
-| 🛠️ **Skills**     | 35    | Domain knowledge modules (API, Testing, PR Toolkit, Docker...)         |
+| 🛠️ **Skills**     | 36    | Domain knowledge modules (API, Testing, PR Toolkit, Docker, Research Methodology...) |
 | ⌨️ **Commands**   | 37    | Slash commands for every development workflow                          |
-| 🔄 **Workflows**  | 22    | Process templates (/create, /debug, /deploy, /pr, /pr-merge...)        |
+| 🔄 **Workflows**  | 23    | Process templates (/create, /debug, /deploy, /implement, /pr, /pr-merge...) |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
 | 🔗 **Hooks**      | 8     | Event-driven automation (runtime + git-hook enforcement)               |
 | ⚙️ **Runtime**    | 34    | Runtime engine modules (governance, reputation, self-healing...)       |
-| ⚖️ **Rules**      | 10    | Modular governance constraints (coding, security, testing, git, docs, sprint, workflow)  |
+| ⚖️ **Rules**      | 13    | Governance constraints (security, performance, accessibility, data-privacy, testing, git, docs, and more) |
 
 ---
 
@@ -43,11 +43,11 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :gear: **[Skills](skills/index.md)**
 
-  35 domain expertise modules
+  36 domain expertise modules
 
 - :arrows_counterclockwise: **[Workflows](workflows/index.md)**
 
-  22 full development workflows
+  23 full development workflows
 
 - :scales: **[Governance](governance/index.md)**
 
@@ -83,12 +83,12 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 
 ## Key Features
 
-- **🔒 Trust-Grade Governance** — `/explore → /plan → /work → /review` — Each iteration builds context
-- **🤖 Multi-Agent System** — 23 specialized agents that collaborate (Mobile Developer, DevOps, PR Reviewer...)
+- **🔒 Trust-Grade Governance** — 13 rules (Performance, Accessibility, Data Privacy + 10 more) with Rigor Profiles (strict/standard/minimal), Scope Filters, and Ethics Gates across all 23 workflows
+- **🤖 Multi-Agent System** — 23 specialized agents with Instinct System (confidence-scored pattern memory, auto-applied at ≥70 confidence)
 - **⚙️ Runtime Engine** — 34 modules enforcing workflow transitions, task governance, agent reputation, and self-healing
 - **📦 Context as Artifact** — Persistent markdown files for plans, specs, and decisions
-- **🔄 Continuous Learning** — PAAL cycle extracts patterns from every session
-- **🛡️ Security First** — Built-in secret detection, vulnerability scanning, and compliance checks
+- **🔄 Continuous Learning** — PAAL cycle extracts patterns from every session; Instinct System makes them permanent
+- **🛡️ Security First** — Built-in secret detection, OWASP Top 10 checklist, vulnerability scanning, and compliance checks
 
 ---
 
