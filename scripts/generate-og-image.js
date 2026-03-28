@@ -22,10 +22,8 @@ async function generate() {
   try {
     puppeteer = require('puppeteer');
   } catch {
-    console.error('❌ puppeteer not found. Installing...');
-    const { execSync } = require('child_process');
-    execSync('npm install --no-save puppeteer', { stdio: 'inherit' });
-    puppeteer = require('puppeteer');
+    console.error('❌ puppeteer not found. Install it first:\n   npm install -D puppeteer');
+    process.exit(1);
   }
 
   const ROOT = path.resolve(__dirname, '..');

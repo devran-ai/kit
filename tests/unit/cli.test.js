@@ -2,11 +2,15 @@ import { describe, it, expect } from 'vitest';
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const { TRANSIENT_FS_ERRORS } = require('../../lib/constants.js');
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const CLI_PATH = path.join(ROOT, 'bin', 'kit.js');
 
-// Retry helper for Windows EPERM/EACCES/EBUSY (antivirus/indexer file locks)
+// Retry helper for Windows transient file locks (antivirus, indexer, etc.)
 const rmWithRetry = (dir, retries = 3) => {
   for (let i = 0; i < retries; i++) {
     try {
@@ -15,7 +19,7 @@ const rmWithRetry = (dir, retries = 3) => {
       }
       return;
     } catch (e) {
-      if (!['EPERM', 'EACCES', 'EBUSY'].includes(e.code) || i >= retries - 1) throw e;
+      if (!TRANSIENT_FS_ERRORS.has(e.code) || i >= retries - 1) throw e;
       Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1000);
     }
   }
