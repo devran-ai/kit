@@ -15,7 +15,7 @@ const rmWithRetry = (dir, retries = 3) => {
       }
       return;
     } catch (e) {
-      if (i >= retries - 1) throw e;
+      if (!['EPERM', 'EACCES', 'EBUSY'].includes(e.code) || i >= retries - 1) throw e;
       Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1000);
     }
   }
