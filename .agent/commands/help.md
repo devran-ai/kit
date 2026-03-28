@@ -24,7 +24,7 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 
 ## Quick Overview
 
-**Devran AI Kit v4.6.1** — Trust-Grade AI Development Framework
+**Devran AI Kit v5.0.0** — Trust-Grade AI Development Framework
 
 | Category | Count | Description |
 |:---------|:------|:------------|
