@@ -279,8 +279,7 @@ function initCommand(options) {
           throw renameErr;
         }
         log(`   ⚠ File locked (${renameErr.code}), retrying... (${renameAttempts}/${maxRenameAttempts})`, 'yellow');
-        const waitMs = renameAttempts * 500;
-        Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, waitMs);
+        Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 500);
       }
     }
     log('   ✓ Copied successfully', 'green');
