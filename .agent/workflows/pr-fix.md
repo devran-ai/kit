@@ -3,7 +3,7 @@ description: Fix PR issues from review comments. Fetch findings, prioritize by s
 args: "PR #"
 version: 1.1.0
 sdlc-phase: build
-skills: [pr-toolkit, verification-loop]
+skills: [pr-toolkit, verification-loop, project-docs-discovery]
 commit-types: [fix]
 ---
 

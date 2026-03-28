@@ -3,7 +3,7 @@ description: Write and run tests systematically.
 args: file or feature
 version: 2.1.0
 sdlc-phase: verify
-skills: [testing-patterns, webapp-testing]
+skills: [testing-patterns, webapp-testing, project-docs-discovery]
 commit-types: [test]
 ---
 

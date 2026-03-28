@@ -3,7 +3,7 @@ description: Production-grade PR creation with branch strategy validation, size/
 args: branch name
 version: 3.0.0
 sdlc-phase: ship
-skills: [git-workflow, pr-toolkit, verification-loop]
+skills: [git-workflow, pr-toolkit, verification-loop, project-docs-discovery]
 commit-types: [feat, fix, refactor, perf, chore, docs, test]
 ---
 

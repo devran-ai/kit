@@ -2,7 +2,7 @@
 name: project-docs-discovery
 description: Auto-discover and consult project-specific documentation before development tasks.
 version: 1.0.0
-triggers: [review, plan, create, enhance, debug, design, architecture, compliance, screen, component]
+triggers: [plan, create, enhance, debug, pr-review, pr-fix, pr, pr-split, test, preflight, brainstorm, orchestrate, ui-ux, retrospective, quality-gate, design, architecture, compliance, screen, component]
 ---
 
 # Project Docs Discovery
@@ -72,4 +72,8 @@ If Glob returns zero results and no root-level doc files exist, skip this discov
 - `/deploy` — deployment procedures, not code evaluation
 - `/upgrade` — framework upgrade, not project code
 - `/pr-merge` — merge mechanics, not code analysis
+- `/review` — lint/test gates, not code analysis
+- `/preview` — dev server management, not code analysis
+- `/project-status` — status reporting, read-only
+- `/help-kit` — framework documentation, not project code
 - Any project with no `docs/` directory — auto-skipped

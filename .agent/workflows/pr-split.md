@@ -3,7 +3,7 @@ description: Guide splitting large PRs into focused sub-PRs by concern category 
 args: "PR #"
 version: 1.0.0
 sdlc-phase: build
-skills: [pr-toolkit, git-workflow]
+skills: [pr-toolkit, git-workflow, project-docs-discovery]
 commit-types: [chore]
 ---
 

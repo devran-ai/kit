@@ -2,7 +2,7 @@
 description: Production readiness assessment with weighted scoring across 10 audit domains.
 version: 1.0.0
 sdlc-phase: verify
-skills: [production-readiness, verification-loop, security-practices]
+skills: [production-readiness, verification-loop, security-practices, project-docs-discovery]
 commit-types: [feat, fix, refactor, perf]
 ---
 

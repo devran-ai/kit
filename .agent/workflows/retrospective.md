@@ -2,7 +2,7 @@
 description: Tier-1 Retrospective Quality Audit — full product, architecture, and pipeline review against market standards
 version: 2.1.0
 sdlc-phase: evaluate
-skills: [verification-loop]
+skills: [verification-loop, project-docs-discovery]
 commit-types: [docs, chore]
 ---
 
