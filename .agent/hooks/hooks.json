@@ -11,7 +11,8 @@
         { "action": "Read engine/workflow-state.json for lifecycle phase", "severity": "high", "onFailure": "warn" },
         { "action": "Verify git status is clean or understood", "severity": "medium", "onFailure": "warn" },
         { "action": "Load domain-relevant agents and skills via loading-rules.json", "severity": "high", "onFailure": "warn" },
-        { "action": "Present session state to user before proceeding", "severity": "critical", "onFailure": "block" }
+        { "action": "Present session state to user before proceeding", "severity": "critical", "onFailure": "block" },
+        { "action": "Check engine/onboarding-state.json — if canResume and startedAt < staleTTLDays, present resumption prompt. If stale (>7 days), offer: resume/restart/abandon (deletes staging)", "severity": "high", "onFailure": "warn" }
       ]
     },
     {
@@ -98,6 +99,22 @@
         { "action": "Evaluate change scope for recommendations (sprint boundary, production impact, session duration)", "severity": "high", "onFailure": "warn" },
         { "action": "Check if tracking files (ROADMAP, session-context, session-state) need updating", "severity": "medium", "onFailure": "warn" },
         { "action": "Suggest session-end protocol if session has accumulated significant changes", "severity": "low", "onFailure": "log" }
+      ]
+    },
+    {
+      "event": "onboarding-complete",
+      "description": "Triggered when /greenfield or /brownfield workflow reaches completion",
+      "enforcement": "runtime",
+      "actions": [
+        { "action": "Validate all generated documents exist in output directory", "severity": "critical", "onFailure": "block" },
+        { "action": "Run cross-document consistency check (4-check validation)", "severity": "critical", "onFailure": "block" },
+        { "action": "Calculate and store quality score (0-100) in onboarding-state.json", "severity": "high", "onFailure": "warn" },
+        { "action": "Extract high-confidence decisions as instinct candidates for contexts/instincts.md", "severity": "medium", "onFailure": "log" },
+        { "action": "Create initial sprint plan entry in engineering-manager sprint-plans.json from generated SPRINT-PLAN.md", "severity": "medium", "onFailure": "log" },
+        { "action": "Update session-context.md with project profile summary", "severity": "high", "onFailure": "warn" },
+        { "action": "Transition workflow-state.json to IDLE", "severity": "high", "onFailure": "warn" },
+        { "action": "Release file claims from conflict-detector", "severity": "medium", "onFailure": "log" },
+        { "action": "Sync Telegram bot menu with new commands", "severity": "low", "onFailure": "log" }
       ]
     }
   ]

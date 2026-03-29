@@ -7,6 +7,8 @@ uses: [project-docs-discovery]
 
 Initialize or configure the AI kit and project tooling. Detects existing config and only adds missing pieces.
 
+> **Note**: If you ran `/greenfield`, Kit configuration was already performed. Use `/setup` for additional tooling configuration (ESLint, Git hooks, etc.).
+
 ## Usage
 
 | Command | Action |

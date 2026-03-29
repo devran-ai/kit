@@ -1,6 +1,6 @@
 # Devran AI Kit — CheatSheet
 
-> **Version**: v5.0.0 | **Quick Reference** for all capabilities
+> **Version**: v5.1.0 | **Quick Reference** for all capabilities
 > **Session**: Start with `/project-status`, end with session-end checklist
 
 ---
@@ -25,7 +25,15 @@
 
 ---
 
-## 📋 Commands (37)
+## 📋 Commands (40)
+
+### Onboarding
+
+| Command | Description |
+|:--------|:------------|
+| `/greenfield` | Initialize new project with master docs + Kit config |
+| `/brownfield` | Analyze existing codebase, generate missing docs |
+| `/decisions` | Query architectural decision memory |
 
 ### Core Workflow
 
@@ -354,12 +362,12 @@
 ├── CheatSheet.md            # This file
 ├── manifest.json            # Capability registry
 │
-├── agents/                  # 23 specialized agents
-├── commands/                # 37 slash commands
-├── skills/                  # 35 capability extensions
-├── workflows/               # 22 slash command workflows
+├── agents/                  # 26 specialized agents
+├── commands/                # 40 slash commands
+├── skills/                  # 39 capability extensions
+├── workflows/               # 25 slash command workflows
 ├── hooks/                   # Event-driven automation
-├── rules/                   # 9 modular governance rules
+├── rules/                   # 15 modular governance rules
 ├── contexts/                # Mode switching (brainstorm, debug, etc.)
 ├── checklists/              # Session & pre-commit verification
 ├── templates/               # Feature, ADR, bug-report templates

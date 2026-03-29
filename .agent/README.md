@@ -24,10 +24,10 @@ This loads your session context and activates the orchestrator.
 ├── rules.md                # Core governance & identity
 ├── session-state.json      # Machine-readable state
 │
-├── agents/                 # 23 specialized agents
-├── commands/               # 37 slash commands
-├── skills/                 # 35 capability extensions
-├── workflows/              # 22 slash command workflows
+├── agents/                 # 26 specialized agents
+├── commands/               # 40 slash commands
+├── skills/                 # 39 capability extensions
+├── workflows/              # 25 slash command workflows
 ├── hooks/                  # Event-driven automation
 ├── rules/                  # Modular governance
 ├── contexts/               # Mode switching

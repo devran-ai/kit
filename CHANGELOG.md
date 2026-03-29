@@ -5,6 +5,90 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.1.0] — 2026-03-29
+
+### Added
+
+**Onboarding Workflow System — `/greenfield` and `/brownfield`**
+- New `/greenfield` command and workflow — 8-step checkpoint-based onboarding for new projects: Socratic discovery (8-12 questions), market research with T1-T5 evidence hierarchy, architecture with Mermaid diagrams, 15 master document templates, Kit configuration, quality scoring (0-100)
+- New `/brownfield` command and workflow — 11-step onboarding for existing projects: read-only codebase scanning (zero-modification guarantee), documentation gap analysis, selective generation (only missing docs), CLAUDE.md merge-not-overwrite, improvement report, refresh mode with pivot detection
+- New `/decisions` command — query architectural decision memory with keyword/domain/ID filters and stale detection
+- Three interaction modes: Interactive (IDE), Telegram (inline keyboards), CI/Headless (accept defaults)
+- Stealth mode for confidential projects — anonymized research queries and decision descriptions
+
+**New Runtime Modules (7)**
+- `lib/onboarding-engine.js` — checkpoint state machine, project profile validation, document queue, Kit config resolver, session management, staging directory
+- `lib/market-research.js` — competitor analysis, weighted scoring matrices, tech stack evaluation, evidence validation (T1-T5), stealth mode, graceful degradation (3 retries + exponential backoff)
+- `lib/doc-generator.js` — manifest-driven template registry, two-tier template engine (variable substitution + section conditionals), cross-document 4-check validation, Mermaid diagram generation (C4 context, data flow, deployment)
+- `lib/project-ide-generator.js` — project-specific .cursorrules, .opencode/instructions.md, .codex/instructions.md from profile + CLAUDE.md
+- `lib/quality-score.js` — 4-dimension quality scoring: completeness, consistency, depth, actionability
+- `lib/decision-validator.js` — decision entry schema validation for decisions.json
+- `lib/constants.js` — added TEMPLATES_DIR, STAGING_DIR, ONBOARDING_STATE_FILE, DECISIONS_FILE
+
+**New Agents (23 → 26)**
+- `onboarding-specialist` — Socratic discovery, profile building, document generation coordination (design-authority)
+- `market-researcher` — evidence-based market intelligence, competitor matrices, tech stack evaluation (read-only, WebSearch/WebFetch)
+- `codebase-scanner` — read-only brownfield analysis: stack detection, architecture patterns, documentation gaps, contradiction detection (read-only, brownfield only)
+
+**New Skills (36 → 39)**
+- `onboarding-engine` — discovery protocol, profile schema, template applicability matrix, Kit config mapping, adaptive guidance
+- `market-intelligence` — competitor framework (5+ competitors, 7 dimensions), feature gap analysis, counter-evidence requirement, graceful degradation protocol
+- `doc-generation` — two-tier template syntax, 4-check validation rules, ADR generation, quality scoring rubric (0-100), Mermaid guide
+
+**New Rules (13 → 15)**
+- `market-awareness` — cross-cutting rule loaded for ALL sessions; proactively checks market leaders during development decisions; non-dictatorial (presents evidence, developer decides, Kit records)
+- `doc-freshness` — cross-cutting rule; flags documents as potentially stale when related code changes (trigger matrix: architecture → ARCHITECTURE.md, features → PRD.md, etc.)
+
+**New Workflows (23 → 25)**
+- `greenfield` — 8-step new project onboarding with UX guard, checkpoint persistence, quality gate
+- `brownfield` — 11-step existing project onboarding with refresh mode, pivot detection, zero-overwrite guarantee
+
+**New Commands (37 → 40)**
+- `/greenfield` — entry point for new project onboarding
+- `/brownfield` — entry point for existing project onboarding
+- `/decisions` — architectural decision memory query
+
+**Templates & Infrastructure**
+- 15 onboarding document templates with two-tier syntax (TECH-STACK-ANALYSIS, COMPETITOR-ANALYSIS, PRD, ARCHITECTURE, DB-SCHEMA, API-SPEC, SECURITY-POLICY, DESIGN-SYSTEM, SCREENS-INVENTORY, USER-JOURNEY-MAP, ROADMAP, SPRINT-PLAN, COMPLIANCE, ONBOARDING-GUIDE, CLAUDE.md)
+- Template manifest (`manifest.json`) with dependency ordering, audience tags, applicability rules
+- Plugin template extensibility via `templates/plugins/<name>/manifest.json`
+- Decision memory storage (`engine/decisions.json`)
+- Onboarding context (`contexts/onboarding.md`)
+- 5 Architecture Decision Records (ADR-003 through ADR-007)
+
+**Testing (812 → 940 tests)**
+- 128 new tests across 8 new test files + 2 test fixtures
+- Unit tests: onboarding-engine (34), state machine (13), doc consistency (17), config validator (14), decision validation (15)
+- Structural tests: onboarding templates (12)
+- Integration tests: greenfield zero-flow (2), budget protection (10), session resumption (8)
+
+### Changed
+
+**Engine Integration**
+- `engine/sdlc-map.json` — added `onboarding` as pre-SDLC one-time phase (discover.previous unchanged)
+- `engine/workflow-state.json` — added ONBOARDING phase + 3 transitions (IDLE→ONBOARDING, ONBOARDING→EXPLORE, ONBOARDING→PLAN)
+- `engine/loading-rules.json` — greenfield/brownfield workflow bindings with protectedAgents/protectedSkills; cross-cutting rules in defaultLoad; onboarding domain rule with 9 keywords
+- `lib/workflow-engine.js` — ONBOARDING added to WorkflowPhase typedef
+- `lib/config-validator.js` — ONBOARDING + CHECKPOINT added to validPhases; workflowBindings item schema validation
+- `lib/loading-engine.js` — resolveForWorkflowWithRules returns protectedAgents/protectedSkills; getLoadPlan merges workflow-level protected items into budget enforcement
+- `lib/updater.js` — onboarding-state.json, decisions.json added to USER_DATA_FILES; staging/ added to USER_DATA_DIRS
+- `lib/plugin-system.js` — task-complete, onboarding-complete added to validEvents
+- `lib/doc-discovery.js` — 7 new DOC_PATTERNS for onboarding documents; CLAUDE.md added to ROOT_DOC_FILES
+- `hooks/hooks.json` — session-start: onboarding resumption check; new onboarding-complete hook with 9 actions (8 → 9 hooks)
+
+**Cross-References & Counts**
+- `manifest.json` — updated all counts (agents 26, skills 39, commands 40, workflows 25, rules 15, hooks 9)
+- `README.md` — updated badges and tagline
+- `CheatSheet.md` — added onboarding commands section; updated all directory structure counts
+- `commands/help.md` — updated capability counts
+- `commands/setup.md` — added `/greenfield` cross-reference
+- `create-kit-app/index.js` — added `/greenfield` to post-scaffold Quick Start
+
+### Fixed
+
+- `lib/onboarding-engine.js` — `validateProfile` now correctly validates `platforms` as array field (was failing string check on array type)
+- `lib/config-validator.js` — CHECKPOINT phase added to validPhases (pre-existing gap where CHECKPOINT existed in workflow-state but not in validator)
+
 ## [5.0.0] — 2026-03-28
 
 ### Added

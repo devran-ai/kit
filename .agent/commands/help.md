@@ -10,10 +10,10 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 
 ```
 /help                  # Quick overview of all capabilities
-/help commands         # All 37 slash commands with descriptions
-/help workflows        # All 22 workflows with descriptions
-/help agents           # All 23 AI agents with domains
-/help skills           # All 35 skill modules
+/help commands         # All 40 slash commands with descriptions
+/help workflows        # All 25 workflows with descriptions
+/help agents           # All 26 AI agents with domains
+/help skills           # All 39 skill modules
 /help rules            # Governance rules
 /help checklists       # Quality gate checklists
 /help cli              # Terminal CLI commands (kit)
@@ -24,7 +24,7 @@ Your complete guide to the Devran AI Kit. Type `/help` for a quick overview, or 
 
 ## Quick Overview
 
-**Devran AI Kit v5.0.0** — Trust-Grade AI Development Framework
+**Devran AI Kit v5.1.0** — Trust-Grade AI Development Framework
 
 | Category | Count | Description |
 |:---------|:------|:------------|

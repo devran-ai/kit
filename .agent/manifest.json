@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "kitVersion": "5.0.0",
+  "kitVersion": "5.1.0",
   "lastAuditedAt": null,
   "description": "Devran AI Kit — Trust-Grade AI Development Framework",
   "repository": "https://github.com/devran-ai/kit",
   "capabilities": {
     "agents": {
-      "count": 23,
+      "count": 26,
       "items": [
         {
           "name": "architect",
@@ -122,15 +122,30 @@
           "name": "go-reviewer",
           "file": "agents/go-reviewer.md",
           "domain": "Go idioms and concurrency review"
+        },
+        {
+          "name": "onboarding-specialist",
+          "file": "agents/onboarding-specialist.md",
+          "domain": "Project discovery and onboarding orchestration"
+        },
+        {
+          "name": "market-researcher",
+          "file": "agents/market-researcher.md",
+          "domain": "Market intelligence and competitor analysis"
+        },
+        {
+          "name": "codebase-scanner",
+          "file": "agents/codebase-scanner.md",
+          "domain": "Brownfield codebase analysis"
         }
       ]
     },
     "commands": {
-      "count": 37,
+      "count": 40,
       "directory": "commands/"
     },
     "skills": {
-      "count": 36,
+      "count": 39,
       "items": [
         {
           "name": "api-patterns",
@@ -275,11 +290,23 @@
         {
           "name": "shell-conventions",
           "directory": "skills/shell-conventions/"
+        },
+        {
+          "name": "onboarding-engine",
+          "directory": "skills/onboarding-engine/"
+        },
+        {
+          "name": "market-intelligence",
+          "directory": "skills/market-intelligence/"
+        },
+        {
+          "name": "doc-generation",
+          "directory": "skills/doc-generation/"
         }
       ]
     },
     "workflows": {
-      "count": 23,
+      "count": 25,
       "items": [
         {
           "name": "brainstorm",
@@ -372,11 +399,19 @@
         {
           "name": "upgrade",
           "file": "workflows/upgrade.md"
+        },
+        {
+          "name": "greenfield",
+          "file": "workflows/greenfield.md"
+        },
+        {
+          "name": "brownfield",
+          "file": "workflows/brownfield.md"
         }
       ]
     },
     "rules": {
-      "count": 13,
+      "count": 15,
       "items": [
         {
           "name": "accessibility",
@@ -429,6 +464,14 @@
         {
           "name": "workflow-standards",
           "file": "rules/workflow-standards.md"
+        },
+        {
+          "name": "market-awareness",
+          "file": "rules/market-awareness.md"
+        },
+        {
+          "name": "doc-freshness",
+          "file": "rules/doc-freshness.md"
         }
       ]
     },
@@ -454,7 +497,7 @@
       ]
     },
     "hooks": {
-      "count": 8,
+      "count": 9,
       "items": [
         {
           "name": "session-start",
@@ -487,6 +530,10 @@
         {
           "name": "task-complete",
           "event": "task-complete"
+        },
+        {
+          "name": "onboarding-complete",
+          "event": "onboarding-complete"
         }
       ]
     }

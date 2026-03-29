@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "name": "MatchMaker",
+  "description": "A modern dating application connecting people through shared interests",
+  "problemStatement": "Existing dating apps focus on superficial matching; MatchMaker prioritizes shared hobbies and values",
+  "targetUsers": {
+    "type": "B2C",
+    "geoScope": "global"
+  },
+  "platforms": ["web", "ios", "android"],
+  "scale": {
+    "launchUsers": 5000,
+    "yearOneUsers": 100000
+  },
+  "auth": {
+    "method": ["oauth", "email-password"],
+    "roles": ["user", "premium", "admin"],
+    "compliance": ["GDPR", "CCPA"]
+  },
+  "integrations": ["Stripe", "SendGrid", "Firebase Cloud Messaging", "Google Maps"],
+  "team": {
+    "size": "small",
+    "experienceLevel": "intermediate"
+  },
+  "timeline": {
+    "mvpDeadline": "2026-06-01",
+    "fullLaunch": "2026-12-01"
+  },
+  "existingAssets": {
+    "designs": true,
+    "brand": true,
+    "apis": false,
+    "prds": false
+  },
+  "budget": {
+    "hostingPreference": "cloud",
+    "vendorLockInTolerance": "medium"
+  },
+  "stealthMode": false
+}

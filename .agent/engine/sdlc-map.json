@@ -2,6 +2,13 @@
   "schemaVersion": "1.0.0",
   "description": "Machine-readable SDLC phase-to-workflow mapping with bidirectional traversal",
   "phases": {
+    "onboarding": {
+      "description": "One-time project initialization and document generation",
+      "workflows": ["greenfield", "brownfield"],
+      "previous": null,
+      "next": "discover",
+      "oneTime": true
+    },
     "discover": {
       "description": "Requirement exploration and validation",
       "workflows": ["brainstorm", "quality-gate"],

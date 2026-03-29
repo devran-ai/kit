@@ -1,0 +1,96 @@
+{
+  "competitors": [
+    {
+      "name": "Tinder",
+      "url": "https://tinder.com",
+      "description": "Swipe-based dating app with massive user base",
+      "scores": { "marketPresence": 10, "featureSet": 8, "technicalQuality": 7, "pricing": 5, "communitySupport": 6, "documentation": 4, "scalability": 9 },
+      "strengths": ["Massive user base", "Strong brand recognition", "Swipe UX paradigm"],
+      "weaknesses": ["Superficial matching", "Expensive premium", "Bot problem"]
+    },
+    {
+      "name": "Bumble",
+      "url": "https://bumble.com",
+      "description": "Women-first dating app with networking features",
+      "scores": { "marketPresence": 8, "featureSet": 7, "technicalQuality": 8, "pricing": 6, "communitySupport": 7, "documentation": 5, "scalability": 8 },
+      "strengths": ["Women-first approach", "Multi-mode (date/BFF/bizz)", "Good moderation"],
+      "weaknesses": ["Smaller user base than Tinder", "Complex UI"]
+    },
+    {
+      "name": "Hinge",
+      "url": "https://hinge.co",
+      "description": "Designed to be deleted — relationship-focused dating",
+      "scores": { "marketPresence": 7, "featureSet": 8, "technicalQuality": 8, "pricing": 6, "communitySupport": 8, "documentation": 6, "scalability": 7 },
+      "strengths": ["Relationship focus", "Prompt-based profiles", "High engagement"],
+      "weaknesses": ["Limited discovery", "Smaller markets outside US"]
+    },
+    {
+      "name": "OkCupid",
+      "url": "https://okcupid.com",
+      "description": "Question-based matching with detailed profiles",
+      "scores": { "marketPresence": 6, "featureSet": 9, "technicalQuality": 6, "pricing": 7, "communitySupport": 5, "documentation": 5, "scalability": 6 },
+      "strengths": ["Deep matching algorithm", "Detailed profiles", "Free messaging"],
+      "weaknesses": ["Dated UI", "Declining user base", "Owned by Match Group"]
+    },
+    {
+      "name": "Coffee Meets Bagel",
+      "url": "https://coffeemeetsbagel.com",
+      "description": "Curated daily matches for quality over quantity",
+      "scores": { "marketPresence": 5, "featureSet": 6, "technicalQuality": 7, "pricing": 7, "communitySupport": 6, "documentation": 5, "scalability": 5 },
+      "strengths": ["Curated matches", "Less overwhelming", "Good for busy professionals"],
+      "weaknesses": ["Very limited daily matches", "Small user base"]
+    }
+  ],
+  "techStackEntries": [
+    {
+      "category": "frontend",
+      "name": "React Native",
+      "version": "0.74",
+      "score": 8,
+      "rationale": "Cross-platform mobile with large ecosystem",
+      "pros": ["Single codebase for iOS/Android", "Large ecosystem", "Hot reload"],
+      "cons": ["Performance overhead vs native", "Bridge limitations"],
+      "alternatives": ["Flutter", "SwiftUI + Kotlin"]
+    },
+    {
+      "category": "backend",
+      "name": "Node.js + Express",
+      "version": "20 LTS",
+      "score": 8,
+      "rationale": "JavaScript full-stack, fast prototyping",
+      "pros": ["Same language frontend/backend", "NPM ecosystem", "Fast development"],
+      "cons": ["Single-threaded", "Callback complexity"],
+      "alternatives": ["Python + FastAPI", "Go + Gin"]
+    },
+    {
+      "category": "database",
+      "name": "PostgreSQL",
+      "version": "16",
+      "score": 9,
+      "rationale": "Robust relational DB with JSON support",
+      "pros": ["ACID compliance", "PostGIS for location", "JSON columns"],
+      "cons": ["Scaling requires planning", "Complex replication"],
+      "alternatives": ["MongoDB", "CockroachDB"]
+    }
+  ],
+  "evidence": [
+    {
+      "tier": "T1",
+      "source": "https://reactnative.dev/docs/getting-started",
+      "claim": "React Native supports iOS and Android from a single codebase",
+      "date": "2026-01-15"
+    },
+    {
+      "tier": "T2",
+      "source": "https://blog.pragmaticengineer.com/react-native-at-shopify/",
+      "claim": "Shopify migrated to React Native for 58 screens, reducing development time by 33%",
+      "date": "2025-08-20"
+    },
+    {
+      "tier": "T3",
+      "source": "https://stackoverflow.com/questions/tagged/react-native",
+      "claim": "React Native has 120k+ Stack Overflow questions, indicating strong community support",
+      "date": "2026-03-01"
+    }
+  ]
+}
