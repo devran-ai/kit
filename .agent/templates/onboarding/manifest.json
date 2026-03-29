@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Devran AI Kit — Onboarding document templates for /greenfield and /brownfield workflows",
+  "templates": [
+    {
+      "file": "TECH-STACK-ANALYSIS.md",
+      "requires": [],
+      "audience": ["all"],
+      "applicability": { "always": true }
+    },
+    {
+      "file": "COMPETITOR-ANALYSIS.md",
+      "requires": ["TECH-STACK-ANALYSIS"],
+      "audience": ["all", "pm", "stakeholder"],
+      "applicability": { "platforms": ["web", "ios", "android", "api"] }
+    },
+    {
+      "file": "PRD.md",
+      "requires": ["TECH-STACK-ANALYSIS"],
+      "audience": ["all", "pm"],
+      "applicability": { "always": true }
+    },
+    {
+      "file": "ARCHITECTURE.md",
+      "requires": ["TECH-STACK-ANALYSIS"],
+      "audience": ["all", "developer"],
+      "applicability": { "always": true }
+    },
+    {
+      "file": "DB-SCHEMA.md",
+      "requires": ["ARCHITECTURE"],
+      "audience": ["developer"],
+      "applicability": { "platforms": ["web", "ios", "android", "api"] }
+    },
+    {
+      "file": "API-SPEC.md",
+      "requires": ["ARCHITECTURE"],
+      "audience": ["developer"],
+      "applicability": { "platforms": ["web", "ios", "android", "api"] }
+    },
+    {
+      "file": "SECURITY-POLICY.md",
+      "requires": ["ARCHITECTURE"],
+      "audience": ["all", "developer"],
+      "applicability": { "platforms": ["web", "ios", "android", "api"] }
+    },
+    {
+      "file": "DESIGN-SYSTEM.md",
+      "requires": ["PRD"],
+      "audience": ["developer", "designer"],
+      "applicability": { "platforms": ["web", "ios", "android"] }
+    },
+    {
+      "file": "SCREENS-INVENTORY.md",
+      "requires": ["PRD", "DESIGN-SYSTEM"],
+      "audience": ["developer", "designer"],
+      "applicability": { "platforms": ["web", "ios", "android"] }
+    },
+    {
+      "file": "USER-JOURNEY-MAP.md",
+      "requires": ["PRD"],
+      "audience": ["all", "pm", "designer"],
+      "applicability": { "platforms": ["web", "ios", "android"] }
+    },
+    {
+      "file": "ROADMAP.md",
+      "requires": ["PRD", "ARCHITECTURE"],
+      "audience": ["all", "pm", "stakeholder"],
+      "applicability": { "always": true }
+    },
+    {
+      "file": "SPRINT-PLAN.md",
+      "requires": ["ROADMAP"],
+      "audience": ["all", "developer", "pm"],
+      "applicability": { "always": true }
+    },
+    {
+      "file": "COMPLIANCE.md",
+      "requires": ["SECURITY-POLICY"],
+      "audience": ["all", "stakeholder"],
+      "applicability": { "platforms": ["web", "ios", "android", "api"] }
+    },
+    {
+      "file": "ONBOARDING-GUIDE.md",
+      "requires": ["ARCHITECTURE", "ROADMAP"],
+      "audience": ["all", "developer"],
+      "applicability": { "always": true }
+    },
+    {
+      "file": "CLAUDE.md",
+      "requires": ["ARCHITECTURE", "ROADMAP", "SPRINT-PLAN"],
+      "audience": ["all"],
+      "applicability": { "always": true }
+    }
+  ]
+}

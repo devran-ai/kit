@@ -14,7 +14,7 @@ describe('Hook Trigger System', () => {
     const hooks = await loadHookSystem();
     const events = hooks.listEvents(ROOT);
 
-    expect(events.length).toBe(8);
+    expect(events.length).toBe(9);
     expect(events.map((e) => e.event)).toContain('session-start');
     expect(events.map((e) => e.event)).toContain('session-end');
     expect(events.map((e) => e.event)).toContain('pre-commit');
@@ -93,7 +93,7 @@ describe('Hook Trigger System', () => {
     expect(report).toHaveProperty('events');
     expect(report).toHaveProperty('totalActions');
     expect(report).toHaveProperty('readyCount');
-    expect(report.events.length).toBe(8);
+    expect(report.events.length).toBe(9);
     expect(report.totalActions).toBeGreaterThan(0);
   });
 });

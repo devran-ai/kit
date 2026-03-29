@@ -7,26 +7,27 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.0.0-blue?style=for-the-badge" alt="Version" height="36" /></a>
+  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.1.0-blue?style=for-the-badge" alt="Version" height="36" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="License" height="36" /></a>
-  <a href="tests/"><img src="https://img.shields.io/badge/tests-573%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
+  <a href="tests/"><img src="https://img.shields.io/badge/tests-940%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
   <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=for-the-badge" alt="Dependencies" height="36" /></a>
 </p>
 <p align="center">
-  <a href=".agent/agents/"><img src="https://img.shields.io/badge/AI%20Agents-23-7c3aed?style=for-the-badge" alt="AI Agents" height="36" /></a>
-  <a href=".agent/skills/"><img src="https://img.shields.io/badge/Skills-36-8b5cf6?style=for-the-badge" alt="Skills" height="36" /></a>
-  <a href=".agent/commands/"><img src="https://img.shields.io/badge/Commands-37-6366f1?style=for-the-badge" alt="Commands" height="36" /></a>
-  <a href=".agent/workflows/"><img src="https://img.shields.io/badge/Workflows-23-a78bfa?style=for-the-badge" alt="Workflows" height="36" /></a>
-  <a href=".agent/rules/"><img src="https://img.shields.io/badge/Rules-13-9333ea?style=for-the-badge" alt="Rules" height="36" /></a>
+  <a href=".agent/agents/"><img src="https://img.shields.io/badge/AI%20Agents-26-7c3aed?style=for-the-badge" alt="AI Agents" height="36" /></a>
+  <a href=".agent/skills/"><img src="https://img.shields.io/badge/Skills-39-8b5cf6?style=for-the-badge" alt="Skills" height="36" /></a>
+  <a href=".agent/commands/"><img src="https://img.shields.io/badge/Commands-40-6366f1?style=for-the-badge" alt="Commands" height="36" /></a>
+  <a href=".agent/workflows/"><img src="https://img.shields.io/badge/Workflows-25-a78bfa?style=for-the-badge" alt="Workflows" height="36" /></a>
+  <a href=".agent/rules/"><img src="https://img.shields.io/badge/Rules-15-9333ea?style=for-the-badge" alt="Rules" height="36" /></a>
 </p>
 
-> Trust-Grade AI Development Framework — Zero dependencies. 23 agents. 36 skills. 23 workflows. 13 rules. One command.
+> Trust-Grade AI Development Framework — Zero dependencies. 26 agents. 39 skills. 25 workflows. 15 rules. One command.
 
 ## Why Devran AI Kit?
 
-- **Not a prompt collection** — 34-module zero-dependency runtime engine with workflow state machine, circuit breaker, error budget, and self-healing CI
-- **Trust-grade governance** — 13 governance rules (including Performance, Accessibility, Data Privacy) enforced through a 7-phase SDLC with Scope Filters, Ethics Gates, Rigor Profiles (strict/standard/minimal), and Failure Templates on every workflow
-- **Intelligent agent system** — 23 specialized agents with reputation scoring, domain-aware routing, Instinct System (confidence-scored pattern memory), and on-demand loading via keyword matching
+- **Not a prompt collection** — 41-module zero-dependency runtime engine with workflow state machine, circuit breaker, error budget, and self-healing CI
+- **Trust-grade governance** — 15 governance rules (including Performance, Accessibility, Data Privacy, Market Awareness, Doc Freshness) enforced through a 7-phase SDLC with Scope Filters, Ethics Gates, Rigor Profiles (strict/standard/minimal), and Failure Templates on every workflow
+- **Intelligent agent system** — 26 specialized agents with reputation scoring, domain-aware routing, Instinct System (confidence-scored pattern memory), and on-demand loading via keyword matching
+- **Project onboarding** — `/greenfield` and `/brownfield` workflows generate master documentation (15 templates), market research, architecture diagrams, and Kit configuration from a single Socratic discovery session
 - **Telegram integration** — Control your Claude Code session from your phone. Trigger workflows, review PRs, and deploy — all from a Telegram chat
 - **Cross-IDE support** — One `kit init` configures Claude Code, Antigravity, Cursor, OpenCode, and Codex from a single manifest source of truth
 
@@ -34,14 +35,15 @@
 
 | Capability | Prompt Files | Rule Collections | **Devran AI Kit** |
 |---|---|---|---|
-| Agent orchestration | Manual | Manual | 23 agents with reputation scoring |
+| Agent orchestration | Manual | Manual | 26 agents with reputation scoring |
+| Project onboarding | None | None | `/greenfield` + `/brownfield` with 15 master templates |
 | Workflow governance | None | None | 7-phase SDLC state machine |
 | Session persistence | None | None | Full state across restarts |
 | Self-healing CI | None | None | Auto-diagnoses and patches failures |
 | Cross-IDE support | Single IDE | Single IDE | 5 IDEs from one source of truth |
 | Plugin marketplace | None | None | Trust-verified skill marketplace |
 | Telegram control | None | None | Full IDE control from your phone |
-| Test suite | None | None | 568 tests with security validation |
+| Test suite | None | None | 940 tests with security validation |
 | Runtime dependencies | Varies | Varies | **Zero** |
 
 ## Quick Start
@@ -93,28 +95,29 @@ kit scan      # Security scan
 
 | Component | Count | Purpose |
 |---|---|---|
-| Agents | 23 | Specialized AI agents with reputation scoring and domain routing |
-| Skills | 36 | Domain knowledge modules loaded on demand via keyword matching |
-| Commands | 37 | Slash commands for IDE interaction (`/plan`, `/implement`, `/deploy`) |
-| Workflows | 23 | Process templates with quality gates, scope filters, and phase enforcement |
-| Runtime Modules | 34 | Engine components (state machine, circuit breaker, plugin system) |
-| Rules | 13 | Governance constraints (security, performance, accessibility, data-privacy, and more) |
+| Agents | 26 | Specialized AI agents with reputation scoring and domain routing |
+| Skills | 39 | Domain knowledge modules loaded on demand via keyword matching |
+| Commands | 40 | Slash commands for IDE interaction (`/plan`, `/greenfield`, `/deploy`) |
+| Workflows | 25 | Process templates with quality gates, scope filters, and phase enforcement |
+| Runtime Modules | 41 | Engine components (state machine, circuit breaker, plugin system, onboarding engine) |
+| Rules | 15 | Governance constraints (security, performance, accessibility, market-awareness, and more) |
 | Checklists | 4 | Verification checklists (pre-commit, task-complete, session-start, session-end) |
-| Hooks | 8 | Lifecycle events (session start/end, phase transition, task complete) |
+| Hooks | 9 | Lifecycle events (session start/end, phase transition, onboarding complete) |
 
 ### Workflow State Machine
 
 ```
-IDLE -> EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> CHECKPOINT -> REVIEW -> DEPLOY
+IDLE -> ONBOARDING -> EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> CHECKPOINT -> REVIEW -> DEPLOY
+         (one-time)
 ```
 
-Each phase requires explicit developer approval before transitioning. The engine enforces governance rules and tracks session state across restarts.
+Onboarding (`/greenfield` or `/brownfield`) is a one-time pre-SDLC phase. Each subsequent phase requires explicit developer approval before transitioning. The engine enforces governance rules and tracks session state across restarts.
 
 ## What's New
 
 See the full **[CHANGELOG](CHANGELOG.md)** for detailed release notes.
 
-**Latest (v5.0.0):** Tier-1 framework upgrade — all 23 workflows enriched with Scope Filters, Failure Templates, and Ethics Gates; 3 new governance rules (Performance, Accessibility, Data Privacy); Instinct System with confidence-scored pattern memory; 8 new skill sub-files; new `/implement` workflow; full command dependency declarations across all 37 commands; session-context bootstrap fix; 568 tests passing.
+**Latest (v5.1.0):** Onboarding Workflow System — `/greenfield` and `/brownfield` commands for project initialization with Socratic discovery, market research (T1-T5 evidence), 15 master document templates, Mermaid architecture diagrams, quality scoring (0-100), and Kit auto-configuration. 3 new agents, 3 new skills, 2 cross-cutting rules, decision memory with `/decisions` command, stealth mode, 3 interaction modes (IDE/Telegram/CI), checkpoint-based resumption; 940 tests passing.
 
 ## Cross-IDE Support
 
@@ -167,15 +170,19 @@ Devran AI Kit is designed to **never touch your project files**. All operations 
 
 - `session-context.md` — Your active session notes
 - `session-state.json` — Your session metadata
+- `engine/onboarding-state.json` — Your onboarding progress
+- `engine/decisions.json` — Your architectural decisions
 - `decisions/` — Your Architecture Decision Records
 - `contexts/` — Your learning data and plan quality logs
 - `rules/` — Your custom governance rules
 - `checklists/` — Your custom quality gates
+- `staging/` — In-progress document generation
 
-## Agents (23)
+## Agents (26)
 
 | Category | Agents |
 |---|---|
+| **Onboarding** | Onboarding Specialist, Market Researcher, Codebase Scanner |
 | **Core Development** | Architect, Code Reviewer, TDD Guide, Planner |
 | **Language Reviewers** | TypeScript Reviewer, Python Reviewer, Go Reviewer |
 | **Domain Specialists** | Frontend Specialist, Backend Specialist, Mobile Developer, Database Architect, DevOps Engineer |
@@ -198,21 +205,21 @@ Devran AI Kit is designed to **never touch your project files**. All operations 
 ```
 kit/
 ├── .agent/                 # Framework directory (installed to projects)
-│   ├── agents/             # 23 specialized agent definitions
-│   ├── skills/             # 36 domain knowledge modules
-│   ├── commands/           # 37 slash command definitions
-│   ├── workflows/          # 23 workflow templates
-│   ├── rules/              # 13 governance constraints
+│   ├── agents/             # 26 specialized agent definitions
+│   ├── skills/             # 39 domain knowledge modules
+│   ├── commands/           # 40 slash command definitions
+│   ├── workflows/          # 25 workflow templates
+│   ├── rules/              # 15 governance constraints
 │   ├── checklists/         # 4 lifecycle quality gates
 │   ├── engine/             # Runtime config (loading-rules, MCP templates)
 │   ├── decisions/          # Architecture Decision Records
 │   └── manifest.json       # Definitive capability inventory
-├── lib/                    # 33 runtime modules (zero dependencies)
+├── lib/                    # 41 runtime modules (zero dependencies)
 ├── bin/kit.js              # CLI entry point
 ├── create-kit-app/         # Project scaffolder
 ├── docs/                   # MkDocs documentation site
 ├── examples/               # Starter examples (minimal, full-stack)
-└── tests/                  # 568 tests (unit, structural, security)
+└── tests/                  # 940 tests (unit, structural, integration, security)
 ```
 
 ## Security
@@ -229,7 +236,7 @@ You (Telegram)  ──>  Bot  ──>  Claude Code  ──>  Bot  ──>  You (
 
 | What you can do | How |
 |---|---|
-| Trigger any workflow | Type `/` in the chat — all 23 workflows appear as a native bot menu |
+| Trigger any workflow | Type `/` in the chat — all 25 workflows appear as a native bot menu |
 | Plan a feature | `/plan auth system` — bot executes immediately |
 | Review a PR | `/pr-review PR #5` — multi-perspective review runs |
 | Deploy to production | `/deploy staging` — pre-flight checks + deploy |
@@ -238,7 +245,7 @@ You (Telegram)  ──>  Bot  ──>  Claude Code  ──>  Bot  ──>  You (
 
 **Smart argument handling** — Send `/plan` alone and the bot asks what you need. Send `/plan auth system` and it executes directly. No extra steps.
 
-**Menu guard** — The bot menu auto-restores on every session. Your 23 workflows are always one tap away.
+**Menu guard** — The bot menu auto-restores on every session. Your 25 workflows are always one tap away.
 
 ### Get started
 

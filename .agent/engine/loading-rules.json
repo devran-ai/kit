@@ -11,7 +11,9 @@
   "defaultLoad": [
     "rules.md",
     "manifest.json",
-    "engine/workflow-state.json"
+    "engine/workflow-state.json",
+    "rules/market-awareness.md",
+    "rules/doc-freshness.md"
   ],
   "sessionLoad": [
     "session-context.md",
@@ -138,6 +140,12 @@
       "keywords": ["go", "golang", "goroutine", "channel", "context", "errgroup", "go mod", "staticcheck"],
       "loadAgents": ["go-reviewer"],
       "loadSkills": []
+    },
+    {
+      "domain": "onboarding",
+      "keywords": ["onboard", "setup project", "new project", "initialize", "scaffold", "from scratch", "existing project", "greenfield", "brownfield"],
+      "loadAgents": ["onboarding-specialist"],
+      "loadSkills": ["onboarding-engine"]
     }
   ],
   "contextBudget": {
@@ -172,7 +180,23 @@
     },
     { "workflow": "retrospective", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" },
     { "workflow": "project-status", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" },
-    { "workflow": "help-kit", "loadAgents": [], "loadSkills": [], "bindingType": "inferred" }
+    { "workflow": "help-kit", "loadAgents": [], "loadSkills": [], "bindingType": "inferred" },
+    {
+      "workflow": "greenfield",
+      "loadAgents": ["onboarding-specialist", "market-researcher"],
+      "protectedAgents": ["onboarding-specialist"],
+      "protectedSkills": ["onboarding-engine", "market-intelligence", "doc-generation"],
+      "loadSkills": ["onboarding-engine", "market-intelligence", "doc-generation", "brainstorming", "research-methodology", "architecture"],
+      "bindingType": "explicit"
+    },
+    {
+      "workflow": "brownfield",
+      "loadAgents": ["onboarding-specialist", "codebase-scanner", "market-researcher"],
+      "protectedAgents": ["onboarding-specialist", "codebase-scanner"],
+      "protectedSkills": ["onboarding-engine", "doc-generation"],
+      "loadSkills": ["onboarding-engine", "market-intelligence", "doc-generation", "research-methodology", "architecture"],
+      "bindingType": "explicit"
+    }
   ],
   "planningMandates": {
     "description": "Mandatory resources loaded for every /plan invocation regardless of keyword matching. Ensures cross-cutting concerns are never omitted.",

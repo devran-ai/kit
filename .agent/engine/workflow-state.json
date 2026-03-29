@@ -3,6 +3,15 @@
   "currentPhase": "IDLE",
   "startedAt": null,
   "phases": {
+    "ONBOARDING": {
+      "status": "pending",
+      "description": "Project initialization and master document generation",
+      "workflow": "greenfield",
+      "artifact": null,
+      "startedAt": null,
+      "completedAt": null,
+      "oneTime": true
+    },
     "EXPLORE": {
       "status": "pending",
       "description": "Codebase discovery and requirement analysis",
@@ -72,6 +81,24 @@
     }
   },
   "transitions": [
+    {
+      "from": "IDLE",
+      "to": "ONBOARDING",
+      "trigger": "Project onboarding initiated",
+      "guard": "No active onboarding in progress"
+    },
+    {
+      "from": "ONBOARDING",
+      "to": "EXPLORE",
+      "trigger": "Onboarding complete",
+      "guard": "All onboarding documents generated and validated"
+    },
+    {
+      "from": "ONBOARDING",
+      "to": "PLAN",
+      "trigger": "Onboarding complete, skip exploration",
+      "guard": "Onboarding generated sufficient context for planning"
+    },
     {
       "from": "IDLE",
       "to": "EXPLORE",

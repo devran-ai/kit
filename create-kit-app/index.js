@@ -323,6 +323,7 @@ ${colors.cyan}Next steps:${colors.reset}
   Run ${colors.green}/project_status${colors.reset} to verify Devran AI Kit
 
 ${colors.cyan}Quick start:${colors.reset}
+  ${colors.green}/greenfield${colors.reset}  Generate master documentation and configure your development environment
   ${colors.green}/plan${colors.reset}       Create implementation plan
   ${colors.green}/create${colors.reset}     Build a new feature
   ${colors.green}/test${colors.reset}       Write and run tests
