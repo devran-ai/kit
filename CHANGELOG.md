@@ -5,6 +5,23 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.1] — 2026-04-08
+
+### Fixed
+
+- **Claude Code bridge format** — removed quoted YAML description and provenance HTML comment that prevented Claude Code parser from recognizing slash commands
+- Added `sanitizeForPlainYaml()` for unquoted YAML plain scalars (strips `#`, `"`, `'` chars that break plain scalar parsing)
+
+### Changed
+
+- **Documentation sync** — updated 8 docs files with correct v5.2.0 component counts (agents 23→26, skills 36→39, commands 37→40, workflows 23→25, runtime 34→43, rules 13→15, hooks 8→9)
+- Architecture diagram version updated from v4.6.0 to v5.2.0 with corrected `+more` counts
+- Added missing rules (market-awareness, doc-freshness) and hook (onboarding-complete) to architecture docs
+- Standardized IDE count to 7 across all documentation
+- Tests: 982 → 984 (2 new sanitizer and bridge format tests)
+
+---
+
 ## [5.2.0] — 2026-04-08
 
 ### Added
