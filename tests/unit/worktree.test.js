@@ -144,7 +144,8 @@ describe('installPostCheckoutHook', () => {
       path.join(tmpDir, '.git', 'hooks', 'post-checkout'), 'utf-8'
     );
     expect(content).toContain('git rev-parse --git-common-dir');
-    expect(content).toContain('cp -RP "$MAIN_ROOT/.agent" .agent/');
+    expect(content).toContain('mkdir -p .agent');
+    expect(content).toContain('cp -RP "$MAIN_ROOT/.agent/." .agent/');
     expect(content).toContain('.claude/commands');
     expect(content).not.toContain('kit init');
   });
