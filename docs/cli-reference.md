@@ -28,6 +28,7 @@ kit init [options]
 | `--ide <name>` | Generate config for specific IDE(s) — comma-separated or `all` (`claude`, `cursor`, `opencode`, `codex`, `vscode`, `windsurf`) |
 | `--skip-ide` | Skip IDE config generation |
 | `--skip-commands` | Skip slash command bridge generation |
+| `--skip-worktree` | Skip `.worktreeinclude` and `post-checkout` hook generation |
 
 ---
 

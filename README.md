@@ -7,9 +7,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.2.1-blue?style=for-the-badge" alt="Version" height="36" /></a>
+  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.2.3-blue?style=for-the-badge" alt="Version" height="36" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="License" height="36" /></a>
-  <a href="tests/"><img src="https://img.shields.io/badge/tests-984%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
+  <a href="tests/"><img src="https://img.shields.io/badge/tests-1000%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
   <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=for-the-badge" alt="Dependencies" height="36" /></a>
 </p>
 <p align="center">
@@ -117,7 +117,9 @@ Onboarding (`/greenfield` or `/brownfield`) is a one-time pre-SDLC phase. Each s
 
 See the full **[CHANGELOG](CHANGELOG.md)** for detailed release notes.
 
-**Latest (v5.2.0):** Universal Slash Command Bridge Generation — `kit init` now auto-generates IDE-native `/` command bridges for Claude Code, Antigravity, Cursor, OpenCode, VS Code Copilot, and Windsurf. IDE auto-detection, provenance-based safe overwrite, 9 security hardening measures, step-builder init refactor, `.claude/commands/` git worktree support, bridge-sync verification; plan validation threshold raised to 80%; 984 tests passing.
+**Latest (v5.2.3):** Automatic Worktree Support — `.worktreeinclude` generation for Claude Code, `post-checkout` git hook for manual worktrees. Zero-friction install: bridge files are local-only, `kit init` no longer modifies existing `.gitignore` entries. 1000 tests passing.
+
+**v5.2.0:** Universal Slash Command Bridge Generation — IDE-native `/` command bridges for Claude Code, Cursor, OpenCode, VS Code Copilot, and Windsurf with auto-detection, provenance-based safe overwrite, and 9 security hardening measures.
 
 **v5.1.0:** Onboarding Workflow System — `/greenfield` and `/brownfield` commands for project initialization with Socratic discovery, market research, 15 master templates, Kit auto-configuration.
 
@@ -140,7 +142,7 @@ All generated automatically by `kit init`. See [IDE Support](docs/ide-support.md
 
 | Command | Description | Key Flags |
 |---|---|---|
-| `kit init` | Install `.agent/` framework + slash command bridges | `--force`, `--path <dir>`, `--ide <list>`, `--skip-commands` |
+| `kit init` | Install `.agent/` framework + slash command bridges | `--force`, `--path <dir>`, `--ide <list>`, `--skip-commands`, `--skip-worktree` |
 | `kit update` | Non-destructive framework update | `--dry-run` |
 | `kit status` | Dashboard with capabilities and metrics | — |
 | `kit verify` | Manifest integrity and structure checks | — |
@@ -225,7 +227,7 @@ kit/
 ├── create-kit-app/         # Project scaffolder
 ├── docs/                   # MkDocs documentation site
 ├── examples/               # Starter examples (minimal, full-stack)
-└── tests/                  # 984 tests (unit, structural, integration, security)
+└── tests/                  # 1000 tests (unit, structural, integration, security)
 ```
 
 ## Security
