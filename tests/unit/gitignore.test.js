@@ -22,9 +22,9 @@ describe('addToGitignore', () => {
     fs.rmSync(tmpDir, { recursive: true, force: true });
   });
 
-  it('creates .gitignore if it does not exist', () => {
+  it('creates .gitignore with all entries for detected IDEs', () => {
     const { addToGitignore } = loadModule();
-    const result = addToGitignore(tmpDir);
+    const result = addToGitignore(tmpDir, ['claude', 'cursor']);
 
     expect(result.added).toBe(true);
     expect(result.reason).toBe('added');
@@ -32,6 +32,9 @@ describe('addToGitignore', () => {
 
     const content = fs.readFileSync(path.join(tmpDir, '.gitignore'), 'utf-8');
     expect(content).toContain('.agent/');
+    expect(content).toContain('.claude/commands/');
+    expect(content).toContain('.cursor/commands/');
+    expect(content).toContain('.worktreeinclude');
     expect(content).toContain('# Devran AI Kit');
   });
 
@@ -39,49 +42,61 @@ describe('addToGitignore', () => {
     const { addToGitignore } = loadModule();
     fs.writeFileSync(path.join(tmpDir, '.gitignore'), 'node_modules/\n', 'utf-8');
 
-    const result = addToGitignore(tmpDir);
+    const result = addToGitignore(tmpDir, ['claude']);
 
     expect(result.added).toBe(true);
     const content = fs.readFileSync(path.join(tmpDir, '.gitignore'), 'utf-8');
     expect(content).toContain('node_modules/');
     expect(content).toContain('.agent/');
+    expect(content).toContain('.claude/commands/');
+    expect(content).toContain('.worktreeinclude');
   });
 
-  it('skips if .agent/ already present (idempotent)', () => {
+  it('skips entries already covered by parent dir pattern', () => {
+    const { addToGitignore } = loadModule();
+    // .claude/ covers .claude/commands/
+    fs.writeFileSync(path.join(tmpDir, '.gitignore'),
+      '.agent/\n.claude/\n.worktreeinclude\n', 'utf-8');
+
+    const result = addToGitignore(tmpDir, ['claude']);
+
+    expect(result.added).toBe(false);
+  });
+
+  it('adds only missing bridge dirs when .agent/ already present', () => {
     const { addToGitignore } = loadModule();
     fs.writeFileSync(path.join(tmpDir, '.gitignore'), '.agent/\n', 'utf-8');
 
-    const result = addToGitignore(tmpDir);
+    const result = addToGitignore(tmpDir, ['claude', 'cursor']);
 
-    expect(result.added).toBe(false);
-    expect(result.reason).toBe('already-ignored');
+    expect(result.added).toBe(true);
+    const content = fs.readFileSync(path.join(tmpDir, '.gitignore'), 'utf-8');
+    expect(content).toContain('.claude/commands/');
+    expect(content).toContain('.cursor/commands/');
+    expect(content).toContain('.worktreeinclude');
+    // .agent/ should NOT be duplicated
+    expect(content.match(/\.agent\//g)).toHaveLength(1);
   });
 
-  it('skips if marker comment already present', () => {
+  it('skips if all entries already present (idempotent)', () => {
     const { addToGitignore } = loadModule();
-    fs.writeFileSync(
-      path.join(tmpDir, '.gitignore'),
-      '# Devran AI Kit\n.agent/\n',
-      'utf-8'
-    );
+    fs.writeFileSync(path.join(tmpDir, '.gitignore'),
+      '# Devran AI Kit\n.agent/\n.claude/commands/\n.worktreeinclude\n', 'utf-8');
 
-    const result = addToGitignore(tmpDir);
+    const result = addToGitignore(tmpDir, ['claude']);
 
     expect(result.added).toBe(false);
     expect(result.reason).toBe('already-present');
   });
 
-  it('returns { added: true } when entry was added', () => {
+  it('works with no detectedIDEs argument (backward compat)', () => {
     const { addToGitignore } = loadModule();
     const result = addToGitignore(tmpDir);
-    expect(result).toEqual({ added: true, reason: 'added' });
-  });
 
-  it('returns { added: false } when skipped', () => {
-    const { addToGitignore } = loadModule();
-    fs.writeFileSync(path.join(tmpDir, '.gitignore'), '.agent/\n', 'utf-8');
-    const result = addToGitignore(tmpDir);
-    expect(result).toEqual({ added: false, reason: 'already-ignored' });
+    expect(result.added).toBe(true);
+    const content = fs.readFileSync(path.join(tmpDir, '.gitignore'), 'utf-8');
+    expect(content).toContain('.agent/');
+    expect(content).toContain('.worktreeinclude');
   });
 });
 
