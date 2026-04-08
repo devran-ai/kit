@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.2.1-blue?style=for-the-badge" alt="Version" height="36" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="License" height="36" /></a>
-  <a href="tests/"><img src="https://img.shields.io/badge/tests-982%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
+  <a href="tests/"><img src="https://img.shields.io/badge/tests-984%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
   <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=for-the-badge" alt="Dependencies" height="36" /></a>
 </p>
 <p align="center">
@@ -43,7 +43,7 @@
 | Cross-IDE support | Single IDE | Single IDE | 5 IDEs from one source of truth |
 | Plugin marketplace | None | None | Trust-verified skill marketplace |
 | Telegram control | None | None | Full IDE control from your phone |
-| Test suite | None | None | 982 tests with security validation |
+| Test suite | None | None | 984 tests with security validation |
 | Runtime dependencies | Varies | Varies | **Zero** |
 
 ## Quick Start
@@ -117,7 +117,7 @@ Onboarding (`/greenfield` or `/brownfield`) is a one-time pre-SDLC phase. Each s
 
 See the full **[CHANGELOG](CHANGELOG.md)** for detailed release notes.
 
-**Latest (v5.2.0):** Universal Slash Command Bridge Generation — `kit init` now auto-generates IDE-native `/` command bridges for Claude Code, Antigravity, Cursor, OpenCode, VS Code Copilot, and Windsurf. IDE auto-detection, provenance-based safe overwrite, 9 security hardening measures, step-builder init refactor, `.claude/commands/` git worktree support, bridge-sync verification; plan validation threshold raised to 80%; 982 tests passing.
+**Latest (v5.2.0):** Universal Slash Command Bridge Generation — `kit init` now auto-generates IDE-native `/` command bridges for Claude Code, Antigravity, Cursor, OpenCode, VS Code Copilot, and Windsurf. IDE auto-detection, provenance-based safe overwrite, 9 security hardening measures, step-builder init refactor, `.claude/commands/` git worktree support, bridge-sync verification; plan validation threshold raised to 80%; 984 tests passing.
 
 **v5.1.0:** Onboarding Workflow System — `/greenfield` and `/brownfield` commands for project initialization with Socratic discovery, market research, 15 master templates, Kit auto-configuration.
 
@@ -225,7 +225,7 @@ kit/
 ├── create-kit-app/         # Project scaffolder
 ├── docs/                   # MkDocs documentation site
 ├── examples/               # Starter examples (minimal, full-stack)
-└── tests/                  # 982 tests (unit, structural, integration, security)
+└── tests/                  # 984 tests (unit, structural, integration, security)
 ```
 
 ## Security
