@@ -60,7 +60,7 @@ Testing, debugging, and security.
 | **debugging-strategies** | Systematic debugging approaches      |
 | **security-practices**   | OWASP, vulnerability prevention      |
 | **webapp-testing**       | E2E and Playwright testing           |
-| **plan-validation**      | Plan quality gate with scoring (70%) |
+| **plan-validation**      | Plan quality gate with scoring (80%) |
 
 ---
 

@@ -1,6 +1,6 @@
 # Devran AI Kit — CheatSheet
 
-> **Version**: v5.1.0 | **Quick Reference** for all capabilities
+> **Version**: v5.2.0 | **Quick Reference** for all capabilities
 > **Session**: Start with `/project-status`, end with session-end checklist
 
 ---

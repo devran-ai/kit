@@ -139,8 +139,8 @@ Calculate the score using the rubric from `plan-schema.md`:
 
 | Condition | Verdict | Action |
 |-----------|---------|--------|
-| Score >= 70% of tier max | **PASS** | Present plan to user with score |
-| Score < 70% of tier max | **REVISE** | Identify gaps, revise, re-validate |
+| Score >= 80% of tier max | **PASS** | Present plan to user with score |
+| Score < 80% of tier max | **REVISE** | Identify gaps, revise, re-validate |
 
 **Revision Protocol**:
 1. Identify the specific missing or weak sections

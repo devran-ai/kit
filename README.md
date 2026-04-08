@@ -7,9 +7,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.1.0-blue?style=for-the-badge" alt="Version" height="36" /></a>
+  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.2.0-blue?style=for-the-badge" alt="Version" height="36" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="License" height="36" /></a>
-  <a href="tests/"><img src="https://img.shields.io/badge/tests-940%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
+  <a href="tests/"><img src="https://img.shields.io/badge/tests-982%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
   <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=for-the-badge" alt="Dependencies" height="36" /></a>
 </p>
 <p align="center">
@@ -24,7 +24,7 @@
 
 ## Why Devran AI Kit?
 
-- **Not a prompt collection** — 41-module zero-dependency runtime engine with workflow state machine, circuit breaker, error budget, and self-healing CI
+- **Not a prompt collection** — 43-module zero-dependency runtime engine with workflow state machine, circuit breaker, error budget, and self-healing CI
 - **Trust-grade governance** — 15 governance rules (including Performance, Accessibility, Data Privacy, Market Awareness, Doc Freshness) enforced through a 7-phase SDLC with Scope Filters, Ethics Gates, Rigor Profiles (strict/standard/minimal), and Failure Templates on every workflow
 - **Intelligent agent system** — 26 specialized agents with reputation scoring, domain-aware routing, Instinct System (confidence-scored pattern memory), and on-demand loading via keyword matching
 - **Project onboarding** — `/greenfield` and `/brownfield` workflows generate master documentation (15 templates), market research, architecture diagrams, and Kit configuration from a single Socratic discovery session
@@ -43,7 +43,7 @@
 | Cross-IDE support | Single IDE | Single IDE | 5 IDEs from one source of truth |
 | Plugin marketplace | None | None | Trust-verified skill marketplace |
 | Telegram control | None | None | Full IDE control from your phone |
-| Test suite | None | None | 940 tests with security validation |
+| Test suite | None | None | 982 tests with security validation |
 | Runtime dependencies | Varies | Varies | **Zero** |
 
 ## Quick Start
@@ -99,7 +99,7 @@ kit scan      # Security scan
 | Skills | 39 | Domain knowledge modules loaded on demand via keyword matching |
 | Commands | 40 | Slash commands for IDE interaction (`/plan`, `/greenfield`, `/deploy`) |
 | Workflows | 25 | Process templates with quality gates, scope filters, and phase enforcement |
-| Runtime Modules | 41 | Engine components (state machine, circuit breaker, plugin system, onboarding engine) |
+| Runtime Modules | 43 | Engine components (state machine, circuit breaker, plugin system, command bridge) |
 | Rules | 15 | Governance constraints (security, performance, accessibility, market-awareness, and more) |
 | Checklists | 4 | Verification checklists (pre-commit, task-complete, session-start, session-end) |
 | Hooks | 9 | Lifecycle events (session start/end, phase transition, onboarding complete) |
@@ -117,25 +117,30 @@ Onboarding (`/greenfield` or `/brownfield`) is a one-time pre-SDLC phase. Each s
 
 See the full **[CHANGELOG](CHANGELOG.md)** for detailed release notes.
 
-**Latest (v5.1.0):** Onboarding Workflow System — `/greenfield` and `/brownfield` commands for project initialization with Socratic discovery, market research (T1-T5 evidence), 15 master document templates, Mermaid architecture diagrams, quality scoring (0-100), and Kit auto-configuration. 3 new agents, 3 new skills, 2 cross-cutting rules, decision memory with `/decisions` command, stealth mode, 3 interaction modes (IDE/Telegram/CI), checkpoint-based resumption; 940 tests passing.
+**Latest (v5.2.0):** Universal Slash Command Bridge Generation — `kit init` now auto-generates IDE-native `/` command bridges for Claude Code, Antigravity, Cursor, OpenCode, VS Code Copilot, and Windsurf. IDE auto-detection, provenance-based safe overwrite, 9 security hardening measures, step-builder init refactor, `.claude/commands/` git worktree support, bridge-sync verification; plan validation threshold raised to 80%; 982 tests passing.
+
+**v5.1.0:** Onboarding Workflow System — `/greenfield` and `/brownfield` commands for project initialization with Socratic discovery, market research, 15 master templates, Kit auto-configuration.
 
 ## Cross-IDE Support
 
-| IDE | Config Path | Format |
-|---|---|---|
-| Claude Code | `.agent/` | Native |
-| Antigravity | `.agent/` | Native |
-| Cursor | `.cursor/rules/` | YAML frontmatter + Markdown |
-| OpenCode | `.opencode/` | JSON |
-| Codex | `.codex/` | TOML |
+Devran AI Kit provides two layers of IDE integration:
 
-All generated automatically by `kit init`.
+| IDE | Governance Config | Slash Commands | Auto-Detected? |
+|---|---|---|---|
+| Claude Code / Antigravity | `.agent/rules.md` (native) | `.claude/commands/*.md` | Always |
+| Cursor | `.cursor/rules/*.mdc` | `.cursor/commands/*.md` | Yes |
+| OpenCode | `.opencode/opencode.json` | `.opencode/commands/*.md` | Yes |
+| VS Code Copilot | - | `.github/prompts/*.prompt.md` | Opt-in (`--ide vscode`) |
+| Windsurf | - | `.windsurf/workflows/*.md` | Yes |
+| Codex | `.codex/config.toml` | - | Yes (config only) |
+
+All generated automatically by `kit init`. See [IDE Support](docs/ide-support.md) for details.
 
 ## CLI Reference
 
 | Command | Description | Key Flags |
 |---|---|---|
-| `kit init` | Install `.agent/` framework into project | `--force`, `--path <dir>` |
+| `kit init` | Install `.agent/` framework + slash command bridges | `--force`, `--path <dir>`, `--ide <list>`, `--skip-commands` |
 | `kit update` | Non-destructive framework update | `--dry-run` |
 | `kit status` | Dashboard with capabilities and metrics | — |
 | `kit verify` | Manifest integrity and structure checks | — |
@@ -214,12 +219,13 @@ kit/
 │   ├── engine/             # Runtime config (loading-rules, MCP templates)
 │   ├── decisions/          # Architecture Decision Records
 │   └── manifest.json       # Definitive capability inventory
-├── lib/                    # 41 runtime modules (zero dependencies)
+├── lib/                    # 43 runtime modules (zero dependencies)
+│   ├── commands/           # Extracted CLI command handlers
 ├── bin/kit.js              # CLI entry point
 ├── create-kit-app/         # Project scaffolder
 ├── docs/                   # MkDocs documentation site
 ├── examples/               # Starter examples (minimal, full-stack)
-└── tests/                  # 940 tests (unit, structural, integration, security)
+└── tests/                  # 982 tests (unit, structural, integration, security)
 ```
 
 ## Security

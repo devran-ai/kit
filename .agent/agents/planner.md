@@ -118,7 +118,7 @@ Prioritize by dependencies, group related changes, minimize context switching, e
 
 ## Plan Self-Validation
 
-Before presenting: cross-cutting sections non-empty, exact file paths, measurable done criteria, 1+ risk with mitigation, explicit non-goals, all rules referenced, domain sections included, score >= 70% of tier max.
+Before presenting: cross-cutting sections non-empty, exact file paths, measurable done criteria, 1+ risk with mitigation, explicit non-goals, all rules referenced, domain sections included, score >= 80% of tier max.
 
 ---
 

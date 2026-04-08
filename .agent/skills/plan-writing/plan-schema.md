@@ -73,11 +73,11 @@ Domain scoring does NOT change the pass threshold — it provides additional qua
 
 ## Scoring
 
-| Task Size | Max Score | Pass Threshold (70%) |
+| Task Size | Max Score | Pass Threshold (80%) |
 |-----------|-----------|---------------------|
-| Trivial | 60 | 42 |
-| Medium | 80 | 56 |
-| Large | 100 | 70 |
+| Trivial | 60 | 48 |
+| Medium | 80 | 64 |
+| Large | 100 | 80 |
 
 **Score Calculation**:
 - A section earns full points when present and substantively populated
@@ -85,8 +85,8 @@ Domain scoring does NOT change the pass threshold — it provides additional qua
 - "N/A" with a valid justification counts as populated (earns full points)
 
 **Verdict**:
-- **PASS**: Score >= 70% of tier maximum
-- **REVISE**: Score < 70% — identify missing sections and revise (max 2 revision cycles)
+- **PASS**: Score >= 80% of tier maximum
+- **REVISE**: Score < 80% — identify missing sections and revise (max 2 revision cycles)
 
 ---
 

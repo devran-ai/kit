@@ -25,8 +25,33 @@ kit init [options]
 | `--path <dir>` | Install to a specific directory |
 | `--dry-run` | Preview changes without writing |
 | `--quiet` | Suppress banner output |
-| `--ide <name>` | Generate config for single IDE (`cursor`, `opencode`, `codex`) |
+| `--ide <name>` | Generate config for specific IDE(s) — comma-separated or `all` (`claude`, `cursor`, `opencode`, `codex`, `vscode`, `windsurf`) |
 | `--skip-ide` | Skip IDE config generation |
+| `--skip-commands` | Skip slash command bridge generation |
+
+---
+
+#### Slash Command Bridges
+
+`kit init` automatically detects which IDEs are present and generates slash command bridge files that connect each IDE's native `/` command system to `.agent/workflows/*.md`.
+
+| IDE | Bridge Location | Auto-Detected? |
+|-----|----------------|---------------|
+| Claude Code / Antigravity | `.claude/commands/*.md` | Always generated |
+| Cursor | `.cursor/commands/*.md` | When `.cursor/` exists |
+| OpenCode | `.opencode/commands/*.md` | When `.opencode/` exists |
+| VS Code Copilot | `.github/prompts/*.prompt.md` | Explicit opt-in (`--ide vscode`) |
+| Windsurf | `.windsurf/workflows/*.md` | When `.windsurf/` exists |
+
+Bridge files include a provenance header (`<!-- devran-kit-bridge ... -->`) so `kit update` can safely regenerate them without overwriting user-created custom commands.
+
+To generate bridges for all IDEs regardless of detection:
+
+```bash
+kit init --ide all
+```
+
+See [IDE Support](ide-support.md) for full details.
 
 ---
 

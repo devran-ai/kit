@@ -84,8 +84,18 @@ description = "Implementation planning specialist"
 
 ---
 
+## Slash Command Bridges
+
+In addition to governance configs, Kit v5.2.0+ generates **slash command bridge files** that enable IDE-native `/` autocomplete for all 25 workflows.
+
+See [IDE Support](ide-support.md) for the full cross-IDE slash command matrix, auto-detection behavior, provenance protection, and security details.
+
+---
+
 ## Customization
 
 Generated IDE configs can be customized after generation. They will not be overwritten by `kit update` unless you use `--force`.
 
 To regenerate IDE configs after modifying agents or rules, re-run `kit init --force` (this preserves your session data via automatic backup).
+
+Slash command bridge files include a provenance header. `kit update` only overwrites Kit-generated bridges, never user-created custom commands.

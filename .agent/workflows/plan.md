@@ -73,7 +73,7 @@ commit-types: [feat, fix, refactor, docs]
    5. Rubric scoring against `plan-schema.md`
    6. Domain scoring: +2 bonus per matched domain with enhancer section present, -2 penalty per missing
 
-   **Verdict**: Score >= 70% of tier max → PASS (present with score). Below → REVISE (max 2 cycles, then present with warnings).
+   **Verdict**: Score >= 80% of tier max → PASS (present with score). Below → REVISE (max 2 cycles, then present with warnings).
 
 4. **Present for Approval** — show plan with quality score, wait for approval.
 
@@ -142,7 +142,7 @@ Non-blocking (severity: medium, onFailure: log).
 - [ ] Plan created with verifiable tasks and exact file paths
 - [ ] Cross-cutting concerns addressed (security, testing, documentation)
 - [ ] Domain-specific sections included for all matched domains
-- [ ] Plan validated against quality schema (score >= 70% of tier max)
+- [ ] Plan validated against quality schema (score >= 80% of tier max)
 - [ ] Plan saved to `docs/PLAN-{slug}.md`
 - [ ] User has reviewed and approved the plan
 - [ ] After implementation: retrospective logged to plan-quality-log.md

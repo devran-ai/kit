@@ -131,7 +131,7 @@ Every plan MUST satisfy the quality schema defined in `plan-schema.md`:
 - **Tier 1** sections are ALWAYS required. Omitting any Tier 1 section is a plan defect.
 - **Tier 2** sections are required for Medium and Large tasks (3+ files or 1+ hours).
 - Before presenting a plan, validate it against the schema checklist.
-- Plans scoring below 70% of their tier maximum must be revised before presentation.
+- Plans scoring below 80% of their tier maximum must be revised before presentation.
 
 See also: `domain-enhancers.md` for domain-specific plan sections.
 
