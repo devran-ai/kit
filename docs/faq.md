@@ -20,7 +20,7 @@ No. Since `.agent/` is gitignored by default, CI pipelines never see it. The kit
 
 **What is Devran AI Kit?**
 
-A trust-grade AI development framework with 23 specialized agents, 35 skills, 22 workflows, and a 34-module zero-dependency runtime engine. It transforms your IDE into a virtual engineering team.
+A trust-grade AI development framework with 26 specialized agents, 39 skills, 25 workflows, and a 43-module zero-dependency runtime engine. It transforms your IDE into a virtual engineering team.
 
 **How is it different from prompt collections?**
 
@@ -36,7 +36,7 @@ Zero production dependencies. The entire runtime (8,000+ LOC) is built with nati
 
 **Which IDEs are supported?**
 
-Claude Code, Antigravity, Cursor, OpenCode, and Codex. All configured automatically by `kit init`.
+Claude Code, Antigravity, Cursor, OpenCode, Codex, VS Code Copilot, and Windsurf. All configured automatically by `kit init` with IDE auto-detection and slash command bridge generation.
 
 **Do I need to configure each IDE separately?**
 

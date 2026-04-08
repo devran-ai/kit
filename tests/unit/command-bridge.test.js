@@ -112,15 +112,15 @@ describe('Command Bridge Generator', () => {
 
   // --- Format Validation ---
 
-  it('Claude bridge has YAML frontmatter first, then provenance header', () => {
+  it('Claude bridge has unquoted YAML frontmatter (Claude Code compatible)', () => {
     const mod = loadModule();
     const { workflows } = mod.resolveWorkflows(agentDir, SAMPLE_MANIFEST);
     const result = mod.generateClaudeCommands(workflows);
     const content = result.files[0].content;
     expect(content).toMatch(/^---\n/);
-    expect(content).toMatch(/description: ".*"/);
-    expect(content.indexOf('---')).toBeLessThan(content.indexOf('devran-kit-bridge'));
-    expect(content).toContain('`.agent/workflows/plan.md`');
+    expect(content).toMatch(/^description: [^"]/m);
+    expect(content).not.toContain('devran-kit-bridge');
+    expect(content).toContain('.agent/workflows/plan.md');
     expect(result.files[0].path).toBe('.claude/commands/plan.md');
   });
 
@@ -159,11 +159,11 @@ describe('Command Bridge Generator', () => {
     expect(result.files[0].path).toBe('.windsurf/workflows/plan.md');
   });
 
-  it('all bridges include provenance header', () => {
+  it('non-Claude bridges include provenance header', () => {
     const mod = loadModule();
     const { workflows } = mod.resolveWorkflows(agentDir, SAMPLE_MANIFEST);
+    // Claude bridges omit provenance header for Claude Code parser compatibility
     const adapters = [
-      mod.generateClaudeCommands,
       mod.generateCursorCommands,
       mod.generateOpenCodeCommands,
       mod.generateWindsurfWorkflows,
@@ -175,6 +175,13 @@ describe('Command Bridge Generator', () => {
     // VS Code has header after frontmatter
     const vscode = mod.generateVSCodePrompts(workflows);
     expect(vscode.files[0].content).toContain('<!-- devran-kit-bridge');
+  });
+
+  it('Claude bridges omit provenance header for parser compatibility', () => {
+    const mod = loadModule();
+    const { workflows } = mod.resolveWorkflows(agentDir, SAMPLE_MANIFEST);
+    const result = mod.generateClaudeCommands(workflows);
+    expect(result.files[0].content).not.toContain('<!-- devran-kit-bridge');
   });
 
   // --- Edge Cases ---
