@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.1.0-blue?style=for-the-badge" alt="Version" height="36" /></a>
+  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.2.0-blue?style=for-the-badge" alt="Version" height="36" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="License" height="36" /></a>
   <a href="tests/"><img src="https://img.shields.io/badge/tests-982%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
   <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=for-the-badge" alt="Dependencies" height="36" /></a>
