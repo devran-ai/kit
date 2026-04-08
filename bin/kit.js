@@ -99,6 +99,7 @@ ${colors.bright}Options:${colors.reset}
                             (claude,cursor,opencode,codex,vscode,windsurf,all)
   --skip-ide                Skip IDE config generation
   --skip-commands           Skip slash command bridge generation
+  --skip-worktree           Skip worktree support (.worktreeinclude + post-checkout hook)
   --shared                  Commit .agent/ to repo (team mode — skip .gitignore)
 
 ${colors.bright}Examples:${colors.reset}
@@ -458,6 +459,7 @@ const options = {
   skipIde: args.includes('--skip-ide'),
   skipCommands: args.includes('--skip-commands'),
   shared: args.includes('--shared'),
+  skipWorktree: args.includes('--skip-worktree'),
   ide: null,
   path: null,
   file: null,
