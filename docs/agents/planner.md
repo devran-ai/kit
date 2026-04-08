@@ -15,7 +15,7 @@ The Planner agent orchestrates a **multi-agent plan synthesis pipeline** that pr
 - **Mandatory Cross-Cutting Concerns** — Security, testing, and documentation are always addressed
 - **Rule Consultation** — Every plan references applicable governance rules
 - **Domain Enhancement** — Frontend, backend, database, DevOps, and security sections injected based on detected domains
-- **Quality Scoring** — Completeness scoring with 70% pass threshold
+- **Quality Scoring** — Completeness scoring with 80% pass threshold
 - **Adaptive Learning** — Retrospective feedback loop improves future plans
 
 ---
@@ -102,7 +102,7 @@ The planner self-validates against the `plan-validation` skill before presenting
 3. **Specificity Audit** — All steps include file paths (no vague descriptions)
 4. **Domain Enhancement Scoring** — +2 bonus per matched domain section, -2 penalty per missing
 5. **Completeness Scoring** — Calculate score against tier maximum
-6. **Verdict** — PASS (≥70%) or REVISE (max 2 revision cycles)
+6. **Verdict** — PASS (≥80%) or REVISE (max 2 revision cycles)
 
 ### 8. User Approval
 
@@ -141,11 +141,11 @@ Plans follow a tiered structure based on task size:
 
 ### Scoring Thresholds
 
-| Task Tier | Max Score | Pass Threshold (70%) |
+| Task Tier | Max Score | Pass Threshold (80%) |
 |-----------|-----------|---------------------|
-| **Trivial** | 60 pts | 42 pts |
-| **Medium** | 80 pts | 56 pts |
-| **Large** | 80+ pts (with domain bonus) | 56+ pts |
+| **Trivial** | 60 pts | 48 pts |
+| **Medium** | 80 pts | 64 pts |
+| **Large** | 80+ pts (with domain bonus) | 64+ pts |
 
 ---
 

@@ -5,6 +5,65 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.0] — 2026-04-08
+
+### Added
+
+**Universal Slash Command Bridge Generation**
+- New `lib/command-bridge.js` module — generates IDE-native slash command bridge files from `.agent/workflows/*.md` for 5 IDEs: Claude Code/Antigravity, Cursor, OpenCode, VS Code Copilot, and Windsurf
+- IDE auto-detection — scans project for `.cursor/`, `.opencode/`, `.windsurf/` directories; generates bridges only for detected IDEs; Claude Code always included
+- Provenance-based overwrite protection — every bridge file includes `<!-- devran-kit-bridge v5.2.0 -->` header; `kit update` never overwrites user-created custom commands
+- New `--skip-commands` CLI flag — skip bridge generation during init
+- New `--ide <list>` flag extension — accepts comma-separated IDE list or `all` (e.g., `--ide claude,cursor,vscode`)
+- VS Code Copilot support via `.github/prompts/*.prompt.md` with `mode: "agent"` (explicit opt-in only)
+- Windsurf support via `.windsurf/workflows/*.md` with title + numbered steps format
+- Bridge-sync verification in `kit verify` — detects missing and orphaned bridge files
+- New `docs/ide-support.md` — comprehensive cross-IDE slash command support documentation
+
+**Gitignore Worktree Support**
+- New `ensureClaudeCommandsTracked()` — adds `.claude/*` + `!.claude/commands/` negation pattern so bridge files are available in git worktrees
+- Migration support — automatically converts `.claude/` to `.claude/*` in existing `.gitignore` files
+- Post-write gitignore warnings — alerts when IDE bridge directories are gitignored
+
+**Architecture Improvements**
+- Step-builder pattern in `kit init` — replaces fragile hardcoded step counter with declarative `steps[]` pipeline; self-correcting step numbering regardless of active flags
+- Extracted `lib/commands/init.js` — init command logic moved from `bin/kit.js` (1076 lines) to dedicated module; CLI entry point now 719 lines (under 800-line limit)
+- Atomic provenance check via `checkKitProvenance()` — eliminates TOCTOU race between existence check and header read
+- New `writeBridgeConfigs()` in `lib/ide-generator.js` — provenance-aware wrapper around `writeIdeConfigs()` with safe overwrite semantics
+
+**Security Hardening (9 measures)**
+- S1: Strict name validation regex `/^[a-z0-9][a-z0-9-]{0,63}$/` — prevents path traversal and Windows reserved device names
+- S2: `sanitizeForYaml()` — single-line extraction, backslash + quote escaping, 200-char limit
+- S3: `sanitizeForMarkdown()` — strips `[text](url)` patterns and bare URLs from plain markdown bridges
+- S4: `isKitGeneratedFile()` — reads first 128 bytes for provenance header before any overwrite
+- S5: `safeResolveWorkflowPath()` — validates workflow file paths stay within `.agent/` boundary
+- S6: `MAX_WORKFLOW_ITEMS = 100` cap on manifest items (DoS prevention)
+- S7: Post-write gitignore detection with user warnings
+- S8: `MAX_WORKFLOW_FILE_SIZE = 65536` byte limit before file read
+- S9: Regex field name escaping in `extractFrontmatterField()` (ReDoS prevention)
+
+**Plan Validation Threshold**
+- Raised plan quality validation threshold from 70% to 80% across all files (plan-schema, plan-validation, planner agent, workflows, documentation)
+- Updated scoring tables: Trivial 42 -> 48, Medium 56 -> 64, Large 70 -> 80
+
+**Testing (940 -> 982 tests)**
+- 42 new tests across 3 files
+- New `tests/unit/command-bridge.test.js` — 37 tests covering 5 IDE adapters, security (YAML/markdown injection, path traversal, DoS cap, file size limit, provenance detection), auto-detection, idempotency
+- Extended `tests/unit/gitignore.test.js` — 10 new tests for `ensureClaudeCommandsTracked` and `checkBridgeGitignoreWarnings`
+
+### Changed
+
+- `lib/constants.js` — added 11 new constants (CLAUDE_DIR, CLAUDE_COMMANDS_DIR, CURSOR_COMMANDS_DIR, OPENCODE_COMMANDS_DIR, GITHUB_PROMPTS_DIR, WINDSURF_DIR, WINDSURF_WORKFLOWS_DIR, MAX_WORKFLOW_ITEMS, MAX_WORKFLOW_FILE_SIZE, SAFE_COMMAND_NAME, KIT_BRIDGE_HEADER)
+- `lib/ide-generator.js` — added `writeBridgeConfigs()` and `checkKitProvenance()` exports
+- `lib/io.js` — added `ensureClaudeCommandsTracked()` and `checkBridgeGitignoreWarnings()` exports; frozen module.exports
+- `lib/updater.js` — `applyUpdate()` now regenerates slash command bridges and ensures Claude commands are git-tracked
+- `lib/verify.js` — added bridge-sync check (Check 13) for Claude Code command bridges
+- `bin/kit.js` — delegated `initCommand` to `lib/commands/init.js`; added `--skip-commands` option parsing
+- `docs/cli-reference.md` — documented `--skip-commands`, `--ide <list>`, and bridge generation behavior
+- `docs/cross-ide-setup.md` — referenced new ide-support.md for bridge details
+
+---
+
 ## [5.1.0] — 2026-03-29
 
 ### Added
@@ -521,7 +580,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Multi-Agent Plan Synthesis Pipeline
 - **Plan Quality Schema** (`plan-schema.md`) — Tiered scoring rubric (Tier 1: 60 pts, Tier 2: 80 pts) with domain enhancement bonus/penalty scoring
 - **Domain Enhancers** (`domain-enhancers.md`) — Domain-specific plan sections for frontend, backend, database, DevOps, and security
-- **Plan Validation Skill** (`plan-validation/SKILL.md`) — Quality gate with schema compliance, cross-cutting verification, specificity audit, and completeness scoring (70% pass threshold)
+- **Plan Validation Skill** (`plan-validation/SKILL.md`) — Quality gate with schema compliance, cross-cutting verification, specificity audit, and completeness scoring (80% pass threshold)
 - **Plan Retrospective** (`plan-retrospective.md`) — Post-implementation accuracy review comparing predicted vs actual files, tasks, estimates, and risks
 - **Plan Quality Log** (`contexts/plan-quality-log.md`) — Persistent accuracy log enabling adaptive learning across planning sessions
 
