@@ -67,7 +67,7 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :desktop_computer: **[Cross-IDE Setup](cross-ide-setup.md)**
 
-  6 IDEs from one manifest
+  7 IDEs from one manifest
 
 </div>
 
@@ -89,7 +89,7 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 - **📦 Context as Artifact** — Persistent markdown files for plans, specs, and decisions
 - **🔄 Continuous Learning** — PAAL cycle extracts patterns from every session; Instinct System makes them permanent
 - **🛡️ Security First** — Built-in secret detection, OWASP Top 10 checklist, vulnerability scanning, and compliance checks
-- **🖥️ Cross-IDE Slash Commands** — Auto-generated bridge files for Claude Code, Cursor, OpenCode, VS Code Copilot, and Windsurf
+- **🖥️ Cross-IDE Support** — Governance configs for Claude Code, Antigravity, Cursor, OpenCode, and Codex; slash command bridges for Claude Code, Cursor, OpenCode, VS Code Copilot, and Windsurf
 
 ---
 

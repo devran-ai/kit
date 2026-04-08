@@ -19,7 +19,7 @@ Devran AI Kit v5.2.0 is an engineered framework with a **43-module runtime engin
 │  │ • DevOps        │  │ • /verify       │  │ • clean-code    │      │
 │  │ • DB Architect  │  │ • /deploy       │  │ • testing       │      │
 │  │ • Security      │  │ • /debug        │  │ • docker        │      │
-│  │ • + 21 more     │  │ • + 31 more     │  │ • + 30 more     │      │
+│  │ • + 21 more     │  │ • + 35 more     │  │ • + 34 more     │      │
 │  └─────────────────┘  └─────────────────┘  └─────────────────┘      │
 │                              │                                       │
 │           ┌──────────────────┴──────────────────┐                   │
@@ -103,8 +103,8 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 
 ### Rules & Hooks
 
-- **Rules** (15): Governance constraints — security, coding-style, testing, git-workflow, documentation, architecture, performance, accessibility, data-privacy, sprint-tracking, workflow-standards, quality-gate, agent-upgrade-policy
-- **Hooks** (9): Event-driven automation (session-start, session-end, pre-commit, phase-transition, sprint-checkpoint, secret-detection, plan-complete, task-complete)
+- **Rules** (15): Governance constraints — security, coding-style, testing, git-workflow, documentation, architecture, performance, accessibility, data-privacy, sprint-tracking, workflow-standards, quality-gate, agent-upgrade-policy, market-awareness, doc-freshness
+- **Hooks** (9): Event-driven automation (session-start, session-end, pre-commit, phase-transition, sprint-checkpoint, secret-detection, plan-complete, task-complete, onboarding-complete)
 
 ---
 

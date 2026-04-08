@@ -233,6 +233,14 @@ describe('Command Bridge Generator', () => {
 
   // --- Security Tests ---
 
+  it('sanitizeForPlainYaml strips special YAML chars for unquoted scalars', () => {
+    const mod = loadModule();
+    expect(mod.sanitizeForPlainYaml('has "quotes" inside')).toBe('has quotes inside');
+    expect(mod.sanitizeForPlainYaml('has #comment chars')).toBe('has comment chars');
+    expect(mod.sanitizeForPlainYaml('line1\nline2')).toBe('line1');
+    expect(mod.sanitizeForPlainYaml('a'.repeat(300)).length).toBeLessThanOrEqual(200);
+  });
+
   it('sanitizeForYaml strips newlines, escapes backslashes and quotes (S2)', () => {
     const mod = loadModule();
     expect(mod.sanitizeForYaml('line1\nline2\nline3')).toBe('line1');
