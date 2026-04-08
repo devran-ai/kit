@@ -8,7 +8,7 @@ Thumbs.db
 # IDE
 .idea/
 .vscode/
-.claude/
+.claude/*
 .cursor/
 .opencode/
 .codex/
@@ -40,3 +40,5 @@ docs/archives/
 # These MUST NOT be committed — they are intermediate data that should be processed in memory
 .agent/pr-*
 .agent/review-*
+
+!.claude/commands/
