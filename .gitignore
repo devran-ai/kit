@@ -8,9 +8,12 @@ Thumbs.db
 # IDE
 .idea/
 .vscode/
-.claude/
-.cursor/
-.opencode/
+.claude/*
+!.claude/commands/
+.cursor/*
+!.cursor/commands/
+.opencode/*
+!.opencode/commands/
 .codex/
 *.swp
 *.swo
