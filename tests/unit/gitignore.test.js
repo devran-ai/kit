@@ -190,4 +190,18 @@ describe('cleanupLegacyClaudeTracking', () => {
     expect(content).not.toContain('.claude/*');
     expect(content).not.toContain('!.claude/commands/');
   });
+
+  it('does not act if one pattern is commented out', () => {
+    const { cleanupLegacyClaudeTracking } = loadModule();
+    fs.writeFileSync(
+      path.join(tmpDir, '.gitignore'),
+      '# .claude/*\n!.claude/commands/\n',
+      'utf-8'
+    );
+
+    const result = cleanupLegacyClaudeTracking(tmpDir);
+    expect(result.cleaned).toBe(false);
+    const content = fs.readFileSync(path.join(tmpDir, '.gitignore'), 'utf-8');
+    expect(content).toContain('!.claude/commands/');
+  });
 });
