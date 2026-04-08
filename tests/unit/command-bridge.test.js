@@ -112,13 +112,15 @@ describe('Command Bridge Generator', () => {
 
   // --- Format Validation ---
 
-  it('Claude bridge has YAML frontmatter with quoted description', () => {
+  it('Claude bridge has YAML frontmatter first, then provenance header', () => {
     const mod = loadModule();
     const { workflows } = mod.resolveWorkflows(agentDir, SAMPLE_MANIFEST);
     const result = mod.generateClaudeCommands(workflows);
     const content = result.files[0].content;
-    expect(content).toContain('---');
+    expect(content).toMatch(/^---\n/);
     expect(content).toMatch(/description: ".*"/);
+    expect(content.indexOf('---')).toBeLessThan(content.indexOf('devran-kit-bridge'));
+    expect(content).toContain('`.agent/workflows/plan.md`');
     expect(result.files[0].path).toBe('.claude/commands/plan.md');
   });
 
