@@ -63,6 +63,19 @@ describe('addToGitignore', () => {
     expect(result.added).toBe(false);
   });
 
+  it('does NOT treat specific file patterns as parent dir coverage', () => {
+    const { addToGitignore } = loadModule();
+    // .cursor/rules/kit-governance.mdc is a specific file — does NOT cover .cursor/commands/
+    fs.writeFileSync(path.join(tmpDir, '.gitignore'),
+      '.agent/\n.cursor/rules/kit-governance.mdc\n.worktreeinclude\n', 'utf-8');
+
+    const result = addToGitignore(tmpDir, ['cursor']);
+
+    expect(result.added).toBe(true);
+    const content = fs.readFileSync(path.join(tmpDir, '.gitignore'), 'utf-8');
+    expect(content).toContain('.cursor/commands/');
+  });
+
   it('adds only missing bridge dirs when .agent/ already present', () => {
     const { addToGitignore } = loadModule();
     fs.writeFileSync(path.join(tmpDir, '.gitignore'), '.agent/\n', 'utf-8');
