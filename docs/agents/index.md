@@ -1,6 +1,6 @@
 # Agents
 
-Agents are specialized sub-agents that handle delegated tasks with focused expertise. **23 agents** across 4 categories.
+Agents are specialized sub-agents that handle delegated tasks with focused expertise. **26 agents** across 4 categories.
 
 ---
 

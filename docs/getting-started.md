@@ -159,8 +159,8 @@ Devran AI Kit includes a **Session Management Architecture** that ensures contin
 
 ## Next Steps
 
-- **[Agents](agents/index.md)** — 23 specialized AI agents
-- **[Commands](commands/index.md)** — 37 slash commands
-- **[Skills](skills/index.md)** — 36 domain expertise modules
-- **[Workflows](workflows/index.md)** — 23 development workflows
+- **[Agents](agents/index.md)** — 26 specialized AI agents
+- **[Commands](commands/index.md)** — 40 slash commands
+- **[Skills](skills/index.md)** — 39 domain expertise modules
+- **[Workflows](workflows/index.md)** — 25 development workflows
 - **[Governance](governance/index.md)** — Operating constraints

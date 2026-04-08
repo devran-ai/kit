@@ -41,10 +41,10 @@ kit init
 ```
 
 This creates the `.agent/` folder with:
-- **23 AI agents** — specialized roles for every development task
-- **37 commands** — slash commands for development workflows
-- **35 skills** — domain expertise modules
-- **22 workflows** — complete development lifecycles
+- **26 AI agents** — specialized roles for every development task
+- **40 commands** — slash commands for development workflows
+- **39 skills** — domain expertise modules
+- **25 workflows** — complete development lifecycles
 
 ### Verify Installation
 
