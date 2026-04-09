@@ -9,10 +9,8 @@ Thumbs.db
 .idea/
 .vscode/
 .claude/
-.cursor/*
-!.cursor/commands/
-.opencode/*
-!.opencode/commands/
+.cursor/
+.opencode/
 .codex/
 *.swp
 *.swo
@@ -46,9 +44,4 @@ docs/archives/
 # Devran AI Kit (local dev tooling)
 # Install: npx @devran-ai/kit init
 .agent/
-.claude/commands/
-.cursor/commands/
-.opencode/commands/
-.cursor/rules/
-.opencode/opencode.json
 .worktreeinclude
