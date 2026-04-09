@@ -34,6 +34,7 @@ describe('addToGitignore', () => {
     expect(content).toContain('.agent/');
     expect(content).toContain('.claude/commands/');
     expect(content).toContain('.cursor/commands/');
+    expect(content).toContain('.cursor/rules/');
     expect(content).toContain('.worktreeinclude');
     expect(content).toContain('# Devran AI Kit');
   });
@@ -54,9 +55,9 @@ describe('addToGitignore', () => {
 
   it('skips entries already covered by parent dir pattern', () => {
     const { addToGitignore } = loadModule();
-    // .claude/ covers .claude/commands/
+    // .claude/ covers .claude/commands/; .cursor/ covers .cursor/rules/
     fs.writeFileSync(path.join(tmpDir, '.gitignore'),
-      '.agent/\n.claude/\n.worktreeinclude\n', 'utf-8');
+      '.agent/\n.claude/\n.cursor/\n.opencode/\n.codex/\n.worktreeinclude\n', 'utf-8');
 
     const result = addToGitignore(tmpDir, ['claude']);
 
@@ -94,12 +95,23 @@ describe('addToGitignore', () => {
   it('skips if all entries already present (idempotent)', () => {
     const { addToGitignore } = loadModule();
     fs.writeFileSync(path.join(tmpDir, '.gitignore'),
-      '# Devran AI Kit\n.agent/\n.claude/commands/\n.worktreeinclude\n', 'utf-8');
+      '# Devran AI Kit\n.agent/\n.claude/commands/\n.cursor/rules/\n.opencode/opencode.json\n.codex/\n.worktreeinclude\n', 'utf-8');
 
     const result = addToGitignore(tmpDir, ['claude']);
 
     expect(result.added).toBe(false);
     expect(result.reason).toBe('already-present');
+  });
+
+  it('includes all IDE config paths even without detectedIDEs', () => {
+    const { addToGitignore } = loadModule();
+    const result = addToGitignore(tmpDir);
+
+    expect(result.added).toBe(true);
+    const content = fs.readFileSync(path.join(tmpDir, '.gitignore'), 'utf-8');
+    expect(content).toContain('.codex/');
+    expect(content).toContain('.cursor/rules/');
+    expect(content).toContain('.opencode/opencode.json');
   });
 
   it('works with no detectedIDEs argument (backward compat)', () => {
