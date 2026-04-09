@@ -8,8 +8,7 @@ Thumbs.db
 # IDE
 .idea/
 .vscode/
-.claude/*
-!.claude/commands/
+.claude/
 .cursor/*
 !.cursor/commands/
 .opencode/*
@@ -43,3 +42,13 @@ docs/archives/
 # These MUST NOT be committed — they are intermediate data that should be processed in memory
 .agent/pr-*
 .agent/review-*
+
+# Devran AI Kit (local dev tooling)
+# Install: npx @devran-ai/kit init
+.agent/
+.claude/commands/
+.cursor/commands/
+.opencode/commands/
+.cursor/rules/
+.opencode/opencode.json
+.worktreeinclude
