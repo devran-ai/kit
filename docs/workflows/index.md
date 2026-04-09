@@ -1,6 +1,6 @@
 # Workflows
 
-Workflows are complete development lifecycles that guide you through multi-step processes. **23 workflows** for every development scenario.
+Workflows are complete development lifecycles that guide you through multi-step processes. **25 workflows** for every development scenario.
 
 ---
 

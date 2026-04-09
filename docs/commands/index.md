@@ -1,6 +1,6 @@
 # Commands
 
-Slash commands provide quick execution of common operations. **37 commands** across 10 categories.
+Slash commands provide quick execution of common operations. **40 commands** across 10 categories.
 
 ---
 

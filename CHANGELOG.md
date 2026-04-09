@@ -5,6 +5,29 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.6] — 2026-04-09
+
+### Fixed
+
+- **CLI slash command discovery** — blanket `.claude/` gitignore replaced with `.claude/commands/` so Claude Code CLI/Desktop can discover the directory for autocomplete
+- `cleanupLegacyClaudeTracking()` now produces `.claude/commands/` instead of `.claude/` — the previous target broke CLI directory discovery
+- `addToGitignore()` parent-coverage logic no longer treats `.claude/` as covering `.claude/commands/` — blanket pattern breaks CLI discovery
+- CRLF-safe regex patterns in all gitignore functions — Windows line endings handled correctly
+
+### Added
+
+- `narrowBlanketClaudeIgnore()` — migrates existing blanket `.claude/` to `.claude/commands/` for consumers who already have it
+- `path.isAbsolute()` guards on `addToGitignore()`, `cleanupLegacyClaudeTracking()`, and `narrowBlanketClaudeIgnore()` for defense-in-depth
+- 13 new tests: pipeline integration (narrow/cleanup/add), CRLF support, `already-ignored` branch, parent-coverage exception
+
+### Changed
+
+- `kit init` gitignore step reordered: narrow → cleanup → add (ensures blanket patterns are fixed before coverage checks)
+- `kit update` now runs `narrowBlanketClaudeIgnore()` before legacy cleanup
+- `console.error` in `updater.js` replaced with structured `report.warnings` array
+- `module.exports` in `updater.js` frozen with `Object.freeze()` for immutability
+- Test count: 1002 → 1015 (53 files)
+
 ## [5.2.5] — 2026-04-09
 
 ### Fixed
