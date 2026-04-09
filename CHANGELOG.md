@@ -5,6 +5,19 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.4] — 2026-04-09
+
+### Fixed
+
+- `addToGitignore()` now gitignores all Kit-generated artifacts — bridge directories and `.worktreeinclude`, not just `.agent/`
+- Parent directory coverage check uses line-level matching — `.cursor/rules/kit-governance.mdc` no longer falsely covers `.cursor/commands/`
+- After `kit init`, `git status` shows zero untracked Kit artifacts
+
+### Changed
+
+- `addToGitignore()` accepts `detectedIDEs` parameter to gitignore only relevant bridge directories
+- `.agent/session-context.md` version reference updated from v5.2.0 to v5.2.4
+
 ## [5.2.3] — 2026-04-09
 
 ### Added
