@@ -5,6 +5,17 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.7] — 2026-04-10
+
+### Fixed
+
+- **`kit update` missing gitignore pipeline** — `addToGitignore()` was not called during updates, leaving projects with stale gitignore entries after upgrade. Existing projects missing `.cursor/commands/`, `.opencode/commands/`, or other bridge entries will now be auto-fixed on `kit update`.
+
+### Added
+
+- 3 new updater tests: gitignore narrowing, missing entry addition, and no-gitignore creation during update
+- Test count: 1015 → 1018 (53 files)
+
 ## [5.2.6] — 2026-04-09
 
 ### Fixed

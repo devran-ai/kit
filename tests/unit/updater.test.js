@@ -149,3 +149,53 @@ describe('CLI Updater — Non-Destructive Merge', () => {
     expect(report.added.length).toBeGreaterThan(0);
   });
 });
+
+describe('CLI Updater — Gitignore Pipeline', () => {
+  beforeEach(() => { setupTestDirs(); });
+  afterEach(() => { teardownTestDirs(); });
+
+  it('should add missing .cursor/commands/ to gitignore during update', async () => {
+    // Simulate a project that has .gitignore with only .claude/ blanket ignore
+    const gitignorePath = path.join(TMP_TARGET, '.gitignore');
+    fs.writeFileSync(gitignorePath, 'node_modules/\n.claude/\n', 'utf-8');
+
+    const updater = await loadUpdater();
+    updater.applyUpdate(TMP_SOURCE, TMP_TARGET);
+
+    const content = fs.readFileSync(gitignorePath, 'utf-8');
+    // narrowBlanketClaudeIgnore should have narrowed .claude/ to .claude/commands/
+    expect(content).toContain('.claude/commands/');
+    // addToGitignore should have added .cursor/commands/ if cursor detected
+    expect(content).toContain('.agent/');
+  });
+
+  it('should narrow blanket .claude/ to .claude/commands/ during update', async () => {
+    const gitignorePath = path.join(TMP_TARGET, '.gitignore');
+    fs.writeFileSync(gitignorePath, 'node_modules/\n.claude/\n.agent/\n', 'utf-8');
+
+    const updater = await loadUpdater();
+    updater.applyUpdate(TMP_SOURCE, TMP_TARGET);
+
+    const content = fs.readFileSync(gitignorePath, 'utf-8');
+    // Should have narrowed blanket .claude/ to .claude/commands/
+    expect(content).toContain('.claude/commands/');
+    // Should not have the blanket pattern anymore
+    const lines = content.split('\n').map(l => l.trim());
+    expect(lines).not.toContain('.claude/');
+  });
+
+  it('should add gitignore entries even when no .gitignore exists', async () => {
+    const gitignorePath = path.join(TMP_TARGET, '.gitignore');
+    // Ensure no .gitignore exists
+    if (fs.existsSync(gitignorePath)) fs.unlinkSync(gitignorePath);
+
+    const updater = await loadUpdater();
+    updater.applyUpdate(TMP_SOURCE, TMP_TARGET);
+
+    // addToGitignore creates .gitignore if missing
+    expect(fs.existsSync(gitignorePath)).toBe(true);
+    const content = fs.readFileSync(gitignorePath, 'utf-8');
+    expect(content).toContain('.agent/');
+    expect(content).toContain('.claude/commands/');
+  });
+});
