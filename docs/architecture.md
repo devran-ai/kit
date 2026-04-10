@@ -8,7 +8,7 @@ Devran AI Kit v5.2.7 is an engineered framework with a **43-module runtime engin
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      DEVRAN AI KIT v5.2.5                       │
+│                      DEVRAN AI KIT v5.2.7                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
@@ -43,7 +43,7 @@ Devran AI Kit v5.2.7 is an engineered framework with a **43-module runtime engin
 │  │              RUNTIME ENGINE (43 modules)                 │        │
 │  │  workflow-engine • session-manager • task-governance      │        │
 │  │  agent-reputation • self-healing • marketplace            │        │
-│  │  plugin-system • identity • conflict-detector • + 12      │        │
+│  │  plugin-system • identity • command-bridge • worktree     │        │
 │  └─────────────────────────────────────────────────────────┘        │
 │                                                                      │
 └─────────────────────────────────────────────────────────────────────┘
@@ -96,10 +96,12 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 
 | Phase | Modules |
 |:---|:---|
-| **Phase 1 — Foundation** | `workflow-engine`, `session-manager`, `verify`, `updater`, `error-budget` |
-| **Phase 2 — Runtime** | `workflow-persistence`, `agent-registry`, `loading-engine`, `hook-system`, `task-model` |
-| **Phase 3 — Collaboration** | `identity`, `task-governance`, `skill-sandbox`, `conflict-detector`, `security-scanner`, `plugin-system` |
-| **Phase 4 — Platform** | `agent-reputation`, `engineering-manager`, `self-healing`, `marketplace`, `cli-commands` |
+| **Phase 1 — Foundation** | `workflow-engine`, `session-manager`, `verify`, `updater`, `error-budget`, `io`, `constants`, `logger` |
+| **Phase 2 — Runtime** | `workflow-persistence`, `workflow-events`, `agent-registry`, `loading-engine`, `hook-system`, `task-model`, `learning-engine` |
+| **Phase 3 — Collaboration** | `identity`, `task-governance`, `skill-sandbox`, `conflict-detector`, `security-scanner`, `plugin-system`, `plugin-verifier` |
+| **Phase 4 — Platform** | `agent-reputation`, `engineering-manager`, `self-healing`, `marketplace`, `cli-commands`, `commands/init` |
+| **Phase 5 — IDE & Bridge** | `command-bridge`, `ide-generator`, `project-ide-generator`, `worktree`, `config-validator`, `doc-discovery`, `doc-generator` |
+| **Phase 6 — Integrations** | `telegram-sync`, `telegram-menu-guard`, `market-research`, `circuit-breaker`, `rate-limiter`, `quality-score`, `decision-validator`, `onboarding-engine` |
 
 ### Rules & Hooks
 
@@ -129,9 +131,13 @@ lib/                      # Runtime Engine (43 modules)
 ├── agent-reputation.js   # Score tracking & rankings
 ├── self-healing.js       # CI failure detection & patch generation
 ├── marketplace.js        # Community skill marketplace
-└── + 17 more modules     # Identity, plugins, hooks, registry...
+├── command-bridge.js     # Cross-IDE slash command bridge generation
+├── worktree.js           # Git worktree support (.worktreeinclude, post-checkout)
+├── io.js                 # Gitignore management (narrow, cleanup, addToGitignore)
+├── telegram-sync.js      # Telegram bot menu synchronization
+└── + 14 more modules     # Identity, plugins, hooks, registry...
 
-tests/                    # 1015 tests (53 files)
+tests/                    # 1018 tests (53 files)
 ├── unit/                 # Module tests
 ├── structural/           # Inventory + schema validation
 ├── integration/          # Cross-module tests
