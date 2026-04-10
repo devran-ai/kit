@@ -86,7 +86,7 @@ description = "Implementation planning specialist"
 
 ## Slash Command Bridges
 
-In addition to governance configs, Kit v5.2.0+ generates **slash command bridge files** that enable IDE-native `/` autocomplete for all 25 workflows.
+In addition to governance configs, Kit generates **slash command bridge files** that enable IDE-native `/` autocomplete for all 25 workflows.
 
 See [IDE Support](ide-support.md) for the full cross-IDE slash command matrix, auto-detection behavior, provenance protection, and security details.
 

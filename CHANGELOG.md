@@ -54,6 +54,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `addToGitignore()` accepts `detectedIDEs` parameter to gitignore only relevant bridge directories
 - IDE config paths are always gitignored since Kit generates them for all projects
 
+## [5.2.4] — 2026-04-09
+
+### Fixed
+
+- `addToGitignore()` parent-directory coverage check switched from substring matching (`content.includes`) to line-level matching — specific file patterns like `.cursor/rules/kit-governance.mdc` no longer falsely cover `.cursor/commands/`
+- Untracked `.cursor/commands/` and `.worktreeinclude` after `kit init` in projects that only gitignore specific `.cursor/` files
+
+### Changed
+
+- `addToGitignore()` accepts `detectedIDEs` parameter to gitignore only relevant bridge directories
+- Test count: 1000 → 1001
+
 ## [5.2.3] — 2026-04-09
 
 ### Added

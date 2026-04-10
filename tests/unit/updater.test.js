@@ -159,13 +159,17 @@ describe('CLI Updater — Gitignore Pipeline', () => {
     const gitignorePath = path.join(TMP_TARGET, '.gitignore');
     fs.writeFileSync(gitignorePath, 'node_modules/\n.claude/\n', 'utf-8');
 
+    // Create .cursor directory to trigger IDE detection
+    fs.mkdirSync(path.join(TMP_TARGET, '.cursor'), { recursive: true });
+
     const updater = await loadUpdater();
     updater.applyUpdate(TMP_SOURCE, TMP_TARGET);
 
     const content = fs.readFileSync(gitignorePath, 'utf-8');
     // narrowBlanketClaudeIgnore should have narrowed .claude/ to .claude/commands/
     expect(content).toContain('.claude/commands/');
-    // addToGitignore should have added .cursor/commands/ if cursor detected
+    // addToGitignore should have added .cursor/commands/ since cursor was detected
+    expect(content).toContain('.cursor/commands/');
     expect(content).toContain('.agent/');
   });
 
