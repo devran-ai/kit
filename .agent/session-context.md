@@ -32,7 +32,7 @@
 
 **Branch**: —  
 **Repository**: —  
-**Framework**: Devran AI Kit v5.2.6
+**Framework**: Devran AI Kit v5.2.7
 
 ### Key File Locations
 
