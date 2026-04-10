@@ -135,7 +135,7 @@ lib/                      # Runtime Engine (43 modules)
 ├── worktree.js           # Git worktree support (.worktreeinclude, post-checkout)
 ├── io.js                 # Gitignore management (narrow, cleanup, addToGitignore)
 ├── telegram-sync.js      # Telegram bot menu synchronization
-└── + 14 more modules     # Identity, plugins, hooks, registry...
+└── + 34 more modules     # Identity, plugins, hooks, registry...
 
 tests/                    # 1018 tests (53 files)
 ├── unit/                 # Module tests

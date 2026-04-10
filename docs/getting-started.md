@@ -90,6 +90,53 @@ Devran AI Kit **only** operates within the `.agent/` directory. Your project fil
 
 ---
 
+## Gitignore Management
+
+`kit init` automatically configures `.gitignore` to keep all generated artifacts local:
+
+| Entry | Purpose |
+|---|---|
+| `.agent/` | Framework directory |
+| `.claude/commands/` | Claude Code slash command bridges |
+| `.cursor/commands/` | Cursor slash command bridges |
+| `.cursor/rules/` | Cursor governance config |
+| `.opencode/commands/` | OpenCode slash command bridges |
+| `.codex/` | Codex config |
+| `.worktreeinclude` | Worktree support config |
+
+`kit update` also runs the full gitignore pipeline — if you upgrade from an older Kit version, missing entries are added automatically.
+
+**Blanket `.claude/` pattern:** If your `.gitignore` has a blanket `.claude/` entry (which breaks Claude CLI slash command discovery), Kit automatically narrows it to `.claude/commands/`.
+
+---
+
+## Worktree Support
+
+Kit works seamlessly with `git worktree` — both Claude Code worktrees and manual `git worktree add`:
+
+- **Claude Code worktrees** — A `.worktreeinclude` file tells Claude Code to copy `.agent/` and bridge directories into new worktrees automatically.
+- **Manual worktrees** — A `post-checkout` git hook copies `.agent/` from the main worktree and regenerates bridge files. User customizations (decisions, rules, identity) are preserved.
+
+Both are installed automatically by `kit init`. To skip: `kit init --skip-worktree`.
+
+---
+
+## Cross-IDE Bridge Generation
+
+`kit init` auto-detects your IDE and generates native slash command bridges:
+
+| IDE | Bridge Location | Auto-Detected? |
+|---|---|---|
+| Claude Code | `.claude/commands/*.md` | Always |
+| Cursor | `.cursor/commands/*.md` | Yes |
+| OpenCode | `.opencode/commands/*.md` | Yes |
+| Windsurf | `.windsurf/workflows/*.md` | Yes |
+| VS Code Copilot | `.github/prompts/*.prompt.md` | Opt-in (`--ide vscode`) |
+
+Bridge files include a provenance header so `kit update` only overwrites Kit-generated files, never your custom commands. See [IDE Support](ide-support.md) for details.
+
+---
+
 ## First Session
 
 1. Open your project in your AI-powered IDE (VS Code, Cursor, Windsurf, etc.)
