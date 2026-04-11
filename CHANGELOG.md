@@ -5,6 +5,25 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.8] — 2026-04-11
+
+### Fixed
+
+- **Accidentally tracked Kit artifacts are now auto-untracked** — when an agent or contributor runs `git add -A` before Kit's gitignore is configured, bridge files (`.cursor/commands/`, `.claude/commands/`, `.opencode/commands/`, `.agent/`, `.cursor/rules/kit-governance.mdc`, `.opencode/opencode.json`, `.codex/`, `.worktreeinclude`) get committed into the user's repo. Gitignore has no effect on already-tracked files, so previous Kit versions could only warn. `kit init` and `kit update` now actively run `git rm -r --cached` on every known Kit artifact path, guaranteeing Kit files never pollute a user's tracked tree.
+- **`dev/null/` directory cleanup** — on Windows, running `git config core.hooksPath dev/null` (without the leading slash) and then `git lfs install` creates a literal `dev/null/` directory containing the 4 LFS hooks. This Windows-specific literal-path artifact is now included in the auto-untrack list.
+
+### Added
+
+- `untrackKitArtifacts(projectRoot)` in `lib/io.js` — removes known Kit artifacts from the git index while preserving working-tree files
+- `KIT_TRACKED_ARTIFACTS` frozen constant — single source of truth for known artifact paths
+- 10 new tests in `tests/unit/untrack-artifacts.test.js` — covers not-a-git-repo, no-op, single-category, full-sweep, non-Kit-file preservation, idempotency, and the Windows `dev/null/` case
+- Test count: 1018 → 1028 (54 files)
+
+### Changed
+
+- `kit init` Step 4 replaces the two passive "warn if tracked" branches with an active auto-untrack call
+- `kit update` gains Step 4 (auto-untrack) between Step 3 (addToGitignore) and worktree regeneration
+
 ## [5.2.7] — 2026-04-10
 
 ### Fixed

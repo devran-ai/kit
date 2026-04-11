@@ -7,9 +7,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.2.7-blue?style=for-the-badge" alt="Version" height="36" /></a>
+  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.2.8-blue?style=for-the-badge" alt="Version" height="36" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="License" height="36" /></a>
-  <a href="tests/"><img src="https://img.shields.io/badge/tests-1018%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
+  <a href="tests/"><img src="https://img.shields.io/badge/tests-1028%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
   <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=for-the-badge" alt="Dependencies" height="36" /></a>
 </p>
 <p align="center">
@@ -43,7 +43,7 @@
 | Cross-IDE support | Single IDE | Single IDE | 5 IDEs from one source of truth |
 | Plugin marketplace | None | None | Trust-verified skill marketplace |
 | Telegram control | None | None | Full IDE control from your phone |
-| Test suite | None | None | 1018 tests with security validation |
+| Test suite | None | None | 1028 tests with security validation |
 | Runtime dependencies | Varies | Varies | **Zero** |
 
 ## Quick Start
@@ -117,7 +117,9 @@ Onboarding (`/greenfield` or `/brownfield`) is a one-time pre-SDLC phase. Each s
 
 See the full **[CHANGELOG](CHANGELOG.md)** for detailed release notes.
 
-**Latest (v5.2.7):** `kit update` now runs the full gitignore pipeline — projects upgraded from older Kit versions get missing `.cursor/commands/`, `.opencode/commands/`, and other bridge entries auto-fixed. 1018 tests passing.
+**Latest (v5.2.8):** `kit init` and `kit update` now auto-untrack any Kit artifacts that were accidentally committed (`.cursor/commands/`, `.agent/`, bridge files, `dev/null/`). Before, gitignore only blocked new additions — already-tracked files stayed in git. Now Kit actively removes them from the index, so no Kit files ever pollute user repos. 1028 tests passing.
+
+**v5.2.7:** `kit update` now runs the full gitignore pipeline — projects upgraded from older Kit versions get missing `.cursor/commands/`, `.opencode/commands/`, and other bridge entries auto-fixed.
 
 **v5.2.6:** Fixed Claude Code CLI slash command discovery — blanket `.claude/` gitignore narrowed to `.claude/commands/` for proper directory discovery. New `narrowBlanketClaudeIgnore()` migration function. CRLF-safe regex patterns.
 
@@ -233,7 +235,7 @@ kit/
 ├── create-kit-app/         # Project scaffolder
 ├── docs/                   # MkDocs documentation site
 ├── examples/               # Starter examples (minimal, full-stack)
-└── tests/                  # 1018 tests (unit, structural, integration, security)
+└── tests/                  # 1028 tests (unit, structural, integration, security)
 ```
 
 ## Security
