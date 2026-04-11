@@ -108,6 +108,19 @@ Devran AI Kit **only** operates within the `.agent/` directory. Your project fil
 
 **Blanket `.claude/` pattern:** If your `.gitignore` has a blanket `.claude/` entry (which breaks Claude CLI slash command discovery), Kit automatically narrows it to `.claude/commands/`.
 
+### Auto-untrack (v5.2.8+)
+
+If Kit artifacts were accidentally committed to your repo before `.gitignore` was configured (e.g. an agent ran `git add -A` too early), `kit init` and `kit update` will actively remove them from the git index while keeping working-tree copies intact. You only need to commit the resulting index changes.
+
+The auto-untrack covers:
+- `.agent/` — framework directory
+- `.claude/commands/`, `.cursor/commands/`, `.opencode/commands/`, `.windsurf/workflows/`, `.github/prompts/` — bridge files
+- `.cursor/rules/kit-governance.mdc`, `.opencode/opencode.json`, `.codex/instructions.md` — IDE configs (specific Kit-written files only; user-authored files under the same parent dirs are left alone)
+- `.worktreeinclude` — worktree support
+- `dev/null/` — Windows literal-path artifact created when `git config core.hooksPath dev/null` is run without a leading slash
+
+The cleanup uses `git rm -r --cached` under the hood — no working-tree files are ever deleted. A two-gate safety net protects user data: (1) `git check-ignore --no-index` verifies each path is actually in your `.gitignore` before touching it, and (2) `kit update` detects **shared mode** (`.agent/` intentionally committed with your team via `kit init --shared`) and skips the entire gitignore pipeline for those projects.
+
 ---
 
 ## Worktree Support

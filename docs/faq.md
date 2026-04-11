@@ -20,7 +20,7 @@ No. Since `.agent/` is gitignored by default, CI pipelines never see it. The kit
 
 **What is Devran AI Kit?**
 
-A trust-grade AI development framework with 26 specialized agents, 39 skills, 25 workflows, and a 43-module zero-dependency runtime engine. It transforms your IDE into a virtual engineering team.
+A trust-grade AI development framework with 26 specialized agents, 39 skills, 40 commands, 25 workflows, 15 governance rules, and a 43-module zero-dependency runtime engine. It transforms your IDE into a virtual engineering team.
 
 **How is it different from prompt collections?**
 
@@ -77,6 +77,14 @@ Run `kit update` to restore framework files without overwriting your customizati
 **Tests are failing after update**
 
 Run `npm test` to identify the specific failures. If structural tests fail, check that manifest.json counts match the actual file count.
+
+**Git shows `.cursor/commands/` or `.agent/` as modified after `kit init` or `kit update`**
+
+This is the auto-untrack feature (v5.2.8+) doing its job. If Kit artifacts were accidentally committed to your repo before `.gitignore` was configured, `kit init` and `kit update` now actively remove them from the git index while keeping the working-tree files intact. Review the changes with `git status` and commit them to finalize the cleanup — the files themselves are not deleted.
+
+**Claude Code slash commands stopped appearing after I added `.claude/` to `.gitignore`**
+
+Blanket `.claude/` in `.gitignore` breaks Claude CLI's directory discovery. Run `kit update` — Kit v5.2.6+ automatically narrows blanket `.claude/` to `.claude/commands/`, which keeps bridge files local while letting the CLI discover the directory.
 
 ---
 

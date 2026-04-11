@@ -203,3 +203,42 @@ describe('CLI Updater — Gitignore Pipeline', () => {
     expect(content).toContain('.claude/commands/');
   });
 });
+
+describe('CLI Updater — Shared Mode', () => {
+  beforeEach(() => { setupTestDirs(); });
+  afterEach(() => { teardownTestDirs(); });
+
+  it('skips the entire gitignore pipeline when .agent/ is tracked and not ignored', async () => {
+    // Simulate `kit init --shared`: a real git repo where .agent/ is
+    // intentionally tracked and NOT listed in .gitignore.
+    const { execSync } = require('child_process');
+    execSync('git init -q', { cwd: TMP_TARGET, stdio: 'ignore' });
+    execSync('git config user.email "test@example.com"', { cwd: TMP_TARGET, stdio: 'ignore' });
+    execSync('git config user.name "Test"', { cwd: TMP_TARGET, stdio: 'ignore' });
+    execSync('git config commit.gpgsign false', { cwd: TMP_TARGET, stdio: 'ignore' });
+
+    // Gitignore that does NOT list .agent/ — shared mode.
+    const gitignorePath = path.join(TMP_TARGET, '.gitignore');
+    fs.writeFileSync(gitignorePath, 'node_modules/\n', 'utf-8');
+
+    // Track .agent/ contents (shared-mode workflow)
+    execSync('git add -A', { cwd: TMP_TARGET, stdio: 'ignore' });
+    execSync('git commit -q -m "initial"', { cwd: TMP_TARGET, stdio: 'ignore' });
+
+    const updater = await loadUpdater();
+    const report = updater.applyUpdate(TMP_SOURCE, TMP_TARGET);
+
+    // Shared mode should be detected and recorded in the report
+    expect(report.sharedMode).toBe(true);
+
+    // .gitignore must NOT have been mutated — .agent/ must still be absent
+    const content = fs.readFileSync(gitignorePath, 'utf-8');
+    expect(content).not.toMatch(/^\.agent\/?$/m);
+
+    // .agent/ files must still be tracked after the update
+    const tracked = execSync('git ls-files -- .agent/', {
+      cwd: TMP_TARGET, encoding: 'utf-8',
+    });
+    expect(tracked.trim().length).toBeGreaterThan(0);
+  });
+});

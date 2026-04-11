@@ -22,13 +22,21 @@ kit init [options]
 | Flag | Description |
 |------|-------------|
 | `--force` | Overwrite existing `.agent/` (creates backup) |
-| `--path <dir>` | Install to a specific directory |
+| `--path <dir>` | Install to a specific directory (must resolve within cwd) |
 | `--dry-run` | Preview changes without writing |
 | `--quiet` | Suppress banner output |
+| `--shared` | Team mode — do **not** add `.agent/` to `.gitignore` (commit framework with team) |
 | `--ide <name>` | Generate config for specific IDE(s) — comma-separated or `all` (`claude`, `cursor`, `opencode`, `codex`, `vscode`, `windsurf`) |
 | `--skip-ide` | Skip IDE config generation |
 | `--skip-commands` | Skip slash command bridge generation |
 | `--skip-worktree` | Skip `.worktreeinclude` and `post-checkout` hook generation |
+
+**Gitignore pipeline (v5.2.6+):** After writing `.agent/` and bridge files, `kit init` runs a four-step gitignore pipeline:
+
+1. **Narrow** — blanket `.claude/` entries become `.claude/commands/` (preserves Claude CLI directory discovery)
+2. **Cleanup** — legacy Kit v5.2.0 `.claude/*` + `!.claude/commands/` patterns are removed
+3. **Add** — missing entries for detected IDE bridge dirs, IDE configs, and `.worktreeinclude` are appended
+4. **Untrack** (v5.2.8+) — any Kit artifacts accidentally committed before gitignore was configured are removed from the git index via `git rm -r --cached` while keeping working-tree files intact. Two-gate safety net: `git check-ignore --no-index` confirms the path is actually in `.gitignore` before touching it, and `git ls-files` confirms the path is tracked before running `git rm`. Invoked internally with `execFileSync` (no shell interpolation) for defense-in-depth.
 
 ---
 
@@ -63,6 +71,16 @@ Non-destructive framework update. Preserves session data, decisions, and custom 
 ```bash
 kit update [--dry-run]
 ```
+
+Like `kit init`, runs the full gitignore pipeline (narrow → cleanup → add → untrack) so projects upgraded from older Kit versions automatically get missing entries added and any accidentally-committed Kit artifacts untracked from the git index.
+
+**Shared mode short-circuit (v5.2.8+):** If `kit update` detects shared mode — `.agent/` is tracked in git AND not listed in `.gitignore` (the signature of `kit init --shared` team setups) — the entire gitignore pipeline is skipped so team workflows are preserved intact.
+
+Preserved on every update:
+
+- `session-context.md`, `session-state.json`
+- `engine/identity.json`, `engine/onboarding-state.json`, `engine/decisions.json`
+- `decisions/`, `contexts/`, `checklists/`, `rules/`, `staging/`
 
 ---
 

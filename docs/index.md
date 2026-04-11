@@ -95,4 +95,14 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 
 ## Release History
 
+**Latest (v5.2.8):** `kit init` and `kit update` now auto-untrack any Kit artifacts that were accidentally committed (`.cursor/commands/`, `.agent/`, bridge files, `dev/null/`). Gitignore only blocks new additions — already-tracked files stayed in git. Now Kit actively removes them from the index via `git rm -r --cached` while keeping working-tree files intact. A two-gate safety net (`git check-ignore --no-index` + explicit shared-mode detection) prevents touching user-authored configs or breaking `kit init --shared` team workflows. 1037 tests passing.
+
+**v5.2.7:** `kit update` now runs the full gitignore pipeline — projects upgraded from older Kit versions get missing `.cursor/commands/`, `.opencode/commands/`, and other bridge entries auto-fixed.
+
+**v5.2.6:** Fixed Claude Code CLI slash command discovery — blanket `.claude/` gitignore narrowed to `.claude/commands/` for proper directory discovery. New `narrowBlanketClaudeIgnore()` migration function.
+
+**v5.2.3:** Automatic Worktree Support — `.worktreeinclude` generation for Claude Code, `post-checkout` git hook for manual worktrees.
+
+**v5.2.0:** Universal Slash Command Bridge Generation — IDE-native `/` command bridges for Claude Code, Cursor, OpenCode, VS Code Copilot, and Windsurf with auto-detection and provenance-based safe overwrite.
+
 See the full **[CHANGELOG](https://github.com/devran-ai/kit/blob/main/CHANGELOG.md)** for detailed release notes.
