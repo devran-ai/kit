@@ -9,20 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- **Accidentally tracked Kit artifacts are now auto-untracked** — when an agent or contributor runs `git add -A` before Kit's gitignore is configured, bridge files (`.cursor/commands/`, `.claude/commands/`, `.opencode/commands/`, `.agent/`, `.cursor/rules/kit-governance.mdc`, `.opencode/opencode.json`, `.codex/`, `.worktreeinclude`) get committed into the user's repo. Gitignore has no effect on already-tracked files, so previous Kit versions could only warn. `kit init` and `kit update` now actively run `git rm -r --cached` on every known Kit artifact path, guaranteeing Kit files never pollute a user's tracked tree.
+- **Accidentally tracked Kit artifacts are now auto-untracked** — when an agent or contributor runs `git add -A` before Kit's gitignore is configured, bridge files (`.cursor/commands/`, `.claude/commands/`, `.opencode/commands/`, `.agent/`, `.cursor/rules/kit-governance.mdc`, `.opencode/opencode.json`, `.codex/instructions.md`, `.worktreeinclude`) get committed into the user's repo. Gitignore has no effect on already-tracked files, so previous Kit versions could only warn. `kit init` and `kit update` now actively run `git rm -r --cached` on every known Kit artifact path, guaranteeing Kit files never pollute a user's tracked tree.
 - **`dev/null/` directory cleanup** — on Windows, running `git config core.hooksPath dev/null` (without the leading slash) and then `git lfs install` creates a literal `dev/null/` directory containing the 4 LFS hooks. This Windows-specific literal-path artifact is now included in the auto-untrack list.
 
 ### Added
 
-- `untrackKitArtifacts(projectRoot)` in `lib/io.js` — removes known Kit artifacts from the git index while preserving working-tree files
-- `KIT_TRACKED_ARTIFACTS` frozen constant — single source of truth for known artifact paths
-- 10 new tests in `tests/unit/untrack-artifacts.test.js` — covers not-a-git-repo, no-op, single-category, full-sweep, non-Kit-file preservation, idempotency, and the Windows `dev/null/` case
-- Test count: 1018 → 1028 (54 files)
+- `untrackKitArtifacts(projectRoot)` in `lib/io.js` — removes known Kit artifacts from the git index while preserving working-tree files. Two-gate safety net: (1) `git check-ignore --no-index` verifies each path is actually gitignored before touching it, so intentionally-tracked user files are left alone, and (2) `git ls-files` verifies the path is tracked before running `git rm --cached`.
+- `isSharedMode(projectRoot)` helper in `lib/io.js` — detects `kit init --shared` projects by checking whether `.agent/` is tracked but NOT gitignored. `kit update` uses this to skip the entire gitignore pipeline (narrow → cleanup → add → untrack) so shared-mode team workflows survive framework upgrades intact.
+- `KIT_TRACKED_ARTIFACTS` frozen constant — single source of truth for known artifact paths. Lists specific Kit-written files only (e.g. `.cursor/rules/kit-governance.mdc`, `.opencode/opencode.json`, `.codex/instructions.md`) instead of parent directories, so user-authored configs sitting alongside Kit files are never touched.
+- 19 new tests across `tests/unit/untrack-artifacts.test.js` and `tests/unit/updater.test.js` — covers not-a-git-repo, no-op, single-category, full-sweep, non-Kit-file preservation, idempotency, the Windows `dev/null/` case, check-ignore gate with non-ignored paths, user-authored `.cursor/rules/` preservation, shared-mode detection (4 scenarios), and updater shared-mode short-circuit.
+- Test count: 1018 → 1037 (54 files)
 
 ### Changed
 
-- `kit init` Step 4 replaces the two passive "warn if tracked" branches with an active auto-untrack call
-- `kit update` gains Step 4 (auto-untrack) between Step 3 (addToGitignore) and worktree regeneration
+- `kit init` Step 4 replaces the two passive "warn if tracked" branches with an active auto-untrack call.
+- `kit update` gains Step 4 (auto-untrack) between Step 3 (addToGitignore) and worktree regeneration, and all four gitignore pipeline steps are now gated behind `isSharedMode()` so shared-mode projects skip the pipeline entirely.
+- `untrackKitArtifacts` uses `execFileSync` (not shell-`execSync`) and argument arrays with a `--` pathspec terminator, eliminating any command-injection surface even for future changes to `KIT_TRACKED_ARTIFACTS`.
 
 ## [5.2.7] — 2026-04-10
 

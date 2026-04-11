@@ -133,11 +133,11 @@ lib/                      # Runtime Engine (43 modules)
 ├── marketplace.js        # Community skill marketplace
 ├── command-bridge.js     # Cross-IDE slash command bridge generation
 ├── worktree.js           # Git worktree support (.worktreeinclude, post-checkout)
-├── io.js                 # Gitignore management (narrow, cleanup, addToGitignore)
+├── io.js                 # Gitignore management (narrow, cleanup, addToGitignore, untrackKitArtifacts, isSharedMode)
 ├── telegram-sync.js      # Telegram bot menu synchronization
 └── + 34 more modules     # Identity, plugins, hooks, registry...
 
-tests/                    # 1028 tests (54 files)
+tests/                    # 1037 tests (54 files)
 ├── unit/                 # Module tests
 ├── structural/           # Inventory + schema validation
 ├── integration/          # Cross-module tests

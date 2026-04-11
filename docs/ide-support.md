@@ -57,7 +57,7 @@ kit init --skip-commands
 Every generated bridge file starts with a provenance header:
 
 ```
-<!-- devran-kit-bridge v5.2.7 -->
+<!-- devran-kit-bridge v5.2.8 -->
 ```
 
 This header enables:
@@ -90,7 +90,7 @@ To skip: `kit init --skip-worktree`
 A bridge file for the `/plan` workflow in Claude Code looks like:
 
 ```markdown
-<!-- devran-kit-bridge v5.2.7 -->
+<!-- devran-kit-bridge v5.2.8 -->
 ---
 description: "Create implementation plan. Invokes planner agent for structured task breakdown."
 ---
