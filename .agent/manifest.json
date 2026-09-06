@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "kitVersion": "5.2.8",
+  "kitVersion": "5.2.9",
   "lastAuditedAt": null,
   "description": "Devran AI Kit — Trust-Grade AI Development Framework",
   "repository": "https://github.com/devran-ai/kit",
@@ -145,7 +145,7 @@
       "directory": "commands/"
     },
     "skills": {
-      "count": 39,
+      "count": 44,
       "items": [
         {
           "name": "api-patterns",
@@ -302,6 +302,26 @@
         {
           "name": "doc-generation",
           "directory": "skills/doc-generation/"
+        },
+        {
+          "name": "animate",
+          "directory": "skills/animate/"
+        },
+        {
+          "name": "emil-design-eng",
+          "directory": "skills/emil-design-eng/"
+        },
+        {
+          "name": "impeccable",
+          "directory": "skills/impeccable/"
+        },
+        {
+          "name": "improve-animations",
+          "directory": "skills/improve-animations/"
+        },
+        {
+          "name": "taste",
+          "directory": "skills/taste/"
         }
       ]
     },

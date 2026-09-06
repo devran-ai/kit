@@ -7,20 +7,20 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.2.8-blue?style=for-the-badge" alt="Version" height="36" /></a>
+  <a href="https://github.com/devran-ai/kit"><img src="https://img.shields.io/badge/version-5.2.9-blue?style=for-the-badge" alt="Version" height="36" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="License" height="36" /></a>
   <a href="tests/"><img src="https://img.shields.io/badge/tests-1037%20passing-brightgreen?style=for-the-badge" alt="Tests" height="36" /></a>
   <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=for-the-badge" alt="Dependencies" height="36" /></a>
 </p>
 <p align="center">
   <a href=".agent/agents/"><img src="https://img.shields.io/badge/AI%20Agents-26-7c3aed?style=for-the-badge" alt="AI Agents" height="36" /></a>
-  <a href=".agent/skills/"><img src="https://img.shields.io/badge/Skills-39-8b5cf6?style=for-the-badge" alt="Skills" height="36" /></a>
+  <a href=".agent/skills/"><img src="https://img.shields.io/badge/Skills-44-8b5cf6?style=for-the-badge" alt="Skills" height="36" /></a>
   <a href=".agent/commands/"><img src="https://img.shields.io/badge/Commands-40-6366f1?style=for-the-badge" alt="Commands" height="36" /></a>
   <a href=".agent/workflows/"><img src="https://img.shields.io/badge/Workflows-25-a78bfa?style=for-the-badge" alt="Workflows" height="36" /></a>
   <a href=".agent/rules/"><img src="https://img.shields.io/badge/Rules-15-9333ea?style=for-the-badge" alt="Rules" height="36" /></a>
 </p>
 
-> Trust-Grade AI Development Framework — Zero dependencies. 26 agents. 39 skills. 25 workflows. 15 rules. One command.
+> Trust-Grade AI Development Framework — Zero dependencies. 26 agents. 44 skills. 25 workflows. 15 rules. One command.
 
 ## Why Devran AI Kit?
 
@@ -96,7 +96,7 @@ kit scan      # Security scan
 | Component | Count | Purpose |
 |---|---|---|
 | Agents | 26 | Specialized AI agents with reputation scoring and domain routing |
-| Skills | 39 | Domain knowledge modules loaded on demand via keyword matching |
+| Skills | 44 | Domain knowledge modules loaded on demand via keyword matching |
 | Commands | 40 | Slash commands for IDE interaction (`/plan`, `/greenfield`, `/deploy`) |
 | Workflows | 25 | Process templates with quality gates, scope filters, and phase enforcement |
 | Runtime Modules | 43 | Engine components (state machine, circuit breaker, plugin system, command bridge) |
@@ -117,7 +117,7 @@ Onboarding (`/greenfield` or `/brownfield`) is a one-time pre-SDLC phase. Each s
 
 See the full **[CHANGELOG](CHANGELOG.md)** for detailed release notes.
 
-**Latest (v5.2.8):** `kit init` and `kit update` now auto-untrack any Kit artifacts that were accidentally committed (`.cursor/commands/`, `.agent/`, bridge files, `dev/null/`). Before, gitignore only blocked new additions — already-tracked files stayed in git. Now Kit actively removes them from the index, so no Kit files ever pollute user repos. Hardened with `execFileSync` (no shell interpolation), a `git check-ignore --no-index` gate, and a new `isSharedMode()` detector that skips the whole gitignore pipeline for teams using `kit init --shared`. 1037 tests passing.
+**Latest (v5.2.9):** New `ui-design-taste` plugin adds 5 skills for premium UI/animation work (`emil-design-eng`, `impeccable`, `taste`, `animate`, `improve-animations`), wired into the `frontend` domain rule so they load automatically on UI/animation/design keywords. 1037 tests passing.
 
 **v5.2.7:** `kit update` now runs the full gitignore pipeline — projects upgraded from older Kit versions get missing `.cursor/commands/`, `.opencode/commands/`, and other bridge entries auto-fixed.
 
@@ -221,7 +221,7 @@ Devran AI Kit is designed to **never touch your project files**. All operations 
 kit/
 ├── .agent/                 # Framework directory (installed to projects)
 │   ├── agents/             # 26 specialized agent definitions
-│   ├── skills/             # 39 domain knowledge modules
+│   ├── skills/             # 44 domain knowledge modules
 │   ├── commands/           # 40 slash command definitions
 │   ├── workflows/          # 25 workflow templates
 │   ├── rules/              # 15 governance constraints

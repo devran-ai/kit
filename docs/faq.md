@@ -20,7 +20,7 @@ No. Since `.agent/` is gitignored by default, CI pipelines never see it. The kit
 
 **What is Devran AI Kit?**
 
-A trust-grade AI development framework with 26 specialized agents, 39 skills, 40 commands, 25 workflows, 15 governance rules, and a 43-module zero-dependency runtime engine. It transforms your IDE into a virtual engineering team.
+A trust-grade AI development framework with 26 specialized agents, 44 skills, 40 commands, 25 workflows, 15 governance rules, and a 43-module zero-dependency runtime engine. It transforms your IDE into a virtual engineering team.
 
 **How is it different from prompt collections?**
 

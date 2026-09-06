@@ -5,6 +5,19 @@ All notable changes to Devran AI Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.9] — 2026-09-06
+
+### Added
+
+- **`ui-design-taste` plugin** — installed via `kit plugin install`, adds 5 skills for premium, non-generic UI output: `emil-design-eng` and `animate`/`improve-animations` (Emil Kowalski's animation and design-engineering philosophy), `impeccable` (frontend design language for shaping/auditing/polishing UI), and `taste` (reverse-engineers real websites into design tokens via Playwright MCP). Registered in `.agent/manifest.json` (39 → 44 skills) and wired into the `frontend` domain rule in `loading-rules.json` so they load automatically on UI/animation/design keywords, alongside `frontend-patterns`/`mobile-design`.
+
+### Fixed
+
+- **False-positive prompt-injection alarm** — `improve-animations/SKILL.md` documented its own injection-defense rule using the literal example phrase "ignore previous instructions", which tripped `kit scan`'s own injection scanner (and would have failed CI's security-scan job). Reworded the example without changing the rule's intent.
+- **`manifest.json` `lastAuditedAt` regression** — had been manually stamped with a real timestamp instead of shipping as `null`, violating the distribution-hygiene contract that every fresh install starts unaudited. Reset to `null`.
+- **Security scanner file-size ceiling too strict for plugin assets** — `lib/security-scanner.js`'s oversized-file check (100KB) flagged the `ui-design-taste` plugin's legitimate vendored assets (a 1MB font-matching index, a 511KB bundled browser-automation script) as HIGH severity, which kept `kit scan` from exiting clean. Raised the ceiling to 2MB; the unexpected-file-type check (the check that actually signals something suspicious) is untouched.
+- **Stale skill counts across docs** — the 39 → 44 skill count bump from the plugin install had only been applied to `README.md`, `CHANGELOG.md`, and `docs/skills/index.md`. Synced the remaining six references in `docs/architecture.md` (including its ASCII diagram and "+N more" math), `docs/contributor-guide.md`, `docs/faq.md`, `docs/getting-started.md`, `docs/index.md`, and `mkdocs.yml`.
+
 ## [5.2.8] — 2026-04-11
 
 ### Fixed
