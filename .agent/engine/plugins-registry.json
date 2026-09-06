@@ -1,0 +1,18 @@
+{
+  "plugins": [
+    {
+      "name": "ui-design-taste",
+      "version": "1.0.0",
+      "author": "Emre Dursun",
+      "installedAt": "2026-09-06T17:06:38.522Z",
+      "sourcePath": "/sessions/rcw-01mxf1ryzk6cczwu4hv7681p/kit-plugin-ui-design-taste",
+      "installed": {
+        "agents": 0,
+        "skills": 5,
+        "workflows": 0,
+        "hooks": 0,
+        "configs": 0
+      }
+    }
+  ]
+}

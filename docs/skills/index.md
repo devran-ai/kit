@@ -1,6 +1,6 @@
 # Skills
 
-Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **39 skills** across 7 categories.
+Skills are domain expertise modules that extend AI capabilities with specialized knowledge and patterns. **44 skills** across 7 categories.
 
 ---
 
@@ -91,6 +91,11 @@ Architecture, design, and planning.
 | **plan-writing**           | Structured task breakdown                                        |
 | **ui-ux-pro-max**          | Design intelligence with searchable style database               |
 | **research-methodology**   | Multi-source evidence protocol, competitive analysis, tech evaluation matrix |
+| **emil-design-eng**        | UI polish, component design, animation decisions (Emil Kowalski philosophy) |
+| **impeccable**             | Frontend design language: shape, audit, polish, harden, tokens/theming |
+| **taste**                  | Reverse-engineers real websites into design tokens + taste rationale |
+| **animate**                | Construction skill for a single animation, from decision to implementation |
+| **improve-animations**     | Codebase-wide motion audit producing prioritized, self-contained fix plans |
 
 ---
 

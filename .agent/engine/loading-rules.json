@@ -22,130 +22,484 @@
   "domainRules": [
     {
       "domain": "security",
-      "keywords": ["auth", "security", "vulnerability", "password", "jwt", "oauth", "cors", "xss", "csrf", "injection"],
-      "implicitTriggers": [
-        "login", "signup", "register", "form", "payment", "checkout",
-        "user data", "profile", "upload", "download", "admin", "dashboard",
-        "permission", "role", "token", "session", "cookie"
+      "keywords": [
+        "auth",
+        "security",
+        "vulnerability",
+        "password",
+        "jwt",
+        "oauth",
+        "cors",
+        "xss",
+        "csrf",
+        "injection"
       ],
-      "loadAgents": ["security-reviewer"],
-      "loadSkills": ["security-practices"]
+      "implicitTriggers": [
+        "login",
+        "signup",
+        "register",
+        "form",
+        "payment",
+        "checkout",
+        "user data",
+        "profile",
+        "upload",
+        "download",
+        "admin",
+        "dashboard",
+        "permission",
+        "role",
+        "token",
+        "session",
+        "cookie"
+      ],
+      "loadAgents": [
+        "security-reviewer"
+      ],
+      "loadSkills": [
+        "security-practices"
+      ]
     },
     {
       "domain": "testing",
-      "keywords": ["test", "coverage", "e2e", "playwright", "jest", "vitest", "tdd", "unit test", "integration test"],
-      "loadAgents": ["tdd-guide", "e2e-runner"],
-      "loadSkills": ["testing-patterns", "webapp-testing"]
+      "keywords": [
+        "test",
+        "coverage",
+        "e2e",
+        "playwright",
+        "jest",
+        "vitest",
+        "tdd",
+        "unit test",
+        "integration test"
+      ],
+      "loadAgents": [
+        "tdd-guide",
+        "e2e-runner"
+      ],
+      "loadSkills": [
+        "testing-patterns",
+        "webapp-testing"
+      ]
     },
     {
       "domain": "architecture",
-      "keywords": ["design", "structure", "pattern", "ddd", "hexagonal", "layer", "module", "monolith", "microservice"],
-      "loadAgents": ["architect"],
-      "loadSkills": ["architecture", "clean-code"]
+      "keywords": [
+        "design",
+        "structure",
+        "pattern",
+        "ddd",
+        "hexagonal",
+        "layer",
+        "module",
+        "monolith",
+        "microservice"
+      ],
+      "loadAgents": [
+        "architect"
+      ],
+      "loadSkills": [
+        "architecture",
+        "clean-code"
+      ]
     },
     {
       "domain": "frontend",
-      "keywords": ["react", "next.js", "vue", "component", "css", "styling", "responsive", "a11y", "accessibility", "ui", "ux"],
-      "implicitTriggers": ["button", "modal", "form field", "dropdown", "navigation bar", "sidebar", "theme", "dark mode", "animation", "transition", "layout", "grid", "flexbox", "tailwind", "styled"],
-      "loadAgents": ["frontend-specialist"],
-      "loadSkills": ["frontend-patterns", "mobile-design"],
-      "loadRules": ["accessibility"]
+      "keywords": [
+        "react",
+        "next.js",
+        "vue",
+        "component",
+        "css",
+        "styling",
+        "responsive",
+        "a11y",
+        "accessibility",
+        "ui",
+        "ux"
+      ],
+      "implicitTriggers": [
+        "button",
+        "modal",
+        "form field",
+        "dropdown",
+        "navigation bar",
+        "sidebar",
+        "theme",
+        "dark mode",
+        "animation",
+        "transition",
+        "layout",
+        "grid",
+        "flexbox",
+        "tailwind",
+        "styled",
+        "polish",
+        "premium design",
+        "micro-interaction",
+        "design tokens",
+        "motion design"
+      ],
+      "loadAgents": [
+        "frontend-specialist"
+      ],
+      "loadSkills": [
+        "frontend-patterns",
+        "mobile-design",
+        "emil-design-eng",
+        "impeccable",
+        "taste",
+        "animate",
+        "improve-animations"
+      ],
+      "loadRules": [
+        "accessibility"
+      ]
     },
     {
       "domain": "backend",
-      "keywords": ["api", "server", "node", "nestjs", "express", "middleware", "rest", "graphql", "endpoint"],
-      "implicitTriggers": ["route", "controller", "service layer", "webhook", "queue", "worker", "cron", "batch", "rate limit", "pagination", "validation"],
-      "loadAgents": ["backend-specialist"],
-      "loadSkills": ["api-patterns", "nodejs-patterns"]
+      "keywords": [
+        "api",
+        "server",
+        "node",
+        "nestjs",
+        "express",
+        "middleware",
+        "rest",
+        "graphql",
+        "endpoint"
+      ],
+      "implicitTriggers": [
+        "route",
+        "controller",
+        "service layer",
+        "webhook",
+        "queue",
+        "worker",
+        "cron",
+        "batch",
+        "rate limit",
+        "pagination",
+        "validation"
+      ],
+      "loadAgents": [
+        "backend-specialist"
+      ],
+      "loadSkills": [
+        "api-patterns",
+        "nodejs-patterns"
+      ]
     },
     {
       "domain": "database",
-      "keywords": ["database", "sql", "postgresql", "prisma", "migration", "schema", "query", "orm", "redis"],
-      "implicitTriggers": ["table", "column", "index", "foreign key", "transaction", "connection pool", "backup", "replica", "sharding", "partition"],
-      "loadAgents": ["database-architect"],
-      "loadSkills": ["database-design"],
-      "loadRules": ["data-privacy"]
+      "keywords": [
+        "database",
+        "sql",
+        "postgresql",
+        "prisma",
+        "migration",
+        "schema",
+        "query",
+        "orm",
+        "redis"
+      ],
+      "implicitTriggers": [
+        "table",
+        "column",
+        "index",
+        "foreign key",
+        "transaction",
+        "connection pool",
+        "backup",
+        "replica",
+        "sharding",
+        "partition"
+      ],
+      "loadAgents": [
+        "database-architect"
+      ],
+      "loadSkills": [
+        "database-design"
+      ],
+      "loadRules": [
+        "data-privacy"
+      ]
     },
     {
       "domain": "devops",
-      "keywords": ["deploy", "ci", "cd", "docker", "kubernetes", "railway", "vercel", "github actions", "pipeline", "terraform", "gitops", "canary", "helm"],
-      "implicitTriggers": ["environment variable", "container", "image", "registry", "rollback", "blue-green", "feature flag", "infrastructure"],
-      "loadAgents": ["devops-engineer"],
-      "loadSkills": ["docker-patterns", "deployment-procedures"],
-      "loadRules": ["data-privacy"]
+      "keywords": [
+        "deploy",
+        "ci",
+        "cd",
+        "docker",
+        "kubernetes",
+        "railway",
+        "vercel",
+        "github actions",
+        "pipeline",
+        "terraform",
+        "gitops",
+        "canary",
+        "helm"
+      ],
+      "implicitTriggers": [
+        "environment variable",
+        "container",
+        "image",
+        "registry",
+        "rollback",
+        "blue-green",
+        "feature flag",
+        "infrastructure"
+      ],
+      "loadAgents": [
+        "devops-engineer"
+      ],
+      "loadSkills": [
+        "docker-patterns",
+        "deployment-procedures"
+      ],
+      "loadRules": [
+        "data-privacy"
+      ]
     },
     {
       "domain": "performance",
-      "keywords": ["slow", "optimize", "speed", "bundle", "lighthouse", "web vitals", "lcp", "cls", "fid", "cache", "cdn", "latency", "p99", "tracing"],
-      "loadAgents": ["performance-optimizer"],
-      "loadSkills": ["performance-profiling"],
-      "loadRules": ["performance"]
+      "keywords": [
+        "slow",
+        "optimize",
+        "speed",
+        "bundle",
+        "lighthouse",
+        "web vitals",
+        "lcp",
+        "cls",
+        "fid",
+        "cache",
+        "cdn",
+        "latency",
+        "p99",
+        "tracing"
+      ],
+      "loadAgents": [
+        "performance-optimizer"
+      ],
+      "loadSkills": [
+        "performance-profiling"
+      ],
+      "loadRules": [
+        "performance"
+      ]
     },
     {
       "domain": "reliability",
-      "keywords": ["reliability", "uptime", "monitoring", "sre", "sla", "slo", "sli", "incident", "chaos", "resilience", "error-budget", "golden-signals", "on-call", "capacity"],
-      "loadAgents": ["reliability-engineer"],
+      "keywords": [
+        "reliability",
+        "uptime",
+        "monitoring",
+        "sre",
+        "sla",
+        "slo",
+        "sli",
+        "incident",
+        "chaos",
+        "resilience",
+        "error-budget",
+        "golden-signals",
+        "on-call",
+        "capacity"
+      ],
+      "loadAgents": [
+        "reliability-engineer"
+      ],
       "loadSkills": []
     },
     {
       "domain": "observability",
-      "keywords": ["logging", "tracing", "metrics", "monitoring", "alerting", "opentelemetry", "grafana", "prometheus", "datadog", "observability", "dashboard"],
-      "loadAgents": ["reliability-engineer", "devops-engineer"],
+      "keywords": [
+        "logging",
+        "tracing",
+        "metrics",
+        "monitoring",
+        "alerting",
+        "opentelemetry",
+        "grafana",
+        "prometheus",
+        "datadog",
+        "observability",
+        "dashboard"
+      ],
+      "loadAgents": [
+        "reliability-engineer",
+        "devops-engineer"
+      ],
       "loadSkills": []
     },
     {
       "domain": "mobile",
-      "keywords": ["mobile", "react native", "expo", "ios", "android", "app store", "native"],
-      "loadAgents": ["mobile-developer"],
-      "loadSkills": ["mobile-design"]
+      "keywords": [
+        "mobile",
+        "react native",
+        "expo",
+        "ios",
+        "android",
+        "app store",
+        "native"
+      ],
+      "loadAgents": [
+        "mobile-developer"
+      ],
+      "loadSkills": [
+        "mobile-design"
+      ]
     },
     {
       "domain": "documentation",
-      "keywords": ["docs", "readme", "document", "api docs", "jsdoc", "changelog", "adr", "decision record", "knowledge"],
-      "loadAgents": ["doc-updater", "knowledge-agent"],
+      "keywords": [
+        "docs",
+        "readme",
+        "document",
+        "api docs",
+        "jsdoc",
+        "changelog",
+        "adr",
+        "decision record",
+        "knowledge"
+      ],
+      "loadAgents": [
+        "doc-updater",
+        "knowledge-agent"
+      ],
       "loadSkills": []
     },
     {
       "domain": "planning",
-      "keywords": ["plan", "roadmap", "sprint", "milestone", "task", "breakdown", "estimate"],
-      "loadAgents": ["planner", "sprint-orchestrator"],
-      "loadSkills": ["plan-writing", "brainstorming"]
+      "keywords": [
+        "plan",
+        "roadmap",
+        "sprint",
+        "milestone",
+        "task",
+        "breakdown",
+        "estimate"
+      ],
+      "loadAgents": [
+        "planner",
+        "sprint-orchestrator"
+      ],
+      "loadSkills": [
+        "plan-writing",
+        "brainstorming"
+      ]
     },
     {
       "domain": "debugging",
-      "keywords": ["bug", "error", "fix", "crash", "exception", "stack trace", "not working"],
-      "loadAgents": ["build-error-resolver"],
-      "loadSkills": ["debugging-strategies"]
+      "keywords": [
+        "bug",
+        "error",
+        "fix",
+        "crash",
+        "exception",
+        "stack trace",
+        "not working"
+      ],
+      "loadAgents": [
+        "build-error-resolver"
+      ],
+      "loadSkills": [
+        "debugging-strategies"
+      ]
     },
     {
       "domain": "refactoring",
-      "keywords": ["refactor", "clean", "improve", "dead code", "technical debt", "simplify"],
-      "loadAgents": ["refactor-cleaner"],
-      "loadSkills": ["clean-code"]
+      "keywords": [
+        "refactor",
+        "clean",
+        "improve",
+        "dead code",
+        "technical debt",
+        "simplify"
+      ],
+      "loadAgents": [
+        "refactor-cleaner"
+      ],
+      "loadSkills": [
+        "clean-code"
+      ]
     },
     {
       "domain": "typescript",
-      "keywords": ["typescript", "ts", "type safety", "tsconfig", "tsc", "generics", "type guard", "discriminated union"],
-      "loadAgents": ["typescript-reviewer"],
-      "loadSkills": ["typescript-expert"]
+      "keywords": [
+        "typescript",
+        "ts",
+        "type safety",
+        "tsconfig",
+        "tsc",
+        "generics",
+        "type guard",
+        "discriminated union"
+      ],
+      "loadAgents": [
+        "typescript-reviewer"
+      ],
+      "loadSkills": [
+        "typescript-expert"
+      ]
     },
     {
       "domain": "python",
-      "keywords": ["python", "django", "flask", "fastapi", "pep8", "mypy", "pytest", "asyncio", "pydantic"],
-      "loadAgents": ["python-reviewer"],
+      "keywords": [
+        "python",
+        "django",
+        "flask",
+        "fastapi",
+        "pep8",
+        "mypy",
+        "pytest",
+        "asyncio",
+        "pydantic"
+      ],
+      "loadAgents": [
+        "python-reviewer"
+      ],
       "loadSkills": []
     },
     {
       "domain": "golang",
-      "keywords": ["go", "golang", "goroutine", "channel", "context", "errgroup", "go mod", "staticcheck"],
-      "loadAgents": ["go-reviewer"],
+      "keywords": [
+        "go",
+        "golang",
+        "goroutine",
+        "channel",
+        "context",
+        "errgroup",
+        "go mod",
+        "staticcheck"
+      ],
+      "loadAgents": [
+        "go-reviewer"
+      ],
       "loadSkills": []
     },
     {
       "domain": "onboarding",
-      "keywords": ["onboard", "setup project", "new project", "initialize", "scaffold", "from scratch", "existing project", "greenfield", "brownfield"],
-      "loadAgents": ["onboarding-specialist"],
-      "loadSkills": ["onboarding-engine"]
+      "keywords": [
+        "onboard",
+        "setup project",
+        "new project",
+        "initialize",
+        "scaffold",
+        "from scratch",
+        "existing project",
+        "greenfield",
+        "brownfield"
+      ],
+      "loadAgents": [
+        "onboarding-specialist"
+      ],
+      "loadSkills": [
+        "onboarding-engine"
+      ]
     }
   ],
   "contextBudget": {
@@ -155,53 +509,278 @@
     "description": "Limits prevent context overflow. The kit selects only domain-relevant agents and skills for each task, keeping within the LLM context window."
   },
   "workflowBindings": [
-    { "workflow": "brainstorm", "loadAgents": [], "loadSkills": ["brainstorming"], "bindingType": "inferred" },
-    { "workflow": "quality-gate", "loadAgents": [], "loadSkills": ["brainstorming"], "loadRules": ["quality-gate"], "bindingType": "inferred" },
-    { "workflow": "plan", "loadAgents": ["planner"], "loadSkills": ["plan-writing", "brainstorming", "plan-validation"], "bindingType": "explicit" },
-    { "workflow": "create", "loadAgents": [], "loadSkills": ["app-builder", "clean-code"], "bindingType": "inferred" },
-    { "workflow": "enhance", "loadAgents": [], "loadSkills": ["clean-code", "testing-patterns"], "bindingType": "inferred" },
-    { "workflow": "preview", "loadAgents": [], "loadSkills": ["shell-conventions"], "bindingType": "inferred" },
-    { "workflow": "ui-ux-pro-max", "loadAgents": [], "loadSkills": ["ui-ux-pro-max", "frontend-patterns", "mobile-design"], "bindingType": "inferred" },
-    { "workflow": "test", "loadAgents": [], "loadSkills": ["testing-patterns", "webapp-testing"], "bindingType": "inferred" },
-    { "workflow": "review", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" },
-    { "workflow": "pr", "loadAgents": ["pr-reviewer"], "loadSkills": ["git-workflow", "pr-toolkit", "verification-loop"], "bindingType": "explicit" },
-    { "workflow": "pr-review", "loadAgents": ["pr-reviewer"], "loadSkills": ["pr-toolkit", "verification-loop"], "bindingType": "explicit" },
-    { "workflow": "pr-fix", "loadAgents": ["pr-reviewer"], "loadSkills": ["pr-toolkit", "verification-loop"], "bindingType": "explicit" },
-    { "workflow": "pr-merge", "loadAgents": ["pr-reviewer"], "loadSkills": ["pr-toolkit", "verification-loop"], "bindingType": "explicit" },
-    { "workflow": "pr-split", "loadAgents": ["pr-reviewer"], "loadSkills": ["pr-toolkit"], "bindingType": "explicit" },
-    { "workflow": "deploy", "loadAgents": [], "loadSkills": ["deployment-procedures"], "bindingType": "inferred" },
-    { "workflow": "debug", "loadAgents": [], "loadSkills": ["debugging-strategies"], "bindingType": "inferred" },
+    {
+      "workflow": "brainstorm",
+      "loadAgents": [],
+      "loadSkills": [
+        "brainstorming"
+      ],
+      "bindingType": "inferred"
+    },
+    {
+      "workflow": "quality-gate",
+      "loadAgents": [],
+      "loadSkills": [
+        "brainstorming"
+      ],
+      "loadRules": [
+        "quality-gate"
+      ],
+      "bindingType": "inferred"
+    },
+    {
+      "workflow": "plan",
+      "loadAgents": [
+        "planner"
+      ],
+      "loadSkills": [
+        "plan-writing",
+        "brainstorming",
+        "plan-validation"
+      ],
+      "bindingType": "explicit"
+    },
+    {
+      "workflow": "create",
+      "loadAgents": [],
+      "loadSkills": [
+        "app-builder",
+        "clean-code"
+      ],
+      "bindingType": "inferred"
+    },
+    {
+      "workflow": "enhance",
+      "loadAgents": [],
+      "loadSkills": [
+        "clean-code",
+        "testing-patterns"
+      ],
+      "bindingType": "inferred"
+    },
+    {
+      "workflow": "preview",
+      "loadAgents": [],
+      "loadSkills": [
+        "shell-conventions"
+      ],
+      "bindingType": "inferred"
+    },
+    {
+      "workflow": "ui-ux-pro-max",
+      "loadAgents": [],
+      "loadSkills": [
+        "ui-ux-pro-max",
+        "frontend-patterns",
+        "mobile-design"
+      ],
+      "bindingType": "inferred"
+    },
+    {
+      "workflow": "test",
+      "loadAgents": [],
+      "loadSkills": [
+        "testing-patterns",
+        "webapp-testing"
+      ],
+      "bindingType": "inferred"
+    },
+    {
+      "workflow": "review",
+      "loadAgents": [],
+      "loadSkills": [
+        "verification-loop"
+      ],
+      "bindingType": "inferred"
+    },
+    {
+      "workflow": "pr",
+      "loadAgents": [
+        "pr-reviewer"
+      ],
+      "loadSkills": [
+        "git-workflow",
+        "pr-toolkit",
+        "verification-loop"
+      ],
+      "bindingType": "explicit"
+    },
+    {
+      "workflow": "pr-review",
+      "loadAgents": [
+        "pr-reviewer"
+      ],
+      "loadSkills": [
+        "pr-toolkit",
+        "verification-loop"
+      ],
+      "bindingType": "explicit"
+    },
+    {
+      "workflow": "pr-fix",
+      "loadAgents": [
+        "pr-reviewer"
+      ],
+      "loadSkills": [
+        "pr-toolkit",
+        "verification-loop"
+      ],
+      "bindingType": "explicit"
+    },
+    {
+      "workflow": "pr-merge",
+      "loadAgents": [
+        "pr-reviewer"
+      ],
+      "loadSkills": [
+        "pr-toolkit",
+        "verification-loop"
+      ],
+      "bindingType": "explicit"
+    },
+    {
+      "workflow": "pr-split",
+      "loadAgents": [
+        "pr-reviewer"
+      ],
+      "loadSkills": [
+        "pr-toolkit"
+      ],
+      "bindingType": "explicit"
+    },
+    {
+      "workflow": "deploy",
+      "loadAgents": [],
+      "loadSkills": [
+        "deployment-procedures"
+      ],
+      "bindingType": "inferred"
+    },
+    {
+      "workflow": "debug",
+      "loadAgents": [],
+      "loadSkills": [
+        "debugging-strategies"
+      ],
+      "bindingType": "inferred"
+    },
     {
       "workflow": "orchestrate",
-      "loadAgents": ["planner", "explorer-agent"],
-      "loadSkills": ["parallel-agents", "intelligent-routing"],
+      "loadAgents": [
+        "planner",
+        "explorer-agent"
+      ],
+      "loadSkills": [
+        "parallel-agents",
+        "intelligent-routing"
+      ],
       "bindingType": "explicit",
-      "dynamicAgentPool": ["architect", "backend-specialist", "frontend-specialist", "mobile-developer", "database-architect", "security-reviewer", "tdd-guide", "e2e-runner", "devops-engineer", "performance-optimizer", "reliability-engineer", "refactor-cleaner", "code-reviewer", "typescript-reviewer", "python-reviewer", "go-reviewer"]
+      "dynamicAgentPool": [
+        "architect",
+        "backend-specialist",
+        "frontend-specialist",
+        "mobile-developer",
+        "database-architect",
+        "security-reviewer",
+        "tdd-guide",
+        "e2e-runner",
+        "devops-engineer",
+        "performance-optimizer",
+        "reliability-engineer",
+        "refactor-cleaner",
+        "code-reviewer",
+        "typescript-reviewer",
+        "python-reviewer",
+        "go-reviewer"
+      ]
     },
-    { "workflow": "retrospective", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" },
-    { "workflow": "project-status", "loadAgents": [], "loadSkills": ["verification-loop"], "bindingType": "inferred" },
-    { "workflow": "help-kit", "loadAgents": [], "loadSkills": [], "bindingType": "inferred" },
+    {
+      "workflow": "retrospective",
+      "loadAgents": [],
+      "loadSkills": [
+        "verification-loop"
+      ],
+      "bindingType": "inferred"
+    },
+    {
+      "workflow": "project-status",
+      "loadAgents": [],
+      "loadSkills": [
+        "verification-loop"
+      ],
+      "bindingType": "inferred"
+    },
+    {
+      "workflow": "help-kit",
+      "loadAgents": [],
+      "loadSkills": [],
+      "bindingType": "inferred"
+    },
     {
       "workflow": "greenfield",
-      "loadAgents": ["onboarding-specialist", "market-researcher"],
-      "protectedAgents": ["onboarding-specialist"],
-      "protectedSkills": ["onboarding-engine", "market-intelligence", "doc-generation"],
-      "loadSkills": ["onboarding-engine", "market-intelligence", "doc-generation", "brainstorming", "research-methodology", "architecture"],
+      "loadAgents": [
+        "onboarding-specialist",
+        "market-researcher"
+      ],
+      "protectedAgents": [
+        "onboarding-specialist"
+      ],
+      "protectedSkills": [
+        "onboarding-engine",
+        "market-intelligence",
+        "doc-generation"
+      ],
+      "loadSkills": [
+        "onboarding-engine",
+        "market-intelligence",
+        "doc-generation",
+        "brainstorming",
+        "research-methodology",
+        "architecture"
+      ],
       "bindingType": "explicit"
     },
     {
       "workflow": "brownfield",
-      "loadAgents": ["onboarding-specialist", "codebase-scanner", "market-researcher"],
-      "protectedAgents": ["onboarding-specialist", "codebase-scanner"],
-      "protectedSkills": ["onboarding-engine", "doc-generation"],
-      "loadSkills": ["onboarding-engine", "market-intelligence", "doc-generation", "research-methodology", "architecture"],
+      "loadAgents": [
+        "onboarding-specialist",
+        "codebase-scanner",
+        "market-researcher"
+      ],
+      "protectedAgents": [
+        "onboarding-specialist",
+        "codebase-scanner"
+      ],
+      "protectedSkills": [
+        "onboarding-engine",
+        "doc-generation"
+      ],
+      "loadSkills": [
+        "onboarding-engine",
+        "market-intelligence",
+        "doc-generation",
+        "research-methodology",
+        "architecture"
+      ],
       "bindingType": "explicit"
     }
   ],
   "planningMandates": {
     "description": "Mandatory resources loaded for every /plan invocation regardless of keyword matching. Ensures cross-cutting concerns are never omitted.",
-    "alwaysLoadRules": ["security", "testing", "coding-style", "documentation", "architecture", "performance", "accessibility", "data-privacy"],
-    "alwaysLoadSkills": ["security-practices", "testing-patterns"],
+    "alwaysLoadRules": [
+      "security",
+      "testing",
+      "coding-style",
+      "documentation",
+      "architecture",
+      "performance",
+      "accessibility",
+      "data-privacy"
+    ],
+    "alwaysLoadSkills": [
+      "security-practices",
+      "testing-patterns"
+    ],
     "crossCuttingSections": [
       "security-considerations",
       "testing-strategy",

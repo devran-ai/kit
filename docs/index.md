@@ -15,7 +15,7 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 | Feature           | Count | Description                                                            |
 | :---------------- | :---- | :--------------------------------------------------------------------- |
 | 🤖 **AI Agents**  | 26    | Specialized roles (Mobile, DevOps, Database, Security, PR Review...)   |
-| 🛠️ **Skills**     | 39    | Domain knowledge modules (API, Testing, PR Toolkit, Docker, Research Methodology...) |
+| 🛠️ **Skills**     | 44    | Domain knowledge modules (API, Testing, PR Toolkit, Docker, Research Methodology...) |
 | ⌨️ **Commands**   | 40    | Slash commands for every development workflow                          |
 | 🔄 **Workflows**  | 25    | Process templates (/create, /debug, /deploy, /implement, /pr, /pr-merge...) |
 | ✅ **Checklists** | 4     | Quality gates (session-start, session-end, pre-commit, task-complete)  |
@@ -43,7 +43,7 @@ Devran AI Kit transforms your IDE into a **virtual engineering team** with:
 
 - :gear: **[Skills](skills/index.md)**
 
-  39 domain expertise modules
+  44 domain expertise modules
 
 - :arrows_counterclockwise: **[Workflows](workflows/index.md)**
 
@@ -95,7 +95,7 @@ This isn't just a collection of prompts. It's an **engineered framework** that e
 
 ## Release History
 
-**Latest (v5.2.8):** `kit init` and `kit update` now auto-untrack any Kit artifacts that were accidentally committed (`.cursor/commands/`, `.agent/`, bridge files, `dev/null/`). Gitignore only blocks new additions — already-tracked files stayed in git. Now Kit actively removes them from the index via `git rm -r --cached` while keeping working-tree files intact. A two-gate safety net (`git check-ignore --no-index` + explicit shared-mode detection) prevents touching user-authored configs or breaking `kit init --shared` team workflows. 1037 tests passing.
+**Latest (v5.2.9):** New `ui-design-taste` plugin adds 5 skills for premium UI/animation work (`emil-design-eng`, `impeccable`, `taste`, `animate`, `improve-animations`), wired into the `frontend` domain rule so they load automatically on UI/animation/design keywords. 1037 tests passing.
 
 **v5.2.7:** `kit update` now runs the full gitignore pipeline — projects upgraded from older Kit versions get missing `.cursor/commands/`, `.opencode/commands/`, and other bridge entries auto-fixed.
 

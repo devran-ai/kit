@@ -1,6 +1,6 @@
 # Architecture
 
-Devran AI Kit v5.2.8 is an engineered framework with a **43-module runtime engine**, 26 agents, 39 skills, 40 commands, 25 workflows, and 15 governance rules.
+Devran AI Kit v5.2.9 is an engineered framework with a **43-module runtime engine**, 26 agents, 44 skills, 40 commands, 25 workflows, and 15 governance rules.
 
 ---
 
@@ -8,18 +8,18 @@ Devran AI Kit v5.2.8 is an engineered framework with a **43-module runtime engin
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      DEVRAN AI KIT v5.2.8                       │
+│                      DEVRAN AI KIT v5.2.9                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐      │
-│  │   26 AGENTS     │  │   40 COMMANDS   │  │   39 SKILLS     │      │
+│  │   26 AGENTS     │  │   40 COMMANDS   │  │   44 SKILLS     │      │
 │  │                 │  │                 │  │                 │      │
 │  │ • Architect     │  │ • /plan         │  │ • api-patterns  │      │
 │  │ • Mobile Dev    │  │ • /implement    │  │ • architecture  │      │
 │  │ • DevOps        │  │ • /verify       │  │ • clean-code    │      │
 │  │ • DB Architect  │  │ • /deploy       │  │ • testing       │      │
 │  │ • Security      │  │ • /debug        │  │ • docker        │      │
-│  │ • + 21 more     │  │ • + 35 more     │  │ • + 34 more     │      │
+│  │ • + 21 more     │  │ • + 35 more     │  │ • + 39 more     │      │
 │  └─────────────────┘  └─────────────────┘  └─────────────────┘      │
 │                              │                                       │
 │           ┌──────────────────┴──────────────────┐                   │
@@ -71,7 +71,7 @@ Slash commands for quick execution of common operations.
 - **Development**: /build, /fix, /debug, /refactor, /cook
 - **Quality**: /verify, /code-review, /security-scan, /perf
 
-### Skills (39)
+### Skills (44)
 
 Domain expertise modules that extend AI capabilities.
 
@@ -116,7 +116,7 @@ Node.js runtime modules that enforce governance, manage state, and provide platf
 .agent/
 ├── agents/               # 26 specialized agents
 ├── commands/             # 40 slash commands
-├── skills/               # 39 capability modules
+├── skills/               # 44 capability modules
 ├── workflows/            # 25 process templates
 ├── engine/               # Autonomy Engine configs
 ├── hooks/                # Event automation
